@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators>
+    <decorator name="default-theme" page="/default-theme.jsp">
+        <pattern>/home/*</pattern>
+        <pattern>/appointmentUser/*</pattern>
+    </decorator>
+</decorators>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yikang.protal.dao.AppointmentUserDao" >
+  <resultMap id="BaseResultMap" type="com.yikang.protal.entity.AppointmentUser" >
+    <id column="appointment_user_id" property="appointmentUserId" jdbcType="BIGINT" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+    <result column="return_visit" property="returnVisit" jdbcType="TINYINT" />
+    <result column="user_status" property="userStatus" jdbcType="TINYINT" />
+    <result column="have_senior" property="haveSenior" jdbcType="TINYINT" />
+    <result column="return_visit_user_id" property="returnVisitUserId" jdbcType="BIGINT" />
+    <result column="mobile_number" property="mobileNumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    appointment_user_id, sex, create_time, update_time, create_user_id, return_visit, 
+    user_status, have_senior, return_visit_user_id, mobile_number
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from appointment_users
+    where appointment_user_id = #{appointmentUserId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from appointment_users
+    where appointment_user_id = #{appointmentUserId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yikang.protal.entity.AppointmentUser" >
+    insert into appointment_users (appointment_user_id, sex, create_time, 
+      update_time, create_user_id, return_visit, 
+      user_status, have_senior, return_visit_user_id, 
+      mobile_number)
+    values (#{appointmentUserId,jdbcType=BIGINT}, #{sex,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, #{returnVisit,jdbcType=TINYINT}, 
+      #{userStatus,jdbcType=TINYINT}, #{haveSenior,jdbcType=TINYINT}, #{returnVisitUserId,jdbcType=BIGINT}, 
+      #{mobileNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yikang.protal.entity.AppointmentUser" >
+    insert into appointment_users
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="appointmentUserId != null" >
+        appointment_user_id,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="returnVisit != null" >
+        return_visit,
+      </if>
+      <if test="userStatus != null" >
+        user_status,
+      </if>
+      <if test="haveSenior != null" >
+        have_senior,
+      </if>
+      <if test="returnVisitUserId != null" >
+        return_visit_user_id,
+      </if>
+      <if test="mobileNumber != null" >
+        mobile_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="appointmentUserId != null" >
+        #{appointmentUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="returnVisit != null" >
+        #{returnVisit,jdbcType=TINYINT},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=TINYINT},
+      </if>
+      <if test="haveSenior != null" >
+        #{haveSenior,jdbcType=TINYINT},
+      </if>
+      <if test="returnVisitUserId != null" >
+        #{returnVisitUserId,jdbcType=BIGINT},
+      </if>
+      <if test="mobileNumber != null" >
+        #{mobileNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yikang.protal.entity.AppointmentUser" >
+    update appointment_users
+    <set >
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="returnVisit != null" >
+        return_visit = #{returnVisit,jdbcType=TINYINT},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=TINYINT},
+      </if>
+      <if test="haveSenior != null" >
+        have_senior = #{haveSenior,jdbcType=TINYINT},
+      </if>
+      <if test="returnVisitUserId != null" >
+        return_visit_user_id = #{returnVisitUserId,jdbcType=BIGINT},
+      </if>
+      <if test="mobileNumber != null" >
+        mobile_number = #{mobileNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where appointment_user_id = #{appointmentUserId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yikang.protal.entity.AppointmentUser" >
+    update appointment_users
+    set sex = #{sex,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      return_visit = #{returnVisit,jdbcType=TINYINT},
+      user_status = #{userStatus,jdbcType=TINYINT},
+      have_senior = #{haveSenior,jdbcType=TINYINT},
+      return_visit_user_id = #{returnVisitUserId,jdbcType=BIGINT},
+      mobile_number = #{mobileNumber,jdbcType=VARCHAR}
+    where appointment_user_id = #{appointmentUserId,jdbcType=BIGINT}
+  </update>
+  
+  
+  
+  <select id="getAppointmentUserListPage" resultMap="BaseResultMap" parameterType="map">
+  	select
+  		<include refid="Base_Column_List"></include>
+  	from appointment_users
+  	<where>
+  		<if test="null != appointmentUser.createUserId">
+  			and create_user_id=#{appointmentUser.createUserId}
+  		</if>
+  		<if test="null != appointmentUser.returnVisit">
+  			and return_visit=#{appointmentUser.returnVisit}
+  		</if>
+  		<if test="null != appointmentUser.haveSenior">
+  			and have_senior=#{appointmentUser.haveSenior}
+  		</if>
+  	</where>
+  	order by create_time desc
+  </select>
+  
+  
+  <!-- 查询预约的用户根据手机号 -->
+  <select id="findAppointmentUserByMobileNumber" resultMap="BaseResultMap" parameterType="string">
+  	select
+  		<include refid="Base_Column_List"></include>
+  	from appointment_users
+  	<where>
+  		<if test="null != mobileNumber">
+  			and mobile_number=#{mobileNumber}
+  		</if>
+  	</where>
+  	order by create_time desc
+  </select>
+  
+  
+</mapper>

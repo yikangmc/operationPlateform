@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yikang.protal.dao.UserLinkStatuDao" >
+  <resultMap id="BaseResultMap" type="com.yikang.protal.entity.UserLinkStatu" >
+    <id column="user_status_id" property="userStatusId" jdbcType="BIGINT" />
+    <result column="user_link_status" property="userLinkStatus" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="link_user_id" property="linkUserId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_status_id, user_link_status, create_time, update_time, link_user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_link_status
+    where user_status_id = #{userStatusId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_link_status
+    where user_status_id = #{userStatusId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yikang.protal.entity.UserLinkStatu" >
+    insert into user_link_status (user_status_id, user_link_status, create_time, 
+      update_time, link_user_id)
+    values (#{userStatusId,jdbcType=BIGINT}, #{userLinkStatus,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{linkUserId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yikang.protal.entity.UserLinkStatu" >
+    insert into user_link_status
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userStatusId != null" >
+        user_status_id,
+      </if>
+      <if test="userLinkStatus != null" >
+        user_link_status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="linkUserId != null" >
+        link_user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userStatusId != null" >
+        #{userStatusId,jdbcType=BIGINT},
+      </if>
+      <if test="userLinkStatus != null" >
+        #{userLinkStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="linkUserId != null" >
+        #{linkUserId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yikang.protal.entity.UserLinkStatu" >
+    update user_link_status
+    <set >
+      <if test="userLinkStatus != null" >
+        user_link_status = #{userLinkStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="linkUserId != null" >
+        link_user_id = #{linkUserId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where user_status_id = #{userStatusId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yikang.protal.entity.UserLinkStatu" >
+    update user_link_status
+    set user_link_status = #{userLinkStatus,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      link_user_id = #{linkUserId,jdbcType=BIGINT}
+    where user_status_id = #{userStatusId,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 获取新注册用户的联系状态 -->
+  <select id="getUserLinkUserStatus" resultType="map">
+  	select 
+		distinct
+			us.user_id,
+			us.user_name,
+			uls.user_status_id,
+		    us.create_time
+	from users us inner join user_froms uf on us.user_id=uf.user_id
+	left join user_link_status  uls on uls.link_user_id=us.user_id
+  </select>
+  
+  
+  
+</mapper>

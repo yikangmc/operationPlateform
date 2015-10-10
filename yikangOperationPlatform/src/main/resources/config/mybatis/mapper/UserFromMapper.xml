@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yikang.protal.dao.UserFromDao" >
+  <resultMap id="BaseResultMap" type="com.yikang.protal.entity.UserFrom" >
+    <id column="user_from_id" property="userFromId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_from" property="userFrom" jdbcType="VARCHAR" />
+    <result column="from_url" property="fromUrl" jdbcType="VARCHAR" />
+    <result column="numbers" property="numbers" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+    <result column="active_time" property="activeTime" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_from_id, user_id, user_from, from_url, numbers, create_time, update_time, active_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_froms
+    where user_from_id = #{userFromId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_froms
+    where user_from_id = #{userFromId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yikang.protal.entity.UserFrom" >
+    insert into user_froms (user_from_id, user_id, user_from, 
+      from_url, numbers, create_time, 
+      update_time, active_time)
+    values (#{userFromId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{userFrom,jdbcType=VARCHAR}, 
+      #{fromUrl,jdbcType=VARCHAR}, #{numbers,jdbcType=BIGINT}, #{createTime,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=BIGINT}, #{activeTime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yikang.protal.entity.UserFrom" >
+    insert into user_froms
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userFromId != null" >
+        user_from_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userFrom != null" >
+        user_from,
+      </if>
+      <if test="fromUrl != null" >
+        from_url,
+      </if>
+      <if test="numbers != null" >
+        numbers,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="activeTime != null" >
+        active_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userFromId != null" >
+        #{userFromId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userFrom != null" >
+        #{userFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUrl != null" >
+        #{fromUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="numbers != null" >
+        #{numbers,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="activeTime != null" >
+        #{activeTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yikang.protal.entity.UserFrom" >
+    update user_froms
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userFrom != null" >
+        user_from = #{userFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUrl != null" >
+        from_url = #{fromUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="numbers != null" >
+        numbers = #{numbers,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="activeTime != null" >
+        active_time = #{activeTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where user_from_id = #{userFromId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yikang.protal.entity.UserFrom" >
+    update user_froms
+    set user_id = #{userId,jdbcType=BIGINT},
+      user_from = #{userFrom,jdbcType=VARCHAR},
+      from_url = #{fromUrl,jdbcType=VARCHAR},
+      numbers = #{numbers,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      active_time = #{activeTime,jdbcType=BIGINT}
+    where user_from_id = #{userFromId,jdbcType=BIGINT}
+  </update>
+</mapper>
