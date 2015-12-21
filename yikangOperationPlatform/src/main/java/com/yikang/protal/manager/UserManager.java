@@ -22,6 +22,7 @@ public class UserManager {
 	private UserDao userDao;
 	
 	
+	@SuppressWarnings("unused")
 	@Autowired
 	private UserInfoDao userInfoDao;
 	

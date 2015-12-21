@@ -703,7 +703,7 @@
     <script src="<%=basePath%>js/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<%=basePath%>js/dist/js/app.min.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <!-- AdminLTE Dashboard demo (This is only for demo purposes) -->
     <script src="<%=basePath%>js/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<%=basePath%>js/dist/js/demo.js"></script>

@@ -11,9 +11,9 @@ request.setAttribute("basePath",basePath);
 
 <%@ page isELIgnored ="false"%>
 
-	<link rel="shortcut icon" href="<%=basePath%>img/common/yk_32X32.ico"  type="image/x-icon"/>
-	<link rel="Bookmark" 	  href="<%=basePath%>img/common/yk_32X32.ico"  type="image/x-icon"/>
-	<link rel="icon" 		  href="<%=basePath%>img/common/yk_32X32.ico"  type="image/x-icon"/>
+	<link rel="shortcut icon" href="<%=basePath%>img/common/YK.png"  type="image/x-icon"/>
+	<link rel="Bookmark" 	  href="<%=basePath%>img/common/YK.png"  type="image/x-icon"/>
+	<link rel="icon" 		  href="<%=basePath%>img/common/YK.png"  type="image/x-icon"/>
 	
 	<!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
