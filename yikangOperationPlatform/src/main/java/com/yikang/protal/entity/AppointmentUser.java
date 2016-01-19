@@ -22,6 +22,8 @@ public class AppointmentUser {
     private Long returnVisitUserId;
 
     private String mobileNumber;
+    // 服务标题
+    private String serviceTitle;
 
     public Long getAppointmentUserId() {
         return appointmentUserId;
@@ -102,4 +104,12 @@ public class AppointmentUser {
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber == null ? null : mobileNumber.trim();
     }
+
+	public String getServiceTitle() {
+		return serviceTitle;
+	}
+
+	public void setServiceTitle(String serviceTitle) {
+		this.serviceTitle = serviceTitle;
+	}
 }

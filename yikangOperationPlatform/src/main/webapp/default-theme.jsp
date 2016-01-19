@@ -289,19 +289,21 @@
 
 
 						<!-- sidebar menu: : style can be found in sidebar.less -->
-						<ul class="sidebar-menu">
+						<ul class="sidebar-menu menu-open">
 							<li class="header">主导航栏</li>
 
-							<li class="treeview"><a href="#"> <i class="fa fa-share"></i>
-									<span>数据查询</span> <i class="fa fa-angle-left pull-right"></i>
+							<li class="treeview active">
+							<a href="#"> 
+								<i class="fa fa-share"></i>
+								<span>数据查询</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 								<ul class="treeview-menu">
-									<li><a href="#"><i class="fa fa-circle-o"></i>新用户状态查询</a></li>
-									<li><a href="#"><i class="fa fa-circle-o"></i>活动查询
+									<li class=""><a href="#"><i class="fa fa-circle-o"></i>新用户状态查询</a></li>
+									<li class="menu-open active"><a href="#"><i class="fa fa-circle-o"></i>活动查询
 									<i class="fa fa-angle-left pull-right"></i>
 									</a>
-										<ul class="treeview-menu">
-											<li>
+										<ul class="treeview-menu menu-open active">
+											<li class="active">
 												<a href="/operationPlatform/appointmentUser/getAppointmentList"><i class="fa fa-circle-o"></i>预约用户查询</a></li>
 											<li>
 												<a href="#">
@@ -318,7 +320,7 @@
 										<a href="#"><i class="fa fa-circle-o"></i> Level One</a>
 									</li>
 								</ul></li>
-							<li><a href="documentation/index.html"><i
+							<li><a href="#"><i
 									class="fa fa-book"></i> <span>文档</span></a></li>
 							<li class="header">文档</li>
 							<li><a href="#"><i class="fa fa-circle-o text-red"></i>
@@ -376,7 +378,7 @@
 		<div class="pull-right hidden-xs">
 			<b>Version</b> 0.0.1
 		</div>
-		<strong>Copyright &copy; 2015-2015 <a
+		<strong>Copyright &copy; 2015-2016 <a
 			href="http://www.hulingjia.com">易康美辰</a>.
 		</strong> All rights reserved.
 	</footer>

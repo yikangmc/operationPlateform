@@ -14,8 +14,12 @@ import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Plugin;
+import org.apache.log4j.Logger;
 
 public abstract class BasePaginationPlugin implements Interceptor {
+	
+	private Logger logger=Logger.getLogger(BasePaginationPlugin.class);
+	
 	private String sqlIdRegex;
 	// sqlsession 中select 方法 会执行executor.query()
 	// 其实是执行抽象方法BaseExcutor.doQuery();
@@ -35,6 +39,7 @@ public abstract class BasePaginationPlugin implements Interceptor {
 			MappedStatement ms = (MappedStatement) ReflectHelper.getValueByFieldName(bsh, "mappedStatement");
 			String pageSqlId = ms.getId();
 			BoundSql boundSql = rsh.getBoundSql();
+			logger.debug(boundSql);
 			Object parameterObject = boundSql.getParameterObject();
 			// 如果参数是map 而且 map中有一个page对象 说明是分页
 			if (parameterObject != null && parameterObject instanceof Map

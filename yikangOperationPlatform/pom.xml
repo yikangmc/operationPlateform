@@ -239,7 +239,7 @@
 					<password>tomcat</password>
 					<update>true</update>
 					<path>/operationPlatform</path>
-					<port>8089</port>
+					<port>8092</port>
 				</configuration>
 			</plugin>
 		</plugins>

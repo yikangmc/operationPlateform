@@ -151,24 +151,29 @@
     where appointment_user_id = #{appointmentUserId,jdbcType=BIGINT}
   </update>
   
-  
-  
-  <select id="getAppointmentUserListPage" resultMap="BaseResultMap" parameterType="map">
-  	select
-  		<include refid="Base_Column_List"></include>
-  	from appointment_users
+  <!-- 获取服务人员列表 -->
+  <resultMap type="com.yikang.protal.entity.AppointmentUser" id="getAppointmentListListPageMap" extends="BaseResultMap">
+  	<result column="service_title" property="serviceTitle"/>
+  </resultMap>
+  <select id="getAppointmentUserListPage" resultMap="getAppointmentListListPageMap" parameterType="map">
+  	select 
+		au.*,
+		si.service_title
+	from 
+	appointment_users au left join service_items si 
+	on au.service_itme_id=si.service_item_id
   	<where>
   		<if test="null != appointmentUser.createUserId">
-  			and create_user_id=#{appointmentUser.createUserId}
+  			and au.create_user_id=#{appointmentUser.createUserId}
   		</if>
   		<if test="null != appointmentUser.returnVisit">
-  			and return_visit=#{appointmentUser.returnVisit}
+  			and au.eturn_visit=#{appointmentUser.returnVisit}
   		</if>
   		<if test="null != appointmentUser.haveSenior">
-  			and have_senior=#{appointmentUser.haveSenior}
+  			and au.have_senior=#{appointmentUser.haveSenior}
   		</if>
   	</where>
-  	order by create_time desc
+  	order by au.create_time desc
   </select>
   
   

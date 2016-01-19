@@ -20,7 +20,7 @@
 					<h3 class="box-title">预约用户列表</h3>
 				</div>
 
-				<form id="paramForm" action="" method="post">
+				<form id="paramForm" action="<%=basePath%>appointmentUser/getAppointmentList" method="post">
 					<!-- /.box-header -->
 					<div class="box-body">
 						<div id="example1_wrapper"
@@ -51,6 +51,10 @@
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending"
+													style="width: 158px;">预约项目名称</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Platform(s): activate to sort column ascending"
 													style="width: 158px;">预约日期</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
@@ -68,6 +72,7 @@
 												<tr role="row" class="${ varIndex.index % 2 eq 0 ? 'odd':'even' }">
 													<td class="sorting_1">${appointmentUser.appointmentUserId }</td>
 													<td>${appointmentUser.mobileNumber }</td>
+													<td>${appointmentUser.serviceTitle }</td>
 													<td><fmt:formatDate value="${appointmentUser.createTime }" type="both"/></td>
 													<td>${appointmentUser.returnVisit}</td>
 													<td><button class="btn btn-block btn-primary btn-sm">修改回访信息</button></td>
@@ -79,6 +84,7 @@
 											<tr>
 												<th rowspan="1" colspan="1">用户编号</th>
 												<th rowspan="1" colspan="1">手机号码</th>
+												<th rowspan="1" colspan="1">服务名称</th>
 												<th rowspan="1" colspan="1">预约日期</th>
 												<th rowspan="1" colspan="1">回访状态</th>
 												<th rowspan="1" colspan="1"></th>

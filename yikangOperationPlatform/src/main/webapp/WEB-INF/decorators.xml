@@ -3,5 +3,6 @@
     <decorator name="default-theme" page="/default-theme.jsp">
         <pattern>/home/*</pattern>
         <pattern>/appointmentUser/*</pattern>
+        <pattern>/*</pattern>
     </decorator>
 </decorators>
