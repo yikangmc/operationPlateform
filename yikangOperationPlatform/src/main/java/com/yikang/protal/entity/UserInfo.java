@@ -1,6 +1,6 @@
 package com.yikang.protal.entity;
 
-public class UserInfo {
+public class UserInfo extends User{
     private Long userInfoId;
 
     private String userName;

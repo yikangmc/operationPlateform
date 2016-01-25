@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yikang.protal.dao.AppointmentUserDao" >
-  <resultMap id="BaseResultMap" type="com.yikang.protal.entity.AppointmentUser" >
+ <resultMap id="BaseResultMap" type="com.yikang.protal.entity.AppointmentUser" >
     <id column="appointment_user_id" property="appointmentUserId" jdbcType="BIGINT" />
     <result column="sex" property="sex" jdbcType="TINYINT" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
@@ -12,10 +12,12 @@
     <result column="have_senior" property="haveSenior" jdbcType="TINYINT" />
     <result column="return_visit_user_id" property="returnVisitUserId" jdbcType="BIGINT" />
     <result column="mobile_number" property="mobileNumber" jdbcType="VARCHAR" />
+    <result column="service_item_id" property="serviceItemId" jdbcType="BIGINT" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     appointment_user_id, sex, create_time, update_time, create_user_id, return_visit, 
-    user_status, have_senior, return_visit_user_id, mobile_number
+    user_status, have_senior, return_visit_user_id, mobile_number, service_item_id, remarks
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -31,11 +33,13 @@
     insert into appointment_users (appointment_user_id, sex, create_time, 
       update_time, create_user_id, return_visit, 
       user_status, have_senior, return_visit_user_id, 
-      mobile_number)
+      mobile_number, service_item_id, remarks
+      )
     values (#{appointmentUserId,jdbcType=BIGINT}, #{sex,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, #{returnVisit,jdbcType=TINYINT}, 
       #{userStatus,jdbcType=TINYINT}, #{haveSenior,jdbcType=TINYINT}, #{returnVisitUserId,jdbcType=BIGINT}, 
-      #{mobileNumber,jdbcType=VARCHAR})
+      #{mobileNumber,jdbcType=VARCHAR}, #{serviceItemId,jdbcType=BIGINT}, #{remarks,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yikang.protal.entity.AppointmentUser" >
     insert into appointment_users
@@ -70,6 +74,12 @@
       <if test="mobileNumber != null" >
         mobile_number,
       </if>
+      <if test="serviceItemId != null" >
+        service_item_id,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="appointmentUserId != null" >
@@ -101,6 +111,12 @@
       </if>
       <if test="mobileNumber != null" >
         #{mobileNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItemId != null" >
+        #{serviceItemId,jdbcType=BIGINT},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -134,6 +150,12 @@
       <if test="mobileNumber != null" >
         mobile_number = #{mobileNumber,jdbcType=VARCHAR},
       </if>
+      <if test="serviceItemId != null" >
+        service_item_id = #{serviceItemId,jdbcType=BIGINT},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
     </set>
     where appointment_user_id = #{appointmentUserId,jdbcType=BIGINT}
   </update>
@@ -147,7 +169,9 @@
       user_status = #{userStatus,jdbcType=TINYINT},
       have_senior = #{haveSenior,jdbcType=TINYINT},
       return_visit_user_id = #{returnVisitUserId,jdbcType=BIGINT},
-      mobile_number = #{mobileNumber,jdbcType=VARCHAR}
+      mobile_number = #{mobileNumber,jdbcType=VARCHAR},
+      service_item_id = #{serviceItemId,jdbcType=BIGINT},
+      remarks = #{remarks,jdbcType=VARCHAR}
     where appointment_user_id = #{appointmentUserId,jdbcType=BIGINT}
   </update>
   
@@ -161,7 +185,7 @@
 		si.service_title
 	from 
 	appointment_users au left join service_items si 
-	on au.service_itme_id=si.service_item_id
+	on au.service_item_id=si.service_item_id
   	<where>
   		<if test="null != appointmentUser.createUserId">
   			and au.create_user_id=#{appointmentUser.createUserId}

@@ -75,7 +75,10 @@
 													<td>${appointmentUser.serviceTitle }</td>
 													<td><fmt:formatDate value="${appointmentUser.createTime }" type="both"/></td>
 													<td>${appointmentUser.returnVisit}</td>
-													<td><button class="btn btn-block btn-primary btn-sm">修改回访信息</button></td>
+													<td>
+														<button class="btn btn-block btn-primary btn-sm">修改回访信息</button>
+														<button class="btn btn-block btn-primary btn-sm">转换为订单</button>
+													</td>
 												</tr>
 											</c:forEach>
 										
@@ -101,6 +104,12 @@
 					<!-- /.box-body -->
 				</form>
 			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12">
+			
 		</div>
 	</div>
 	

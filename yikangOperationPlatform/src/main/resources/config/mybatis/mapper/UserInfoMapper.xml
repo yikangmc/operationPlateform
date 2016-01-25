@@ -174,4 +174,18 @@
       user_infos_col = #{userInfosCol,jdbcType=VARCHAR}
     where user_info_id = #{userInfoId,jdbcType=BIGINT}
   </update>
+  
+  <resultMap type="com.yikang.protal.entity.UserInfo" id="getUserInfoListResultMap" extends="BaseResultMap">
+  	<result column="user_id"  property="userId"/>
+  	<result column="login_name" property="loginName"/>
+  	<result column="login_password" property="loginPassword"/>
+  </resultMap>
+  <select id="getUserInfoListPage" resultMap="getUserInfoListResultMap" parameterType="com.yikang.protal.entity.UserInfo">
+   select 
+		users.user_id,users.login_name,users.login_password,
+	    ui.user_name,ui.user_sex,ui.provence_code,ui.city_code,ui.district_code,ui.create_at,
+	    ui.map_position_address,ui.address
+	from users inner join user_infos ui on users.user_id = ui.user_id
+  </select>
+  
 </mapper>

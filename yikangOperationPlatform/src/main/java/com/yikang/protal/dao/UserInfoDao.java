@@ -1,5 +1,8 @@
 package com.yikang.protal.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.yikang.protal.entity.UserInfo;
 
 public interface UserInfoDao {
@@ -14,4 +17,15 @@ public interface UserInfoDao {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+    
+    
+    
+    
+    /**
+     * @author liushuaic
+     * @date 2016/1/21 11:04
+     * @desc  获取用户信息列表。
+     * **/
+    List<UserInfo> getUserInfoListPage(Map<String,Object> paramData);
+    
 }

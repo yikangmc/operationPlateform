@@ -12,6 +12,7 @@ import com.yikang.protal.dao.UserDao;
 import com.yikang.protal.dao.UserInfoDao;
 import com.yikang.protal.dao.UserLinkStatuDao;
 import com.yikang.protal.entity.User;
+import com.yikang.protal.entity.UserInfo;
 import com.yikang.protal.entity.UserLinkStatu;
 
 
@@ -22,7 +23,6 @@ public class UserManager {
 	private UserDao userDao;
 	
 	
-	@SuppressWarnings("unused")
 	@Autowired
 	private UserInfoDao userInfoDao;
 	
@@ -90,6 +90,25 @@ public class UserManager {
 		userLinkStatu.setUserLinkStatus(Byte.valueOf("1"));
 		
 		return userLinkStatuDao.insert(userLinkStatu);
+	}
+	
+	
+	/**
+	 * @author liushuaic
+	 * @date 2016-1-19 19:55
+	 * @desc 添加用户信息
+	 * */
+	public int inserUserInfoSelective(UserInfo userInfo){
+		return userInfoDao.insertSelective(userInfo);
+	}
+	
+	/**
+	 * @author liushuaic
+	 * @date 2016/01/21 19:55
+	 * @desc 获取用户列表
+	 * */
+	public List<UserInfo> getUserInfoListPage(Map<String,Object> paramData){
+		return userInfoDao.getUserInfoListPage(paramData);
 	}
 	
 }
