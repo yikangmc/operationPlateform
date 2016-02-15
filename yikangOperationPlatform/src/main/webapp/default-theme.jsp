@@ -11,7 +11,9 @@
 <title><decorator:title default="易康美辰"/></title>
 
 <%@ include file="/common/head.jsp"%>
-
+<% String reqUri=request.getRequestURI(); 
+request.getSession().setAttribute("reqUri", reqUri);
+%>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -40,7 +42,7 @@
 										class="label label-success">4</span>
 								</a>
 									<ul class="dropdown-menu">
-										<li class="header">You have 4 messages</li>
+										<li class="header">你有4条信息</li>
 										<li>
 											<!-- inner menu: contains the actual data -->
 											<ul class="menu">
@@ -292,17 +294,17 @@
 						<ul class="sidebar-menu menu-open">
 							<li class="header">主导航栏</li>
 
-							<li class="treeview active">
-							<a href="#"> 
-								<i class="fa fa-share"></i>
-								<span>数据查询</span> <i class="fa fa-angle-left pull-right"></i>
-							</a>
+							<li class="treeview">
+								<a href="#"> 
+									<i class="fa fa-share"></i>
+									<span>数据查询</span> <i class="fa fa-angle-left pull-right"></i>
+								</a>
 								<ul class="treeview-menu">
 									<li class=""><a href="#"><i class="fa fa-circle-o"></i>新用户状态查询</a></li>
 									<li class="menu-open active"><a href="#"><i class="fa fa-circle-o"></i>活动查询
 									<i class="fa fa-angle-left pull-right"></i>
 									</a>
-										<ul class="treeview-menu menu-open active">
+										<ul class="treeview-menu">
 											<li class="active">
 												<a href="/operationPlatform/appointmentUser/getAppointmentList"><i class="fa fa-circle-o"></i>预约用户查询</a></li>
 											<li>
@@ -311,15 +313,27 @@
 												</a>
 												<ul class="treeview-menu">
 													<li><a href="#"><i class="fa fa-circle-o"></i> 功夫熊用户注入度查询</a></li>
-													<li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
 												</ul>
 											</li>
 										</ul>
 									</li>
-									<li>
-										<a href="#"><i class="fa fa-circle-o"></i> Level One</a>
-									</li>
-								</ul></li>
+								</ul>
+							</li>
+							<li class="treeview active">
+								<a href="#"> 
+									<i class="fa fa-share"></i>
+									<span>基础数据管理</span> <i class="fa fa-angle-left pull-right"></i>
+								</a>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '/operationPlatform/user/userList' ? 'active':''}"><a href="/operationPlatform/user/userList"><i class="fa fa-circle-o"></i>用户管理</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '/operationPlatform/appointmentOrder/listServiceItem' ? 'active':''}"><a href="/operationPlatform/appointmentOrder/listServiceItem"><i class="fa fa-circle-o"></i>订单管理</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '/operationPlatform/seniorAccount/getSeniorAccountList' ? 'active':''}"><a href="/operationPlatform/seniorAccount/getSeniorAccountList"><i class="fa fa-circle-o"></i>患者管理</a></li>
+								</ul>
+							</li>
 							<li><a href="#"><i
 									class="fa fa-book"></i> <span>文档</span></a></li>
 							<li class="header">文档</li>

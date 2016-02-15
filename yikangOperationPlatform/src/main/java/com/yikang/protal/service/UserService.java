@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.yikang.base.AliasFactory;
+import com.yikang.base.InvitationCodeGnerateUtil;
 import com.yikang.protal.entity.Location;
 import com.yikang.protal.entity.User;
 import com.yikang.protal.entity.UserInfo;
@@ -68,21 +70,26 @@ public class UserService {
 	 * @date 2016-1-19 19:26
 	 * @desc 保存普通用户
 	 * */
-	public int saveUser(String mobileNumber,String userName,Integer sex,Integer age,String address,String districtCode,
+	public int saveUser(String loginName,String password,String userName,Integer sex,Integer age,String address,String districtCode,
 			String mopPositionAddress,
 			Double longitude,
 			Double latitude
 			){
 			Long currentDateTime=Calendar.getInstance().getTimeInMillis();
 			User user=new User();
-			user.setLoginName(mobileNumber);
+			user.setLoginName(loginName);
 			user.setCreateTime(currentDateTime);
 			user.setAccessTiket("");
-			user.setUserName(mobileNumber);
+			user.setUserName(loginName);
 			user.setSalt("");
-			user.setLoginPassword(mobileNumber);
+			user.setLoginPassword(password);
+			user.setLoginTime(currentDateTime);
 		
-			 userManager.insertUserSelective(user);
+			userManager.insertUserSelective(user);
+			user.setPushAlias(AliasFactory.generateAliasByUser(user.getUserId().toString()));
+			userManager.updateUser(user);  //修改用户推送
+			//修改用户邀请码
+			userManager.updateInvitationCodeByUserId(InvitationCodeGnerateUtil.generateInvitationCodeTwo(user), user.getUserId());
 			 
 			Location city= locationManager.getCityByDistrictCode(districtCode);
 			Location provence= locationManager.getProvenceByCityCode(districtCode);

@@ -176,8 +176,8 @@
   </update>
   
   <resultMap type="com.yikang.protal.entity.UserInfo" id="getUserInfoListResultMap" extends="BaseResultMap">
-  	<result column="user_id"  property="userId"/>
-  	<result column="login_name" property="loginName"/>
+  	<result column="user_id"  		property="userId"/>
+  	<result column="login_name" 	property="loginName"/>
   	<result column="login_password" property="loginPassword"/>
   </resultMap>
   <select id="getUserInfoListPage" resultMap="getUserInfoListResultMap" parameterType="com.yikang.protal.entity.UserInfo">

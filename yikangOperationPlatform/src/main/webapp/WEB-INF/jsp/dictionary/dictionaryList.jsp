@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="/common/head.jsp"%>
-<title>用户列表</title>
+<title>数据字典</title>
 </head>
 <body>
 	<div class="container">
@@ -14,12 +14,10 @@
 				<div class="box">
 
 					<div class="box-header">
-						<h3 class="box-title">用户列表</h3>
+						<h3 class="box-title">数据字典列表</h3>
 					</div>
 
-					<form id="paramForm"
-						action="<%=basePath%>appointmentUser/getAppointmentList"
-						method="post">
+					<form id="paramForm" action="<%=basePath%>dictionary/getDictionaryList" method="post">
 						<!-- /.box-header -->
 						<div class="box-body">
 							<div id="example1_wrapper"
@@ -55,11 +53,11 @@
 														aria-controls="example1" rowspan="1" colspan="1"
 														aria-sort="ascending"
 														aria-label="Rendering engine: activate to sort column descending"
-														style="width: 144px;">用户名</th>
+														style="width: 144px;">键名</th>
 													<th class="sorting" tabindex="0" aria-controls="example1"
 														rowspan="1" colspan="1"
 														aria-label="Platform(s): activate to sort column ascending"
-														style="width: 158px;">性别</th>
+														style="width: 158px;">数据</th>
 													<th class="sorting" tabindex="0" aria-controls="example1"
 														rowspan="1" colspan="1"
 														aria-label="Browser: activate to sort column ascending"
@@ -67,8 +65,12 @@
 													<th class="sorting" tabindex="0" aria-controls="example1"
 														rowspan="1" colspan="1"
 														aria-label="Platform(s): activate to sort column ascending"
-														style="width: 158px;">注册日期</th>
-													
+														style="width: 158px;">所属分类名称</th>
+													<th class="sorting" tabindex="0" aria-controls="example1"
+														rowspan="1" colspan="1"
+														aria-label="Platform(s): activate to sort column ascending"
+														style="width: 158px;">添加日期</th>
+														
 													<th class="sorting" tabindex="0" aria-controls="example1"
 														rowspan="1" colspan="1"
 														aria-label="CSS grade: activate to sort column ascending"
@@ -76,29 +78,26 @@
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach items="${data }" var="userInfo"
-													varStatus="varIndex">
+												<c:forEach items="${data }" var="dictionary" varStatus="varIndex">
 													<!--  odd	even -->
 													<tr role="row"
 														class="${ varIndex.index % 2 eq 0 ? 'odd':'even' }">
-														<td class="sorting_1">${userInfo.userName }</td>
-														<td>${userInfo.userSex ==1?"男":"女"}</td>
-														<td>${userInfo.loginName }</td>
-														<td><fmt:formatDate
-																value="${userInfo.createTime }" type="both" /></td>
+														<td class="sorting_1">${dictionary.dicName }</td>
+														<td>${dictionary.dicCode}</td>
+														<td>${dictionary.dicGroup }</td>
+														<td>${dictionary.createTime}</td>
 														<td>
 															<button class="btn btn-block btn-primary btn-sm">修改用户信息</button>
 														</td>
 													</tr>
 												</c:forEach>
-
 											</tbody>
 											<tfoot>
 												<tr>
-													<th rowspan="1" colspan="1">用户名</th>
-													<th rowspan="1" colspan="1">性别</th>
-													<th rowspan="1" colspan="1">手机号码</th>
-													<th rowspan="1" colspan="1">注册日期</th>
+													<th rowspan="1" colspan="1">键名</th>
+													<th rowspan="1" colspan="1">数据</th>
+													<th rowspan="1" colspan="1">分类</th>
+													<th rowspan="1" colspan="1">创建日期</th>
 													<th rowspan="1" colspan="1"></th>
 												</tr>
 											</tfoot>

@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE >
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ include file="/common/head.jsp"%>
 <title>添加用户</title>
-</head>
-<body>
+<%@ include file="/common/head.jsp"%>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=99891508524054beccc322c75a2de45c"></script>
+	<script type="text/javascript" src="<%=basePath%>js/views/user/User.js"></script>
 	<div class="container">
 		<div class="col-sm-12">
 
@@ -17,25 +13,26 @@
 				<!-- /.box-header -->
 				<!-- form start -->
 				<form id="userForm" class="form-horizontal">
+					<input type="hidden" name="districtCode" id="districtCode" value="">
 					<div class="box-body">
 						<div class="form-group">
 							<label for="inputLoginName" class="col-sm-2 control-label">登陆名</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="inputLoginName" placeholder="登陆名">
+								<input type="text" class="form-control" id="inputLoginName" name="loginName" placeholder="登陆名">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputPassword" class="col-sm-2 control-label">密码</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="inputPassword" placeholder="密码">
+								<input type="text" class="form-control" id="inputPassword" name="password" placeholder="密码">
 							</div>
 						</div>
-						<div class="form-group">
-							<label for="inputMobileNumber" class="col-sm-2 control-label">手机号</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" id="inputMobileNumber" placeholder="手机号">
-							</div>
-						</div>
+<!-- 						<div class="form-group"> -->
+<!-- 							<label for="inputMobileNumber" class="col-sm-2 control-label">手机号</label> -->
+<!-- 							<div class="col-sm-4"> -->
+<!-- 								<input type="text" class="form-control" id="inputMobileNumber" placeholder="手机号"> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 						
 						<div class="form-group">
 							<label for="inputBithDay" class="col-sm-2 control-label">出生日期</label>
@@ -46,7 +43,7 @@
 						<div class="form-group">
 							<label for="inputAge" class="col-sm-2 control-label">年龄</label>
 							<div class="col-sm-4">
-								<input type="number" name="age" class="form-control" id="inputAge" placeholder="年龄">
+								<input type="number" name="age" class="form-control" min="0" max="200" id="inputAge" placeholder="年龄">
 							</div>
 						</div>
 						<div class="form-group">
@@ -74,7 +71,7 @@
 						<div class="form-group">
 							<div class="col-sm-4">
 								<button id="buttonReset"  type="button" class="btn btn-default">重置</button>
-								<button id="buttonSubmit" type="button" class="btn btn-info pull-right">保存</button>
+								<button id="buttonSubmit" type="button" onclick="user.saveUser()" class="btn btn-info pull-right">保存</button>
 							</div>
 						</div>
 					</div>
@@ -83,6 +80,3 @@
 			</div>
 		</div>
 	</div>
-
-</body>
-</html>

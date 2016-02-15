@@ -26,9 +26,9 @@ public class UserController {
 	
 	
 	@RequestMapping
-	public String saveUser(String mobileName,String userName,Integer sex,String bithDay,Integer age,
+	public String saveUser(String loginName,String password,String userName,Integer sex,String bithDay,Integer age,
 			String address,String cityCode,String mapPositionAddress,Double longitude,Double latitude){
-			userService.saveUser(mobileName,userName,sex,age,address,cityCode,mapPositionAddress,longitude,latitude);
+			userService.saveUser(loginName,password,userName,sex,age,address,cityCode,mapPositionAddress,longitude,latitude);
 		return "";
 	}
 	

@@ -1,7 +1,7 @@
 User=function(){}
 User.prototype={
 		init:function(){
-			$("#buttonSubmit").click(this.saveUser());
+//			$("#buttonSubmit").onClick(this.saveUser());
 		},
 		saveUser:function(){
 			var paramData=$("#userForm").serialize();
@@ -40,9 +40,8 @@ $().ready(function(){
 	         placeSearch.search(e.poi.name);
 	         
 	         //设置模糊搜索地址
-	         $("#mapPositionAddress").val(e.poi.name);
+	         $("#inputMapPositionAddress").val(e.poi.name);
 	         $("#districtCode").val(e.poi.adcode);
-	         reserveInformation.getServicer(false);
 	         
 	      });
 	    });

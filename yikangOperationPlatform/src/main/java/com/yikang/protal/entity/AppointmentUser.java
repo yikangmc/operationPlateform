@@ -26,6 +26,8 @@ public class AppointmentUser {
     private Long serviceItemId;
 
     private String remarks;
+    
+    private String serviceTitle;
 
     public Long getAppointmentUserId() {
         return appointmentUserId;
@@ -122,4 +124,12 @@ public class AppointmentUser {
     public void setRemarks(String remarks) {
         this.remarks = remarks == null ? null : remarks.trim();
     }
+
+	public String getServiceTitle() {
+		return serviceTitle;
+	}
+
+	public void setServiceTitle(String serviceTitle) {
+		this.serviceTitle = serviceTitle;
+	}
 }

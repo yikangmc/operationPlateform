@@ -2,6 +2,7 @@ package com.yikang.protal.manager;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -109,6 +110,20 @@ public class UserManager {
 	 * */
 	public List<UserInfo> getUserInfoListPage(Map<String,Object> paramData){
 		return userInfoDao.getUserInfoListPage(paramData);
+	}
+	
+	
+    /**
+     * @author liushuaic
+     * @date 2015/11/18 15:29
+     * @desc 邀请码，是根据用户id 获取的
+     * 添加用户邀请码
+     * */
+	public int updateInvitationCodeByUserId(String invitationCode,Long userId){
+		Map<String,Object> paramData=new HashMap<String,Object>();
+		paramData.put("invitationCode", invitationCode);
+		paramData.put("userId", userId);
+		return userDao.updateInvitationCodeByUserId(paramData);
 	}
 	
 }
