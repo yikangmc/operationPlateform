@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yikang.protal.dao.FormPostsStarListDao" >
+  <resultMap id="BaseResultMap" type="com.yikang.protal.entity.FormPostsStarList" >
+    <id column="forum_posts_star_list_id" property="forumPostsStarListId" jdbcType="BIGINT" />
+    <result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="forum_posts_id" property="forumPostsId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    forum_posts_star_list_id, create_user_id, create_time, forum_posts_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from forum_posts_star_lists
+    where forum_posts_star_list_id = #{forumPostsStarListId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from forum_posts_star_lists
+    where forum_posts_star_list_id = #{forumPostsStarListId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yikang.protal.entity.FormPostsStarList" >
+    insert into forum_posts_star_lists (forum_posts_star_list_id, create_user_id, 
+      create_time, forum_posts_id)
+    values (#{forumPostsStarListId,jdbcType=BIGINT}, #{createUserId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{forumPostsId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yikang.protal.entity.FormPostsStarList" >
+    insert into forum_posts_star_lists
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="forumPostsStarListId != null" >
+        forum_posts_star_list_id,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="forumPostsId != null" >
+        forum_posts_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="forumPostsStarListId != null" >
+        #{forumPostsStarListId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forumPostsId != null" >
+        #{forumPostsId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yikang.protal.entity.FormPostsStarList" >
+    update forum_posts_star_lists
+    <set >
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forumPostsId != null" >
+        forum_posts_id = #{forumPostsId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where forum_posts_star_list_id = #{forumPostsStarListId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yikang.protal.entity.FormPostsStarList" >
+    update forum_posts_star_lists
+    set create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      forum_posts_id = #{forumPostsId,jdbcType=BIGINT}
+    where forum_posts_star_list_id = #{forumPostsStarListId,jdbcType=BIGINT}
+  </update>
+  
+  
+  
+  <resultMap type="com.yikang.protal.entity.FormPostsStarList" id="getForumPostStartListsResultMap" extends="BaseResultMap" >
+  	<result column="user_name" property="userName"/>
+  	<result column="photo_url" property="photoUrl"/>
+  </resultMap>
+  <!-- 获取某一个文章的支持列表 -->
+  <select id="getForumPostStartListByForumPostsId" resultMap="getForumPostStartListsResultMap">
+  	select 
+		fpsl.*,
+		ui.user_name,
+	    ui.photo_url
+	from forum_posts_star_lists fpsl
+	left join user_infos ui on fpsl.create_user_id=ui.user_id
+	where fpsl.forum_posts_id=#{forumPostsId}
+  </select>
+  
+  <!-- 删除支持 -->
+  <delete id="deleteForumPostStartList" parameterType="map">
+  	delete from forum_posts_star_lists where create_user_id=#{userId} and forum_posts_id=#{forumPostId}
+  </delete>
+  
+  <!--查询某一个用户的支持数据 用于判断，是删除支持，还是添加支持  -->
+  <select id="selectForumPostStartListByCreateUserIdAndForumPostsId" parameterType="map" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List"></include>
+  	from 	forum_posts_star_lists
+  	where  create_user_id=#{userId} and forum_posts_id=#{forumPostId}
+  </select>
+  
+</mapper>

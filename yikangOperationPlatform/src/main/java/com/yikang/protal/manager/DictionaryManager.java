@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.yikang.protal.dao.DictionaryDao;
 import com.yikang.protal.entity.Dictionary;
 
+@Component
 public class DictionaryManager {
 	
 	@Autowired

@@ -20,6 +20,8 @@ public class User {
     private String invitationCode;
 
     private String pushAlias;
+    
+    private boolean isLocked =false;
 
     public Long getUserId() {
         return userId;
@@ -100,4 +102,12 @@ public class User {
     public void setPushAlias(String pushAlias) {
         this.pushAlias = pushAlias == null ? null : pushAlias.trim();
     }
+
+	public boolean isLocked() {
+		return isLocked;
+	}
+
+	public void setLocked(boolean isLocked) {
+		this.isLocked = isLocked;
+	}
 }

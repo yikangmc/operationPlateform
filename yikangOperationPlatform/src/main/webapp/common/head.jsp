@@ -47,8 +47,29 @@ request.setAttribute("basePath",basePath);
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    
+    <script src="<%=basePath%>js/plugins/iCheck/icheck.min.js"></script>
+    
+    
+      <!-- FastClick -->
+    <script src="<%=basePath%>js/plugins/fastclick/fastclick.min.js"></script>
+    <!-- CK Editor -->
+<!--     <script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script> -->
+	<script src="<%=basePath%>js/plugins/ckeditor/ckeditor.js"></script>
+	<script src="<%=basePath%>js/plugins/ckeditor/config.js"></script>
+	<script src="<%=basePath%>js/plugins/ckeditor/plugins/image/dialogs/image.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="<%=basePath%>js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <script>
+      $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1');
+        //bootstrap WYSIHTML5 - text editor
+        $(".textarea").wysihtml5();
+      });
+    </script>
 	
     <script type="text/javascript">
     	var basePath='<%=basePath %>';

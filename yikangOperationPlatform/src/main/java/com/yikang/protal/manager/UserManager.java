@@ -12,9 +12,11 @@ import org.springframework.stereotype.Component;
 import com.yikang.protal.dao.UserDao;
 import com.yikang.protal.dao.UserInfoDao;
 import com.yikang.protal.dao.UserLinkStatuDao;
+import com.yikang.protal.dao.UserServiceInfoDao;
 import com.yikang.protal.entity.User;
 import com.yikang.protal.entity.UserInfo;
 import com.yikang.protal.entity.UserLinkStatu;
+import com.yikang.protal.entity.UserServiceInfo;
 
 
 @Component
@@ -31,6 +33,8 @@ public class UserManager {
 	private UserLinkStatuDao userLinkStatuDao;
 	
 	
+	@Autowired
+	private UserServiceInfoDao userServiceInfoDao;
 	
 	
 	
@@ -126,4 +130,7 @@ public class UserManager {
 		return userDao.updateInvitationCodeByUserId(paramData);
 	}
 	
+	public UserServiceInfo getUserServiceInfoByUserId(Long userId){
+		return userServiceInfoDao.getUserServiceInfoByUserIdTwo(userId);
+	}
 }
