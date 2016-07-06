@@ -11,8 +11,10 @@ import com.yikang.protal.dao.FormPostsDao;
 import com.yikang.protal.dao.FormPostsTaglibsMapDao;
 import com.yikang.protal.entity.FormPosts;
 import com.yikang.protal.entity.FormPostsTaglibsMap;
+import com.yikang.protal.entity.ForumPostDetail;
 import com.yikang.protal.entity.ForumPostsImage;
 import com.yikang.protal.entity.UserServiceInfo;
+import com.yikang.protal.manager.ForumPostDetailManager;
 import com.yikang.protal.manager.ForumPostManager;
 import com.yikang.protal.manager.ForumPostsImageManager;
 import com.yikang.protal.manager.UserManager;
@@ -36,15 +38,16 @@ public class ForumPostService {
 	@Autowired
 	private ForumPostsImageManager forumPostsImageManager;
 	
+	@Autowired
+	private ForumPostDetailManager forumPostDetailManager;
 	
 	
-	public int insertSelective(String title,String content,Long userId,String[] images,Long[] taglibIds){
+	public int insertSelective(String title,String content,String forumPostDetailContent,String forumPostHtmlDetailContent,String recommendPicUrl,Long userId,String[] images,Long[] taglibIds){
 		
 		
 		
-		UserServiceInfo userServiceInfo=userManager.getUserServiceInfoByUserId(userId);
+		//UserServiceInfo userServiceInfo=userManager.getUserServiceInfoByUserId(userId);
 		
-		Byte userPosition=userServiceInfo.getUserPosition();
 		Date currentDate = Calendar.getInstance().getTime();
 
 		FormPosts formPosts = new FormPosts();
@@ -53,11 +56,7 @@ public class ForumPostService {
 		formPosts.setContent(content);
 		formPosts.setCreateUserId(userId);
 		formPosts.setIsEssence(Byte.valueOf("0"));
-		if (images.length > 0) {
-			formPosts.setRecommendPicUrl(images[0]);
-		} else {
-			formPosts.setRecommendPicUrl("");
-		}
+		formPosts.setRecommendPicUrl(recommendPicUrl);
 		formPosts.setAnswersNums(0);
 		formPosts.setCreateTime(currentDate);
 		formPosts.setUpdateTime(currentDate);
@@ -65,12 +64,9 @@ public class ForumPostService {
 		formPosts.setShareNum(0);
 		formPosts.setStars(0);
 		formPosts.setReportComplaintsStatus(Byte.valueOf("0"));
-//		if(null !=userPosition && userPosition>0){
-			formPosts.setForumPostGroup(Byte.valueOf("1"));
-//		}else{
-//			formPosts.setForumPostGroup(Byte.valueOf("0"));
-//		}
+		formPosts.setForumPostGroup(Byte.valueOf("1"));
 		formPostsDao.insertSelective(formPosts);
+		forumPostDetailManager.insertSelective(forumPostDetailContent,forumPostHtmlDetailContent,formPosts.getForumPostId(),currentDate);
 
 		// 添加标签
 		for (Long tagLibId : taglibIds) {

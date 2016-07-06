@@ -7,6 +7,10 @@ import java.util.regex.Pattern;
 
 
 public class MatchHtmlElementAttrValue {
+	
+	
+	 private final static String regxpForHtml = "<([^>]*)>"; // 过滤所有以<开头以>结尾的标签
+	
 	  /**
      * 获取指定HTML标签的指定属性的值
      * @param source 要匹配的源文本
@@ -60,10 +64,31 @@ public class MatchHtmlElementAttrValue {
         return list;
     }
  
+    /**
+     * @author liushuaic
+     * @date 2016-06-27 17:35
+     * @desc 替换&xxx;标签
+     * */
+    public static String  replaseAndCharachter(String str){
+    	return str.replaceAll("&{1}[A-Za-z]+[;]{1}", "");
+    }
+    
     public static void main(String[] args) {
-        String source = "<p><img alt=\"\" src=\"https://biophoto.s3.cn-north-1.amazonaws.com.cn/e645305e-29b9-4352-949f-e4ff52598492.png\" style=\"height:360px; width:1116px\" /></p>";
-        List<String> list = getImgSrc(source);
+        String source = "<p><img alt=\"\" src=\"https://biophoto.s3.cn-north-1.amazonaws.com.cn/e645305e-29b9-4352-949f-e4ff52598492.png\" style=\"height:360px; width:1116px\" />helloqo r sadfasdf</p>";
+//        List<String> list = getImgSrc(source);
+        String list = replaceAllHtmlTagContent(source);
         System.out.println(list);
     }
+    
+    /**
+     * @author liushuaic
+     * @date 2016-06-24 10:35
+     * @desc 替换所有html 标签为空
+     * **/
+    public static String replaceAllHtmlTagContent(String htmlContent){
+    	return	htmlContent.replaceAll(regxpForHtml, ""); 
+    }
+    
+    
 
 }

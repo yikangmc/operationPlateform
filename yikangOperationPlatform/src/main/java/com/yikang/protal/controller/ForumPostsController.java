@@ -42,7 +42,7 @@ public class ForumPostsController {
 	
 	
 	@RequestMapping
-	public String addForumPost(ModelMap modelMap,String userName,String title,String content,String[] images,Long[] taglibId,HttpServletRequest hsr){
+	public String addForumPost(ModelMap modelMap,String userName,String title,String content,String recommendPicUrl,String[] images,Long[] taglibId,HttpServletRequest hsr){
 		String contents=hsr.getParameter("content");
 		User user=userManager.getUserByLoginName(userName);
 		if(null != contents && contents.length()>0){
@@ -50,10 +50,20 @@ public class ForumPostsController {
 			String[] args={};
 			images=imageArray.toArray(args.clone());
 		}
-		
-		
-		if(null != user && null != content  && content.length()>0 && null != images && images.length>0 && null != taglibId && taglibId.length>0){
-			forumPostService.insertSelective(title,contents,user.getUserId(),images,taglibId);
+
+		String forumPostHtmlDetailContent=content;
+		content=content.replaceAll("<br>", "\n");
+		content=content.replaceAll("&nbsp;", " ");
+		content=content.replaceAll("&ldquo;", "");
+		content=MatchHtmlElementAttrValue.replaseAndCharachter(content);
+		String detailContent=MatchHtmlElementAttrValue.replaceAllHtmlTagContent(content);
+		String forumPostDetailContent=detailContent;
+
+		String subContent=forumPostDetailContent.replaceAll("\n","").replaceAll(" ","").replace("\r","");
+		String contentStr=subContent.length()>100?subContent.substring(0,100):subContent;
+
+		if(null != user && null != content && null != recommendPicUrl  && content.length()>0 && null != images && images.length>0 && null != taglibId && taglibId.length>0){
+			forumPostService.insertSelective(title,contentStr,forumPostDetailContent,forumPostHtmlDetailContent,recommendPicUrl,user.getUserId(),images,taglibId);
 		}
 		modelMap.put("userName", userName);
 		return "redirect:/forumPosts/forumPost";

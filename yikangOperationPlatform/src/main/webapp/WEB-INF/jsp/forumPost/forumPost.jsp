@@ -1,4 +1,3 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -11,7 +10,7 @@
 </script>
 </head>
 <body>
-
+<script type="text/javascript" src="<%=path%>/js/views/forumPost/forumPost-upload.js"></script>
 
 	<div class="row">
 		<div class="col-sm-12">
@@ -57,6 +56,16 @@
 								<div class="col-sm-3">
 									<button class="btn btn-info " type="submit">提交</button>
 								</div>
+							</div>
+							<div class="row">
+                                <div class="col-sm-6">
+                                    <input type="button" class="fileInput" name="recommendPicUrl" value="上传标题图片"
+                                    					draggable="true" capture="camera" onclick="$.upload()">
+                                    					<input type="hidden" name="recommendPicUrl" id="recommendPicUrlHidden">
+                                </div>
+                                <div class="col-sm-6">
+                                    <img id="recommendPicUrlImage" style="height:120px" >
+                                </div>
 							</div>
 							<div class="row">
 								<div class="col-sm-12">
