@@ -34,13 +34,6 @@
 											aria-controls="example1"></label>
 									</div>
 								</div>
-								<div class="col-sm-6">
-									<div id="example1_filter" class="dataTables_filter">
-										<label>标题: <input type="input" name="title"
-											class="form-control input-sm" placeholder="标题"
-											aria-controls="example1"></label>
-									</div>
-								</div>
 							</div>
 							<div class="row">
 								

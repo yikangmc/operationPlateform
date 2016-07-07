@@ -51,7 +51,7 @@ public class ForumArticleManageService {
 
 		FormPosts formPosts = new FormPosts();
 
-		formPosts.setTitle(title);
+		formPosts.setTitle("");
 		formPosts.setContent(content);
 		formPosts.setCreateUserId(userId);
 		formPosts.setIsEssence(Byte.valueOf("0"));
