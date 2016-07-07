@@ -79,7 +79,7 @@ public class ForumPostService {
 			formPostsTaglibsMapDao.insertSelective(fptm);
 		}
 		// 添加图片
-		for (int i=1;i< images.length;i++) {
+		for (int i=0;i< images.length;i++) {
 			ForumPostsImage forumPostsImage = new ForumPostsImage();
 			forumPostsImage.setCreateTime(currentDate);
 			forumPostsImage.setForumPostsId(formPosts.getForumPostId());

@@ -11,6 +11,7 @@
 </head>
 <body>
 <script type="text/javascript" src="<%=path%>/js/views/forumPost/forumPost-upload.js"></script>
+<script type="text/javascript" src="<%=path%>/js/views/forumPost/forumPost.js"></script>
 
 	<div class="row">
 		<div class="col-sm-12">
@@ -21,7 +22,7 @@
 				</div>
 
 				<form id="paramForm" action="<%=basePath%>forumPosts/addForumPost"
-					method="post">
+					method="post" >
 					<!-- /.box-header -->
 					<div class="box-body">
 						<div id="example1_wrapper"
@@ -54,7 +55,7 @@
 									</c:forEach>
 								</div>
 								<div class="col-sm-3">
-									<button class="btn btn-info " type="submit">提交</button>
+									<button class="btn btn-info " type="button" onclick="forumPost.checkParam()">提交</button>
 								</div>
 							</div>
 							<div class="row">
