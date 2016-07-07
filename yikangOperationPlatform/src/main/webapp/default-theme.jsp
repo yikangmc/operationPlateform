@@ -334,6 +334,45 @@ request.getSession().setAttribute("reqUri", reqUri);
 									<li class="${reqUri eq '/operationPlatform/seniorAccount/getSeniorAccountList' ? 'active':''}"><a href="/operationPlatform/seniorAccount/getSeniorAccountList"><i class="fa fa-circle-o"></i>患者管理</a></li>
 								</ul>
 							</li>
+							
+							<li class="treeview active">
+								<a href="#"> 
+									<i class="fa fa-share"></i>
+									<span>文章管理</span> <i class="fa fa-angle-left pull-right"></i>
+								</a>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '/operationPlatform/forumPosts/forumPost' ? 'active':''}"><a href="/operationPlatform/forumPosts/forumPost"><i class="fa fa-circle-o"></i>文章发布</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章浏览</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章审核</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章删除</a></li>
+								</ul>
+							</li>
+							
+							<li class="treeview active">
+								<a href="#"> 
+									<i class="fa fa-share"></i>
+									<span>帖子管理</span> <i class="fa fa-angle-left pull-right"></i>
+								</a>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '/operationPlatform/forumArticleMange/forumPost' ? 'active':''}"><a href="/operationPlatform/forumArticleMange/forumPost"><i class="fa fa-circle-o"></i>帖子发布</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '/operationPlatform/forumArticleMange/getAllArticleList' ? 'active':''}"><a href="/operationPlatform/forumArticleMange/getAllArticleList"><i class="fa fa-circle-o"></i>帖子浏览</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子审核</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子删除</a></li>
+								</ul>
+							</li>
+							
 							<li><a href="#"><i
 									class="fa fa-book"></i> <span>文档</span></a></li>
 							<li class="header">文档</li>

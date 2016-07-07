@@ -5,6 +5,7 @@
 		<div class="col-sm-12">
 			<div class="col-sm-5">
 				<div class="dataTables_length" id="example1_length">
+					<input type="hidden" name="currentPage" value="${page.currentPage }">
 					<label>显示 
 						<select name="pageSize" onchange="submitPage()"  aria-controls="example1" class="form-control input-sm">
 								<option value="10" ${page.pageSize==10?"selected":""}>10</option>
@@ -15,7 +16,7 @@
 					</label>
 				</div>
 				<div class="dataTables_info" id="example1_info" role="status"
-					aria-live="polite">显示 ${(page.totalPage-1)*page.pageSize+1} to ${(page.totalPage-1)*page.pageSize+page.pageSize } 共 ${page.totalPage } 页
+					aria-live="polite">显示 ${(page.currentPage-1)*page.pageSize+1} to ${(page.currentPage-1)*page.pageSize+page.pageSize} 共 ${page.totalPage } 页
 				</div>
 			</div>
 			<div class="col-sm-7">
@@ -32,7 +33,7 @@
 							</li>
 						</c:if>
 						
-						<c:if test="${page.currentPage-2>0 }">
+						<c:if test="${page.currentPage-2 >0 }">
 							<li class="paginate_button ">
 								<a href="#" aria-controls="example1" data-dt-idx="${page.currentPage-2 }" tabindex="0">${page.currentPage-2 }</a>
 							</li>
@@ -60,8 +61,8 @@
 								<a href="#" aria-controls="example1" data-dt-idx="${page.totalPage}" tabindex="0">${page.totalPage }</a>
 							</li>
 						</c:if>
-						<li class="paginate_button next" id="example1_next">
-							<a href="#" aria-controls="example1" data-dt-idx="${page.currentPage+1 }" tabindex="0">下一页</a>
+						<li class="paginate_button next" >
+							<a href="javascript:lastPage()" id="page_next" aria-controls="example1" data-dt-idx="${page.currentPage+1 }" tabindex="0" onclick="lastPage()">下一页</a>
 						</li>
 					</ul>
 				</div>
@@ -71,11 +72,12 @@
 
 <script type="text/javascript">
 	function prePage(){
-		
+		submitPage();
 	}
 	
 	function lastPage(){
-		
+		$("input[name='currentPage']").val($("#page_next").attr("data-dt-idx"));
+		submitPage();
 	}
 	
 	function submitPage(){

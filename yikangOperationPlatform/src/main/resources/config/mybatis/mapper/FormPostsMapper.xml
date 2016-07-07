@@ -372,4 +372,11 @@
  	from forum_posts  order by stars desc  limit 5
   </select>
   
+  <select id="getAllArticleListByPage" resultMap="geForumPostsByCreateUserIdResultMap" parameterType="map">
+  	select <include refid="Base_Column_List"></include>,
+  		 a.user_name as userName,a.photo_url as photoUrl from forum_posts 
+  	left join user_infos a on a.user_id = forum_posts.create_user_id
+  	order by update_time desc
+  </select>
+  
 </mapper>

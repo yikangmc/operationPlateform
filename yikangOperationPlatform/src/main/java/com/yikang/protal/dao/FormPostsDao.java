@@ -91,6 +91,18 @@ public interface FormPostsDao {
      * */
     List<FormPosts> geForumPostsByCreateUserId();
     
+    /**
+     * @author zxh
+     *  @date 2016-07-06 14:06
+     * @desc 获取帖子列表（按照更新时间倒序）
+     */
+    public List<FormPosts> getAllArticleListByPage(Map<String,Object> paramMap);
     
+    /**
+     * @author zxh
+     *  @date 2016-07-06 18:06
+     * @desc 保存帖子
+     */
+    public void saveTzContent();
     
 }
