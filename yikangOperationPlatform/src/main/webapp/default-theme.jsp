@@ -319,7 +319,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 									</li>
 								</ul>
 							</li>
-							<li class="treeview active">
+							<li class="treeview">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>基础数据管理</span> <i class="fa fa-angle-left pull-right"></i>
@@ -334,7 +334,6 @@ request.getSession().setAttribute("reqUri", reqUri);
 									<li class="${reqUri eq '/operationPlatform/seniorAccount/getSeniorAccountList' ? 'active':''}"><a href="/operationPlatform/seniorAccount/getSeniorAccountList"><i class="fa fa-circle-o"></i>患者管理</a></li>
 								</ul>
 							</li>
-							
 							<li class="treeview active">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
@@ -370,6 +369,25 @@ request.getSession().setAttribute("reqUri", reqUri);
 								</ul>
 								<ul class="treeview-menu">
 									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子删除</a></li>
+								</ul>
+							</li>
+							
+							<li class="treeview active">
+								<a href="#"> 
+									<i class="fa fa-share"></i>
+									<span>问题管理</span> <i class="fa fa-angle-left pull-right"></i>
+								</a>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>添加问题</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>添加回答</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '/operationPlatform/questionSystem/queryAllQuestions' ? 'active':''}"><a href="/operationPlatform/questionSystem/queryAllQuestions"><i class="fa fa-circle-o"></i>回答浏览</a></li>
+								</ul>
+								<ul class="treeview-menu">
+									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>回答删除</a></li>
 								</ul>
 							</li>
 							
@@ -597,7 +615,8 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<!-- jQuery 2.1.4 -->
 	<!-- <script src="<%=basePath%>js/plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
 	<!-- jQuery UI 1.11.4 -->
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
 		//       $.widget.bridge('uibutton', $.ui.button);
@@ -606,7 +625,8 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<script src="<%=basePath%>css/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- Morris.js charts -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/raphael/2.1.2/raphael-min.js"></script>
 	<script src="<%=basePath%>js/plugins/morris/morris.min.js"></script>
 
 	<!-- Sparkline -->
@@ -619,8 +639,9 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<!-- jQuery Knob Chart -->
 	<script src="<%=basePath%>js/plugins/knob/jquery.knob.js"></script>
 	<!-- daterangepicker -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+	<!-- <script
+		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script> -->
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/moment/2.8.3/moment.js"></script>
 	<script
 		src="<%=basePath%>js/plugins/daterangepicker/daterangepicker.js"></script>
 	<!-- datepicker -->

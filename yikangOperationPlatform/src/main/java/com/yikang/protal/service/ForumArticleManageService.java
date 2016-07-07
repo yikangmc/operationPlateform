@@ -55,8 +55,8 @@ public class ForumArticleManageService {
 		formPosts.setContent(content);
 		formPosts.setCreateUserId(userId);
 		formPosts.setIsEssence(Byte.valueOf("0"));
-		if(images == null && images.length <= 0){
-			formPosts.setRecommendPicUrl(null);
+		if(images == null ){
+			formPosts.setRecommendPicUrl("");
 		}else{
 			formPosts.setRecommendPicUrl(images[0]);
 		}
@@ -83,12 +83,14 @@ public class ForumArticleManageService {
 			formPostsTaglibsMapDao.insertSelective(fptm);
 		}
 		// 添加图片
-		for (int i = 1; i < images.length; i++) {
-			ForumPostsImage forumPostsImage = new ForumPostsImage();
-			forumPostsImage.setCreateTime(currentDate);
-			forumPostsImage.setForumPostsId(formPosts.getForumPostId());
-			forumPostsImage.setImageUrl(images[i]);
-			forumPostsImageManager.insertSelective(forumPostsImage);
+		if(images!=null){
+			for (int i = 1; i < images.length; i++) {
+				ForumPostsImage forumPostsImage = new ForumPostsImage();
+				forumPostsImage.setCreateTime(currentDate);
+				forumPostsImage.setForumPostsId(formPosts.getForumPostId());
+				forumPostsImage.setImageUrl(images[i]);
+				forumPostsImageManager.insertSelective(forumPostsImage);
+			}
 		}
 
 		return 1;

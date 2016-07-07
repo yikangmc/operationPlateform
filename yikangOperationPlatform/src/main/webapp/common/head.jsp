@@ -61,16 +61,18 @@ request.setAttribute("basePath",basePath);
 	<script src="<%=basePath%>js/plugins/ckeditor/plugins/image/dialogs/image.js"></script>
     <!-- Bootstrap WYSIHTML5 -->
     <script src="<%=basePath%>js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-    <script>
-      $(function () {
-        // Replace the <textarea id="editor1"> with a CKEditor
-        // instance, using default configuration.
-        CKEDITOR.replace('editor1');
-        //bootstrap WYSIHTML5 - text editor
-        $(".textarea").wysihtml5();
-      });
-    </script>
-	
+	<script>
+	      $(function () {
+	        // Replace the <textarea id="editor1"> with a CKEditor
+	        // instance, using default configuration.i
+	        if(null != $("#editor1") && $("#editor1").length>0){
+	        	 CKEDITOR.replace('editor1');
+	             //bootstrap WYSIHTML5 - text editor
+	             $(".textarea").wysihtml5();
+	        }
+	      });
+	</script>
+		
     <script type="text/javascript">
     	var basePath='<%=basePath %>';
     </script>

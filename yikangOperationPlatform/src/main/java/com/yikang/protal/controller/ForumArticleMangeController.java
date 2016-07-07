@@ -66,7 +66,7 @@ public class ForumArticleMangeController {
 		String subContent=forumPostDetailContent.replaceAll("\n","").replaceAll(" ","").replace("\r","");
 		String contentStr=subContent.length()>100?subContent.substring(0,100):subContent;
 
-		if(null != user && null != content && null != recommendPicUrl  && content.length()>0 && null != taglibId && taglibId.length>0){
+		if(null != user && null != content && content.length()>0 && null != taglibId && taglibId.length>0){
 			manageService.insertSelective(title,contentStr,forumPostDetailContent,user.getUserId(),recommendPicUrl,taglibId);
 		}
 		modelMap.put("userName", userName);
