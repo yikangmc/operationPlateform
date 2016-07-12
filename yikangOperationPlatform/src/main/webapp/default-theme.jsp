@@ -370,11 +370,14 @@ request.getSession().setAttribute("reqUri", reqUri);
 									<span>问题管理</span> <i class="fa fa-angle-left pull-right"></i>
 								</a>
 								<ul class="treeview-menu">
-									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>添加问题</a></li>
+									<li class="${reqUri eq '/operationPlatform/question/questionCreate' ? 'active':''}">
+									<a href="/operationPlatform/question/questionCreate"><i class="fa fa-circle-o"></i>添加问题</a></li>
 								 
 									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>添加回答</a></li>
 								 
-									<li class="${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}"><a href="/operationPlatform/question/questionList"><i class="fa fa-circle-o"></i>回答浏览</a></li>
+									<li class="${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}">
+										<a href="/operationPlatform/question/questionList"><i class="fa fa-circle-o"></i>问题列表</a>
+									</li>
 								 
 									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>回答删除</a></li>
 								</ul>

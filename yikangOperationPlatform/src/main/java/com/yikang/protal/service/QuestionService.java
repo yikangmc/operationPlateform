@@ -6,29 +6,54 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yikang.protal.dao.QuestionDao;
+import com.yikang.common.utils.MatchHtmlElementAttrValue;
 import com.yikang.protal.entity.Question;
+import com.yikang.protal.manager.QuestionAnswerManager;
 import com.yikang.protal.manager.QuestionManager;
 
 /**
  * 问题管理service
+ * 
  * @author zxh
  *
  */
 @Service
 public class QuestionService {
-	
+
+	@Autowired
+	private QuestionManager questionManager;
 	
 	@Autowired
-	private QuestionManager questionManager; 
-	
+	private QuestionAnswerManager questionAnswerManager;
 	/**
 	 * 浏览问题
+	 * 
 	 * @param map
 	 * @return
 	 */
-	public List<Question> queryAllQuestions(Map<String,Object> paramMap){
+	public List<Question> queryAllQuestions(Map<String, Object> paramMap) {
 		return questionManager.queryAllQuestionsPage(paramMap);
 	}
+
+	public int insertQuestion(String title, String content, Long[] taglibIds, Long userId, String[] images) {
+		questionManager.insertQuestion(title, content, taglibIds, userId, images);
+		return 0;
+	}
 	
+	/**
+	 * @author liushuaic
+	 * @date 2016-05-10 16:30
+	 * @desc 添加问题回复
+	 * */
+	public int addQuestionAnswer(Long questionId,Long userId,String detailContent,String htmlDetailContent){
+			
+			String[] images=new String[0];
+			String content=detailContent.length()>100?detailContent.substring(0,100):detailContent;
+			List<String> imageArray=MatchHtmlElementAttrValue.getImgSrc(htmlDetailContent);
+			images=imageArray.toArray(images);
+			questionAnswerManager.insertSelective(questionId, content,detailContent,htmlDetailContent, userId,images);
+			
+			return 1;
+	}
+
 }

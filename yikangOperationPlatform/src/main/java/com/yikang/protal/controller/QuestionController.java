@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yikang.protal.base.BaseController;
 import com.yikang.protal.common.page.PageParameter;
+import com.yikang.protal.common.response.ResponseMessage;
 import com.yikang.protal.entity.Question;
 import com.yikang.protal.entity.Taglib;
 import com.yikang.protal.service.QuestionService;
@@ -46,6 +48,15 @@ public class QuestionController extends BaseController{
 		List<Taglib> taglibs=taglibService.getAllTag(null);
 		modelMap.put("taglibs",taglibs);
 		return "question/questionCreate";
+	}
+	@RequestMapping
+	@ResponseBody
+	public ResponseMessage questionSave(String userName,String title,Long taglibId,String content,String[] images){
+		
+		ResponseMessage message=new ResponseMessage();
+		
+		return message;
+		
 	}
 	
 }
