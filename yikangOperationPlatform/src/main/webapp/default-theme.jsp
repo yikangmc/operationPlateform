@@ -374,7 +374,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 								 
 									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>添加回答</a></li>
 								 
-									<li class="${reqUri eq '/operationPlatform/questionSystem/queryAllQuestions' ? 'active':''}"><a href="/operationPlatform/questionSystem/queryAllQuestions"><i class="fa fa-circle-o"></i>回答浏览</a></li>
+									<li class="${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}"><a href="/operationPlatform/questionSystem/queryAllQuestions"><i class="fa fa-circle-o"></i>回答浏览</a></li>
 								 
 									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>回答删除</a></li>
 								</ul>
