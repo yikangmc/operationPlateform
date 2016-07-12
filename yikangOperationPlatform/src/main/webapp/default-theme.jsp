@@ -319,7 +319,11 @@ request.getSession().setAttribute("reqUri", reqUri);
 									</li>
 								</ul>
 							</li>
-							<li class="treeview">
+							<li class="treeview
+							${reqUri eq '/operationPlatform/user/userList' ? 'active':''}
+							${reqUri eq '/operationPlatform/appointmentOrder/listServiceItem' ? 'active':''}
+							${reqUri eq '/operationPlatform/seniorAccount/getSeniorAccountList' ? 'active':''}
+							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>基础数据管理</span> <i class="fa fa-angle-left pull-right"></i>
@@ -332,7 +336,9 @@ request.getSession().setAttribute("reqUri", reqUri);
 									<li class="${reqUri eq '/operationPlatform/seniorAccount/getSeniorAccountList' ? 'active':''}"><a href="/operationPlatform/seniorAccount/getSeniorAccountList"><i class="fa fa-circle-o"></i>患者管理</a></li>
 								</ul>
 							</li>
-							<li class="treeview active">
+							<li class="treeview
+								${reqUri eq '/operationPlatform/forumPosts/forumPost' ? 'active':''}
+							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>文章管理</span> <i class="fa fa-angle-left pull-right"></i>
@@ -348,7 +354,10 @@ request.getSession().setAttribute("reqUri", reqUri);
 								</ul>
 							</li>
 							
-							<li class="treeview active">
+							<li class="treeview
+								${reqUri eq '/operationPlatform/forumArticleMange/forumPost' ? 'active':''}
+								${reqUri eq '/operationPlatform/forumArticleMange/getAllArticleList' ? 'active':''}
+							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>帖子管理</span> <i class="fa fa-angle-left pull-right"></i>
@@ -364,7 +373,10 @@ request.getSession().setAttribute("reqUri", reqUri);
 								</ul>
 							</li>
 							
-							<li class="treeview active">
+							<li class="treeview
+								${reqUri eq '/operationPlatform/question/questionCreate' ? 'active':''}
+								${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}
+							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>问题管理</span> <i class="fa fa-angle-left pull-right"></i>
