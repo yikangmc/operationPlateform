@@ -1,20 +1,16 @@
 package com.yikang.protal.common.response;
 
-public class ResponseMessage {
 
-	public String messageStatus;
+import com.yikang.common.error.ExceptionConstants;
+
+public class ResponseMessage<T extends Object> {
+
+	private String status=ExceptionConstants.responseSuccess.responseSuccess.code;
 	
-	public String message;
+	private String message=ExceptionConstants.responseSuccess.responseSuccess.message;
 	
-	public Object data;
+	private T data;
 
-	public String getMessageStatus() {
-		return messageStatus;
-	}
-
-	public void setMessageStatus(String messageStatus) {
-		this.messageStatus = messageStatus;
-	}
 
 	public String getMessage() {
 		return message;
@@ -24,12 +20,20 @@ public class ResponseMessage {
 		this.message = message;
 	}
 
-	public Object getData() {
+	public T getData() {
 		return data;
 	}
 
-	public void setData(Object data) {
+	public void setData(T data) {
 		this.data = data;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

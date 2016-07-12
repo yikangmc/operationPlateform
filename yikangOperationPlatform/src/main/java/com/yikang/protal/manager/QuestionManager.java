@@ -54,9 +54,12 @@ public class QuestionManager {
 			questionTaglibMapDao.insertSelective(questionTaglibMap);
 		}
 		
-		for(String imageId:images){
-			 questionImageManager.insertSelective(imageId, question.getQuestionId());
-		 }
+		if(null != images){
+			for(String imageId:images){
+				 questionImageManager.insertSelective(imageId, question.getQuestionId());
+			 }
+		}
+	
 		return 1;
 	}
 	

@@ -11,22 +11,19 @@
     // 自定义数字长度
     var frameCount = 0;
 
-    // var jsonLine ="{'data':{'fileName':'1513b10d-127c-4ba8-96ea-0bf1cc4befe1.jpg','fileUrl':'https://biophoto.s3.cn-north-1.amazonaws.com.cn/1513b10d-127c-4ba8-96ea-0bf1cc4befe1.jpg','oldFileName':'202.jpg'},'message':'操作成功！','status':'000000'}'";
-
-
     var editorData = function(data){
 
         if( null != data && data.status=="000000"){
             //alert(data.data)
-        	var eleCount = $("#imgId1").children().length;
+        	var eleCount = $("#imgContaner").children().length;
         	if(eleCount>=8){
         		alert("已经有四张了，不能继续上传！！！");
         		return;
         	}
-            var inputHidentStr='<input type="hidden" name="recommendPicUrl" id="recommendPicUrlHidden" value="'+data.data.fileUrl+'">';
+            var inputHidentStr='<input type="hidden" name="images" id="recommendPicUrlHidden" value="'+data.data.fileUrl+'">';
             var imgStr=' <img id="recommendPicUrlImage" style="height:120px" src="'+data.data.fileUrl+'" >';
-            $("#imgId1").append(inputHidentStr);
-            $("#imgId1").append(imgStr);
+            $("#imgContaner").append(inputHidentStr);
+            $("#imgContaner").append(imgStr);
         }
     }
 
