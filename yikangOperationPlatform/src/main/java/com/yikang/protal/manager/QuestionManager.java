@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.yikang.protal.dao.QuestionAnswerImageDao;
 import com.yikang.protal.dao.QuestionDao;
 import com.yikang.protal.dao.QuestionTaglibMapDao;
+import com.yikang.protal.entity.Answer;
 import com.yikang.protal.entity.Question;
 import com.yikang.protal.entity.QuestionTaglibMap;
 
@@ -70,5 +71,33 @@ public class QuestionManager {
 	 */
 	public List<Question> queryAllQuestionsPage(Map<String,Object> paramMap){
 		return questionDao.queryAllQuestionsPage(paramMap);
+	}
+	
+
+	/**
+	 * 根据问题id查询问题标题
+	 * @param questionId
+	 * @return
+	 */
+	public String queryQuestionTitleById(String questionId){
+		return questionDao.queryQuestionTitleById(questionId);
+	}
+	
+	/**
+	 * 保存问题的答案
+	 * @param answer
+	 * @return
+	 */
+	public int saveAnswerOfQuestion(Answer answer){
+		return questionDao.saveAnswerOfQuestion(answer);
+	}
+	
+	/**
+	 * 根据用户名查询用户的id
+	 * @param userName
+	 * @return
+	 */
+	public Long queryUserIdByUserName(String userName){
+		return questionDao.queryUserIdByUserName(userName);
 	}
 }

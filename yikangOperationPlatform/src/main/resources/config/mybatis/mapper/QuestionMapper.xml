@@ -228,4 +228,17 @@
 	order by que.create_time desc
   </select>
   
+  <select id="queryQuestionTitleById" parameterType="string" resultType="string">
+		select title from questions where question_id = #{questionId}
+	</select>  
+	
+ <insert id="saveAnswerOfQuestion" parameterType="com.yikang.protal.entity.Answer">
+ 	insert into question_answers(create_user_id,data_source,content,question_id,star_num,is_recommend,create_time,update_time)
+ 	values(#{createUserId},#{answersDataSource},#{answerText},#{questionId},#{starNum},#{isRecommend},#{createTime},#{updateTime})
+ </insert> 
+ 
+ <select id="queryUserIdByUserName" parameterType="string" resultType="long">
+ 	select user_id from user_infos where user_name = #{userName}
+ </select>
+ 
 </mapper>

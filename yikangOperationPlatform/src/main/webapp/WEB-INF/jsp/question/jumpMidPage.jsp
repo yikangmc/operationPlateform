@@ -5,25 +5,23 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <%@ include file="/common/head.jsp"%>
-<title>预约用户列表</title>
+<title>添加回答</title>
 <script type="text/javascript">
+	
 </script>
 </head>
 <body>
-	<script type="text/javascript"
-		src="<%=path%>/js/views/forumPost/forumPost-upload.js"></script>
-	<script type="text/javascript"
-		src="<%=path%>/js/views/forumPost/forumPost.js"></script>
+	<script type="text/javascript" src="<%=path%>/js/views/question/jumpMidPage.js"></script>
 
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="box">
 
 				<div class="box-header">
-					<h3 class="box-title">预约用户列表</h3>
+					<h3 class="box-title">添加回答</h3>
 				</div>
 
-				<form id="paramForm" action="<%=basePath%>forumPosts/addForumPost"
+				<form id="paramForm" action="<%=basePath%>question/addAnswer"
 					method="post">
 					<!-- /.box-header -->
 					<div class="box-body">
@@ -39,39 +37,14 @@
 								</div>
 								<div class="col-sm-6">
 									<div id="example1_filter" class="dataTables_filter">
-										<label>标题: <input type="input" name="title"
-											class="form-control input-sm" placeholder="标题"
-											aria-controls="example1"></label>
+										<label>问题: <input type="input" name="title"
+											class="form-control input-sm" value="${title }"
+											placeholder="标题" aria-controls="example1" readonly="readonly"></label>
 									</div>
 								</div>
+								<input type="hidden" name="questionId" value="${questionId }" />
 							</div>
-							<div class="row">
-
-								<div class="col-sm-9">
-									<c:forEach items="${taglibs2}" var="taglib">
-										<strong> ${taglib.tagName }</strong>
-										<br> <c:forEach items="${taglib.childs}" var="ch">
-										   		${ch.tagName}<input type="checkbox" name="taglibId"
-													value="${ch.taglibId }" />
-											</c:forEach> <br>
-									</c:forEach>
-								</div>
-								<div class="col-sm-3">
-									<button class="btn btn-info " type="button"
-										onclick="forumPost.checkParam()">提交</button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-6">
-									<input type="button" class="fileInput" name="recommendPicUrl"
-										value="上传标题图片" draggable="true" capture="camera"
-										onclick="$.upload()"> <input type="hidden"
-										name="recommendPicUrl" id="recommendPicUrlHidden">
-								</div>
-								<div class="col-sm-6">
-									<img id="recommendPicUrlImage" style="height: 120px">
-								</div>
-							</div>
+							
 							<div class="row">
 								<div class="col-sm-12">
 									<div class="box box-info">
@@ -95,11 +68,16 @@
 										<!-- /.box-header -->
 										<div class="box-body pad">
 											<textarea id="editor1" name="content" rows="10" cols="80"
-												style="visibility: hidden; display: none;">                           
-											  </textarea>
+												style="visibility: hidden; display: none;"></textarea>
 										</div>
 									</div>
 								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<button class="btn btn-info pull-right" type="button"
+									onclick="answerSubmit()">提交</button>
 							</div>
 						</div>
 					</div>

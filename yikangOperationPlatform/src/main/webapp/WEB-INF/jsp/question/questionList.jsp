@@ -17,7 +17,7 @@
 					<h3 class="box-title">问题列表</h3>
 				</div>
 
-				<form id="paramForm" action="<%=basePath%>questionSystem/queryAllQuestions" method="post">
+				<form id="paramForm" action="<%=basePath%>question/questionList" method="post">
 					<!-- /.box-header -->
 					<div class="box-body">
 						<div id="example1_wrapper"
@@ -65,6 +65,10 @@
 													rowspan="1" colspan="1"
 													aria-label="Engine version: activate to sort column ascending"
 													style="width: 123px;">用户信息</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Engine version: activate to sort column ascending"
+													style="width: 123px;">操作</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -85,6 +89,7 @@
 														<img src="${question.photoUrl}" width="50" height="50"/><br /></c:if>
 															${question.userName }
 													</td>
+													<td><a href="<%=basePath%>question/jumpMidPage?questionId=${question.questionId}" class="btn primary-btn">添加回答</a></td>
 												</tr>
 											</c:forEach>
 										</tbody>

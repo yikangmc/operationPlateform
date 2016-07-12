@@ -3,6 +3,7 @@ package com.yikang.protal.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.yikang.protal.entity.Answer;
 import com.yikang.protal.entity.Question;
 
 public interface QuestionDao {
@@ -50,5 +51,26 @@ public interface QuestionDao {
      * 
      * */
     List<Question> queryAllQuestionsPage(Map<String,Object> paramMap);
+    
+    /**
+	 * 根据问题id查询问题标题
+	 * @param questionId
+	 * @return
+	 */
+	public String queryQuestionTitleById(String questionId);
+	
+	/**
+	 * 保存问题的答案
+	 * @param answer
+	 * @return
+	 */
+	public int saveAnswerOfQuestion(Answer answer);
+	
+	/**
+	 * 根据用户名查询用户的id
+	 * @param userName
+	 * @return
+	 */
+	public Long queryUserIdByUserName(String userName);
     
 }

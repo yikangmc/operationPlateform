@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +16,7 @@ import com.yikang.common.error.ExceptionConstants;
 import com.yikang.protal.base.BaseController;
 import com.yikang.protal.common.page.PageParameter;
 import com.yikang.protal.common.response.ResponseMessage;
+import com.yikang.protal.entity.Answer;
 import com.yikang.protal.entity.Question;
 import com.yikang.protal.entity.Taglib;
 import com.yikang.protal.entity.User;
@@ -28,6 +31,7 @@ import com.yikang.protal.service.TaglibService;
  */
 @Controller
 public class QuestionController extends BaseController{
+	private static final Logger log = LoggerFactory.getLogger(QuestionController.class);
 	@Autowired
 	private QuestionService systemService;
 	
@@ -72,6 +76,48 @@ public class QuestionController extends BaseController{
 		
 		return message;
 		
+	}
+	
+	/**
+	 * 添加回答的跳转页面
+	 * @return
+	 */
+	@RequestMapping
+	public String jumpMidPage(ModelMap modelMap,HttpServletRequest req){
+		log.debug("");
+		String title = systemService.queryQuestionTitleById(req.getParameter("questionId"));
+		modelMap.addAttribute("title",title);
+		modelMap.addAttribute("questionId", req.getParameter("questionId"));
+		return "question/jumpMidPage";
+	}
+	
+	/**
+	 * 保存回答
+	 * @param userName
+	 * @param content
+	 * @param images
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping
+	public String addAnswer(ModelMap modeMap,String userName,String content,String questionId,HttpServletRequest req){
+		log.debug("");
+		Answer answer = new Answer();
+		Long userId = systemService.queryUserIdByUserName(userName);
+		if(userId!=null){
+			answer.setCreateUserId(userId);
+			answer.setAnswerText(content);
+			answer.setQuestionId(Long.valueOf(questionId));
+			int result = systemService.saveAnswerOfQuestion(answer);
+			if(result>0){
+				modeMap.addAttribute("resultMessage", "添加回答成功！！！");
+			}else{
+				modeMap.addAttribute("resultMessage", "添加回答失败，请联系管理员！！！");
+			}
+		}else{
+			modeMap.addAttribute("resultMessage", "此用户不存在，请再次确认！！！");
+		}
+		return questionList(modeMap, null, req);
 	}
 	
 }
