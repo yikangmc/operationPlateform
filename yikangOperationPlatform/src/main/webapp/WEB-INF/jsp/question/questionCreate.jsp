@@ -39,8 +39,7 @@
 														<div class="form-group">
 															<label for="userName" class="col-sm-2 control-label">用户名</label>
 															<div class="col-sm-3">
-																<input type="text" class="form-control" id="userName"
-																	placeholder="用户名">
+																<input type="text" class="form-control" id="userName" placeholder="用户名">
 															</div>
 														</div>
 														<div class="form-group">
