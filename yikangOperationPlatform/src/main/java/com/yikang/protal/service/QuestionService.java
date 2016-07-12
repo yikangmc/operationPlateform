@@ -6,8 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yikang.protal.dao.QuestionSystemDao;
+import com.yikang.protal.dao.QuestionDao;
 import com.yikang.protal.entity.Question;
+import com.yikang.protal.manager.QuestionManager;
 
 /**
  * 问题管理service
@@ -15,9 +16,11 @@ import com.yikang.protal.entity.Question;
  *
  */
 @Service
-public class QuestionSystemService {
+public class QuestionService {
+	
+	
 	@Autowired
-	private QuestionSystemDao questionSystemDao;
+	private QuestionManager questionManager; 
 	
 	/**
 	 * 浏览问题
@@ -25,7 +28,7 @@ public class QuestionSystemService {
 	 * @return
 	 */
 	public List<Question> queryAllQuestions(Map<String,Object> paramMap){
-		return questionSystemDao.queryAllQuestions(paramMap);
+		return questionManager.queryAllQuestionsPage(paramMap);
 	}
 	
 }

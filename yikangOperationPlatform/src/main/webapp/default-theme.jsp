@@ -326,11 +326,9 @@ request.getSession().setAttribute("reqUri", reqUri);
 								</a>
 								<ul class="treeview-menu">
 									<li class="${reqUri eq '/operationPlatform/user/userList' ? 'active':''}"><a href="/operationPlatform/user/userList"><i class="fa fa-circle-o"></i>用户管理</a></li>
-								</ul>
-								<ul class="treeview-menu">
+								 
 									<li class="${reqUri eq '/operationPlatform/appointmentOrder/listServiceItem' ? 'active':''}"><a href="/operationPlatform/appointmentOrder/listServiceItem"><i class="fa fa-circle-o"></i>订单管理</a></li>
-								</ul>
-								<ul class="treeview-menu">
+								 
 									<li class="${reqUri eq '/operationPlatform/seniorAccount/getSeniorAccountList' ? 'active':''}"><a href="/operationPlatform/seniorAccount/getSeniorAccountList"><i class="fa fa-circle-o"></i>患者管理</a></li>
 								</ul>
 							</li>
@@ -341,14 +339,11 @@ request.getSession().setAttribute("reqUri", reqUri);
 								</a>
 								<ul class="treeview-menu">
 									<li class="${reqUri eq '/operationPlatform/forumPosts/forumPost' ? 'active':''}"><a href="/operationPlatform/forumPosts/forumPost"><i class="fa fa-circle-o"></i>文章发布</a></li>
-								</ul>
-								<ul class="treeview-menu">
+								 
 									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章浏览</a></li>
-								</ul>
-								<ul class="treeview-menu">
+							 
 									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章审核</a></li>
-								</ul>
-								<ul class="treeview-menu">
+							 
 									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章删除</a></li>
 								</ul>
 							</li>
@@ -360,14 +355,11 @@ request.getSession().setAttribute("reqUri", reqUri);
 								</a>
 								<ul class="treeview-menu">
 									<li class="${reqUri eq '/operationPlatform/forumArticleMange/forumPost' ? 'active':''}"><a href="/operationPlatform/forumArticleMange/forumPost"><i class="fa fa-circle-o"></i>帖子发布</a></li>
-								</ul>
-								<ul class="treeview-menu">
+								 
 									<li class="${reqUri eq '/operationPlatform/forumArticleMange/getAllArticleList' ? 'active':''}"><a href="/operationPlatform/forumArticleMange/getAllArticleList"><i class="fa fa-circle-o"></i>帖子浏览</a></li>
-								</ul>
-								<ul class="treeview-menu">
+								 
 									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子审核</a></li>
-								</ul>
-								<ul class="treeview-menu">
+								 
 									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子删除</a></li>
 								</ul>
 							</li>
@@ -379,14 +371,11 @@ request.getSession().setAttribute("reqUri", reqUri);
 								</a>
 								<ul class="treeview-menu">
 									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>添加问题</a></li>
-								</ul>
-								<ul class="treeview-menu">
+								 
 									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>添加回答</a></li>
-								</ul>
-								<ul class="treeview-menu">
+								 
 									<li class="${reqUri eq '/operationPlatform/questionSystem/queryAllQuestions' ? 'active':''}"><a href="/operationPlatform/questionSystem/queryAllQuestions"><i class="fa fa-circle-o"></i>回答浏览</a></li>
-								</ul>
-								<ul class="treeview-menu">
+								 
 									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>回答删除</a></li>
 								</ul>
 							</li>
@@ -412,7 +401,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 					<!-- Content Header (Page header) -->
 					<section class="content-header">
 						<h1>
-							Dashboard <small>Control panel</small>
+							面板 <small>Control panel</small>
 						</h1>
 						<ol class="breadcrumb">
 							<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -450,7 +439,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 			<b>Version</b> 0.0.1
 		</div>
 		<strong>Copyright &copy; 2015-2016 <a
-			href="http://www.hulingjia.com">易康美辰</a>.
+			href="http://jjkangfu.com">易康美辰</a>.
 		</strong> All rights reserved.
 	</footer>
 
