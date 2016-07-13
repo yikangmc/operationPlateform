@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yikang.common.error.ExceptionConstants;
+import com.yikang.common.utils.MatchHtmlElementAttrValue;
 import com.yikang.protal.base.BaseController;
 import com.yikang.protal.common.page.PageParameter;
 import com.yikang.protal.common.response.ResponseMessage;
@@ -102,13 +103,24 @@ public class QuestionController extends BaseController{
 	@RequestMapping
 	public String addAnswer(ModelMap modeMap,String userName,String content,String questionId,HttpServletRequest req){
 		log.debug("");
-		Answer answer = new Answer();
 		Long userId = systemService.queryUserIdByUserName(userName);
+		String[] images = null;
+		String contents = null;
 		if(userId!=null){
-			answer.setCreateUserId(userId);
-			answer.setAnswerText(content);
-			answer.setQuestionId(Long.valueOf(questionId));
-			int result = systemService.saveAnswerOfQuestion(answer);
+			if(null != content && content.length()>0){
+				List<String> imageArray=MatchHtmlElementAttrValue.getImgSrc(content);
+				String[] args={};
+				images=imageArray.toArray(args.clone());
+			}
+			String htmlDetailContent=content;
+			contents=content.replaceAll("<br>", "\n").replaceAll("&nbsp;", " ").replaceAll("&ldquo;", "");
+			contents=MatchHtmlElementAttrValue.replaseAndCharachter(contents);
+			String detailContent=MatchHtmlElementAttrValue.replaceAllHtmlTagContent(contents);
+
+			String subContent=detailContent.replaceAll("\n","").replaceAll(" ","").replace("\r","");
+			String contentStr=subContent.length()>100?subContent.substring(0,100):subContent;
+			
+			int result = systemService.saveAnswerOfQuestion(userId,htmlDetailContent,detailContent,contentStr,images,questionId);
 			if(result>0){
 				modeMap.addAttribute("resultMessage", "添加回答成功！！！");
 			}else{

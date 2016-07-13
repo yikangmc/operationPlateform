@@ -72,15 +72,10 @@ public class QuestionService {
 	 * @param answer
 	 * @return
 	 */
-	public int saveAnswerOfQuestion(Answer answer){
-		Byte b = 0;
-		Date date = new Date();
-		answer.setAnswersDataSource(b);
-		answer.setStarNum(0);
-		answer.setIsRecommend(b);
-		answer.setCreateTime(date);
-		answer.setUpdateTime(date);
-		return questionManager.saveAnswerOfQuestion(answer);
+	public int saveAnswerOfQuestion(Long userId, String htmlDetailContent, String detailContent, String contentStr,
+			String[] images, String questionId) {
+		return questionAnswerManager.insertSelective(Long.valueOf(questionId), contentStr, detailContent, htmlDetailContent, userId,
+				images);
 	}
 	
 	/**
