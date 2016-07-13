@@ -103,10 +103,11 @@ public class QuestionController extends BaseController{
 	@RequestMapping
 	public String addAnswer(ModelMap modeMap,String userName,String content,String questionId,HttpServletRequest req){
 		log.debug("");
-		Long userId = systemService.queryUserIdByUserName(userName);
+//		Long userId = systemService.queryUserIdByUserName(userName);
+		User user=userManager.getUserByLoginName(userName);
 		String[] images = null;
 		String contents = null;
-		if(userId!=null){
+		if(user!=null){
 			if(null != content && content.length()>0){
 				List<String> imageArray=MatchHtmlElementAttrValue.getImgSrc(content);
 				String[] args={};
@@ -120,7 +121,7 @@ public class QuestionController extends BaseController{
 			String subContent=detailContent.replaceAll("\n","").replaceAll(" ","").replace("\r","");
 			String contentStr=subContent.length()>100?subContent.substring(0,100):subContent;
 			
-			int result = systemService.saveAnswerOfQuestion(userId,htmlDetailContent,detailContent,contentStr,images,questionId);
+			int result = systemService.saveAnswerOfQuestion(user.getUserId(),htmlDetailContent,detailContent,contentStr,images,questionId);
 			if(result>0){
 				modeMap.addAttribute("resultMessage", "添加回答成功！！！");
 			}else{
