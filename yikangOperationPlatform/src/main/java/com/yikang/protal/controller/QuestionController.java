@@ -84,12 +84,13 @@ public class QuestionController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping
-	public String jumpMidPage(ModelMap modelMap,HttpServletRequest req){
+	public String answerQuestion(ModelMap modelMap,HttpServletRequest req){
 		log.debug("");
 		String title = systemService.queryQuestionTitleById(req.getParameter("questionId"));
 		modelMap.addAttribute("title",title);
 		modelMap.addAttribute("questionId", req.getParameter("questionId"));
-		return "question/jumpMidPage";
+		modelMap.addAttribute("taglibsId",req.getParameter("taglibsId"));
+		return "question/answerQuestion";
 	}
 	
 	/**
@@ -101,7 +102,7 @@ public class QuestionController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping
-	public String addAnswer(ModelMap modeMap,String userName,String content,String questionId,HttpServletRequest req){
+	public String addAnswer(ModelMap modeMap,String userName,String taglibsId,String content,String questionId,HttpServletRequest req){
 		log.debug("");
 //		Long userId = systemService.queryUserIdByUserName(userName);
 		User user=userManager.getUserByLoginName(userName);
@@ -121,7 +122,7 @@ public class QuestionController extends BaseController{
 			String subContent=detailContent.replaceAll("\n","").replaceAll(" ","").replace("\r","");
 			String contentStr=subContent.length()>100?subContent.substring(0,100):subContent;
 			
-			int result = systemService.saveAnswerOfQuestion(user.getUserId(),htmlDetailContent,detailContent,contentStr,images,questionId);
+			int result = systemService.saveAnswerOfQuestion(user.getUserId(),htmlDetailContent,detailContent,contentStr,images,questionId,taglibsId);
 			if(result>0){
 				modeMap.addAttribute("resultMessage", "添加回答成功！！！");
 			}else{

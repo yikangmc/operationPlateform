@@ -43,6 +43,7 @@
 									</div>
 								</div>
 								<input type="hidden" name="questionId" value="${questionId }" />
+								<input type="hidden" name="taglibsId" value="${taglibsId }"/>
 							</div>
 							
 							<div class="row">

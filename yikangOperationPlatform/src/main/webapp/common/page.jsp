@@ -23,9 +23,16 @@
 				<div class="dataTables_paginate paging_simple_numbers"
 					id="example1_paginate">
 					<ul class="pagination">
-						<li class="paginate_button previous disabled" id="example1_previous">
-							<a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">上一页</a>
-						</li>
+						<c:if test="${page.currentPage > 1 }">
+							<li class="paginate_button previous" id="example1_previous">
+								<a href="javascript:prePage()" id="page_pre" aria-controls="example1" data-dt-idx="${page.currentPage-1 }" tabindex="0" onclick="prePage()">上一页</a>
+							</li>
+						</c:if>
+						<c:if test="${page.currentPage == 1 }">
+							<li class="paginate_button previous disabled" id="example1_previous">
+								<a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" onclick="prePage()">上一页</a>
+							</li>
+						</c:if>
 						
 						<c:if test="${page.currentPage != 1  }">
 							<li class="paginate_button active">
@@ -72,6 +79,7 @@
 
 <script type="text/javascript">
 	function prePage(){
+		$("input[name='currentPage']").val($("#page_pre").attr("data-dt-idx"));
 		submitPage();
 	}
 	

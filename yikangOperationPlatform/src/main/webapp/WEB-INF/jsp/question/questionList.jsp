@@ -89,7 +89,7 @@
 														<img src="${question.photoUrl}" width="50" height="50"/><br /></c:if>
 															${question.userName }
 													</td>
-													<td><a href="<%=basePath%>question/jumpMidPage?questionId=${question.questionId}" class="btn primary-btn">添加回答</a></td>
+													<td><a href="<%=basePath%>question/answerQuestion?questionId=${question.questionId}&taglibsId=${question.taglibsId}" class="btn primary-btn">添加回答</a></td>
 												</tr>
 											</c:forEach>
 										</tbody>

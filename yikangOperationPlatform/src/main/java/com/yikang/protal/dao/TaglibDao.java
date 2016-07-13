@@ -7,7 +7,7 @@ import com.yikang.protal.entity.Taglib;
 
 
 public interface TaglibDao {
-    int deleteByPrimaryKey(Long taglibId);
+	int deleteByPrimaryKey(Long taglibId);
 
     int insert(Taglib record);
 
@@ -87,4 +87,64 @@ public interface TaglibDao {
      * */
     List<Taglib> getSecondAllTaglib();
     
+    /**
+     * @author liushuaic
+     * @date 2016-06-30 18:23
+     * @desc 修改标签的关注数量 +1
+     * **/
+    int updateFollowNumberAddByTaglibId(Long taglibId);
+    
+    /**
+     * @author liushuaic
+     * @date 2016-06-30 18:24
+     * @desc 修改关注数量-1
+     * */
+    int updateFollowNumberSubByTaglibId(Long taglibId);
+    
+    
+    /**
+     * @author liushuaic
+     * @date 2016-07-06 15:01
+     * 修改标签帖子关注数量 +1
+     * **/
+    int updateForumPostsTZNumberAddByTaglibId(Long taglibId);
+
+    
+    /**
+     * 
+     * @author liushuaic
+     * @date 2016-07-06 15:01
+     * 修改标签帖子关注数量 -1 
+     * 
+     * */
+    int updateForumPostsTZNumberSubByTaglibId(Long taglibId);
+    
+    /**
+     * @author liushuaic
+     * @date 2016-07-06 16:50
+     * @desc 文章发部数量加1
+     * */
+    int updateForumPostsNumberAddByTaglibId(Long taglibId);
+    
+    
+    /**
+     * @author liushuaic
+     * @date 2016-07-06 16:54
+     * @desc 标签文章数量减一
+     * **/
+    int updateForumPostsNumberSubByTaglibId(Long taglibId);
+    
+    /**
+     * 标签的回答数量加一
+     * @param taglibId
+     * @return
+     */
+    public int updateQuestionAnswerNumAddByTaglibId(Long taglibId);
+    
+    /**
+     * 标签的回答数量减一
+     * @param taglibId
+     * @return
+     */
+    public int updateQuestionAnswerNumSubByTaglibId(Long taglibId);
 }

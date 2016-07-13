@@ -207,9 +207,10 @@
   <resultMap type="com.yikang.protal.entity.Question" extends="BaseResultMap" id="queryAllQuestionsPageResultMap">
   	  	<result column="user_name" property="userName"/>
   	  	<result column="answer_num" property="answerNum"/>
+  	  	<result column="taglibs_id" property="taglibsId"/>
   </resultMap>
   <select id="queryAllQuestionsPage" parameterType="map" resultMap="queryAllQuestionsPageResultMap">
-	  	select 
+	  select 
   		que.question_id, 
   		que.title, 
   		que.content, 
@@ -219,7 +220,8 @@
   		que.star,
   		ui.user_name,
   		ui.photo_url,
-  		(select count(1) from question_answers where question_id=question_id ) as answer_num
+  		qtm.taglibs_id as taglibsId,
+  		(select count(question_answer_id) from question_answers qa where qa.question_id=que.question_id ) as answerNum
   	from 
   		question_taglib_maps qtm  
 	inner join questions que on qtm.questions_id=que.question_id

@@ -14,6 +14,7 @@ import com.yikang.protal.dao.QuestionAnswerDao;
 import com.yikang.protal.dao.QuestionAnswerDetailDao;
 import com.yikang.protal.dao.QuestionAnswerImageDao;
 import com.yikang.protal.dao.QuestionAnswerStartListDao;
+import com.yikang.protal.dao.TaglibDao;
 import com.yikang.protal.entity.QuestionAnswer;
 import com.yikang.protal.entity.QuestionAnswerDetail;
 import com.yikang.protal.entity.QuestionAnswerImage;
@@ -34,13 +35,16 @@ public class QuestionAnswerManager {
 	@Autowired
 	private QuestionAnswerDetailDao questionAnswerDetailDao;
 	
+	@Autowired
+	private TaglibDao taglibDao;
+	
 	
 	/**
 	 * @author liushuaic
 	 * @date 2016-05-09 18:17
 	 * @desc 添加问题回复
 	 * **/
-	public int insertSelective(Long questionId,String content,String detailContent,String htmlDetailContent,Long createUserId,String[] images){
+	public int insertSelective(Long questionId,String content,String detailContent,String htmlDetailContent,Long createUserId,String[] images,Long taglibId){
 		Date currentDate=Calendar.getInstance().getTime();
 		QuestionAnswer questionAnswer=new QuestionAnswer();
 		questionAnswer.setCreateUserId(createUserId);
@@ -71,7 +75,7 @@ public class QuestionAnswerManager {
 		questionAnswerDetail.setQuestionAnswerHtmlContent(htmlDetailContent);
 		questionAnswerDetail.setCreateUserId(createUserId);
 		questionAnswerDetailDao.insertSelective(questionAnswerDetail);
-		
+		taglibDao.updateQuestionAnswerNumAddByTaglibId(taglibId);
 		return 1;
 	}
 	

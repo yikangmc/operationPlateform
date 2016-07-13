@@ -42,21 +42,21 @@ public class QuestionService {
 		return 0;
 	}
 	
-	/**
+/*	*//**
 	 * @author liushuaic
 	 * @date 2016-05-10 16:30
 	 * @desc 添加问题回复
-	 * */
+	 * *//*
 	public int addQuestionAnswer(Long questionId,Long userId,String detailContent,String htmlDetailContent){
 			
 			String[] images=new String[0];
 			String content=detailContent.length()>100?detailContent.substring(0,100):detailContent;
 			List<String> imageArray=MatchHtmlElementAttrValue.getImgSrc(htmlDetailContent);
 			images=imageArray.toArray(images);
-			questionAnswerManager.insertSelective(questionId, content,detailContent,htmlDetailContent, userId,images);
+			questionAnswerManager.insertSelective(questionId, content,detailContent,htmlDetailContent, userId,images,Long.valueOf());
 			
 			return 1;
-	}
+	}*/
 	
 	/**
 	 * 根据问题id查询问题标题
@@ -73,9 +73,9 @@ public class QuestionService {
 	 * @return
 	 */
 	public int saveAnswerOfQuestion(Long userId, String htmlDetailContent, String detailContent, String contentStr,
-			String[] images, String questionId) {
+			String[] images, String questionId,String taglibsId) {
 		return questionAnswerManager.insertSelective(Long.valueOf(questionId), contentStr, detailContent, htmlDetailContent, userId,
-				images);
+				images,Long.valueOf(taglibsId));
 	}
 	
 	/**

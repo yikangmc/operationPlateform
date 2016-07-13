@@ -21,6 +21,8 @@ public class Question {
 
     private Date updateTime;
     
+    private Long taglibsId;
+    
     //用户名称
     private String userName;
     //头像地址
@@ -39,7 +41,15 @@ public class Question {
     private List<QuestionImage> questionImages= new ArrayList<QuestionImage>();
 
     
-    public Long getQuestionId() {
+    public Long getTaglibsId() {
+		return taglibsId;
+	}
+
+	public void setTaglibsId(Long taglibsId) {
+		this.taglibsId = taglibsId;
+	}
+
+	public Long getQuestionId() {
         return questionId;
     }
 
