@@ -14,4 +14,6 @@ public interface ForumPostsTaglibsMapDao {
     int updateByPrimaryKeySelective(ForumPostsTaglibsMap record);
 
     int updateByPrimaryKey(ForumPostsTaglibsMap record);
+    
+    int delByFormPostId(Long formPostId);
 }

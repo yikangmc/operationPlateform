@@ -372,11 +372,41 @@
  	from forum_posts  order by stars desc  limit 5
   </select>
   
+  <!-- 获取帖子列表 -->
   <select id="getAllArticleListByPage" resultMap="geForumPostsByCreateUserIdResultMap" parameterType="map">
   	select <include refid="Base_Column_List"></include>,
   		 a.user_name as userName,a.photo_url as photoUrl from forum_posts 
   	left join user_infos a on a.user_id = forum_posts.create_user_id
-  	order by update_time desc
+  	where forum_posts.forum_post_group = 0 order by update_time desc
   </select>
   
+  <!-- 获取文章列表 -->
+  <select id="getAllProfessionListByPage" resultMap="geForumPostsByCreateUserIdResultMap" parameterType="map">
+  	select <include refid="Base_Column_List"></include>,
+  		 a.user_name as userName,a.photo_url as photoUrl from forum_posts 
+  	left join user_infos a on a.user_id = forum_posts.create_user_id
+  	where forum_posts.forum_post_group = 1 order by update_time desc
+  </select>
+  
+  <select id="queryFormPostsInfo" parameterType="long" resultMap="BaseResultMap">
+  	select 
+    a.forum_post_id, a.title, fp.forum_post_html_detail_content as content, a.report_complaints_status, a.is_essence, a.create_time, 
+    a.update_time, a.stars, a.share_num, a.create_user_id, a.share_url, a.recommend_pic_url, a.forum_post_group, 
+    a.forum_posts_uuid,u.login_name as userName
+    from forum_posts a
+    left join users u on u.user_id = a.create_user_id
+    left join forum_post_details fp on fp.forum_post_id = a.forum_post_id
+    where a.forum_post_id = #{forumPostId}
+  </select>
+  
+  <select id="queryFormPostsTaglibsByFormPostsId" parameterType="long" resultType="long">
+  	select fpt.tag_libs_id from forum_posts_taglibs_maps fpt
+  		left join taglibs t on t.taglib_id = fpt.tag_libs_id
+  		 where form_post_id = #{formPostId}
+  </select>
+  
+  <delete id="deleteFormPostById" parameterType="long">
+  	delete from forum_posts fp,forum_posts_answers fpa,forum_posts_images fpi,forum_posts_star_lists fpsl,
+  	forum_posts_taglibs_map fptm,forum_post_detail fpd 
+  </delete>
 </mapper>

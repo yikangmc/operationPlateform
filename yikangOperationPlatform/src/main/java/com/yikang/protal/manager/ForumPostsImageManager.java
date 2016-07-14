@@ -16,4 +16,7 @@ public class ForumPostsImageManager {
 		return forumPostsImageDao.insertSelective(forumPostsImage);
 	}
 	
+	public int updateByPrimaryKeySelective(ForumPostsImage forumPostsImage ){
+		return forumPostsImageDao.updateByPrimaryKeySelective(forumPostsImage);
+	}
 }

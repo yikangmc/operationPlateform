@@ -89,4 +89,8 @@
     where forum_posts_id =#{forumPostsId}
   </select>
   
+  <delete id="deleteByForumPostsId" parameterType="java.lang.Long" >
+    delete from forum_posts_images
+    where forum_posts_id =#{forumPostsId}
+  </delete>
 </mapper>

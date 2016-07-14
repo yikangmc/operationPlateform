@@ -24,4 +24,6 @@ public interface ForumPostsImageDao {
      * @desc 获取某一个文章的所有图片
      * */
     List<ForumPostsImage> getForumPostImagesByForumPostsId(Long forumPostsImagesId);
+
+	int deleteByForumPostsId(Long forumPostsId);
 }

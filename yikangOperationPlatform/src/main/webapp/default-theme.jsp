@@ -346,7 +346,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 								<ul class="treeview-menu">
 									<li class="${reqUri eq '/operationPlatform/forumPosts/forumPost' ? 'active':''}"><a href="/operationPlatform/forumPosts/forumPost"><i class="fa fa-circle-o"></i>文章发布</a></li>
 								 
-									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章浏览</a></li>
+									<li class="${reqUri eq '/operationPlatform/forumPosts/formPostList' ? 'active':''}"><a href="/operationPlatform/forumPosts/formPostList"><i class="fa fa-circle-o"></i>文章浏览</a></li>
 							 
 									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章审核</a></li>
 							 

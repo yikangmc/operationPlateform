@@ -43,4 +43,6 @@ public interface FormPostsStarListDao {
      * **/
     FormPostsStarList selectForumPostStartListByCreateUserIdAndForumPostsId(Map<String,Object> paramMap);
 
+	int deleteByForumPostId(Long forumPostsId);
+
 }

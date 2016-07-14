@@ -105,6 +105,27 @@
 		</set>
 		where forum_post_detail_id = #{forumPostDetailId,jdbcType=BIGINT}
 	</update>
+	
+	<update id="updateByForumPostId" parameterType="com.yikang.protal.entity.ForumPostDetail">
+		update forum_post_details
+		<set>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="forumPostDetailContent != null">
+				forum_post_detail_content =
+				#{forumPostDetailContent,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="forumPostHtmlDetailContent != null">
+				forum_post_html_detail_content =
+				#{forumPostHtmlDetailContent,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where forum_post_id = #{forumPostId,jdbcType=BIGINT}
+	</update>
 	<update id="updateByPrimaryKey" parameterType="com.yikang.protal.entity.ForumPostDetail">
 		update forum_post_details
 		set forum_post_id = #{forumPostId,jdbcType=BIGINT},
@@ -115,4 +136,9 @@
 		#{forumPostHtmlDetailContent,jdbcType=LONGVARCHAR}
 		where forum_post_detail_id = #{forumPostDetailId,jdbcType=BIGINT}
 	</update>
+	<delete id="deleteByForumPostId" parameterType="java.lang.Long">
+		delete from forum_post_details
+		where forum_post_id = #{forumPostId,jdbcType=BIGINT}
+	</delete>
+	
 </mapper>

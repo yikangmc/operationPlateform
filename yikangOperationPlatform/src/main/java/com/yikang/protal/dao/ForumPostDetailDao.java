@@ -15,4 +15,8 @@ public interface ForumPostDetailDao {
 
     int updateByPrimaryKey(ForumPostDetail record);
     
+    int updateByForumPostId(ForumPostDetail record);
+    
+    public int deleteByForumPostId(Long forumPostId);
+    
 }

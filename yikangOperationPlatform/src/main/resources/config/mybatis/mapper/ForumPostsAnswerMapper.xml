@@ -143,5 +143,8 @@
 	order by  fpa.create_time desc
   </select>
   
-  
+  <delete id="deleteByForumPostId" parameterType="java.lang.Long" >
+    delete from forum_posts_answers
+    where form_post_id = #{formPostId,jdbcType=BIGINT}
+  </delete>
 </mapper>

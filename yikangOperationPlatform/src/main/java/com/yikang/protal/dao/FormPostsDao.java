@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.yikang.protal.entity.FormPosts;
+import com.yikang.protal.entity.Taglib;
 
 
 public interface FormPostsDao {
@@ -104,5 +105,25 @@ public interface FormPostsDao {
      * @desc 保存帖子
      */
     public void saveTzContent();
+    
+    /**
+     * 获取所有的专业文章列表
+     * @return
+     */
+    public List<FormPosts> getAllProfessionListByPage();
+    
+    /**
+     * 获取文章的详情
+     * @param forumPostsId
+     * @return
+     */
+    public FormPosts queryFormPostsInfo(Long forumPostsId);
+    
+    /**
+     * 获取文章关联的标签
+     * @param forumPostsId
+     * @return
+     */
+    public List<Long> queryFormPostsTaglibsByFormPostsId(Long forumPostsId);
     
 }

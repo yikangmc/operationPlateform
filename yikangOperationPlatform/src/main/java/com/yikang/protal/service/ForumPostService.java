@@ -2,6 +2,7 @@ package com.yikang.protal.service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import com.yikang.protal.entity.FormPosts;
 import com.yikang.protal.entity.FormPostsTaglibsMap;
 import com.yikang.protal.entity.ForumPostDetail;
 import com.yikang.protal.entity.ForumPostsImage;
+import com.yikang.protal.entity.Taglib;
 import com.yikang.protal.entity.UserServiceInfo;
 import com.yikang.protal.manager.ForumPostDetailManager;
 import com.yikang.protal.manager.ForumPostManager;
@@ -88,6 +90,65 @@ public class ForumPostService {
 		}
 		
 		return  1;
+	}
+	
+	public int updateSelective(String title,String forumPostId,String content,String forumPostDetailContent,String forumPostHtmlDetailContent,String recommendPicUrl,Long userId,String[] images,Long[] taglibIds){
+		Date currentDate = Calendar.getInstance().getTime();
+
+		FormPosts formPosts = new FormPosts();
+		formPosts.setForumPostId(Long.valueOf(forumPostId));
+		formPosts.setTitle(title);
+		formPosts.setContent(content);
+		formPosts.setCreateUserId(userId);
+		formPosts.setIsEssence(Byte.valueOf("0"));
+		formPosts.setRecommendPicUrl(recommendPicUrl);
+		formPosts.setAnswersNums(0);
+		formPosts.setCreateTime(currentDate);
+		formPosts.setUpdateTime(currentDate);
+		formPosts.setShareUrl(UrlGenerateUtil.generateShareForumPostUrl());
+		formPosts.setShareNum(0);
+		formPosts.setStars(0);
+		formPosts.setReportComplaintsStatus(Byte.valueOf("0"));
+		formPosts.setForumPostGroup(Byte.valueOf("1"));
+		
+		formPostsDao.updateByPrimaryKeySelective(formPosts);
+		forumPostDetailManager.updateByPrimaryKeySelective(forumPostDetailContent,forumPostHtmlDetailContent,Long.valueOf(forumPostId),currentDate);
+		//先删除原来的
+		formPostsTaglibsMapDao.deleteByFormPostId(Long.valueOf(forumPostId));
+		// 更新标签
+		for (Long tagLibId : taglibIds) {
+			FormPostsTaglibsMap fptm = new FormPostsTaglibsMap();
+			fptm.setCreateTime(currentDate);
+			fptm.setUpdateTime(currentDate);
+			fptm.setTagLibsId(tagLibId);
+			fptm.setFormPostId(Long.valueOf(forumPostId));
+			formPostsTaglibsMapDao.insertSelective(fptm);
+		}
+		// 更新图片
+		for (int i = 0; i < images.length; i++) {
+			ForumPostsImage forumPostsImage = new ForumPostsImage();
+			forumPostsImage.setCreateTime(currentDate);
+			forumPostsImage.setForumPostsId(Long.valueOf(forumPostId));
+			forumPostsImage.setImageUrl(images[i]);
+			forumPostsImageManager.insertSelective(forumPostsImage);
+		}
+		return 1;
+	}
+	
+	public List<FormPosts> findAllFormPosts(){
+		return formPostsDao.getAllProfessionListByPage();
+	}
+	
+	public FormPosts findForumPostsInfo(Long forumPostsId){
+		return formPostsDao.queryFormPostsInfo(forumPostsId);
+	}
+	
+	public List<Long> queryFormPostsTaglibsByFormPostsId(Long forumPostsId){
+		return formPostsDao.queryFormPostsTaglibsByFormPostsId(forumPostsId);
+	}
+	
+	public int deleteByPrimaryKey(Long forumPostsId){
+		return forumPostManager.deleteByPrimaryKey(forumPostsId);
 	}
 	
 }

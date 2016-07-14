@@ -34,13 +34,42 @@ public class Taglib {
 
     private List<Taglib> childs;
     
+    private Integer forumPostsTznumber;
+    
+    private Date forumPostsTzUpdateTime;
+    private Date forumPostsUpdateTime;
+    
     //活动列表
     private List<FormPosts> formPosts;
     
     //是否已经关注 0未关注，1已经关注
     private Integer isFollow=0;
     
-    public Long getTaglibId() {
+	public Date getForumPostsUpdateTime() {
+		return forumPostsUpdateTime;
+	}
+
+	public void setForumPostsUpdateTime(Date forumPostsUpdateTime) {
+		this.forumPostsUpdateTime = forumPostsUpdateTime;
+	}
+
+	public Date getForumPostsTzUpdateTime() {
+		return forumPostsTzUpdateTime;
+	}
+
+	public void setForumPostsTzUpdateTime(Date forumPostsTzUpdateTime) {
+		this.forumPostsTzUpdateTime = forumPostsTzUpdateTime;
+	}
+
+	public Integer getForumPostsTznumber() {
+		return forumPostsTznumber;
+	}
+
+	public void setForumPostsTznumber(Integer forumPostsTznumber) {
+		this.forumPostsTznumber = forumPostsTznumber;
+	}
+
+	public Long getTaglibId() {
         return taglibId;
     }
 
