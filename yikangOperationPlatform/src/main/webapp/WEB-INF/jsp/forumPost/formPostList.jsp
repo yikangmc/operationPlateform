@@ -103,13 +103,14 @@
 													<td>${formPosts.shareNum}</td>
 													<td><a href = "${formPosts.shareUrl}">连接</a></td>
 													<td>	
-														<c:if test="${formPosts.recommendPicUrl!=null && formPosts.recommendPicUrl !=''}">
+													${formPosts.recommendPicUrl}
+														<%-- <c:if test="${formPosts.recommendPicUrl!=null && formPosts.recommendPicUrl !=''}">
 															<img src="${formPosts.recommendPicUrl}" height="80" width="160"/>
-														</c:if>
+														</c:if> --%>
 													</td>
 													<td>
-														<c:if test="${formPosts.photoUrl!=null && formPosts.photoUrl!=''}">
-														<img src="${formPosts.photoUrl}" width="50" height="50"/><br /></c:if>
+														<%-- <c:if test="${formPosts.photoUrl!=null && formPosts.photoUrl!=''}">
+														<img src="${formPosts.photoUrl}" width="50" height="50"/><br /></c:if> --%>
 															${formPosts.userName }
 													</td>
 													<td><a href="<%=basePath%>forumPosts/updateForumPosts?forumPostsId=${formPosts.forumPostId}" class="btn primary-btn">修改</a>

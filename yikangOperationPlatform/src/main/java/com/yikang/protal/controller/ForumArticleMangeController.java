@@ -70,7 +70,7 @@ public class ForumArticleMangeController {
 			manageService.insertSelective(title,contentStr,forumPostDetailContent,user.getUserId(),recommendPicUrl,taglibId);
 		}
 		modelMap.put("userName", userName);
-		return "redirect:/forumPosts/forumPost";
+		return "redirect:/forumArticleMange/getAllArticleList";
 	}
 	
 	/**

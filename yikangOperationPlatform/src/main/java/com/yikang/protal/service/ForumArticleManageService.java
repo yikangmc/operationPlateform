@@ -84,7 +84,7 @@ public class ForumArticleManageService {
 		}
 		// 添加图片
 		if(images!=null){
-			for (int i = 1; i < images.length; i++) {
+			for (int i = 0; i < images.length; i++) {
 				ForumPostsImage forumPostsImage = new ForumPostsImage();
 				forumPostsImage.setCreateTime(currentDate);
 				forumPostsImage.setForumPostsId(formPosts.getForumPostId());
