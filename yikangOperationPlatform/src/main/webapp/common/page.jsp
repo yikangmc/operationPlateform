@@ -6,6 +6,7 @@
 			<div class="col-sm-5">
 				<div class="dataTables_length" id="example1_length">
 					<input type="hidden" name="currentPage" value="${page.currentPage }">
+					<label>第${page.currentPage }页</label>
 					<label>显示 
 						<select name="pageSize" onchange="submitPage()"  aria-controls="example1" class="form-control input-sm">
 								<option value="10" ${page.pageSize==10?"selected":""}>10</option>
@@ -35,32 +36,32 @@
 						</c:if>
 						
 						<c:if test="${page.currentPage != 1  }">
-							<li class="paginate_button active">
-								<a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
+							<li class="paginate_button">
+								<a href="#" aria-controls="example1" data-dt-idx="1" onclick="jumpPage(this)" tabindex="0">1</a>
 							</li>
 						</c:if>
 						
-						<c:if test="${page.currentPage-2 >0 }">
-							<li class="paginate_button ">
-								<a href="#" aria-controls="example1" data-dt-idx="${page.currentPage-2 }" tabindex="0">${page.currentPage-2 }</a>
+						<c:if test="${page.currentPage-2 >0 and page.currentPage-2>1 }">
+							<li class="paginate_button">
+								<a href="#" class="jumpPage"  onclick="jumpPage(this)" aria-controls="example1"  data-dt-idx="${page.currentPage-2 }" tabindex="0">${page.currentPage-2 }</a>
 							</li>
 						</c:if>
-						<c:if test="${page.currentPage-1 >0}">
+						<c:if test="${page.currentPage-1 >0 and page.currentPage-1>1 }">
 							<li class="paginate_button ">
-								<a href="#" aria-controls="example1" data-dt-idx="${page.currentPage-1 }" tabindex="0">${page.currentPage-1 }</a>
+								<a href="#" class="jumpPage"  onclick="jumpPage(this)" aria-controls="example1" data-dt-idx="${page.currentPage-1 }" tabindex="0">${page.currentPage-1 }</a>
 							</li>
 						</c:if>
-						<li class="paginate_button ">
-							<a href="#" aria-controls="example1" data-dt-idx="${page.currentPage }" tabindex="0">${page.currentPage }</a>
+						<li class="paginate_button active">
+							<a href="#" class="jumpPage"  onclick="jumpPage(this)" aria-controls="example1" data-dt-idx="${page.currentPage }" tabindex="0">${page.currentPage }</a>
 						</li>
 						<c:if test="${page.currentPage+1<page.totalPage  }">
 							<li class="paginate_button ">
-								<a href="#" aria-controls="example1" data-dt-idx="${page.currentPage+1 }" tabindex="0">${page.currentPage+1 }</a>
+								<a href="#" class="jumpPage"  onclick="jumpPage(this)" aria-controls="example1" data-dt-idx="${page.currentPage+1 }" tabindex="0">${page.currentPage+1 }</a>
 							</li>
 						</c:if>
 						<c:if test="${page.currentPage+2<page.totalPage  }">
 							<li class="paginate_button ">
-								<a href="#" aria-controls="example1" data-dt-idx="${page.currentPage+2 }" tabindex="0">${page.currentPage+2 }</a>
+								<a href="#" class="jumpPage"  onclick="jumpPage(this)" aria-controls="example1" data-dt-idx="${page.currentPage+2 }" tabindex="0">${page.currentPage+2 }</a>
 							</li>
 						</c:if>
 						<c:if test="${page.currentPage != page.totalPage  }">
@@ -78,6 +79,11 @@
 	</div>
 
 <script type="text/javascript">
+
+	function jumpPage(src){
+		$("input[name='currentPage']").val($(src).attr("data-dt-idx"));
+		submitPage();
+	}
 	function prePage(){
 		$("input[name='currentPage']").val($("#page_pre").attr("data-dt-idx"));
 		submitPage();

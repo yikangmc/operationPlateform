@@ -110,7 +110,7 @@ public interface FormPostsDao {
      * 获取所有的专业文章列表
      * @return
      */
-    public List<FormPosts> getAllProfessionListByPage();
+    public List<FormPosts> getAllProfessionListByPage(Map<String,Object> paramMap);
     
     /**
      * 获取文章的详情

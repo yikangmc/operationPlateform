@@ -3,6 +3,7 @@ package com.yikang.protal.service;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -135,8 +136,8 @@ public class ForumPostService {
 		return 1;
 	}
 	
-	public List<FormPosts> findAllFormPosts(){
-		return formPostsDao.getAllProfessionListByPage();
+	public List<FormPosts> findAllFormPosts(Map<String,Object> paramMap){
+		return formPostsDao.getAllProfessionListByPage(paramMap);
 	}
 	
 	public FormPosts findForumPostsInfo(Long forumPostsId){

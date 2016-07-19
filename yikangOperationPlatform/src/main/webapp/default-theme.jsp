@@ -338,6 +338,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 							</li>
 							<li class="treeview
 								${reqUri eq '/operationPlatform/forumPosts/forumPost' ? 'active':''}
+								${reqUri eq '/operationPlatform/forumPosts/formPostList' ? 'active':''}
 							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>

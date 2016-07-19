@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yikang.common.utils.MatchHtmlElementAttrValue;
 import com.yikang.protal.base.BaseController;
+import com.yikang.protal.common.page.PageParameter;
 import com.yikang.protal.entity.FormPosts;
 import com.yikang.protal.entity.Taglib;
 import com.yikang.protal.entity.User;
@@ -37,8 +38,9 @@ public class ForumPostsController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping
-	public String formPostList(ModelMap modelMap){
-		List<FormPosts> allFormPosts = forumPostService.findAllFormPosts();
+	public String formPostList(ModelMap modelMap,PageParameter page){
+		modelMap.put("page", page);
+		List<FormPosts> allFormPosts = forumPostService.findAllFormPosts(modelMap);
 		modelMap.addAttribute("formPostsList", allFormPosts);
 		return "forumPost/formPostList";
 	}

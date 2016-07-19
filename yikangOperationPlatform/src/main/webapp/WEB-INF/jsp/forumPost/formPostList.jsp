@@ -17,7 +17,7 @@
 					<h3 class="box-title">帖子列表</h3>
 				</div>
 
-				<form id="paramForm" action="<%=basePath%>forumArticleMange/getAllArticleList" method="post">
+				<form id="paramForm" action="<%=basePath%>forumPosts/formPostList" method="post">
 					<!-- /.box-header -->
 					<div class="box-body">
 						<div id="example1_wrapper"
@@ -38,48 +38,38 @@
 										<thead>
 											<tr role="row">
 												<th class="sorting_asc col-sm-1" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1" aria-sort="ascending"
+													aria-sort="ascending"
 													aria-label="Rendering engine: activate to sort column descending"
 													>标题</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending"
 													>分类</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
 													aria-label="Browser: activate to sort column ascending"
 													>精华</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending"
 													>创建时间</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending"
 													>更新时间</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending"
 													>点赞数量</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending"
 													>分享次数</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending"
 													>分享链接</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending"
 													>推荐图片地址</th>
 												
 												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
 													aria-label="Engine version: activate to sort column ascending"
 													>用户信息</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
 													aria-label="Engine version: activate to sort column ascending"
 													>操作</th>
 											</tr>
@@ -113,8 +103,10 @@
 														<img src="${formPosts.photoUrl}" width="50" height="50"/><br /></c:if> --%>
 															${formPosts.userName }
 													</td>
-													<td><a href="<%=basePath%>forumPosts/updateForumPosts?forumPostsId=${formPosts.forumPostId}" class="btn primary-btn">修改</a>
-													<a href="<%=basePath%>forumPosts/deleteFormPost?forumPostsId=${formPosts.forumPostId}" class="btn primary-btn">删除</a></td>
+													<td>
+														<a href="<%=basePath%>forumPosts/updateForumPosts?forumPostsId=${formPosts.forumPostId}" class="btn btn-info ">修改</a>
+														<a href="<%=basePath%>forumPosts/deleteFormPost?forumPostsId=${formPosts.forumPostId}" class="btn btn-info">删除</a>
+													</td>
 												</tr>
 											</c:forEach>
 										</tbody>
