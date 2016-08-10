@@ -66,12 +66,24 @@
 						</c:if>
 						<c:if test="${page.currentPage != page.totalPage  }">
 							<li class="paginate_button ">
-								<a href="#" aria-controls="example1" data-dt-idx="${page.totalPage}" tabindex="0">${page.totalPage }</a>
+								<a href="#" aria-controls="example1" data-dt-idx="${page.totalPage}" onclick="jumpPage(this)"  tabindex="0">${page.totalPage }</a>
 							</li>
 						</c:if>
-						<li class="paginate_button next" >
-							<a href="javascript:lastPage()" id="page_next" aria-controls="example1" data-dt-idx="${page.currentPage+1 }" tabindex="0" onclick="lastPage()">下一页</a>
-						</li>
+						<c:if test="${page.totalPage <= 1 }">
+							<li class="paginate_button previous disabled" >
+								<a href="#" id="page_next" aria-controls="example1" data-dt-idx="${page.currentPage }" tabindex="0" onclick="lastPage()">下一页</a>
+							</li>
+						</c:if>
+						<c:if test="${page.totalPage > 1 && page.totalPage != page.currentPage}">
+							<li class="paginate_button next" >
+								<a href="javascript:lastPage()" id="page_next" aria-controls="example1" data-dt-idx="${page.currentPage+1 }" tabindex="0" onclick="lastPage()">下一页</a>
+							</li>
+						</c:if>
+						<c:if test="${page.totalPage > 1 && page.totalPage == page.currentPage}">
+							<li class="paginate_button previous disabled" >
+								<a href="#" id="page_next" aria-controls="example1" data-dt-idx="${page.currentPage }" tabindex="0" onclick="lastPage()">下一页</a>
+							</li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
