@@ -13,6 +13,7 @@ import com.yikang.protal.dao.UserDao;
 import com.yikang.protal.dao.UserInfoDao;
 import com.yikang.protal.dao.UserLinkStatuDao;
 import com.yikang.protal.dao.UserServiceInfoDao;
+import com.yikang.protal.entity.Adetps;
 import com.yikang.protal.entity.User;
 import com.yikang.protal.entity.UserInfo;
 import com.yikang.protal.entity.UserLinkStatu;
@@ -133,4 +134,17 @@ public class UserManager {
 	public UserServiceInfo getUserServiceInfoByUserId(Long userId){
 		return userServiceInfoDao.getUserServiceInfoByUserIdTwo(userId);
 	}
+	
+	public List<UserServiceInfo> getUserServiceInfoListPage(Map<String,Object> paramData){
+		return userServiceInfoDao.getUserServiceInfoListPage(paramData);
+	}
+	
+	public int updateUserPositionStatusCheckePass(Map<String,Object> paramData){
+		return userServiceInfoDao.updateUserPositionStatusCheckePass(paramData);
+	}
+	
+	public List<Adetps>	getAdeptsListPage(Map<String,Object> paramData){
+		return userServiceInfoDao.getAdeptsListPage(paramData);
+	}
+
 }

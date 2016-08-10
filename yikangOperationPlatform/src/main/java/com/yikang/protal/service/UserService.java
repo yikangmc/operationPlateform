@@ -4,14 +4,19 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.ModelMap;
 
 import com.yikang.base.AliasFactory;
 import com.yikang.base.InvitationCodeGnerateUtil;
+import com.yikang.protal.entity.Adetps;
 import com.yikang.protal.entity.Location;
 import com.yikang.protal.entity.User;
 import com.yikang.protal.entity.UserInfo;
+import com.yikang.protal.entity.UserServiceInfo;
 import com.yikang.protal.manager.LocationManager;
 import com.yikang.protal.manager.UserManager;
 
@@ -116,6 +121,28 @@ public class UserService {
 	 * */
 	public List<UserInfo> listUser(Map<String,Object>  paramMap){
 		return userManager.getUserInfoListPage(paramMap);
+	}
+	
+	/**
+	 * @desc 获取专业用户列表
+	 * @param paramMap
+	 * @return
+	 */
+	public List<UserServiceInfo> listVerification(Map<String, Object> paramMap){
+		return userManager.getUserServiceInfoListPage(paramMap);
+	}
+	
+	public List<Adetps> listAdepts(Map<String, Object> paramMap){
+		return userManager.getAdeptsListPage(paramMap);
+	}
+	
+	/**
+	 * 更新专业用户认证信息
+	 * @param userServiceInfoId
+	 * @return
+	 */
+	public int updateUserPositionStatusCheckePass(Map<String,Object> paramData){
+		return userManager.updateUserPositionStatusCheckePass(paramData);
 	}
 	
 }

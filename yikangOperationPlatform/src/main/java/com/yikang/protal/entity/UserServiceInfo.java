@@ -35,6 +35,8 @@ public class UserServiceInfo {
 
     private String userSex;
     
+    private String pushAlias;
+    
     private Date birthday;
     
     private Double longitude;
@@ -82,6 +84,8 @@ public class UserServiceInfo {
 
 //    用户文章列表
     private List<FormPosts> formPosts;
+    
+    private String userAdeptId;
     
     public Long getUserServiceInfoId() {
         return userServiceInfoId;
@@ -349,6 +353,22 @@ public class UserServiceInfo {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+
+	public String getPushAlias() {
+		return pushAlias;
+	}
+
+	public void setPushAlias(String pushAlias) {
+		this.pushAlias = pushAlias;
+	}
+
+	public String getUserAdeptId() {
+		return userAdeptId;
+	}
+
+	public void setUserAdeptId(String userAdeptId) {
+		this.userAdeptId = userAdeptId;
 	}
 
 	

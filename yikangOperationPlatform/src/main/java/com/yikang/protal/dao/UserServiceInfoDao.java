@@ -3,6 +3,7 @@ package com.yikang.protal.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.yikang.protal.entity.Adetps;
 import com.yikang.protal.entity.UserServiceInfo;
 
 
@@ -105,5 +106,17 @@ public interface UserServiceInfoDao {
     List<UserServiceInfo> getMyFollowUser(Long createUserId);
     
     
+    /**
+     * 查询申请认证用户列表
+     * @param paramData
+     * @return
+     */
+    List<UserServiceInfo> getUserServiceInfoListPage(Map<String,Object> paramData);
     
+    /**
+     * 获取擅长表信息
+     * @param paramData
+     * @return
+     */
+    List<Adetps> getAdeptsListPage(Map<String,Object> paramData);
 }

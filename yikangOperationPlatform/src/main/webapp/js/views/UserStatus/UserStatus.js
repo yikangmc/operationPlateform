@@ -12,6 +12,15 @@ UserStatus.prototype={
 		},
 		reflushPage:function(){
 			window.location.href=basePath+"userStatus/getUserStatusList";
+		},
+		openModal:function(pushAlias){
+			window.push_alias=pushAlias;
+			$("#myModal").modal("show");
+		},
+		modalSubmit:function(){
+			var pushAlias=window.push_alias;
+			$("input[name='push_alias']").val(pushAlias);
+			$("#statusForm").submit();
 		}
 }
 

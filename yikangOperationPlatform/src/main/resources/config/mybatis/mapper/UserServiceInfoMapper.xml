@@ -1,361 +1,409 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yikang.protal.dao.UserServiceInfoDao">
-  <resultMap id="BaseResultMap" type="com.yikang.protal.entity.UserServiceInfo">
-    <id column="user_service_info_id" jdbcType="BIGINT" property="userServiceInfoId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="job_category" jdbcType="BIGINT" property="jobCategory" />
-    <result column="user_position" jdbcType="TINYINT" property="userPosition" />
-    <result column="provence_code" jdbcType="BIGINT" property="provenceCode" />
-    <result column="city_code" jdbcType="BIGINT" property="cityCode" />
-    <result column="district_code" jdbcType="BIGINT" property="districtCode" />
-    <result column="address_detail" jdbcType="VARCHAR" property="addressDetail" />
-    <result column="photo_url" jdbcType="VARCHAR" property="photoUrl" />
-    <result column="create_time" jdbcType="BIGINT" property="createTime" />
-    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
-    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
-    <result column="user_service_name" jdbcType="VARCHAR" property="userServiceName" />
-    <result column="longitude" jdbcType="DOUBLE" property="longitude" />
-    <result column="latitude" jdbcType="DOUBLE" property="latitude" />
-    <result column="map_position_address" jdbcType="VARCHAR" property="mapPositionAddress" />
-    <result column="hospital" jdbcType="VARCHAR" property="hospital" />
-    <result column="offices" jdbcType="INTEGER" property="offices" />
-    <result column="adept" jdbcType="VARCHAR" property="adept" />
-    <result column="position_audit_status" jdbcType="TINYINT" property="positionAuditStatus" />
-    <result column="new_user_position" jdbcType="BIGINT" property="newUserPosition" />
-    <result column="oraganization_name" jdbcType="VARCHAR" property="oraganizationName" />
-    <result column="user_introduce" jdbcType="VARCHAR" property="userIntroduce" />
-    <result column="work_realm" jdbcType="TINYINT" property="workRealm" />
-    <result column="user_certificate" jdbcType="VARCHAR" property="userCertificate" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    user_service_info_id, user_id, job_category, user_position, provence_code, city_code, 
-    district_code, address_detail, photo_url, create_time, update_time, is_delete, user_service_name, 
-    longitude, latitude, map_position_address, hospital, offices, adept, position_audit_status, 
-    new_user_position, oraganization_name, user_introduce, work_realm, user_certificate
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user_service_infos
-    where user_service_info_id = #{userServiceInfoId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from user_service_infos
-    where user_service_info_id = #{userServiceInfoId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.yikang.protal.entity.UserServiceInfo">
-    insert into user_service_infos (user_service_info_id, user_id, job_category, 
-      user_position, provence_code, city_code, 
-      district_code, address_detail, photo_url, 
-      create_time, update_time, is_delete, 
-      user_service_name, longitude, latitude, 
-      map_position_address, hospital, offices, 
-      adept, position_audit_status, new_user_position, 
-      oraganization_name, user_introduce, work_realm, 
-      user_certificate)
-    values (#{userServiceInfoId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{jobCategory,jdbcType=BIGINT}, 
-      #{userPosition,jdbcType=TINYINT}, #{provenceCode,jdbcType=BIGINT}, #{cityCode,jdbcType=BIGINT}, 
-      #{districtCode,jdbcType=BIGINT}, #{addressDetail,jdbcType=VARCHAR}, #{photoUrl,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, #{isDelete,jdbcType=TINYINT}, 
-      #{userServiceName,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, 
-      #{mapPositionAddress,jdbcType=VARCHAR}, #{hospital,jdbcType=VARCHAR}, #{offices,jdbcType=INTEGER}, 
-      #{adept,jdbcType=VARCHAR}, #{positionAuditStatus,jdbcType=TINYINT}, #{newUserPosition,jdbcType=BIGINT}, 
-      #{oraganizationName,jdbcType=VARCHAR}, #{userIntroduce,jdbcType=VARCHAR}, #{workRealm,jdbcType=TINYINT}, 
-      #{userCertificate,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.yikang.protal.entity.UserServiceInfo">
-    insert into user_service_infos
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userServiceInfoId != null">
-        user_service_info_id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="jobCategory != null">
-        job_category,
-      </if>
-      <if test="userPosition != null">
-        user_position,
-      </if>
-      <if test="provenceCode != null">
-        provence_code,
-      </if>
-      <if test="cityCode != null">
-        city_code,
-      </if>
-      <if test="districtCode != null">
-        district_code,
-      </if>
-      <if test="addressDetail != null">
-        address_detail,
-      </if>
-      <if test="photoUrl != null">
-        photo_url,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-      <if test="isDelete != null">
-        is_delete,
-      </if>
-      <if test="userServiceName != null">
-        user_service_name,
-      </if>
-      <if test="longitude != null">
-        longitude,
-      </if>
-      <if test="latitude != null">
-        latitude,
-      </if>
-      <if test="mapPositionAddress != null">
-        map_position_address,
-      </if>
-      <if test="hospital != null">
-        hospital,
-      </if>
-      <if test="offices != null">
-        offices,
-      </if>
-      <if test="adept != null">
-        adept,
-      </if>
-      <if test="positionAuditStatus != null">
-        position_audit_status,
-      </if>
-      <if test="newUserPosition != null">
-        new_user_position,
-      </if>
-      <if test="oraganizationName != null">
-        oraganization_name,
-      </if>
-      <if test="userIntroduce != null">
-        user_introduce,
-      </if>
-      <if test="workRealm != null">
-        work_realm,
-      </if>
-      <if test="userCertificate != null">
-        user_certificate,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userServiceInfoId != null">
-        #{userServiceInfoId,jdbcType=BIGINT},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="jobCategory != null">
-        #{jobCategory,jdbcType=BIGINT},
-      </if>
-      <if test="userPosition != null">
-        #{userPosition,jdbcType=TINYINT},
-      </if>
-      <if test="provenceCode != null">
-        #{provenceCode,jdbcType=BIGINT},
-      </if>
-      <if test="cityCode != null">
-        #{cityCode,jdbcType=BIGINT},
-      </if>
-      <if test="districtCode != null">
-        #{districtCode,jdbcType=BIGINT},
-      </if>
-      <if test="addressDetail != null">
-        #{addressDetail,jdbcType=VARCHAR},
-      </if>
-      <if test="photoUrl != null">
-        #{photoUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=BIGINT},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=BIGINT},
-      </if>
-      <if test="isDelete != null">
-        #{isDelete,jdbcType=TINYINT},
-      </if>
-      <if test="userServiceName != null">
-        #{userServiceName,jdbcType=VARCHAR},
-      </if>
-      <if test="longitude != null">
-        #{longitude,jdbcType=DOUBLE},
-      </if>
-      <if test="latitude != null">
-        #{latitude,jdbcType=DOUBLE},
-      </if>
-      <if test="mapPositionAddress != null">
-        #{mapPositionAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="hospital != null">
-        #{hospital,jdbcType=VARCHAR},
-      </if>
-      <if test="offices != null">
-        #{offices,jdbcType=INTEGER},
-      </if>
-      <if test="adept != null">
-        #{adept,jdbcType=VARCHAR},
-      </if>
-      <if test="positionAuditStatus != null">
-        #{positionAuditStatus,jdbcType=TINYINT},
-      </if>
-      <if test="newUserPosition != null">
-        #{newUserPosition,jdbcType=BIGINT},
-      </if>
-      <if test="oraganizationName != null">
-        #{oraganizationName,jdbcType=VARCHAR},
-      </if>
-      <if test="userIntroduce != null">
-        #{userIntroduce,jdbcType=VARCHAR},
-      </if>
-      <if test="workRealm != null">
-        #{workRealm,jdbcType=TINYINT},
-      </if>
-      <if test="userCertificate != null">
-        #{userCertificate,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yikang.protal.entity.UserServiceInfo">
-    update user_service_infos
-    <set>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="jobCategory != null">
-        job_category = #{jobCategory,jdbcType=BIGINT},
-      </if>
-      <if test="userPosition != null">
-        user_position = #{userPosition,jdbcType=TINYINT},
-      </if>
-      <if test="provenceCode != null">
-        provence_code = #{provenceCode,jdbcType=BIGINT},
-      </if>
-      <if test="cityCode != null">
-        city_code = #{cityCode,jdbcType=BIGINT},
-      </if>
-      <if test="districtCode != null">
-        district_code = #{districtCode,jdbcType=BIGINT},
-      </if>
-      <if test="addressDetail != null">
-        address_detail = #{addressDetail,jdbcType=VARCHAR},
-      </if>
-      <if test="photoUrl != null">
-        photo_url = #{photoUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=BIGINT},
-      </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=BIGINT},
-      </if>
-      <if test="isDelete != null">
-        is_delete = #{isDelete,jdbcType=TINYINT},
-      </if>
-      <if test="userServiceName != null">
-        user_service_name = #{userServiceName,jdbcType=VARCHAR},
-      </if>
-      <if test="longitude != null">
-        longitude = #{longitude,jdbcType=DOUBLE},
-      </if>
-      <if test="latitude != null">
-        latitude = #{latitude,jdbcType=DOUBLE},
-      </if>
-      <if test="mapPositionAddress != null">
-        map_position_address = #{mapPositionAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="hospital != null">
-        hospital = #{hospital,jdbcType=VARCHAR},
-      </if>
-      <if test="offices != null">
-        offices = #{offices,jdbcType=INTEGER},
-      </if>
-      <if test="adept != null">
-        adept = #{adept,jdbcType=VARCHAR},
-      </if>
-      <if test="positionAuditStatus != null">
-        position_audit_status = #{positionAuditStatus,jdbcType=TINYINT},
-      </if>
-      <if test="newUserPosition != null">
-        new_user_position = #{newUserPosition,jdbcType=BIGINT},
-      </if>
-      <if test="oraganizationName != null">
-        oraganization_name = #{oraganizationName,jdbcType=VARCHAR},
-      </if>
-      <if test="userIntroduce != null">
-        user_introduce = #{userIntroduce,jdbcType=VARCHAR},
-      </if>
-      <if test="workRealm != null">
-        work_realm = #{workRealm,jdbcType=TINYINT},
-      </if>
-      <if test="userCertificate != null">
-        user_certificate = #{userCertificate,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where user_service_info_id = #{userServiceInfoId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.yikang.protal.entity.UserServiceInfo">
-    update user_service_infos
-    set user_id = #{userId,jdbcType=BIGINT},
-      job_category = #{jobCategory,jdbcType=BIGINT},
-      user_position = #{userPosition,jdbcType=TINYINT},
-      provence_code = #{provenceCode,jdbcType=BIGINT},
-      city_code = #{cityCode,jdbcType=BIGINT},
-      district_code = #{districtCode,jdbcType=BIGINT},
-      address_detail = #{addressDetail,jdbcType=VARCHAR},
-      photo_url = #{photoUrl,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=BIGINT},
-      update_time = #{updateTime,jdbcType=BIGINT},
-      is_delete = #{isDelete,jdbcType=TINYINT},
-      user_service_name = #{userServiceName,jdbcType=VARCHAR},
-      longitude = #{longitude,jdbcType=DOUBLE},
-      latitude = #{latitude,jdbcType=DOUBLE},
-      map_position_address = #{mapPositionAddress,jdbcType=VARCHAR},
-      hospital = #{hospital,jdbcType=VARCHAR},
-      offices = #{offices,jdbcType=INTEGER},
-      adept = #{adept,jdbcType=VARCHAR},
-      position_audit_status = #{positionAuditStatus,jdbcType=TINYINT},
-      new_user_position = #{newUserPosition,jdbcType=BIGINT},
-      oraganization_name = #{oraganizationName,jdbcType=VARCHAR},
-      user_introduce = #{userIntroduce,jdbcType=VARCHAR},
-      work_realm = #{workRealm,jdbcType=TINYINT},
-      user_certificate = #{userCertificate,jdbcType=VARCHAR}
-    where user_service_info_id = #{userServiceInfoId,jdbcType=BIGINT}
-  </update>
+	<resultMap id="BaseResultMap" type="com.yikang.protal.entity.UserServiceInfo">
+		<id column="user_service_info_id" jdbcType="BIGINT" property="userServiceInfoId" />
+		<result column="user_id" jdbcType="BIGINT" property="userId" />
+		<result column="job_category" jdbcType="BIGINT" property="jobCategory" />
+		<result column="user_position" jdbcType="TINYINT" property="userPosition" />
+		<result column="provence_code" jdbcType="BIGINT" property="provenceCode" />
+		<result column="city_code" jdbcType="BIGINT" property="cityCode" />
+		<result column="district_code" jdbcType="BIGINT" property="districtCode" />
+		<result column="address_detail" jdbcType="VARCHAR" property="addressDetail" />
+		<result column="photo_url" jdbcType="VARCHAR" property="photoUrl" />
+		<result column="create_time" jdbcType="BIGINT" property="createTime" />
+		<result column="update_time" jdbcType="BIGINT" property="updateTime" />
+		<result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+		<result column="user_service_name" jdbcType="VARCHAR" property="userServiceName" />
+		<result column="longitude" jdbcType="DOUBLE" property="longitude" />
+		<result column="latitude" jdbcType="DOUBLE" property="latitude" />
+		<result column="map_position_address" jdbcType="VARCHAR"
+			property="mapPositionAddress" />
+		<result column="hospital" jdbcType="VARCHAR" property="hospital" />
+		<result column="offices" jdbcType="INTEGER" property="offices" />
+		<result column="adept" jdbcType="VARCHAR" property="adept" />
+		<result column="position_audit_status" jdbcType="TINYINT"
+			property="positionAuditStatus" />
+		<result column="new_user_position" jdbcType="BIGINT" property="newUserPosition" />
+		<result column="oraganization_name" jdbcType="VARCHAR"
+			property="oraganizationName" />
+		<result column="user_introduce" jdbcType="VARCHAR" property="userIntroduce" />
+		<result column="work_realm" jdbcType="TINYINT" property="workRealm" />
+		<result column="user_certificate" jdbcType="VARCHAR" property="userCertificate" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		user_service_info_id, user_id, job_category, user_position,
+		provence_code, city_code,
+		district_code, address_detail, photo_url,
+		create_time, update_time,
+		is_delete, user_service_name,
+		longitude,
+		latitude, map_position_address, hospital, offices, adept,
+		position_audit_status,
+		new_user_position, oraganization_name,
+		user_introduce, work_realm, user_certificate
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_service_infos
+		where user_service_info_id =
+		#{userServiceInfoId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from
+		user_service_infos
+		where user_service_info_id =
+		#{userServiceInfoId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.yikang.protal.entity.UserServiceInfo">
+		insert into user_service_infos
+		(user_service_info_id, user_id, job_category,
+		user_position,
+		provence_code, city_code,
+		district_code, address_detail, photo_url,
+		create_time, update_time, is_delete,
+		user_service_name, longitude,
+		latitude,
+		map_position_address, hospital, offices,
+		adept,
+		position_audit_status, new_user_position,
+		oraganization_name,
+		user_introduce, work_realm,
+		user_certificate)
+		values
+		(#{userServiceInfoId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
+		#{jobCategory,jdbcType=BIGINT},
+		#{userPosition,jdbcType=TINYINT},
+		#{provenceCode,jdbcType=BIGINT}, #{cityCode,jdbcType=BIGINT},
+		#{districtCode,jdbcType=BIGINT}, #{addressDetail,jdbcType=VARCHAR},
+		#{photoUrl,jdbcType=VARCHAR},
+		#{createTime,jdbcType=BIGINT},
+		#{updateTime,jdbcType=BIGINT}, #{isDelete,jdbcType=TINYINT},
+		#{userServiceName,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE},
+		#{latitude,jdbcType=DOUBLE},
+		#{mapPositionAddress,jdbcType=VARCHAR},
+		#{hospital,jdbcType=VARCHAR}, #{offices,jdbcType=INTEGER},
+		#{adept,jdbcType=VARCHAR}, #{positionAuditStatus,jdbcType=TINYINT},
+		#{newUserPosition,jdbcType=BIGINT},
+		#{oraganizationName,jdbcType=VARCHAR},
+		#{userIntroduce,jdbcType=VARCHAR}, #{workRealm,jdbcType=TINYINT},
+		#{userCertificate,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yikang.protal.entity.UserServiceInfo">
+		insert into user_service_infos
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userServiceInfoId != null">
+				user_service_info_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="jobCategory != null">
+				job_category,
+			</if>
+			<if test="userPosition != null">
+				user_position,
+			</if>
+			<if test="provenceCode != null">
+				provence_code,
+			</if>
+			<if test="cityCode != null">
+				city_code,
+			</if>
+			<if test="districtCode != null">
+				district_code,
+			</if>
+			<if test="addressDetail != null">
+				address_detail,
+			</if>
+			<if test="photoUrl != null">
+				photo_url,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="userServiceName != null">
+				user_service_name,
+			</if>
+			<if test="longitude != null">
+				longitude,
+			</if>
+			<if test="latitude != null">
+				latitude,
+			</if>
+			<if test="mapPositionAddress != null">
+				map_position_address,
+			</if>
+			<if test="hospital != null">
+				hospital,
+			</if>
+			<if test="offices != null">
+				offices,
+			</if>
+			<if test="adept != null">
+				adept,
+			</if>
+			<if test="positionAuditStatus != null">
+				position_audit_status,
+			</if>
+			<if test="newUserPosition != null">
+				new_user_position,
+			</if>
+			<if test="oraganizationName != null">
+				oraganization_name,
+			</if>
+			<if test="userIntroduce != null">
+				user_introduce,
+			</if>
+			<if test="workRealm != null">
+				work_realm,
+			</if>
+			<if test="userCertificate != null">
+				user_certificate,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userServiceInfoId != null">
+				#{userServiceInfoId,jdbcType=BIGINT},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=BIGINT},
+			</if>
+			<if test="jobCategory != null">
+				#{jobCategory,jdbcType=BIGINT},
+			</if>
+			<if test="userPosition != null">
+				#{userPosition,jdbcType=TINYINT},
+			</if>
+			<if test="provenceCode != null">
+				#{provenceCode,jdbcType=BIGINT},
+			</if>
+			<if test="cityCode != null">
+				#{cityCode,jdbcType=BIGINT},
+			</if>
+			<if test="districtCode != null">
+				#{districtCode,jdbcType=BIGINT},
+			</if>
+			<if test="addressDetail != null">
+				#{addressDetail,jdbcType=VARCHAR},
+			</if>
+			<if test="photoUrl != null">
+				#{photoUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="userServiceName != null">
+				#{userServiceName,jdbcType=VARCHAR},
+			</if>
+			<if test="longitude != null">
+				#{longitude,jdbcType=DOUBLE},
+			</if>
+			<if test="latitude != null">
+				#{latitude,jdbcType=DOUBLE},
+			</if>
+			<if test="mapPositionAddress != null">
+				#{mapPositionAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="hospital != null">
+				#{hospital,jdbcType=VARCHAR},
+			</if>
+			<if test="offices != null">
+				#{offices,jdbcType=INTEGER},
+			</if>
+			<if test="adept != null">
+				#{adept,jdbcType=VARCHAR},
+			</if>
+			<if test="positionAuditStatus != null">
+				#{positionAuditStatus,jdbcType=TINYINT},
+			</if>
+			<if test="newUserPosition != null">
+				#{newUserPosition,jdbcType=BIGINT},
+			</if>
+			<if test="oraganizationName != null">
+				#{oraganizationName,jdbcType=VARCHAR},
+			</if>
+			<if test="userIntroduce != null">
+				#{userIntroduce,jdbcType=VARCHAR},
+			</if>
+			<if test="workRealm != null">
+				#{workRealm,jdbcType=TINYINT},
+			</if>
+			<if test="userCertificate != null">
+				#{userCertificate,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yikang.protal.entity.UserServiceInfo">
+		update user_service_infos
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=BIGINT},
+			</if>
+			<if test="jobCategory != null">
+				job_category = #{jobCategory,jdbcType=BIGINT},
+			</if>
+			<if test="userPosition != null">
+				user_position = #{userPosition,jdbcType=TINYINT},
+			</if>
+			<if test="provenceCode != null">
+				provence_code = #{provenceCode,jdbcType=BIGINT},
+			</if>
+			<if test="cityCode != null">
+				city_code = #{cityCode,jdbcType=BIGINT},
+			</if>
+			<if test="districtCode != null">
+				district_code = #{districtCode,jdbcType=BIGINT},
+			</if>
+			<if test="addressDetail != null">
+				address_detail = #{addressDetail,jdbcType=VARCHAR},
+			</if>
+			<if test="photoUrl != null">
+				photo_url = #{photoUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=BIGINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="userServiceName != null">
+				user_service_name = #{userServiceName,jdbcType=VARCHAR},
+			</if>
+			<if test="longitude != null">
+				longitude = #{longitude,jdbcType=DOUBLE},
+			</if>
+			<if test="latitude != null">
+				latitude = #{latitude,jdbcType=DOUBLE},
+			</if>
+			<if test="mapPositionAddress != null">
+				map_position_address =
+				#{mapPositionAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="hospital != null">
+				hospital = #{hospital,jdbcType=VARCHAR},
+			</if>
+			<if test="offices != null">
+				offices = #{offices,jdbcType=INTEGER},
+			</if>
+			<if test="adept != null">
+				adept = #{adept,jdbcType=VARCHAR},
+			</if>
+			<if test="positionAuditStatus != null">
+				position_audit_status =
+				#{positionAuditStatus,jdbcType=TINYINT},
+			</if>
+			<if test="newUserPosition != null">
+				new_user_position = #{newUserPosition,jdbcType=BIGINT},
+			</if>
+			<if test="oraganizationName != null">
+				oraganization_name =
+				#{oraganizationName,jdbcType=VARCHAR},
+			</if>
+			<if test="userIntroduce != null">
+				user_introduce = #{userIntroduce,jdbcType=VARCHAR},
+			</if>
+			<if test="workRealm != null">
+				work_realm = #{workRealm,jdbcType=TINYINT},
+			</if>
+			<if test="userCertificate != null">
+				user_certificate = #{userCertificate,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where user_service_info_id = #{userServiceInfoId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yikang.protal.entity.UserServiceInfo">
+		update
+		user_service_infos
+		set user_id = #{userId,jdbcType=BIGINT},
+		job_category = #{jobCategory,jdbcType=BIGINT},
+		user_position =
+		#{userPosition,jdbcType=TINYINT},
+		provence_code =
+		#{provenceCode,jdbcType=BIGINT},
+		city_code =
+		#{cityCode,jdbcType=BIGINT},
+		district_code =
+		#{districtCode,jdbcType=BIGINT},
+		address_detail =
+		#{addressDetail,jdbcType=VARCHAR},
+		photo_url =
+		#{photoUrl,jdbcType=VARCHAR},
+		create_time =
+		#{createTime,jdbcType=BIGINT},
+		update_time =
+		#{updateTime,jdbcType=BIGINT},
+		is_delete =
+		#{isDelete,jdbcType=TINYINT},
+		user_service_name =
+		#{userServiceName,jdbcType=VARCHAR},
+		longitude =
+		#{longitude,jdbcType=DOUBLE},
+		latitude = #{latitude,jdbcType=DOUBLE},
+		map_position_address = #{mapPositionAddress,jdbcType=VARCHAR},
+		hospital = #{hospital,jdbcType=VARCHAR},
+		offices =
+		#{offices,jdbcType=INTEGER},
+		adept = #{adept,jdbcType=VARCHAR},
+		position_audit_status = #{positionAuditStatus,jdbcType=TINYINT},
+		new_user_position = #{newUserPosition,jdbcType=BIGINT},
+		oraganization_name = #{oraganizationName,jdbcType=VARCHAR},
+		user_introduce = #{userIntroduce,jdbcType=VARCHAR},
+		work_realm =
+		#{workRealm,jdbcType=TINYINT},
+		user_certificate =
+		#{userCertificate,jdbcType=VARCHAR}
+		where user_service_info_id =
+		#{userServiceInfoId,jdbcType=BIGINT}
+	</update>
 
 
 	<!-- 查询某个服务人员的信息， 根据用户id -->
 	<select id="getUserServiceInfoByUserId" resultType="map"
 		parameterType="long">
 		select
-		us.user_id 			as userId,
-		us.job_category 	as jobCategory,
-		us.user_position 	as userPosition,
-		us.city_code 		as cityCode,
-		us.district_code 	as districtCode,
-		us.address_detail	as addressDetail,
-		us.photo_url 		as photoUrl,
-		us.create_time 		as createTime,
+		us.user_id as userId,
+		us.job_category as
+		jobCategory,
+		us.user_position as userPosition,
+		us.city_code as cityCode,
+		us.district_code as districtCode,
+		us.address_detail as addressDetail,
+		us.photo_url as photoUrl,
+		us.create_time as createTime,
 		us.update_time
 		as updateTime,
-		us.user_service_name 	as userName,
+		us.user_service_name as userName,
 		us.map_position_address as mapPositionAddress,
 		us.hospital,
 		us.offices,
 		us.adept,
-		users.invitation_code 	as invitationCode,
+		users.invitation_code as invitationCode,
 		'' as
 		'invitationUrl',
-		count(sa.senior_id) 	as nums
+		count(sa.senior_id) as nums
 		from
 		user_service_infos us
 		inner join users on us.user_id=users.user_id
-		left join senior_account sa on us.user_id=sa.create_user_id
+		left join senior_account
+		sa on us.user_id=sa.create_user_id
 		where us.user_id =
 		#{userId,jdbcType=BIGINT}
 	</select>
@@ -363,36 +411,36 @@
 
 	<resultMap type="com.yikang.protal.entity.UserServiceInfo"
 		id="UserServiceInfoMapForTwo">
-		<result column="userId" 		property="userId" />
-		<result column="jobCategory" 	property="jobCategory" />
-		<result column="userPosition" 	property="userPosition" />
-		<result column="cityCode" 		property="cityCode" />
-		<result column="districtCode" 	property="districtCode" />
-		<result column="photoUrl" 		property="photoUrl" />
-		<result column="createTime" 	property="createTime" />
-		<result column="updateTime" 	property="updateTime" />
+		<result column="userId" property="userId" />
+		<result column="jobCategory" property="jobCategory" />
+		<result column="userPosition" property="userPosition" />
+		<result column="cityCode" property="cityCode" />
+		<result column="districtCode" property="districtCode" />
+		<result column="photoUrl" property="photoUrl" />
+		<result column="createTime" property="createTime" />
+		<result column="updateTime" property="updateTime" />
 		<result column="userServiceName" property="userServiceName" />
 		<result column="userServiceName" property="userName" />
 		<result column="mapPositionAddress" property="mapPositionAddress" />
-		<result column="addressDetail" 	property="addressDetail" />
-		<result column="hospital" 		property="hospital" />
-		<result column="offices" 		property="offices" />
-		<result column="invitationUrl" 	property="invitationUrl" />
-		<result column="infoWrite" 		property="infoWrite" />
+		<result column="addressDetail" property="addressDetail" />
+		<result column="hospital" property="hospital" />
+		<result column="offices" property="offices" />
+		<result column="invitationUrl" property="invitationUrl" />
+		<result column="infoWrite" property="infoWrite" />
 		<result column="positionAuditStatus" property="positionAuditStatus" />
-		<result column="nums" 			property="nums" />
+		<result column="nums" property="nums" />
 		<result column="invitationCode" property="invitationCode" />
-		<result column="birthday" 		property="birthday" />
-		<result column="user_sex" 		property="userSex" />
-		<result column="user_introduce" property="userIntroduce"/>
-		<result column="user_certificate" property="userCertificate"/>
+		<result column="birthday" property="birthday" />
+		<result column="user_sex" property="userSex" />
+		<result column="user_introduce" property="userIntroduce" />
+		<result column="user_certificate" property="userCertificate" />
 
-<!-- 		<association property="officeObj" column="offices" javaType="com.yikang.protal.entity.Office"> -->
-<!-- 			<id column="office_id" property="officeId" /> -->
-<!-- 			<result column="office_name" property="officeName" /> -->
-<!-- 		</association> -->
-<!-- 		<collection property="adepts"  fetchType="eager" column="userId" select="com.yikang.protal.dao.AdeptDao.getAdeptsByUserId">       -->
-<!--         </collection> -->
+		<!-- <association property="officeObj" column="offices" javaType="com.yikang.protal.entity.Office"> -->
+		<!-- <id column="office_id" property="officeId" /> -->
+		<!-- <result column="office_name" property="officeName" /> -->
+		<!-- </association> -->
+		<!-- <collection property="adepts" fetchType="eager" column="userId" select="com.yikang.protal.dao.AdeptDao.getAdeptsByUserId"> -->
+		<!-- </collection> -->
 	</resultMap>
 
 
@@ -414,13 +462,14 @@
 		us.update_time
 		as updateTime,
 		us.user_service_name as userServiceName,
-		us.map_position_address as mapPositionAddress,
+		us.map_position_address as
+		mapPositionAddress,
 		us.hospital,
 		us.offices,
 		offices.office_id,
 		offices.office_name,
-        ui.user_introduce,
-        us.user_certificate,
+		ui.user_introduce,
+		us.user_certificate,
 		users.invitation_code as
 		invitationCode,
 		'' as 'invitationUrl',
@@ -429,13 +478,16 @@
 		positionAuditStatus,
 		users.info_write as
 		infoWrite,
-		adepts.adept_id as adeptId,
+		adepts.adept_id as
+		adeptId,
 		adepts.adept_name as adeptName,
-		us.position_audit_status as positionAuditStatus
+		us.position_audit_status as
+		positionAuditStatus
 		from
 		user_service_infos
 		us
-		inner join users on us.user_id=users.user_id
+		inner join users on
+		us.user_id=users.user_id
 		left join senior_account
 		sa on
 		us.user_id=sa.create_user_id
@@ -443,7 +495,8 @@
 		us.user_id=uam.user_id
 		left join adepts on uam.adept_id=adepts.adept_id
 		left join offices on us.offices=offices.office_id
-		left join user_infos ui on users.user_id=ui.user_id
+		left join user_infos
+		ui on users.user_id=ui.user_id
 		where us.user_id =
 		#{userId,jdbcType=BIGINT}
 	</select>
@@ -505,17 +558,19 @@
 				adept = #{adept,jdbcType=VARCHAR},
 			</if>
 			<if test="positionAuditStatus != null">
-				position_audit_status = #{positionAuditStatus,jdbcType=TINYINT},
+				position_audit_status =
+				#{positionAuditStatus,jdbcType=TINYINT},
 			</if>
 			<if test="newUserPosition != null">
 				new_user_position = #{newUserPosition,jdbcType=INTEGER},
 			</if>
-		  <if test="oraganizationName != null">
-	        oraganization_name = #{oraganizationName,jdbcType=VARCHAR},
-	      </if>
-	      <if test="userIntroduce != null">
-	        user_introduce = #{userIntroduce,jdbcType=VARCHAR},
-	      </if>
+			<if test="oraganizationName != null">
+				oraganization_name =
+				#{oraganizationName,jdbcType=VARCHAR},
+			</if>
+			<if test="userIntroduce != null">
+				user_introduce = #{userIntroduce,jdbcType=VARCHAR},
+			</if>
 		</set>
 		where user_id = #{userId,jdbcType=BIGINT}
 	</update>
@@ -523,8 +578,8 @@
 	<!-- 清空用户信息 -->
 	<update id="updateUserServiceInfoIsEmptyByUserId" parameterType="long">
 		update
-		user_service_infos 
-		set 
+		user_service_infos
+		set
 		job_category=-2,
 		user_position=0,
 		provence_code='',
@@ -547,7 +602,8 @@
 	<update id="submitUpdateUserPosition" parameterType="map">
 		update
 		user_service_infos
-		set new_user_position = #{userPosition}, position_audit_status=1
+		set new_user_position = #{userPosition},
+		position_audit_status=1
 		where
 		user_id=#{userId}
 	</update>
@@ -556,7 +612,8 @@
 		parameterType="map">
 		update
 		user_service_infos
-		set position_audit_status=#{positionAuditStatus}
+		set
+		position_audit_status=#{positionAuditStatus}
 		where
 		user_id=#{userId}
 	</update>
@@ -569,22 +626,120 @@
 		position_audit_status=#{positionAuditStatus},user_position=new_user_position
 		where user_id=#{userId}
 	</update>
-	
-	<!--查询我关注的用户  -->
-	<resultMap type="com.yikang.protal.entity.UserServiceInfo" extends="BaseResultMap" id="getMyFollowUserResultMap">
-		<collection  property="formPosts" column="user_id" fetchType="eager" select="com.yikang.protal.dao.FormPostsDao.getUserNewForumPostByCreateUserId"></collection>		
+
+	<!--查询我关注的用户 -->
+	<resultMap type="com.yikang.protal.entity.UserServiceInfo"
+		extends="BaseResultMap" id="getMyFollowUserResultMap">
+		<collection property="formPosts" column="user_id"
+			fetchType="eager"
+			select="com.yikang.protal.dao.FormPostsDao.getUserNewForumPostByCreateUserId"></collection>
 	</resultMap>
-	<select id="getMyFollowUser" parameterType="long" resultMap="getMyFollowUserResultMap">
-		select 
-				usi.user_service_info_id, 
-				usi.user_id, 
-				usi.job_category, usi.user_position, usi.provence_code, usi.city_code, 
-	    		usi.district_code, usi.address_detail, usi.photo_url, usi.create_time, usi.update_time, 
-	    		usi.map_position_address, usi.offices,
-	    		usi.oraganization_name, usi.user_introduce, usi.work_realm,usi.user_certificate
-		from follow_user_maps fum inner join user_service_infos usi on fum.follow_user_id=usi.user_id
-		where create_user_id=#{createUserId}
+	<select id="getMyFollowUser" parameterType="long"
+		resultMap="getMyFollowUserResultMap">
+		select
+		usi.user_service_info_id,
+		usi.user_id,
+		usi.job_category, usi.user_position, usi.provence_code, usi.city_code,
+		usi.district_code, usi.address_detail, usi.photo_url, usi.create_time,
+		usi.update_time,
+		usi.map_position_address, usi.offices,
+		usi.oraganization_name, usi.user_introduce,
+		usi.work_realm,usi.user_certificate
+		from
+		follow_user_maps fum inner join
+		user_service_infos usi on
+		fum.follow_user_id=usi.user_id
+		where
+		create_user_id=#{createUserId}
 	</select>
-	
+
+
+	<resultMap type="com.yikang.protal.entity.UserServiceInfo"
+		id="getUserServiceInfoListPageMap">
+		<result column="user_service_info_id" property="userServiceInfoId" />
+		<result column="user_id" property="userId" />
+		<result column="user_name" property="userName" />
+		<result column="user_sex" property="userSex" />
+		<result column="push_alias" property="pushAlias" />
+		<result column="job_category" property="jobCategory" />
+		<result column="user_position" property="userPosition" />
+		<result column="provence_code" property="provenceCode" />
+		<result column="city_code" property="cityCode" />
+		<result column="district_code" property="districtCode" />
+		<result column="address_detail" property="addressDetail" />
+		<result column="photo_url" property="photoUrl" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="is_delete" property="isDelete" />
+		<result column="user_service_name" property="userServiceName" />
+		<result column="longitude" property="longitude" />
+		<result column="latitude" property="latitude" />
+		<result column="map_position_address" property="mapPositionAddress" />
+		<result column="hospital" property="hospital" />
+		<result column="offices" property="offices" />
+		<result column="adept" property="adept" />
+		<result column="position_audit_status" property="positionAuditStatus" />
+		<result column="new_user_position" property="newUserPosition" />
+		<result column="oraganization_name" property="oraganizationName" />
+		<result column="user_introduce" property="userIntroduce" />
+		<result column="work_realm" property="workRealm" />
+		<result column="user_certificate" property="userCertificate" />
+		<result column="adept_id" property="userAdeptId" />
+	</resultMap>
+	<!-- 所有专业用户 -->
+	<select id="getUserServiceInfoListPage" resultMap="getUserServiceInfoListPageMap"
+		parameterType="com.yikang.protal.entity.UserServiceInfo">
+		select
+		usi.user_service_info_id,
+		usi.user_id,
+		ui.user_name,
+		ui.user_sex,
+		us.push_alias,
+		usi.job_category,
+		usi.user_position,
+		usi.provence_code,
+		usi.city_code,
+		usi.district_code,
+		usi.address_detail,
+		usi.photo_url,
+		usi.create_time,
+		usi.update_time,
+		usi.is_delete,
+		usi.user_service_name,
+		usi.longitude,
+		usi.latitude,
+		usi.map_position_address,
+		usi.hospital,
+		usi.offices,
+		uam.adept_id,
+		usi.position_audit_status,
+		usi.new_user_position,
+		usi.oraganization_name,
+		usi.user_introduce,
+		usi.work_realm,
+		usi.user_certificate
+		from users us, user_adept_maps uam,
+		user_service_infos usi
+		INNER JOIN user_infos ui ON
+		usi.user_id=ui.user_id
+		where usi.user_id=us.user_id and
+		uam.user_id=usi.user_id
+		order by usi.user_service_info_id desc
+	</select>
+
+	<resultMap type="com.yikang.protal.entity.Adetps" id="getAdeptsListPageMap">
+		<result column="adept_id" property="adeptId" />
+		<result column="adept_name" property="adeptName" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="is_delete" property="isDelete" />
+		<result column="type" property="type" />
+	</resultMap>
+	<select id="getAdeptsListPage" resultMap="getAdeptsListPageMap"
+		parameterType="com.yikang.protal.entity.Adetps">
+		select
+		adp.adept_id,adp.adept_name,adp.create_time,adp.update_time,adp.is_delete,adp.type
+		from adepts adp
+	</select>
 
 </mapper>

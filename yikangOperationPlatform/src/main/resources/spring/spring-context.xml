@@ -41,6 +41,11 @@
 		</property>
 	</bean>
 	
+
+	<bean class="com.yikang.common.utils.ApplicationContextUtil" lazy-init="false"></bean>
+	
+	<bean class="com.yikang.common.utils.PorpertiesLonder" lazy-init="false"> </bean>
+	
 	
 <!-- 	<import resource="spring-context.xml"/> -->
 	

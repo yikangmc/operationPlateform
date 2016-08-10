@@ -1,16 +1,25 @@
 package com.yikang.protal.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yikang.common.message.im.Message;
+import com.yikang.common.message.im.MessageQueue;
+import com.yikang.common.utils.MessageProperties;
 import com.yikang.protal.common.page.PageParameter;
-import com.yikang.protal.entity.AppointmentUser;
+import com.yikang.protal.entity.Adetps;
 import com.yikang.protal.entity.UserInfo;
+import com.yikang.protal.entity.UserServiceInfo;
 import com.yikang.protal.service.UserService;
+
 
 @Controller
 public class UserController {
@@ -44,6 +53,63 @@ public class UserController {
 	@RequestMapping
 	public String editUser(){
 		return "";
+	}
+	
+	@RequestMapping
+	public String verificationList(ModelMap modelMap, UserServiceInfo userServiceInfo,PageParameter page){
+		modelMap.put("page", page);
+		modelMap.put("userServiceInfo", userServiceInfo);
+		List<UserServiceInfo> userServiceInfoList=userService.listVerification(modelMap);
+		List<Adetps> adetpsList = userService.listAdepts(modelMap);
+		for(UserServiceInfo usi:userServiceInfoList){
+			String userAdeptId[]=usi.getUserAdeptId().split(",");
+			String userAdeptName="";
+			if(userAdeptId.length>0){
+				for(String adept:userAdeptId){
+					for(Adetps adp:adetpsList){
+						///System.err.println(usi.getUserName()+":"+adept+"--"+adp.getAdeptId().toString()+","+adept.equals(adp.getAdeptId().toString()));
+						if(adept.equals(adp.getAdeptId().toString())){
+							userAdeptName=userAdeptName+adp.getAdeptName()+" ";
+						}
+					}
+				}
+			}
+			usi.setAdept(userAdeptName);
+		}
+		modelMap.put("userServiceInfoList", userServiceInfoList);
+		return "user/verification";
+	}
+	
+	@RequestMapping
+	public String updateUserPositionStatusCheckePass(String userId,String no,String otherReason,HttpServletRequest req){
+		Map<String, Object> usiMap = new HashMap<String,Object>();
+		String push_alias=req.getParameter("push_alias");
+		//no值：2 通过，3 退回
+		if("2".equals(no)){
+			usiMap.put("userId", userId);
+			usiMap.put("positionAuditStatus", 2);
+			userService.updateUserPositionStatusCheckePass(usiMap);
+		}else if("3".equals(no)){
+			String reasons[] = req.getParameterValues("reason");
+			String message="";
+			if(reasons.length>0){
+				for(int i=0;i<reasons.length;i++){
+					if(i==reasons.length-1){
+						message+=reasons[i];
+					}else{
+						message+=reasons[i]+",";
+					}
+				}
+			}
+			String multiple1=MessageProperties.getPropertieValue("message_body_1");
+			String multipl2=MessageProperties.getPropertieValue("message_body_2");
+			String sendMessage = multiple1+message+otherReason+multipl2;
+			Message<String> msg=new Message<String>();
+			msg.setAlias(push_alias);
+			msg.setContent(sendMessage);
+			MessageQueue.put(msg);
+		}
+		return "redirect:/user/verificationList";
 	}
 	
 }
