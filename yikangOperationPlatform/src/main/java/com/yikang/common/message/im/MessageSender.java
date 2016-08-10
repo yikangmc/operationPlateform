@@ -1,7 +1,6 @@
 package com.yikang.common.message.im;
 
 
-import java.util.Collection;
 import java.util.List;
 
 import com.yikang.common.message.MessageUtils;

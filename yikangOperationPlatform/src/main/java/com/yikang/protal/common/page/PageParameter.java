@@ -6,7 +6,7 @@ package com.yikang.protal.common.page;
  */
 public class PageParameter {
 
-    public static final int DEFAULT_PAGE_SIZE = 25;
+    public static final int DEFAULT_PAGE_SIZE = 10;
 
     private int pageSize;
     private int currentPage;

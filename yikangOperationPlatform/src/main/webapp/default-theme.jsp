@@ -24,8 +24,8 @@ request.getSession().setAttribute("reqUri", reqUri);
 				<header class="main-header">
 					<!-- Logo -->
 					<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-						<span class="logo-mini"><b>A</b>LT</span> <!-- logo for regular state and mobile devices -->
-						<span class="logo-lg"><b>Admin</b>LTE</span>
+						<span class="logo-mini"><b>Y</b>OP</span> <!-- logo for regular state and mobile devices -->
+						<span class="logo-lg"><b>YK</b>OperationPlatform</span>
 					</a>
 					<!-- Header Navbar: style can be found in header.less -->
 					<nav class="navbar navbar-static-top" role="navigation">
@@ -301,39 +301,31 @@ request.getSession().setAttribute("reqUri", reqUri);
 								</a>
 								<ul class="treeview-menu">
 									<li class=""><a href="#"><i class="fa fa-circle-o"></i>新用户状态查询</a></li>
-									<li class="menu-open active"><a href="#"><i class="fa fa-circle-o"></i>活动查询
-									<i class="fa fa-angle-left pull-right"></i>
-									</a>
-										<ul class="treeview-menu">
-											<li class="active">
-												<a href="/operationPlatform/appointmentUser/getAppointmentList"><i class="fa fa-circle-o"></i>预约用户查询</a></li>
-											<li>
-												<a href="#">
-													<i class="fa fa-circle-o"></i>三方用户注入度查询<i class="fa fa-angle-left pull-right"></i>
-												</a>
-												<ul class="treeview-menu">
-													<li><a href="#"><i class="fa fa-circle-o"></i> 功夫熊用户注入度查询</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
+<!-- 									<li class="menu-open active"><a href="#"><i class="fa fa-circle-o"></i>活动查询 -->
+<!-- 									<i class="fa fa-angle-left pull-right"></i> -->
+<!-- 									</a> -->
+<!-- 										<ul class="treeview-menu"> -->
+<!-- 											<li class="active"> -->
+<!-- 												<a href="/operationPlatform/appointmentUser/getAppointmentList"><i class="fa fa-circle-o"></i>预约用户查询</a></li> -->
+<!-- 											<li> -->
+<!-- 												<a href="#"> -->
+<!-- 													<i class="fa fa-circle-o"></i>三方用户注入度查询<i class="fa fa-angle-left pull-right"></i> -->
+<!-- 												</a> -->
+<!-- 												<ul class="treeview-menu"> -->
+<!-- 													<li><a href="#"><i class="fa fa-circle-o"></i> 功夫熊用户注入度查询</a></li> -->
+<!-- 												</ul> -->
+<!-- 											</li> -->
+<!-- 										</ul> -->
+<!-- 									</li> -->
 								</ul>
 							</li>
 							<li class="treeview
-							${reqUri eq '/operationPlatform/user/userList' ? 'active':''}
-							${reqUri eq '/operationPlatform/appointmentOrder/listServiceItem' ? 'active':''}
-							${reqUri eq '/operationPlatform/seniorAccount/getSeniorAccountList' ? 'active':''}
 							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>基础数据管理</span> <i class="fa fa-angle-left pull-right"></i>
 								</a>
 								<ul class="treeview-menu">
-									<li class="${reqUri eq '/operationPlatform/user/userList' ? 'active':''}"><a href="/operationPlatform/user/userList"><i class="fa fa-circle-o"></i>用户管理</a></li>
-								 
-									<li class="${reqUri eq '/operationPlatform/appointmentOrder/listServiceItem' ? 'active':''}"><a href="/operationPlatform/appointmentOrder/listServiceItem"><i class="fa fa-circle-o"></i>订单管理</a></li>
-								 
-									<li class="${reqUri eq '/operationPlatform/seniorAccount/getSeniorAccountList' ? 'active':''}"><a href="/operationPlatform/seniorAccount/getSeniorAccountList"><i class="fa fa-circle-o"></i>患者管理</a></li>
 								</ul>
 							</li>
 							<li class="treeview
@@ -464,7 +456,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<!-- /.content-wrapper -->
 	<footer class="main-footer">
 		<div class="pull-right hidden-xs">
-			<b>Version</b> 0.0.1
+			<b>Version</b> 0.0.2
 		</div>
 		<strong>Copyright &copy; 2015-2016 <a
 			href="http://jjkangfu.com">易康美辰</a>.

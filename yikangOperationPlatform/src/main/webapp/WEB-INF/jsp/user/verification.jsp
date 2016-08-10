@@ -31,10 +31,13 @@
 						<!-- /.table-responsive -->
 						<div class="box-body">
 							<div class="form-group">
-								<label for="operatorType" class="col-sm-2 control-label">类型</label>
+								<label for="operatorType" class="col-sm-2 control-label">审核状态</label>
 								<div class="col-sm-2">
 									<select class="form-control" name="operatorType">
 										<option value="-1">全部</option>
+										<option value="-1">审核中</option>
+										<option value="-1">审核通过</option>
+										<option value="-1">退回</option>
 									</select>
 								</div>
 							</div>
