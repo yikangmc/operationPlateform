@@ -12,10 +12,21 @@ public class UrlGenerateUtil {
 	 * **/
 	public static String generateShareForumPostUrl(){
 		String shareUrl=System.getProperty("shareForumPostUrl");
-		String uuid=UUID.randomUUID().toString();
+		String uuid=UUID.randomUUID().toString().replaceAll("-", "");
 		return shareUrl+uuid;
 	}
 	
+	
+	/**
+	 * @author liushuaic
+	 * @date 2016-06-17 18:05
+	 * @desc 生成文章分享url
+	 * **/
+	public static String generateShareForumPostUrl(String uuid){
+		String shareUrl=System.getProperty("shareForumPostUrl");
+		uuid= uuid.replaceAll("-", "");
+		return shareUrl+uuid;
+	}
 	/**
 	 * @author liushuaic
 	 * @date 2016-06-17 18:09

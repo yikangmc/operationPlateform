@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -63,7 +65,10 @@ public class ForumPostService {
 		formPosts.setAnswersNums(0);
 		formPosts.setCreateTime(currentDate);
 		formPosts.setUpdateTime(currentDate);
-		formPosts.setShareUrl(UrlGenerateUtil.generateShareForumPostUrl());
+		String uuid=UUID.randomUUID().toString();
+		String shareUrl=UrlGenerateUtil.generateShareForumPostUrl(uuid);
+		formPosts.setShareUrl(shareUrl);
+		formPosts.setForumPostsUuid(uuid);
 		formPosts.setShareNum(0);
 		formPosts.setStars(0);
 		formPosts.setReportComplaintsStatus(Byte.valueOf("0"));
