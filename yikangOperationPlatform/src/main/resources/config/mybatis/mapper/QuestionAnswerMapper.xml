@@ -284,4 +284,37 @@
 	where qa.question_answer_id=#{questionAnswerId}
   </select>
   
+    
+  <!-- 查询问题回复列表 -->
+  <select id="getQuestionAnswerListPage" parameterType="map" resultMap="BaseResultMap">
+  	select 
+	que.title,
+	qa.*,
+	qad.question_answer_detail_content,
+	qad.question_answer_html_content,
+	ui.user_name,
+	ui.photo_url,
+	usi.user_position
+	from questions que 
+    inner join question_answers qa on que.question_id=qa.question_id
+	left join question_answer_details qad on qa.question_answer_id=qad.question_answer_id
+    left join user_infos ui on qa.create_user_id=ui.user_id
+    left join user_service_infos usi on qa.create_user_id=usi.user_id
+	<where>
+		<if test="null != questionTitle">
+			que.title like concat('%',#{questionTitle},'%')
+		</if>
+		<if test="null != questionAnswer">
+			and  qad.question_answer_detail_content like concat('%',#{questionAnswer},'%')
+		</if>
+		<if test="null != answerStartDateTime">
+			and qa.create_time &lt;= #{answerStartDateTime}
+		</if>
+		<if test="null != answerEndTime">
+			and qa.create_time >= #{answerEndTime}
+		</if>
+	</where>  
+  </select>
+  
+  
 </mapper>

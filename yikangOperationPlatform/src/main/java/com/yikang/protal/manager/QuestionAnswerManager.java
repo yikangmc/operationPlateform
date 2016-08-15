@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.fileupload.ParameterParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -131,6 +132,22 @@ public class QuestionAnswerManager {
 	}
 	
 	
+	/**
+	 * @author liushuaic
+	 * @date 2016-08-12 10:57s
+	 * @desc 获取回复列表
+	 * */
+	public List<QuestionAnswer> getQuestionAnswerListPage(String questionTitle,String questionAnswer,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page){
+		
+		Map<String,Object> paramMap=new HashMap<String, Object>();
+		paramMap.put("questionTitle", questionTitle);
+		paramMap.put("questionAnswer", questionAnswer);
+		paramMap.put("answerStartDateTime", answerStartDateTime);
+		paramMap.put("answerEndTime", answerEndTime);
+		paramMap.put("page", page);
+		
+		return questionAnswerDao.getQuestionAnswerListPage(paramMap);
+	}
 	
 	
 }

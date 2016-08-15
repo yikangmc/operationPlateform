@@ -74,4 +74,12 @@ public interface QuestionAnswerDao {
      * @desc 获取某一个回答的详情
      * **/
     QuestionAnswer getQuestionAnswerByQuestionAnswerId(Long questionAnswerId);
+    
+    
+    /**
+     * @author liushuaic
+     * @date 2016-08-12 14:58
+     * @desc 获取回复时间
+     * **/
+    List<QuestionAnswer> getQuestionAnswerListPage(Map<String,Object> paramMap);
 }
