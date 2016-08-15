@@ -384,12 +384,10 @@ request.getSession().setAttribute("reqUri", reqUri);
 										<a href="/operationPlatform/question/questionList"><i class="fa fa-circle-o"></i>问题列表</a>
 									</li>
 								 
-									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>回答删除</a></li>
+									<li class="${reqUri eq '/operationPlatform/questionAnswer/questionAnswerList' ? 'active':''}"><a href="/operationPlatform/questionAnswer/questionAnswerList"><i class="fa fa-circle-o"></i>回答删除</a></li>
 								</ul>
 							</li>
-							<li class="treeview
-								${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}
-							">
+							<li class="treeview ${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>用户管理</span> <i class="fa fa-angle-left pull-right"></i>

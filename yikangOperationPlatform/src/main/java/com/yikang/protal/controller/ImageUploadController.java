@@ -48,9 +48,9 @@ public class ImageUploadController {
 			out.println("</script>");
 			return;
 		}
-		if (file.getSize() > 1024 * 1024) {
+		if (file.getSize() > (1024 * 1024*3)) {
 			out.println("<script type=\"text/javascript\">");
-			out.println("window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ",''," + "'文件大小不得大于1M');");
+			out.println("window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ",''," + "'文件大小不得大于3M');");
 			out.println("</script>");
 			return;
 		}

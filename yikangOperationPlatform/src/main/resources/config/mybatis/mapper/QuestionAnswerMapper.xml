@@ -286,7 +286,7 @@
   
     
   <!-- 查询问题回复列表 -->
-  <select id="getQuestionAnswerListPage" parameterType="map" resultMap="BaseResultMap">
+  <select id="getQuestionAnswerListPage" parameterType="map" resultMap="selectQuestionAnswerResultMap">
   	select 
 	que.title,
 	qa.*,

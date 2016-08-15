@@ -29,6 +29,7 @@ public class QuestionAnswerController{
 	public String questionAnswerList(ModelMap modelMap, String quetionTitle,String questionAnswerTitle,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page){
 		List<QuestionAnswer> data=questionAnswerService.getQuestionAnswerListPage(quetionTitle, questionAnswerTitle, answerId, answerStartDateTime, answerEndTime,page);
 		modelMap.put("data", data);
+		modelMap.put("page", page);
 		return "questionAnswer/questionAnswerList";
 	}
 	

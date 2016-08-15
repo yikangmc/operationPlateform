@@ -71,7 +71,7 @@
 							class="dataTables_wrapper form-inline dt-bootstrap">
 							<div class="row">
 								<div class="col-sm-12">
-									<table id="example1"
+									<table
 										class="table table-bordered table-striped dataTable"
 										role="grid" aria-describedby="example1_info">
 										<thead>
@@ -80,49 +80,21 @@
 												<th class="sorting">创建人</th>
 												<th class="sorting">回复时间</th>
 												<th class="sorting">回答内容</th>
-												<th class="sorting">回答时间</th>
 												<th class="sorting">回复人</th>
-												
+												<th class="sorting">操作</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${userServiceInfoList }"
-												var="userServiceInfo" varStatus="varIndex">
+											<c:forEach items="${data }"
+												var="questionAnswer" varStatus="varIndex">
 												<tr>
-													<td class="sorting_1">${userServiceInfo.userName }</td>
-													<td><c:if test="${userServiceInfo.userSex==0 }">未知</c:if>
-														<c:if test="${userServiceInfo.userSex==1 }">男</c:if> <c:if
-															test="${userServiceInfo.userSex==2 }">女</c:if></td>
-													<td><c:if test="${userServiceInfo.userPosition==0}">未认证</c:if>
-														<c:if test="${userServiceInfo.userPosition==1}">康复师</c:if>
-														<c:if test="${userServiceInfo.userPosition==2}">中医师</c:if>
-														<c:if test="${userServiceInfo.userPosition==3}">护理人员</c:if>
-														<c:if test="${userServiceInfo.userPosition==4}">企业主体</c:if>
-														<c:if test="${userServiceInfo.userPosition==5}">医院/科室主体</c:if></td>
-													<td><c:if test="${userServiceInfo.newUserPosition==0}">未认证</c:if>
-														<c:if test="${userServiceInfo.newUserPosition==1}">康复师</c:if>
-														<c:if test="${userServiceInfo.newUserPosition==2}">中医师</c:if>
-														<c:if test="${userServiceInfo.newUserPosition==3}">护理人员</c:if>
-														<c:if test="${userServiceInfo.newUserPosition==4}">企业主体</c:if>
-														<c:if test="${userServiceInfo.newUserPosition==5}">医院/科室主体</c:if></td>
-													<td>${userServiceInfo.userIntroduce}</td>
-													<td>${userServiceInfo.hospital}</td>
-													<td><c:if test="${userServiceInfo.offices==-2}">无</c:if>
-														<c:if test="${userServiceInfo.offices!=-2}">${userServiceInfo.offices}</c:if>
-													</td>
-													<td>${userServiceInfo.oraganizationName}</td>
-													<td>${userServiceInfo.addressDetail}</td>
-													<td>${userServiceInfo.adept}</td>
-													<td>${userServiceInfo.userCertificate}</td>
-													<td><c:if
-															test="${userServiceInfo.positionAuditStatus==0}">未审核</c:if>
-														<c:if test="${userServiceInfo.positionAuditStatus==1}">审核中</c:if>
-														<c:if test="${userServiceInfo.positionAuditStatus==2}">已通过</c:if>
-														<c:if test="${userServiceInfo.positionAuditStatus==3}">退回</c:if></td>
-													<td><a class="btn btn-sm btn-info"
-														href="<%=basePath%>user/updateUserPositionStatusCheckePass?no=2&userId=${userServiceInfo.userId}&newUserPosition=${userServiceInfo.newUserPosition}">通过</a>
-														<button class="btn btn-sm btn-info" type="button"
-															onclick="userStatus.openModal('${userServiceInfo.pushAlias}')">不通过</button>
+													<td>${questionAnswer.question.title }</td>
+													<td>${questionAnswer.question.userName }</td>
+													<td>${questionAnswer.createTime }</td>
+													<td>${questionAnswer.content}</td>
+													<td>${questionAnswer.userName}</td>
+													<td>
+														<button type="button" value="删除"></button>
 													</td>
 												</tr>
 											</c:forEach>
