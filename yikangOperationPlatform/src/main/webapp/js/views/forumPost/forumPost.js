@@ -29,8 +29,18 @@ ForumPost.prototype={
 				alert('请填写内容！');
 				return false;
 			}
-			
 			$("#paramForm").submit();
+		},
+		del:function(forumPostId,basePath){
+			if(confirm("确定要删除吗？")){
+			
+			$.post(basePath+"/forumPosts/deleteFormPost", { "forumPostsId": forumPostId }, function (data,status) {
+              if (status == "success") {
+                  alert("删除成功！");
+                  window.location.reload();
+              }
+          });
+			}
 		}
 }
 

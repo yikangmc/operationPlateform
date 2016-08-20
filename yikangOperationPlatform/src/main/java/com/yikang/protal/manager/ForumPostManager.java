@@ -1,5 +1,7 @@
 package com.yikang.protal.manager;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +12,7 @@ import com.yikang.protal.dao.ForumPostDetailDao;
 import com.yikang.protal.dao.ForumPostsAnswerDao;
 import com.yikang.protal.dao.ForumPostsImageDao;
 import com.yikang.protal.entity.FormPosts;
+import com.yikang.protal.entity.ForumPostsAnswer;
 
 @Component
 public class ForumPostManager {
@@ -39,6 +42,10 @@ public class ForumPostManager {
 		forumPostsImageDao.deleteByForumPostsId(forumPostsId);
 		formPostsStarListDao.deleteByForumPostId(forumPostsId);
 		return formPostsTaglibsMapDao.deleteByFormPostId(forumPostsId);
+	}
+	
+	public List<ForumPostsAnswer> getForumPostsAnswersByFormPostId(Long forumPostsId){
+		return forumPostsAnswerDao.getForumPostsAnswersByFormPostId(forumPostsId);
 	}
 	
 }

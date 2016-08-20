@@ -1,35 +1,62 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <%@ include file="/common/head.jsp"%>
-<title>帖子列表</title>
+<title>文章列表</title>
 </head>
 <body>
 <script type="text/javascript" src="<%=path%>/js/views/forumPost/forumPost-upload.js"></script>
+<script type="text/javascript" src="<%=path%>/js/views/forumPost/forumPost.js"></script>
+
 <div class="row">
 		<div class="col-sm-12">
 			<div class="box">
-
 				<div class="box-header">
-					<h3 class="box-title">帖子列表</h3>
+					<h3 class="box-title">文章列表</h3>
 				</div>
-
-				<form id="paramForm" action="<%=basePath%>forumPosts/formPostList" method="post">
-					<!-- /.box-header -->
-					<div class="box-body">
-						<div id="example1_wrapper"
-							class="dataTables_wrapper form-inline dt-bootstrap">
-							<div class="row">
-								<div class="col-sm-12">
-									<div id="example1_filter" class="dataTables_filter">
-										<label>Search:
-										<input type="search" class="form-control input-sm" placeholder="搜索" aria-controls="example1"></label>
+				<form id="paramForm" action="<%=basePath%>forumPosts/formPostList" method="post" class="form-horizontal">
+				
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">搜索</h3>
+								<div class="box-tools pull-right">
+									<button class="btn btn-box-tool" data-widget="collapse">
+										<i class="fa fa-minus"></i>
+									</button>
+									<button class="btn btn-box-tool" data-widget="remove">
+										<i class="fa fa-times"></i>
+									</button>
+								</div>
+							</div>
+							<div class="box-body" style="display: block;">
+								<div class="box-body">
+									<div class="form-group">
+										<label for="content" class="col-sm-2 control-label">文章标题</label>
+										<div class="col-sm-2">
+											<input type="text" id="title" name="title" class="form-control" />
+										</div>
+									</div>
+									<div for="operatorType" class="form-group">
+										<label class="col-sm-2 control-label">文章内容</label>
+										<div class="col-sm-2">
+											<input type="text" id="content" name="content" class="form-control"/>
+										</div>
 									</div>
 								</div>
 							</div>
+							<div class="box-footer clearfix" style="display: block;">
+								<button type="submit" class="btn btn-sm btn-info btn-flat pull-right">查询</button>
+								<button type="reset"  class="btn btn-sm btn-default btn-flat pull-right">重置</button>
+							</div>
+						</div>
+					</div>
+				</div>
+						<div id="example1_wrapper"
+							class="dataTables_wrapper form-inline dt-bootstrap">
 							<div class="row">
 								<div class="col-sm-12">
 									<table id="example1"
@@ -105,7 +132,7 @@
 													</td>
 													<td>
 														<a href="<%=basePath%>forumPosts/updateForumPosts?forumPostsId=${formPosts.forumPostId}" class="btn btn-info ">修改</a>
-														<a href="<%=basePath%>forumPosts/deleteFormPost?forumPostsId=${formPosts.forumPostId}" class="btn btn-info">删除</a>
+														<button class="btn btn-info " onclick="forumPost.del(${formPosts.forumPostId},'<%=basePath%>')">删除</button>
 													</td>
 												</tr>
 											</c:forEach>
@@ -117,12 +144,9 @@
 							<%@ include file="/common/page.jsp"%>
 							
 						</div>
+						</form>
 					</div>
-					<!-- /.box-body -->
-				</form>
 			</div>
 		</div>
-	</div>
-	
 </body>
 </html>

@@ -56,26 +56,12 @@ public class UserController {
 	}
 	
 	@RequestMapping
-	public String verificationList(ModelMap modelMap, UserServiceInfo userServiceInfo,PageParameter page){
+	public String verificationList(ModelMap modelMap, UserServiceInfo userServiceInfo,PageParameter page ,HttpServletRequest req){
 		modelMap.put("page", page);
 		modelMap.put("userServiceInfo", userServiceInfo);
+		String operatorType = req.getParameter("operatorType");
+		modelMap.put("positionAuditStatus", operatorType);
 		List<UserServiceInfo> userServiceInfoList=userService.listVerification(modelMap);
-		List<Adetps> adetpsList = userService.listAdepts(modelMap);
-		for(UserServiceInfo usi:userServiceInfoList){
-			String userAdeptId[]=usi.getUserAdeptId().split(",");
-			String userAdeptName="";
-			if(userAdeptId.length>0){
-				for(String adept:userAdeptId){
-					for(Adetps adp:adetpsList){
-						///System.err.println(usi.getUserName()+":"+adept+"--"+adp.getAdeptId().toString()+","+adept.equals(adp.getAdeptId().toString()));
-						if(adept.equals(adp.getAdeptId().toString())){
-							userAdeptName=userAdeptName+adp.getAdeptName()+" ";
-						}
-					}
-				}
-			}
-			usi.setAdept(userAdeptName);
-		}
 		modelMap.put("userServiceInfoList", userServiceInfoList);
 		return "user/verification";
 	}

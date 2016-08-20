@@ -34,5 +34,9 @@ public class TaglibService {
     public  List<Taglib> getSecondAllTaglib(){
     	return taglibManager.getSecondAllTaglib();
     }
+    
+    public int updateForumPostsTZNumberAddByTaglibId(Long taglibId){
+    	return taglibManager.updateForumPostsTZNumberAddByTaglibId(taglibId);
+    }
 	
 }

@@ -11,7 +11,7 @@
 
 
 	<form id="paramForm" class="form-horizontal"
-		action="<%=basePath%>user/verificationList" method="post">
+		action="<%=basePath%>questionAnswer/questionAnswerList" method="post">
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="box box-info">
@@ -33,18 +33,13 @@
 							<div class="form-group">
 								<label for="questionTitle" class="col-sm-2 control-label">问题名称</label>
 								<div class="col-sm-2">
-									<input type="text" name="questionTitle" />
+									<input type="text" name="questionTitle" class="form-control"/>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="operatorType" class="col-sm-2 control-label">回复内容</label>
+								<label for="questionTitle" class="col-sm-2 control-label">回答内容</label>
 								<div class="col-sm-2">
-									<select class="form-control" name="operatorType">
-										<option value="-1">全部</option>
-										<option value="-1">审核中</option>
-										<option value="-1">审核通过</option>
-										<option value="-1">退回</option>
-									</select>
+									<input type="text" name="questionAnswerTitle" class="form-control"/>
 								</div>
 							</div>
 						</div>
@@ -61,10 +56,6 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="box">
-
-					<div class="box-header">
-						<h3 class="box-title">身份审核列表</h3>
-					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
 						<div id="example1_wrapper"
@@ -94,7 +85,7 @@
 													<td>${questionAnswer.content}</td>
 													<td>${questionAnswer.userName}</td>
 													<td>
-														<button type="button" value="删除"></button>
+														<button type="button" class="btn btn-info " onclick="questionAnswer.del(${questionAnswer.questionAnswerId},'<%=basePath%>')">删除</button>
 													</td>
 												</tr>
 											</c:forEach>
@@ -111,61 +102,9 @@
 			</div>
 		</div>
 	</form>
-
-
-
-
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">不通过原因</h4>
-				</div>
-				<div class="modal-body">
-					<form id="statusForm"
-						action="<%=basePath%>user/updateUserPositionStatusCheckePass"
-						method="post">
-						<table id="example1"
-							class="table table-bordered table-striped dataTable" role="grid"
-							aria-describedby="example1_info">
-							<tr>
-								<td>
-									<p>
-										<input type="hidden" name="no" value="3" /> <input
-											type="hidden" name="push_alias" /> <input type="checkbox"
-											name="reason" value="资料不属实" />资料不属实
-									</p>
-									<p>
-										<input type="checkbox" name="reason" value="资历不足" />资历不足
-									</p>
-									<p>
-										<input type="checkbox" name="reason" value="资料不符合平台要求" />资料不符合平台要求
-									</p>
-									<p>
-										其他原因:<input type="text" name="otherReason" />
-									</p>
-								</td>
-							</tr>
-						</table>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">取消</button>
-							<button type="button" class="btn btn-info"
-								onclick="userStatus.modalSubmit()">确定</button>
-						</div>
-					</form>
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
 	<script type="text/javascript"
 		src="<%=path%>/js/views/UserStatus/UserStatus.js"></script>
+	<script type="text/javascript"
+		src="<%=path%>/js/views/question/questionAnswer.js"></script>
 </body>
 </html>

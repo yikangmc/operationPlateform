@@ -56,9 +56,8 @@ public class ForumPostService {
 		Date currentDate = Calendar.getInstance().getTime();
 
 		FormPosts formPosts = new FormPosts();
-
 		formPosts.setTitle(title);
-		formPosts.setContent(content);
+		formPosts.setContent(content.length()>100?content.substring(0,100):content);
 		formPosts.setCreateUserId(userId);
 		formPosts.setIsEssence(Byte.valueOf("0"));
 		formPosts.setRecommendPicUrl(recommendPicUrl);
@@ -143,6 +142,14 @@ public class ForumPostService {
 	
 	public List<FormPosts> findAllFormPosts(Map<String,Object> paramMap){
 		return formPostsDao.getAllProfessionListByPage(paramMap);
+	}
+	
+	public List<FormPosts> findAllFormPostsByTitle(Map<String,Object> paramMap){
+		return formPostsDao.getAllFormPostsByTitle(paramMap);
+	}
+	
+	public List<FormPosts> findAllFormPostsByContent(Map<String,Object> paramMap){
+		return formPostsDao.getAllFormPostsByContent(paramMap);
 	}
 	
 	public FormPosts findForumPostsInfo(Long forumPostsId){

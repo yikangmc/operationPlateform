@@ -26,5 +26,10 @@ public class QuestionAnswerService {
 	public List<QuestionAnswer> getQuestionAnswerListPage(String questionTitle,String questionAnswer,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page){
 		return questionAnswerManager.getQuestionAnswerListPage(questionTitle, questionAnswer, answerId, answerStartDateTime, answerEndTime,page);
 	}
+	
+	public int deleteQuestionAnswer(Long questionAnswerId){
+		return questionAnswerManager.deleteByPrimaryKey(questionAnswerId);
+	}
+	
 
 }

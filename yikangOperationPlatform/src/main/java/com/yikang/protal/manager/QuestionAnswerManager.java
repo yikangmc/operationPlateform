@@ -149,5 +149,9 @@ public class QuestionAnswerManager {
 		return questionAnswerDao.getQuestionAnswerListPage(paramMap);
 	}
 	
+	public int deleteByPrimaryKey(Long questionAnswerId){
+		return questionAnswerDao.deleteByPrimaryKey(questionAnswerId);
+	}
+	
 	
 }

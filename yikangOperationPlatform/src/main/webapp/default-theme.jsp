@@ -343,7 +343,6 @@ request.getSession().setAttribute("reqUri", reqUri);
 							 
 									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章审核</a></li>
 							 
-									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章删除</a></li>
 								</ul>
 							</li>
 							
@@ -378,7 +377,6 @@ request.getSession().setAttribute("reqUri", reqUri);
 									<li class="${reqUri eq '/operationPlatform/question/questionCreate' ? 'active':''}">
 									<a href="/operationPlatform/question/questionCreate"><i class="fa fa-circle-o"></i>添加问题</a></li>
 								 
-									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>添加回答</a></li>
 								 
 									<li class="${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}">
 										<a href="/operationPlatform/question/questionList"><i class="fa fa-circle-o"></i>问题列表</a>

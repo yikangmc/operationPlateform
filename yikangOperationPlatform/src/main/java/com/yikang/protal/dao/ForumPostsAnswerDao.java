@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.yikang.protal.entity.ForumPostsAnswer;
 
-
 public interface ForumPostsAnswerDao {
     int deleteByPrimaryKey(Long forumPostsAnswerId);
 

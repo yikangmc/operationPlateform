@@ -101,4 +101,8 @@ public class TaglibManager {
     	return taglibDao.getTaglibsByFormPostId(fourmPostId);
     }
      
+
+    public int updateForumPostsTZNumberAddByTaglibId(Long taglibId){
+    	return taglibDao.updateForumPostsTZNumberAddByTaglibId(taglibId);
+    } 
 }

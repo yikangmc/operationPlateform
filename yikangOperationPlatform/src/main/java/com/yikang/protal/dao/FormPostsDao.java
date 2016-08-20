@@ -100,6 +100,13 @@ public interface FormPostsDao {
     public List<FormPosts> getAllArticleListByPage(Map<String,Object> paramMap);
     
     /**
+     * 获取帖子回答数量
+     * @param forumPostId
+     * @return
+     */
+    public int selectFormPostAnswerList(Long forumPostId);
+    
+    /**
      * @author zxh
      *  @date 2016-07-06 18:06
      * @desc 保存帖子
@@ -111,6 +118,10 @@ public interface FormPostsDao {
      * @return
      */
     public List<FormPosts> getAllProfessionListByPage(Map<String,Object> paramMap);
+    
+    public List<FormPosts> getAllFormPostsByTitle(Map<String,Object> paramMap);
+    
+    public List<FormPosts> getAllFormPostsByContent(Map<String,Object> paramMap);
     
     /**
      * 获取文章的详情

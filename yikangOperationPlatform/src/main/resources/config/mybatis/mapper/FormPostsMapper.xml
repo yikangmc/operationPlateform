@@ -289,6 +289,7 @@
    <resultMap id="getFormPoustsDetailByForumPostIdResultMap2" type="com.yikang.protal.entity.FormPosts"  extends="BaseResultMap">
   	<result column="user_name" property="userName"/>
   	<result column="photo_url" property="photoUrl"/>
+  	<result column="forum_post_id" property="forumPostId"/>
 <!--   	<collection property="taglibs" 	column="forum_post_id"	fetchType="eager" select="com.yikang.protal.dao.TaglibDao.getTaglibsByFormPostId"></collection> -->
   </resultMap>
   
@@ -377,17 +378,34 @@
   	select <include refid="Base_Column_List"></include>,
   		 a.user_name as userName,a.photo_url as photoUrl from forum_posts 
   	left join user_infos a on a.user_id = forum_posts.create_user_id
-  	where forum_posts.forum_post_group = 0 order by update_time desc
+  	where forum_posts.forum_post_group = 0
+  	<if test="null != content ">
+		and forum_posts.content like concat('%',#{content},'%') 
+	</if>
+  	 order by update_time desc
   </select>
   
   <!-- 获取文章列表 -->
   <select id="getAllProfessionListByPage" resultMap="geForumPostsByCreateUserIdResultMap" parameterType="map">
-  	select <include refid="Base_Column_List"></include>,
-  		 a.user_name as userName,a.photo_url as photoUrl from forum_posts 
-  	left join user_infos a on a.user_id = forum_posts.create_user_id
-  	where forum_posts.forum_post_group = 1 order by update_time desc
+	select fpd.forum_post_id, forum_posts.title, forum_posts.content,
+	forum_posts.report_complaints_status,
+	forum_posts.is_essence, forum_posts.create_time, forum_posts.update_time, forum_posts.stars,
+	forum_posts.share_num,
+	forum_posts.create_user_id, forum_posts.share_url, forum_posts.recommend_pic_url,
+	forum_posts.forum_post_group,
+	forum_posts.forum_posts_uuid , a.user_name as userName,a.photo_url as photoUrl
+	from forum_posts inner join forum_post_details fpd on
+	forum_posts.forum_post_id=fpd.forum_post_id
+	left join user_infos a on a.user_id = forum_posts.create_user_id
+	where forum_posts.forum_post_group = 1
+  	<if test="null != title">
+	and title like concat('%',#{title},'%') 
+	</if>
+	<if test="null != content ">
+		and fpd.forum_post_detail_content like concat('%',#{content},'%') 
+	</if>
+		 order by update_time desc
   </select>
-  
   <select id="queryFormPostsInfo" parameterType="long" resultMap="BaseResultMap">
   	select 
     a.forum_post_id, a.title, fp.forum_post_html_detail_content as content, a.report_complaints_status, a.is_essence, a.create_time, 
@@ -409,4 +427,12 @@
   	delete from forum_posts fp,forum_posts_answers fpa,forum_posts_images fpi,forum_posts_star_lists fpsl,
   	forum_posts_taglibs_map fptm,forum_post_detail fpd 
   </delete>
+  
+  <select id="selectFormPostAnswerList" parameterType="long" resultType="long">
+	select count(1)
+	from forum_posts_answers
+	INNER JOIN forum_posts
+	on forum_posts_answers.form_post_id=forum_posts.forum_post_id
+	WHERE forum_posts_answers.form_post_id=#{formPostId}
+  </select>
 </mapper>

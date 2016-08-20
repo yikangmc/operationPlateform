@@ -82,4 +82,5 @@ public interface QuestionAnswerDao {
      * @desc 获取回复时间
      * **/
     List<QuestionAnswer> getQuestionAnswerListPage(Map<String,Object> paramMap);
+    
 }

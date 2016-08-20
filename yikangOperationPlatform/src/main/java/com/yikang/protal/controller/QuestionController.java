@@ -47,6 +47,23 @@ public class QuestionController extends BaseController{
 		modelMap.put("question", question);
 		PageParameter page=this.initPage(request);
 		modelMap.put("page", page);
+		String operatorType = request.getParameter("operatorType");
+		String content = request.getParameter("content");
+		if (null!=operatorType && null!=content) {
+			if("0".equals(operatorType)){
+				modelMap.put("title", content);
+				modelMap.put("content", content);
+			}else if("1".equals(operatorType)){
+				modelMap.put("title", content);
+				modelMap.put("content", "");
+			}else if("2".equals(operatorType)){
+				modelMap.put("content", content);
+				modelMap.put("title", "");
+			}
+		}else{
+			modelMap.put("title", "");
+			modelMap.put("content", "");
+		}
 		List<Question> allQuestions = systemService.queryAllQuestions(modelMap);
 		modelMap.put("allQuestions", allQuestions);
 		return "question/questionList";

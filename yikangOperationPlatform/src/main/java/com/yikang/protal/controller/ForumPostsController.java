@@ -1,6 +1,8 @@
 package com.yikang.protal.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +20,8 @@ import com.yikang.protal.entity.User;
 import com.yikang.protal.manager.UserManager;
 import com.yikang.protal.service.ForumPostService;
 import com.yikang.protal.service.TaglibService;
+
+import sun.java2d.pipe.RenderQueue;
 
 @Controller
 public class ForumPostsController extends BaseController {
@@ -38,12 +42,17 @@ public class ForumPostsController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping
-	public String formPostList(ModelMap modelMap,PageParameter page){
+	public String formPostList(ModelMap modelMap,PageParameter page,HttpServletRequest req){
 		modelMap.put("page", page);
+		String title=req.getParameter("title");
+		String content = req.getParameter("content");
+		modelMap.put("title", title);
+		modelMap.put("content", content);
 		List<FormPosts> allFormPosts = forumPostService.findAllFormPosts(modelMap);
 		modelMap.addAttribute("formPostsList", allFormPosts);
 		return "forumPost/formPostList";
 	}
+	
 	
 	
 	@RequestMapping
@@ -76,10 +85,13 @@ public class ForumPostsController extends BaseController {
 		String forumPostDetailContent=detailContent;
 
 		String subContent=forumPostDetailContent.replaceAll("\n","").replaceAll(" ","").replace("\r","");
-		String contentStr=subContent.length()>100?subContent.substring(0,100):subContent;
+		//String contentStr=subContent.length()>100?subContent.substring(0,100):subContent;
 
 		if(null != user && null != content && null != recommendPicUrl  && content.length()>0 && null != images && images.length>0 && null != taglibId && taglibId.length>0){
-			forumPostService.insertSelective(title,contentStr,forumPostDetailContent,forumPostHtmlDetailContent,recommendPicUrl,user.getUserId(),images,taglibId);
+			forumPostService.insertSelective(title,subContent,forumPostDetailContent,forumPostHtmlDetailContent,recommendPicUrl,user.getUserId(),images,taglibId);
+			for(Long id:taglibId){
+				taglibService.updateForumPostsTZNumberAddByTaglibId(id);
+			}
 		}
 		modelMap.put("userName", userName);
 		return "redirect:/forumPosts/forumPost";

@@ -12,8 +12,10 @@ import com.yikang.common.utils.UuidGernerator;
 import com.yikang.protal.common.utils.UrlGenerateUtil;
 import com.yikang.protal.dao.FormPostsDao;
 import com.yikang.protal.dao.FormPostsTaglibsMapDao;
+import com.yikang.protal.dao.ForumPostsAnswerDao;
 import com.yikang.protal.entity.FormPosts;
 import com.yikang.protal.entity.FormPostsTaglibsMap;
+import com.yikang.protal.entity.ForumPostsAnswer;
 import com.yikang.protal.entity.ForumPostsImage;
 import com.yikang.protal.manager.ForumPostDetailManager;
 import com.yikang.protal.manager.ForumPostsImageManager;
@@ -22,6 +24,8 @@ import com.yikang.protal.manager.ForumPostsImageManager;
 public class ForumArticleManageService {
 	@Autowired
 	private FormPostsDao formPostsDao;
+	@Autowired
+	private ForumPostsAnswerDao forumPostsAnswerDao;
 	@Autowired
 	private FormPostsTaglibsMapDao formPostsTaglibsMapDao;
 	@Autowired
@@ -36,6 +40,18 @@ public class ForumArticleManageService {
      */
 	public List<FormPosts> getAllArticleListByPage(Map<String,Object> paramMap){
 		return formPostsDao.getAllArticleListByPage(paramMap);
+	}
+	
+	
+	/**
+	 * 删除帖子
+	 */
+	public int deleteFormPostsById(Long formPostsId){
+		return formPostsDao.deleteByPrimaryKey(formPostsId);
+	}
+	
+	public List<ForumPostsAnswer> getForumPostsAnswersByFormPostId(Long forumPostsId){
+		return forumPostsAnswerDao.getForumPostsAnswersByFormPostId(forumPostsId);
 	}
 	
 	/**

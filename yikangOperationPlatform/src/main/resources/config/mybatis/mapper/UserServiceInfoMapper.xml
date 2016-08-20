@@ -684,7 +684,6 @@
 		<result column="user_introduce" property="userIntroduce" />
 		<result column="work_realm" property="workRealm" />
 		<result column="user_certificate" property="userCertificate" />
-		<result column="adept_id" property="userAdeptId" />
 	</resultMap>
 	<!-- 所有专业用户 -->
 	<select id="getUserServiceInfoListPage" resultMap="getUserServiceInfoListPageMap"
@@ -711,35 +710,25 @@
 		usi.map_position_address,
 		usi.hospital,
 		usi.offices,
-		uam.adept_id,
 		usi.position_audit_status,
 		usi.new_user_position,
 		usi.oraganization_name,
 		usi.user_introduce,
 		usi.work_realm,
-		usi.user_certificate
-		from users us, user_adept_maps uam,
+		usi.user_certificate,
+		GROUP_CONCAT(adepts.adept_name) as adept
+		from users us,
 		user_service_infos usi
 		INNER JOIN user_infos ui ON
-		usi.user_id=ui.user_id
-		where usi.user_id=us.user_id and
-		uam.user_id=usi.user_id
+		usi.user_id=ui.user_id 
+		LEFT JOIN user_adept_maps uam on usi.user_id=uam.user_id
+		LEFT JOIN adepts on uam.adept_id=adepts.adept_id
+		where usi.user_id=us.user_id 
+		<if test="positionAuditStatus != null">
+			and position_audit_status =
+				#{positionAuditStatus,jdbcType=TINYINT} 
+		</if>
+		GROUP BY uam.user_id
 		order by usi.user_service_info_id desc
 	</select>
-
-	<resultMap type="com.yikang.protal.entity.Adetps" id="getAdeptsListPageMap">
-		<result column="adept_id" property="adeptId" />
-		<result column="adept_name" property="adeptName" />
-		<result column="create_time" property="createTime" />
-		<result column="update_time" property="updateTime" />
-		<result column="is_delete" property="isDelete" />
-		<result column="type" property="type" />
-	</resultMap>
-	<select id="getAdeptsListPage" resultMap="getAdeptsListPageMap"
-		parameterType="com.yikang.protal.entity.Adetps">
-		select
-		adp.adept_id,adp.adept_name,adp.create_time,adp.update_time,adp.is_delete,adp.type
-		from adepts adp
-	</select>
-
 </mapper>

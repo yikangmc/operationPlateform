@@ -12,24 +12,51 @@
 <div class="row">
 		<div class="col-sm-12">
 			<div class="box">
-
 				<div class="box-header">
 					<h3 class="box-title">问题列表</h3>
 				</div>
-
-				<form id="paramForm" action="<%=basePath%>question/questionList" method="post">
-					<!-- /.box-header -->
-					<div class="box-body">
-						<div id="example1_wrapper"
-							class="dataTables_wrapper form-inline dt-bootstrap">
-							<div class="row">
-								<div class="col-sm-6">
-									<div id="example1_filter" class="dataTables_filter">
-										<label>Search:
-										<input type="search" class="form-control input-sm" placeholder="搜索" aria-controls="example1"></label>
+				<form id="paramForm" action="<%=basePath%>question/questionList" method="post" class="form-horizontal">
+					<div class="row">
+					<div class="col-sm-12">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">搜索</h3>
+								<div class="box-tools pull-right">
+									<button class="btn btn-box-tool" data-widget="collapse">
+										<i class="fa fa-minus"></i>
+									</button>
+									<button class="btn btn-box-tool" data-widget="remove">
+										<i class="fa fa-times"></i>
+									</button>
+								</div>
+							</div>
+							<div class="box-body" style="display: block;">
+								<div class="box-body">
+									<div class="form-group">
+										<label for="content" class="col-sm-2 control-label">查询内容</label>
+										<div class="col-sm-2">
+											<input type="text" id="content" name="content" />
+										</div>
+									</div>
+									<div for="operatorType" class="form-group">
+										<label class="col-sm-2 control-label">查询方式</label>
+										<div class="col-sm-2">
+											<select class="form-control" name="operatorType">
+												<option value="0" selected="selected">全部</option>
+												<option value="1">问题标题</option>
+												<option value="2">问题内容</option>
+											</select>
+										</div>
 									</div>
 								</div>
 							</div>
+							<div class="box-footer clearfix" style="display: block;">
+								<button type="submit" class="btn btn-sm btn-info btn-flat pull-right">查询</button>
+								<button type="reset"  class="btn btn-sm btn-default btn-flat pull-right">重置</button>
+							</div>
+						</div>
+					</div>
+				</div>
 							<div class="row">
 								<div class="col-sm-12">
 									<table id="example1"
@@ -98,9 +125,6 @@
 							</div>
 							
 							<%@ include file="/common/page.jsp"%>
-							
-						</div>
-					</div>
 					<!-- /.box-body -->
 				</form>
 			</div>
