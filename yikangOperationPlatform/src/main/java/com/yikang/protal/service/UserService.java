@@ -17,6 +17,7 @@ import com.yikang.protal.entity.Location;
 import com.yikang.protal.entity.User;
 import com.yikang.protal.entity.UserInfo;
 import com.yikang.protal.entity.UserServiceInfo;
+import com.yikang.protal.manager.IntegralManager;
 import com.yikang.protal.manager.LocationManager;
 import com.yikang.protal.manager.UserManager;
 
@@ -39,6 +40,8 @@ public class UserService {
 	@Autowired
 	private LocationManager locationManager;
 	
+	@Autowired
+	private IntegralManager integralManager;
 	
 	public boolean validateMoblieNumber(String mobileNumber){
 		User user=userManager.getUserByLoginName(mobileNumber);
@@ -142,7 +145,9 @@ public class UserService {
 	 * @return
 	 */
 	public int updateUserPositionStatusCheckePass(Map<String,Object> paramData){
-		return userManager.updateUserPositionStatusCheckePass(paramData);
+		userManager.updateUserPositionStatusCheckePass(paramData);
+		integralManager.insertIntegralAddScoreIsONCEJob("RZCG", Long.valueOf(paramData.get("userId").toString()));
+		return 1;
 	}
 	
 }
