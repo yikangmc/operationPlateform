@@ -361,8 +361,8 @@ request.getSession().setAttribute("reqUri", reqUri);
 								 
 									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子审核</a></li>
 								 
-									<li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子删除</a></li>
-								</ul>
+									<%-- <li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子删除</a></li>
+								 --%></ul>
 							</li>
 							
 							<li class="treeview

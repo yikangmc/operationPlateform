@@ -164,6 +164,7 @@
   	<result column="user_name" property="userName"/>
   	<result column="photo_url" property="photoUrl"/>
   	<result column="user_position" property="userPosition"/>
+  	<result column="question_answer_detail_content" property="detailContent"/>
   	<association property="question" javaType="com.yikang.protal.entity.Question">
   		<result column="title" property="title"/>
   	</association>

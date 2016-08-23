@@ -151,7 +151,7 @@ public class ForumPostsController extends BaseController {
 	 */
 	@RequestMapping
 	public String deleteFormPost(HttpServletRequest hsr){
-		int result = forumPostService.deleteByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
+		forumPostService.deleteByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
 		return "redirect:/forumPosts/formPostList";
 	}
 

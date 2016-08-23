@@ -82,7 +82,7 @@
 													<td>${questionAnswer.question.title }</td>
 													<td>${questionAnswer.question.userName }</td>
 													<td>${questionAnswer.createTime }</td>
-													<td>${questionAnswer.content}</td>
+													<td>${questionAnswer.detailContent}</td>
 													<td>${questionAnswer.userName}</td>
 													<td>
 														<button type="button" class="btn btn-info " onclick="questionAnswer.del(${questionAnswer.questionAnswerId},'<%=basePath%>')">删除</button>

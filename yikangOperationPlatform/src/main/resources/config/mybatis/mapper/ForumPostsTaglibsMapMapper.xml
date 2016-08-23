@@ -98,4 +98,9 @@
     delete from forum_posts_taglibs_maps
     where form_post_id = #{formPostId,jdbcType=BIGINT}
   </delete>
+  
+   <select id="selectTagLibIdByFormPostId" parameterType="long" resultType="long">
+  	select tag_libs_id from forum_posts_taglibs_maps where form_post_id=#{formPostId,jdbcType=BIGINT}
+  </select>
+  
 </mapper>

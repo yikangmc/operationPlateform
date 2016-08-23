@@ -110,6 +110,7 @@ public class ForumArticleMangeController {
 			rsMessage.setData("error");
 		}else{
 			manageService.deleteFormPostsById(Long.valueOf(forumPostId));
+			
 			rsMessage.setData("success");
 		}
 		return rsMessage; 

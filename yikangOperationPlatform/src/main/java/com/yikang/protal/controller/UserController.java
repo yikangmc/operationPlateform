@@ -75,6 +75,7 @@ public class UserController {
 			usiMap.put("userId", userId);
 			usiMap.put("positionAuditStatus", 2);
 			userService.updateUserPositionStatusCheckePass(usiMap);
+			
 		}else if("3".equals(no)){
 			String reasons[] = req.getParameterValues("reason");
 			String message="";

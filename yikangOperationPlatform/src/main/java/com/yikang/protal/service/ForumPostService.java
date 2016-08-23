@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.yikang.protal.common.utils.UrlGenerateUtil;
 import com.yikang.protal.dao.FormPostsDao;
 import com.yikang.protal.dao.FormPostsTaglibsMapDao;
+import com.yikang.protal.dao.TaglibDao;
 import com.yikang.protal.entity.FormPosts;
 import com.yikang.protal.entity.FormPostsTaglibsMap;
 import com.yikang.protal.entity.ForumPostDetail;
@@ -45,6 +46,9 @@ public class ForumPostService {
 	
 	@Autowired
 	private ForumPostDetailManager forumPostDetailManager;
+	
+	@Autowired
+	private TaglibDao taglibDao;
 	
 	
 	public int insertSelective(String title,String content,String forumPostDetailContent,String forumPostHtmlDetailContent,String recommendPicUrl,Long userId,String[] images,Long[] taglibIds){
@@ -161,7 +165,10 @@ public class ForumPostService {
 	}
 	
 	public int deleteByPrimaryKey(Long forumPostsId){
-		return forumPostManager.deleteByPrimaryKey(forumPostsId);
+		forumPostManager.deleteByPrimaryKey(forumPostsId);
+		Long taglibsId = formPostsTaglibsMapDao.selectTagLibIdByFormPostId(forumPostsId);
+		taglibDao.updateForumPostsNumberSubByTaglibId(taglibsId);
+		return 1;
 	}
 	
 }

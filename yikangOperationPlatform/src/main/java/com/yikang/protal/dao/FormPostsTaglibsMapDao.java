@@ -16,4 +16,6 @@ public interface FormPostsTaglibsMapDao {
     int updateByPrimaryKey(FormPostsTaglibsMap record);
 
 	int deleteByFormPostId(Long formPostId);
+	
+	Long selectTagLibIdByFormPostId(Long formPostId);
 }
