@@ -3,6 +3,7 @@ package com.yikang.common.message;
 import java.util.List;
 
 import com.yikang.common.message.im.IosSound;
+import com.yikang.common.utils.SystemProperties;
 
 import cn.jpush.api.JPushClient;
 import cn.jpush.api.common.APIConnectionException;
@@ -44,13 +45,13 @@ public class MessageUtils {
 	/**
 	 * appk
 	 * */
-	private static String appKey="1d7ea5381ea5e395ab5f7ef4";
+	private static String appKey=SystemProperties.getPropertieValue("JPUSH_APPKEY");
 	
 	/**
 	 * 安全密钥
 	 * 
 	 * **/
-	private static String masterSecret="5307749f0466d6744ad3fa17";
+	private static String masterSecret=SystemProperties.getPropertieValue("JPUSH_MASTERSECRET");
 	
 	/**
 	 * 
