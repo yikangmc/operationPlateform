@@ -10,6 +10,10 @@ public class FormPosts {
 	
 	private String photoUrl;
 	
+	private String designationName;
+	
+	private Integer userPosition;
+	
     private Long forumPostId;
 
     private String title;
@@ -44,6 +48,24 @@ public class FormPosts {
     private Integer isStar;
     
     private Integer isStore;
+    
+    // 文章纯文字详情
+    private String forumPostDetailContent;
+    
+    // 文章html内容详情
+    private String forumPostHtmlDetailContent;
+
+    //标签列表
+    private List<Taglib> taglibs=new ArrayList<Taglib>();
+    
+    //文章支持列表
+    private List<FormPostsStarList> formPostsStarLists=new ArrayList<FormPostsStarList>();
+    
+    //回复列表
+    private List<ForumPostsAnswer> forumPostsAnswers=new ArrayList<ForumPostsAnswer>();
+    
+    //文章上传的列表
+    private List<ForumPostsImage> forumPostsImage=new ArrayList<ForumPostsImage>();
     
     
     
@@ -144,7 +166,33 @@ public class FormPosts {
         this.recommendPicUrl = recommendPicUrl == null ? null : recommendPicUrl.trim();
     }
 
+	public List<Taglib> getTaglibs() {
+		return taglibs;
+	}
+
+	public void setTaglibs(List<Taglib> taglibs) {
+		this.taglibs = taglibs;
+	}
+
 	
+
+	public List<FormPostsStarList> getFormPostsStarLists() {
+		return formPostsStarLists;
+	}
+
+	public void setFormPostsStarLists(List<FormPostsStarList> formPostsStarLists) {
+		this.formPostsStarLists = formPostsStarLists;
+	}
+
+	public List<ForumPostsAnswer> getForumPostsAnswers() {
+		return forumPostsAnswers;
+	}
+
+	//TODO 后面要修改为查询
+	public void setForumPostsAnswers(List<ForumPostsAnswer> forumPostsAnswers) {
+		this.answersNums=forumPostsAnswers.size();
+		this.forumPostsAnswers = forumPostsAnswers;
+	}
 
 	public String getUserName() {
 		return userName;
@@ -160,6 +208,15 @@ public class FormPosts {
 
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
+	}
+
+
+	public List<ForumPostsImage> getForumPostsImage() {
+		return forumPostsImage;
+	}
+
+	public void setForumPostsImage(List<ForumPostsImage> forumPostsImage) {
+		this.forumPostsImage = forumPostsImage;
 	}
 
 	public Integer getIsStar() {
@@ -200,6 +257,38 @@ public class FormPosts {
 
 	public void setForumPostsUuid(String forumPostsUuid) {
 		this.forumPostsUuid = forumPostsUuid;
+	}
+
+	public String getForumPostDetailContent() {
+		return forumPostDetailContent;
+	}
+
+	public void setForumPostDetailContent(String forumPostDetailContent) {
+		this.forumPostDetailContent = forumPostDetailContent;
+	}
+
+	public String getForumPostHtmlDetailContent() {
+		return forumPostHtmlDetailContent;
+	}
+
+	public void setForumPostHtmlDetailContent(String forumPostHtmlDetailContent) {
+		this.forumPostHtmlDetailContent = forumPostHtmlDetailContent;
+	}
+
+	public Integer getUserPosition() {
+		return userPosition;
+	}
+
+	public void setUserPosition(Integer userPosition) {
+		this.userPosition = userPosition;
+	}
+
+	public String getDesignationName() {
+		return designationName;
+	}
+
+	public void setDesignationName(String designationName) {
+		this.designationName = designationName;
 	}
 
 }
