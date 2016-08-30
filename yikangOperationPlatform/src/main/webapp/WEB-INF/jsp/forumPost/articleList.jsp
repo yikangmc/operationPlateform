@@ -1,3 +1,4 @@
+src->webapp->jsp->forumPost->articleList
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -6,6 +7,8 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <%@ include file="/common/head.jsp"%>
 <title>帖子列表</title>
+<style type="text/css">
+</style>
 </head>
 <body>
 <script type="text/javascript" src="<%=path%>/js/views/forumPost/forumPost-upload.js"></script>
@@ -114,7 +117,15 @@
 											<c:forEach items="${articleList }" var="formPosts" varStatus="varIndex">
 		<!-- 								 odd	even -->
 												<tr role="row" class="${ varIndex.index % 2 eq 0 ? 'odd':'even' }">
-													<td class="sorting_1">${formPosts.content }</td>
+												
+													<!-- 修改 -->
+													<input id="I_Content" type="hidden" value="${formPosts.forumPostId }" />
+													<input id="H_Content" type="hidden" value="${formPosts.forumPostDetailContent}" />
+													<td class="sorting_1">${formPosts.content }
+														<div class="model-Content" style="width: 350px; height: 200px; margin-top: -45px; background: #fff; position: absolute; left:100px; display: none; overflow: auto;border-radius: 14px;border: 1px gray solid;box-shadow: 7px 5px 8px #999;opacity: 1; font-size: 24px;color: #0faadd;word-spacing: 2px;letter-spacing: 2px;">
+												
+											    		</div>
+													</td>
 													<td>	
 														<c:if test="${formPosts.forumPostGroup==1 }">文章</c:if>
 														<c:if test="${formPosts.forumPostGroup==0 }">帖子</c:if>
@@ -140,8 +151,10 @@
 														<img src="${formPosts.photoUrl}" width="50" height="50"/><br /></c:if>
 															${formPosts.userName } --%>
 													</td>
-													<td>
+													<td>																										
+<!-- 														<button class="btn btn-info show" type="button" >详情</button> -->
 														<button class="btn btn-info" type="button" onclick="article.del(${formPosts.forumPostId},'<%=basePath%>')">删除</button>
+													
 													</td>
 												</tr>
 											</c:forEach>
@@ -159,6 +172,26 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	<script type="text/javascript">
+      var num;
+      var cont = $('.model-Content');
+
+      $('.sorting_1').mouseover(function() {
+			$(this).find('.model-Content').show();
+      })
+
+      $('.sorting_1').mouseout(function() {       
+			$(this).find('.model-Content').hide();
+      }) 
+
+      $('tbody tr').mouseover(function() {
+        $('.model-Content').html($(this).find('#H_Content').val()); 
+     
+      })        
+
+  </script>
 	
 </body>
 </html>

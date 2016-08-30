@@ -16,6 +16,7 @@
     <result column="recommend_pic_url" property="recommendPicUrl" jdbcType="VARCHAR" />
     <result column="forum_post_group" property="forumPostGroup" jdbcType="TINYINT" />
     <result column="forum_posts_uuid" property="forumPostsUuid" jdbcType="VARCHAR" />
+    <result column="forum_post_detail_content" property="forumPostDetailContent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     forum_post_id, title, content, report_complaints_status, is_essence, create_time, 
@@ -375,10 +376,20 @@
   
   <!-- 获取帖子列表 -->
   <select id="getAllArticleListByPage" resultMap="geForumPostsByCreateUserIdResultMap" parameterType="map">
-  	select <include refid="Base_Column_List"></include>,
-  		 a.user_name as userName,a.photo_url as photoUrl from forum_posts 
-  	left join user_infos a on a.user_id = forum_posts.create_user_id
-  	where forum_posts.forum_post_group = 0
+   select  forum_posts.forum_post_id, title, content, report_complaints_status, is_essence, forum_posts.create_time, 
+    forum_posts.update_time, stars, share_num, create_user_id, share_url, recommend_pic_url, forum_post_group, 
+    forum_posts_uuid,
+    a.user_name as userName,
+    a.photo_url as photoUrl ,
+    detail.forum_post_detail_content as forumPostDetailContent
+    FROM forum_posts 
+    left join user_infos a on a.user_id = forum_posts.create_user_id
+    left join forum_post_details detail on detail.forum_post_id=forum_posts.forum_post_id
+    where forum_posts.forum_post_group = 0
+<!--   	select <include refid="Base_Column_List"></include>, -->
+<!--   		 a.user_name as userName,a.photo_url as photoUrl from forum_posts  -->
+<!--   	left join user_infos a on a.user_id = forum_posts.create_user_id -->
+<!--   	where forum_posts.forum_post_group = 0 -->
   	<if test="null != content ">
 		and forum_posts.content like concat('%',#{content},'%') 
 	</if>
