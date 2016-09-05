@@ -33,19 +33,15 @@
 							<div class="box-body" style="display: block;">
 								<div class="box-body">
 									<div class="form-group">
-										<label for="content" class="col-sm-2 control-label">查询内容</label>
+										<label for="content" class="col-sm-2 control-label">问题标题</label>
 										<div class="col-sm-2">
-											<input type="text" id="content" name="content" />
+											<input type="text" id="title" name="title" />
 										</div>
 									</div>
 									<div for="operatorType" class="form-group">
-										<label class="col-sm-2 control-label">查询方式</label>
+										<label for="content" class="col-sm-2 control-label">问题内容</label>
 										<div class="col-sm-2">
-											<select class="form-control" name="operatorType">
-												<option value="0" selected="selected">全部</option>
-												<option value="1">问题标题</option>
-												<option value="2">问题内容</option>
-											</select>
+											<input type="text" id="content" name="content" />
 										</div>
 									</div>
 								</div>
@@ -111,6 +107,7 @@
 														<c:if test="${question.isDelete==1 }">是</c:if>
 													</td>
 													<td>${question.star}</td>
+													<td>${question.answerNum}</td>
 													<td>
 														<c:if test="${question.photoUrl!=null && formPosts.photoUrl!=''}">
 														<img src="${question.photoUrl}" width="50" height="50"/><br /></c:if>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yikang.protal.dao.IntegralDao">
+<mapper namespace="com.yikangyiliao.pension.dao.IntegralDao">
   <resultMap id="BaseResultMap" type="com.yikang.protal.entity.Integral" >
     <id column="integral_id" property="integralId" jdbcType="BIGINT" />
     <result column="jobs_id" property="jobsId" jdbcType="BIGINT" />

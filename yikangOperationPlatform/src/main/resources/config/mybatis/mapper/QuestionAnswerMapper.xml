@@ -315,6 +315,7 @@
 			and qa.create_time >= #{answerEndTime}
 		</if>
 	</where>  
+	 order by qa.create_time desc
   </select>
   
   
