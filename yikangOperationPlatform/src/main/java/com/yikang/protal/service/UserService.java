@@ -1,18 +1,19 @@
 package com.yikang.protal.service;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.ModelMap;
 
 import com.yikang.base.AliasFactory;
 import com.yikang.base.InvitationCodeGnerateUtil;
 import com.yikang.protal.entity.Adetps;
+import com.yikang.protal.entity.Count;
 import com.yikang.protal.entity.Location;
 import com.yikang.protal.entity.User;
 import com.yikang.protal.entity.UserInfo;
@@ -125,6 +126,53 @@ public class UserService {
 	public List<UserInfo> listUser(Map<String,Object>  paramMap){
 		return userManager.getUserInfoListPage(paramMap);
 	}
+	/**
+	 * @desc 获取每日用户数量
+	 * */
+	public List<Count> getSevenDayUserCount(Integer userFrom){
+		List<Count> countList=new ArrayList<Count>();
+		List<String> startDateList=new ArrayList<String>();
+		List<String> endDateList=new ArrayList<String>();
+		for(int i=0;i<7;i++){
+			Calendar cal=Calendar.getInstance();
+			cal.add(Calendar.DAY_OF_MONTH, -i);
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+	        cal.set(Calendar.SECOND, 0);
+	        cal.set(Calendar.MINUTE, 0);
+	        cal.set(Calendar.MILLISECOND, 0);
+	        startDateList.add(cal.getTimeInMillis()+"");
+	        System.out.println(cal.get(Calendar.YEAR)+"年"+(cal.get(Calendar.MONTH)+1)+"月"+cal.get(Calendar.DAY_OF_MONTH)+"日"+cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND));
+		}
+		System.out.println("零点:"+startDateList.toString());
+		for(int i=0;i<7;i++){
+			Calendar cal=Calendar.getInstance();
+			cal.add(Calendar.DAY_OF_MONTH, -i+1);
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+	        cal.set(Calendar.SECOND, 0);
+	        cal.set(Calendar.MINUTE, 0);
+	        cal.set(Calendar.MILLISECOND, -1);
+	        endDateList.add(cal.getTimeInMillis()+"");
+	        System.out.println(cal.get(Calendar.YEAR)+"年"+(cal.get(Calendar.MONTH)+1)+"月"+cal.get(Calendar.DAY_OF_MONTH)+"日"+cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND));
+		}
+		System.out.println("午夜："+endDateList.toString());
+		
+		for(int i=0 ; i<7 ; i++){		
+			int number=userManager.getUserDayNumber(Long.valueOf(startDateList.get(i)),Long.valueOf(endDateList.get(i)),userFrom);
+			long time = Long.valueOf(startDateList.get(i));
+	        Calendar c = Calendar.getInstance();	         
+	        c.setTimeInMillis(time);
+	        java.util.Date date = c.getTime();
+	        SimpleDateFormat df = new SimpleDateFormat("MM月dd日");
+	        String checkDay=df.format(date);
+	        
+			Count count=new Count();
+			count.setCount(number);
+			count.setCheckDay(checkDay);
+			countList.add(count);
+		}
+		return countList;
+	}
+	
 	
 	/**
 	 * @desc 获取专业用户列表

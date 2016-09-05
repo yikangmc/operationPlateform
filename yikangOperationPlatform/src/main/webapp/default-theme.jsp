@@ -294,13 +294,18 @@ request.getSession().setAttribute("reqUri", reqUri);
 						<ul class="sidebar-menu menu-open">
 							<li class="header">主导航栏</li>
 
-							<li class="treeview">
+							<li class="treeview
+							${reqUri eq 'operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}							
+							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>数据查询</span> <i class="fa fa-angle-left pull-right"></i>
 								</a>
 								<ul class="treeview-menu">
 									<li class=""><a href="#"><i class="fa fa-circle-o"></i>新用户状态查询</a></li>
+									<li class="${reqUri eq 'operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}">
+									<a href="/operationPlatform/dayRegistrationNumber/dayRegistrationNumber"><i class="fa fa-circle-o"></i>日用户数量查询</a></li>
+															
 <!-- 									<li class="menu-open active"><a href="#"><i class="fa fa-circle-o"></i>活动查询 -->
 <!-- 									<i class="fa fa-angle-left pull-right"></i> -->
 <!-- 									</a> -->
@@ -666,5 +671,9 @@ request.getSession().setAttribute("reqUri", reqUri);
 <%-- 	<script src="<%=basePath%>js/dist/js/pages/dashboard.js"></script> --%>
 	<!-- AdminLTE for demo purposes -->
 	<script src="<%=basePath%>js/dist/js/demo.js"></script>
+	
+<!-- Chart JS -->
+	<script src="<%=basePath%>js/plugins/chartjs/Chart.min.js"></script>
+	
 </body>
 </html>

@@ -27,5 +27,9 @@ public interface UserInfoDao {
      * @desc  获取用户信息列表。
      * **/
     List<UserInfo> getUserInfoListPage(Map<String,Object> paramData);
+    /**
+     * @desc  获取每日用户数量
+     * **/
+   int getUserCountByDate(Map<String,Object> paramData);
     
 }

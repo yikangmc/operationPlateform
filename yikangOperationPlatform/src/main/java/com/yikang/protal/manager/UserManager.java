@@ -116,6 +116,16 @@ public class UserManager {
 	public List<UserInfo> getUserInfoListPage(Map<String,Object> paramData){
 		return userInfoDao.getUserInfoListPage(paramData);
 	}
+	/**
+	 * @desc 获取每日用户数量
+	 * */
+	public int getUserDayNumber(long startDateList,long endDateList,Integer userFrom){
+		Map<String,Object> paramData=new HashMap<String,Object>();
+		paramData.put("startDate", startDateList);
+		paramData.put("endDate", endDateList);
+		paramData.put("userFrom", userFrom);
+		return userInfoDao.getUserCountByDate(paramData);
+	}
 	
 	
     /**

@@ -115,7 +115,7 @@ src->webapp->jsp->forumPost->articleList
 										</thead>
 										<tbody>
 											<c:forEach items="${articleList }" var="formPosts" varStatus="varIndex">
-		<!-- 								 odd	even -->
+												<!-- odd	even -->
 												<tr role="row" class="${ varIndex.index % 2 eq 0 ? 'odd':'even' }">
 												
 													<!-- 修改 -->

@@ -49,7 +49,8 @@ request.setAttribute("basePath",basePath);
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<!--     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> -->
+    <script src="<%=basePath%>js/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     
     <script src="<%=basePath%>js/plugins/iCheck/icheck.min.js"></script>
     
