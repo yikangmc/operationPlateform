@@ -24,5 +24,14 @@ public interface QuestionImageDao {
      * @desc 获取某一个问题的数据图片
      * **/
     List<QuestionImage> getQuestionImageByQuestionId(Long questionId);
+    
+    /**
+     * @author liushuaic
+     * @date 2016-09-06 17:38
+     * @desc 问题删除
+     * @param 问题id
+     * @return 影响数据数量
+     * */
+    int deleteQuestionImageByQuestionId(Long questionId);
 
 }

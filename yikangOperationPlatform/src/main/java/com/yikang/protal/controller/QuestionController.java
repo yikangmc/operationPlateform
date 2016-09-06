@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,7 +18,6 @@ import com.yikang.common.utils.MatchHtmlElementAttrValue;
 import com.yikang.protal.base.BaseController;
 import com.yikang.protal.common.page.PageParameter;
 import com.yikang.protal.common.response.ResponseMessage;
-import com.yikang.protal.entity.Answer;
 import com.yikang.protal.entity.Question;
 import com.yikang.protal.entity.Taglib;
 import com.yikang.protal.entity.User;
@@ -32,9 +32,14 @@ import com.yikang.protal.service.TaglibService;
  */
 @Controller
 public class QuestionController extends BaseController{
+	
 	private static final Logger log = LoggerFactory.getLogger(QuestionController.class);
+	
 	@Autowired
 	private QuestionService systemService;
+	
+	@Autowired
+	private QuestionService questionService;
 	
 	@Autowired
 	private TaglibService taglibService;
@@ -136,6 +141,33 @@ public class QuestionController extends BaseController{
 			modeMap.addAttribute("resultMessage", "此用户不存在，请再次确认！！！");
 		}
 		return questionList(modeMap, null, req);
+	}
+	
+	
+	
+	/**
+	 * @author liushuaic
+	 * @date 2016-09-06 13:52
+	 * @desc 删除问题
+	 * */
+	@RequestMapping
+	@ResponseBody
+	public ResponseMessage<String> deleteQuestion(Long questionId,String userName){
+		
+		 ResponseMessage<String> resMessage=new ResponseMessage<String>();
+		 User user=userManager.getUserByLoginName(userName);
+		 if(null != user){
+			 questionService.deleteQuestionByQuestionId(questionId);
+			 log.info("QuestionController-->deleteQuestion-->"+user.getUserName()+"删除问题 info");
+			 resMessage.setStatus(ExceptionConstants.responseSuccess.responseSuccess.code);
+			 resMessage.setMessage(ExceptionConstants.responseSuccess.responseSuccess.message);
+		 }else{
+			 resMessage.setStatus(ExceptionConstants.systemException.systemException.errorCode);
+			 resMessage.setMessage("用户不存在！");
+		 }
+		 
+		 return resMessage;
+		
 	}
 	
 }

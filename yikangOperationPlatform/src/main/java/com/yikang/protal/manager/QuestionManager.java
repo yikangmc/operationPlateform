@@ -100,4 +100,15 @@ public class QuestionManager {
 	public Long queryUserIdByUserName(String userName){
 		return questionDao.queryUserIdByUserName(userName);
 	}
+	
+	/**
+	 * @author liushuaic
+	 * @date 2016-09-06 11:52
+	 * @desc 删除某一个问题
+	 * @param questionId 问题id
+	 * @return int 删除数量
+	 * */
+	public int deleteQuestionByQuestionId(Long questionId){
+		return questionDao.deleteByPrimaryKey(questionId);
+	}
 }
