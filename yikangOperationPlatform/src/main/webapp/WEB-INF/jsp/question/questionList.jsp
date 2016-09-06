@@ -84,6 +84,10 @@
 													rowspan="1" colspan="1"
 													aria-label="Engine version: activate to sort column ascending"
 													style="width: 123px;">星级</th>
+													<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Engine version: activate to sort column ascending"
+													style="width: 123px;">回答数量</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Engine version: activate to sort column ascending"

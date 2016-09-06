@@ -222,7 +222,7 @@
 	ui.user_name,
 	ui.photo_url,
 	qtm.taglibs_id as taglibsId,
-	count(qa.question_answer_id) as num
+	count(qa.question_answer_id) as answer_num
 	from
 	question_taglib_maps qtm
 	inner join questions que on qtm.questions_id=que.question_id
@@ -232,13 +232,13 @@
 	question_answers qa on qtm.questions_id=qa.question_id
 	where 1=1 
 	<if test="null!=title">
-		and title like concat('%',#{title},'%')
+		and title like concat('%',#{que.title},'%')
 	</if>
 	<if test="null!=content">
-		and content like concat('%',#{content},'%')
+		and content like concat('%',#{qa.content},'%')
 	</if>
 	group by que.question_id 
-	order by num asc,que.create_time DESC
+	order by answer_num asc,que.create_time DESC
   </select>
   
   <select id="queryQuestionTitleById" parameterType="string" resultType="string">
