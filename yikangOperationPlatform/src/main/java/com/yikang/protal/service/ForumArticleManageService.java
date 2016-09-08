@@ -51,8 +51,12 @@ public class ForumArticleManageService {
 	 */
 	public int deleteFormPostsById(Long formPostsId){
 		formPostsDao.deleteByPrimaryKey(formPostsId);
-		Long taglibId = formPostsTaglibsMapDao.selectTagLibIdByFormPostId(formPostsId);
-		taglibDao.updateForumPostsTZNumberSubByTaglibId(taglibId);
+		List<FormPostsTaglibsMap> taglibId = formPostsTaglibsMapDao.selectTagLibIdByFormPostId(formPostsId);
+		if(taglibId.size()>0){
+			for (FormPostsTaglibsMap formPostsTaglibsMap : taglibId) {
+				taglibDao.updateForumPostsTZNumberSubByTaglibId(formPostsTaglibsMap.getTagLibsId());
+			}
+		}
 		return 1;
 	}
 	

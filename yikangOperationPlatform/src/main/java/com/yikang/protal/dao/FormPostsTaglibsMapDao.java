@@ -1,5 +1,7 @@
 package com.yikang.protal.dao;
 
+import java.util.List;
+
 import com.yikang.protal.entity.FormPostsTaglibsMap;
 
 public interface FormPostsTaglibsMapDao {
@@ -17,5 +19,5 @@ public interface FormPostsTaglibsMapDao {
 
 	int deleteByFormPostId(Long formPostId);
 	
-	Long selectTagLibIdByFormPostId(Long formPostId);
+	List<FormPostsTaglibsMap> selectTagLibIdByFormPostId(Long formPostId);
 }

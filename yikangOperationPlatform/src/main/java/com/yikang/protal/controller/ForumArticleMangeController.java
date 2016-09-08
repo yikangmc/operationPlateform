@@ -107,7 +107,7 @@ public class ForumArticleMangeController {
 		List<ForumPostsAnswer> answerList = manageService.getForumPostsAnswersByFormPostId(Long.valueOf(forumPostId));
 		//有回答不能删除帖子
 		if(answerList.size()>0){
-			rsMessage.setData("error");
+			rsMessage.setData("fail");
 		}else{
 			manageService.deleteFormPostsById(Long.valueOf(forumPostId));
 			

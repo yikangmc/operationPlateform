@@ -215,6 +215,7 @@
 		left join forum_posts fp on fptm.form_post_id=fp.forum_post_id
 		and fp.create_time between #{startDate}  and  #{endDate}
 		and fp.forum_post_group = 0
+		where t.parent_id != 0
 		group by t.taglib_id	
 	</select>
 	<!--   获得当日每个标签下的专家说量 -->
@@ -225,6 +226,7 @@
 		left join forum_posts fp on fptm.form_post_id=fp.forum_post_id
 		and fp.create_time between #{startDate} and  #{endDate}
 		and fp.forum_post_group = 1
+		where t.parent_id != 0
 		group by t.taglib_id
 	</select>
 	<!--   获得当日每个标签下的问题的回答量 -->
@@ -235,6 +237,7 @@
 		left join questions q on qtm.questions_id = q.question_id
 		left join question_answers qa on q.question_id=qa.question_id
 		and qa.create_time between #{startDate} and  #{endDate}
+		where t.parent_id != 0
 		group by t.taglib_id
 	</select>
 	
@@ -245,6 +248,7 @@
 		left join question_taglib_maps qtm on t.taglib_id = qtm.taglibs_id
 		left join questions q on qtm.questions_id = q.question_id
 		and q.create_time between #{startDate} and  #{endDate}
+		where t.parent_id != 0
 		group by t.taglib_id
 	</select>
 

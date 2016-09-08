@@ -108,4 +108,9 @@
 	where qtm.questions_id=#{questionId}
   </select>
   
+  <!-- 删除某一个问题下的所有标签 -->
+  <delete id="deleteQuestionTaglibMapByQuetionId" parameterType="long">
+  	delete from question_taglib_maps where questions_id=#{questionId}
+  </delete>
+  
 </mapper>

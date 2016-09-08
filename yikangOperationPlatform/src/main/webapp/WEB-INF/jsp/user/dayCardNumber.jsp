@@ -15,9 +15,10 @@
 					<div class="box-header">
 						<h3 class="box-title">当天标签下发帖量柱状图</h3>
 					</div>
-					<div style="height:250px;overflow:scroll;">
-					  <canvas id="areaChart1" style="height:250px; width:2000px;"></canvas>
-					</div>
+<!-- 					<div style="height:250px;overflow:scroll;"> -->
+<!-- 					  <canvas id="areaChart1" style="height:250px; width:2000px;"></canvas> -->
+					  <canvas id="areaChart1" style="height:250px"></canvas>
+<!-- 					</div> -->
 					  <c:forEach items="${CountTaglib1}" var="countTaglib1" varStatus="index">
 						 <input class="name1" type="hidden" value="${countTaglib1.taglibName }" />
 						 <input class="number1" type="hidden" value="${countTaglib1.number }">

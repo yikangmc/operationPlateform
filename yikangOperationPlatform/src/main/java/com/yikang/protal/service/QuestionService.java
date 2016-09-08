@@ -1,17 +1,16 @@
 package com.yikang.protal.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yikang.common.utils.MatchHtmlElementAttrValue;
-import com.yikang.protal.entity.Answer;
 import com.yikang.protal.entity.Question;
 import com.yikang.protal.manager.QuestionAnswerManager;
+import com.yikang.protal.manager.QuestionImageManager;
 import com.yikang.protal.manager.QuestionManager;
+import com.yikang.protal.manager.QuestionTaglibMapManager;
 
 /**
  * 问题管理service
@@ -27,6 +26,13 @@ public class QuestionService {
 	
 	@Autowired
 	private QuestionAnswerManager questionAnswerManager;
+	
+	@Autowired
+	private QuestionTaglibMapManager questionTaglibMapManager;
+	
+	@Autowired
+	private QuestionImageManager questionImageManager;
+	
 	/**
 	 * 浏览问题
 	 * 
@@ -87,4 +93,21 @@ public class QuestionService {
 		return questionManager.queryUserIdByUserName(userName);
 	}
 
+	
+	/**
+	 * 
+	 * @author liushuaic
+	 * @date 2016-09-06 11:52
+	 * @desc 删除某一个问题
+	 * @param questionId 问题id
+	 * @return int 删除数量
+	 * 
+	 * */
+	public int deleteQuestionByQuestionId(Long questionId){
+		questionTaglibMapManager.deleteQuestionTaglibByQuestionId(questionId);
+		questionImageManager.deleteQuestionImageByQuestionId(questionId);
+		return questionManager.deleteQuestionByQuestionId(questionId);
+	}
+	
+	
 }

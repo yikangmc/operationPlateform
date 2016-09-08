@@ -165,9 +165,9 @@ public class ForumPostService {
 	}
 	
 	public int deleteByPrimaryKey(Long forumPostsId){
-		forumPostManager.deleteByPrimaryKey(forumPostsId);
-		Long taglibsId = formPostsTaglibsMapDao.selectTagLibIdByFormPostId(forumPostsId);
-		taglibDao.updateForumPostsNumberSubByTaglibId(taglibsId);
+		//forumPostManager.deleteByPrimaryKey(forumPostsId);
+		List<FormPostsTaglibsMap> taglibsId = formPostsTaglibsMapDao.selectTagLibIdByFormPostId(forumPostsId);
+		//taglibDao.updateForumPostsNumberSubByTaglibId(taglibsId);
 		return 1;
 	}
 	

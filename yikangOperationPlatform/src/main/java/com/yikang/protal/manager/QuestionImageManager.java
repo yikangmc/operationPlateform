@@ -30,4 +30,15 @@ public class QuestionImageManager {
 	}
 	
 	
+    /**
+     * @author liushuaic
+     * @date 2016-09-06 17:38
+     * @desc 问题删除
+     * @param 问题id
+     * @return 影响数据数量
+     * */
+	public int deleteQuestionImageByQuestionId(Long questionId){
+		return questionImageDao.deleteQuestionImageByQuestionId(questionId);
+	}
+	
 }
