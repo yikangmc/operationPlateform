@@ -1,7 +1,13 @@
 package com.yikang.protal.entity;
-
+/**
+ * 这个类是日注册数量的表格上面显示的内容
+ * @author dell
+ *
+ */
 public class Count {
+	//	日期
 	private String checkDay;
+	//	数量
 	private int count;
 
 

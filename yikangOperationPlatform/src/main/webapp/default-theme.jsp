@@ -305,7 +305,8 @@ request.getSession().setAttribute("reqUri", reqUri);
 									<li class=""><a href="#"><i class="fa fa-circle-o"></i>新用户状态查询</a></li>
 									<li class="${reqUri eq 'operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}">
 									<a href="/operationPlatform/dayRegistrationNumber/dayRegistrationNumber"><i class="fa fa-circle-o"></i>日用户数量查询</a></li>
-															
+									<li class="${reqUri eq 'operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}">
+									<a href="/operationPlatform/dayRegistrationNumber/dayCardNumber"><i class="fa fa-circle-o"></i>当日标签下数量查询</a></li>						
 <!-- 									<li class="menu-open active"><a href="#"><i class="fa fa-circle-o"></i>活动查询 -->
 <!-- 									<i class="fa fa-angle-left pull-right"></i> -->
 <!-- 									</a> -->

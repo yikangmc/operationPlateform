@@ -190,13 +190,62 @@
 		ui.address
 	from users inner join user_infos ui on users.user_id = ui.user_id
   </select>
+
+  <resultMap type="com.yikang.protal.entity.CountTaglib" id="getCardCountByDateResultMap">
+  	  	<result column="taglibId" property="taglibId"/>
+  		<result column="taglibName" property="taglibName"/>
+  		<result column="cardNumber" property="number"/>
+  </resultMap>
+    
+	  <!-- 获取每日用户数量 -->
+	  <select id="getUserCountByDate" parameterType="map" resultType="int">
+		 select  count(1)  from users
+		 left join user_froms on users.user_id=user_froms.user_id
+		 where (users.create_time between #{startDate} and #{endDate})
+			 <if test="userFrom!=null">
+			 	and user_froms.user_from = #{userFrom}
+			 </if>
+	  </select>
   
-  <!-- 获取每日用户数量 -->
-  <select id="getUserCountByDate" parameterType="map" resultType="int">
-<!--    select  count(1) as a  from users where create_time between #{startDate} and #{endDate} -->
-	 select  count(1)  from users
-	 left join user_froms on users.user_id=user_froms.user_id
-	 where (users.create_time between #{startDate} and #{endDate})
-	 and (user_froms.user_from = #{userFrom})
-  </select>
+	<!--   获得当日每个标签下的发帖量 -->
+	<select id="getCardCountByDate" parameterType="map" resultMap="getCardCountByDateResultMap">
+		select t.taglib_id as taglibId,t.tag_name as taglibName,count(fp.forum_post_id) as cardNumber
+		from taglibs t
+		left join forum_posts_taglibs_maps fptm on t.taglib_id=fptm.tag_libs_id
+		left join forum_posts fp on fptm.form_post_id=fp.forum_post_id
+		and fp.create_time between #{startDate}  and  #{endDate}
+		and fp.forum_post_group = 0
+		group by t.taglib_id	
+	</select>
+	<!--   获得当日每个标签下的专家说量 -->
+	<select id="getExpertCountByDate" parameterType="map" resultMap="getCardCountByDateResultMap">
+		select t.taglib_id as taglibId,t.tag_name as taglibName,count(fp.forum_post_id) as cardNumber
+		from taglibs t
+		left join forum_posts_taglibs_maps fptm on t.taglib_id=fptm.tag_libs_id
+		left join forum_posts fp on fptm.form_post_id=fp.forum_post_id
+		and fp.create_time between #{startDate} and  #{endDate}
+		and fp.forum_post_group = 1
+		group by t.taglib_id
+	</select>
+	<!--   获得当日每个标签下的问题的回答量 -->
+	<select id="getAnswerCountByDate" parameterType="map" resultMap="getCardCountByDateResultMap">
+		select t.taglib_id as taglibId,t.tag_name as taglibName,count(qa.question_answer_id) as cardNumber
+		from taglibs t
+		left join question_taglib_maps qtm on t.taglib_id = qtm.taglibs_id
+		left join questions q on qtm.questions_id = q.question_id
+		left join question_answers qa on q.question_id=qa.question_id
+		and qa.create_time between #{startDate} and  #{endDate}
+		group by t.taglib_id
+	</select>
+	
+	<!--   获得当日每个标签下的问题量 -->
+	<select id="getQuestionCountByDate" parameterType="map" resultMap="getCardCountByDateResultMap">
+		select t.taglib_id as taglibId,t.tag_name as taglibName,count(q.question_id) as cardNumber
+		from taglibs t
+		left join question_taglib_maps qtm on t.taglib_id = qtm.taglibs_id
+		left join questions q on qtm.questions_id = q.question_id
+		and q.create_time between #{startDate} and  #{endDate}
+		group by t.taglib_id
+	</select>
+
 </mapper>

@@ -31,6 +31,7 @@
 								<div class="col-sm-2">
 									<!-- <input type="text" id="content" name="content" class="form-control"/> -->
 									<select class="form-control" name="userFrom">
+										<option value="" ${userFrom==null?"selected":"" }>全部</option>
 										<option value="5" ${userFrom==5?"selected":"" }>医生邀请</option>
 										<option value="6" ${userFrom==6?"selected":"" }>自己注册</option>
 										<option value="7" ${userFrom==7?"selected":"" }>360市场</option>

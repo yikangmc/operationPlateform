@@ -14,6 +14,7 @@ import com.yikang.protal.dao.UserInfoDao;
 import com.yikang.protal.dao.UserLinkStatuDao;
 import com.yikang.protal.dao.UserServiceInfoDao;
 import com.yikang.protal.entity.Adetps;
+import com.yikang.protal.entity.CountTaglib;
 import com.yikang.protal.entity.User;
 import com.yikang.protal.entity.UserInfo;
 import com.yikang.protal.entity.UserLinkStatu;
@@ -125,6 +126,43 @@ public class UserManager {
 		paramData.put("endDate", endDateList);
 		paramData.put("userFrom", userFrom);
 		return userInfoDao.getUserCountByDate(paramData);
+	}
+	/**
+	 * @desc 当天每个标签下的发帖量
+	 * */
+	public List<CountTaglib> getCardCountByDate(Date startDateList,Date endDateList){
+		Map<String,Object> paramData=new HashMap<String,Object>();
+		paramData.put("startDate", startDateList);
+		paramData.put("endDate", endDateList);
+		return userInfoDao.getCardCountByDate(paramData);
+	}
+	/**
+	 * @desc 当天每个标签下的专家说量
+	 * */
+	public List<CountTaglib> getExpertCountByDate(Date startDateList,Date endDateList){
+		Map<String,Object> paramData=new HashMap<String,Object>();
+		paramData.put("startDate", startDateList);
+		paramData.put("endDate", endDateList);
+		return userInfoDao.getExpertCountByDate(paramData);
+	}
+	/**
+	 * @desc 当天每个标签下的问题的回答量
+	 * */
+	public List<CountTaglib> getAnswerCountByDate(Date startDateList,Date endDateList){
+		Map<String,Object> paramData=new HashMap<String,Object>();
+		paramData.put("startDate", startDateList);
+		paramData.put("endDate", endDateList);
+		return userInfoDao.getAnswerCountByDate(paramData);
+	}
+	
+	/**
+	 * @desc 当天每个标签下的问题量
+	 * */
+	public List<CountTaglib> getQuestionCountByDate(Date startDateList,Date endDateList){
+		Map<String,Object> paramData=new HashMap<String,Object>();
+		paramData.put("startDate", startDateList);
+		paramData.put("endDate", endDateList);
+		return userInfoDao.getQuestionCountByDate(paramData);
 	}
 	
 	

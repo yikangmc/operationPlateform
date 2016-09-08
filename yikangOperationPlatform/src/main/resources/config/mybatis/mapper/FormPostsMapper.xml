@@ -358,8 +358,8 @@
     <resultMap type="com.yikang.protal.entity.FormPosts" id="geForumPostsByCreateUserIdResultMap" extends="BaseResultMap">
   	  	<result column="user_name" property="userName"/>
   		<result column="photo_url" property="photoUrl"/>
-<!--   		<collection property="taglibs" 		      	column="forum_post_id"	fetchType="eager" select="com.yikang.protal.dao.TaglibDao.getTaglibsByFormPostId"></collection> -->
-<!--   		<collection property="forumPostsImage" 	column="forum_post_id"  fetchType="eager" select="com.yikang.protal.dao.ForumPostsImageDao.getForumPostImagesByForumPostsId"> </collection> -->
+<!--   <collection property="taglibs" 		      	column="forum_post_id"	fetchType="eager" select="com.yikang.protal.dao.TaglibDao.getTaglibsByFormPostId"></collection> -->
+<!--   <collection property="forumPostsImage" 	column="forum_post_id"  fetchType="eager" select="com.yikang.protal.dao.ForumPostsImageDao.getForumPostImagesByForumPostsId"> </collection> -->
   </resultMap>
   <select id="geForumPostsByCreateUserId" parameterType="long" resultMap="geForumPostsByCreateUserIdResultMap">
   	select 
