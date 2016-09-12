@@ -124,7 +124,7 @@
 													<td><a class="btn btn-sm btn-info"
 														href="<%=basePath%>user/updateUserPositionStatusCheckePass?no=2&userId=${userServiceInfo.userId}&newUserPosition=${userServiceInfo.newUserPosition}">通过</a>
 														<button class="btn btn-sm btn-info" type="button"
-															onclick="userStatus.openModal('${userServiceInfo.pushAlias}')">不通过</button>
+															onclick="userStatus.openModal('${userServiceInfo.pushAlias}','${userServiceInfo.userId}')">不通过</button>
 													</td>
 												</tr>
 											</c:forEach>
@@ -165,9 +165,10 @@
 							<tr>
 								<td>
 									<p>
-										<input type="hidden" name="no" value="3" /> <input
-											type="hidden" name="push_alias" /> <input type="checkbox"
-											name="reason" value="资料不属实" />资料不属实
+										<input type="hidden" name="no" value="3" /> 
+										<input type="hidden" name="push_alias" /> 
+										<input type="hidden" name="userId" />
+										<input type="checkbox" name="reason" value="资料不属实" />资料不属实
 									</p>
 									<p>
 										<input type="checkbox" name="reason" value="资历不足" />资历不足

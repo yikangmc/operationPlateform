@@ -77,15 +77,15 @@ public class UserController {
 			userService.updateUserPositionStatusCheckePass(usiMap);
 			
 		}else if("3".equals(no)){
+			userId = req.getParameter("userId");
+			usiMap.put("userId", userId);
+			usiMap.put("positionAuditStatus", 3);
+			userService.updateUserPositionStatusCheckePass(usiMap);
 			String reasons[] = req.getParameterValues("reason");
 			String message="";
 			if(reasons.length>0){
 				for(int i=0;i<reasons.length;i++){
-					if(i==reasons.length-1){
-						message+=reasons[i];
-					}else{
-						message+=reasons[i]+",";
-					}
+					message+=reasons[i]+",";
 				}
 			}
 			String multiple1=MessageProperties.getPropertieValue("message_body_1");
