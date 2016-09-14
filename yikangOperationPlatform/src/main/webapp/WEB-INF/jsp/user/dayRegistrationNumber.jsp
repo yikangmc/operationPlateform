@@ -32,11 +32,20 @@
 									<!-- <input type="text" id="content" name="content" class="form-control"/> -->
 									<select class="form-control" name="userFrom">
 										<option value="" ${userFrom==null?"selected":"" }>全部</option>
+										<option value="0" ${userFrom==0?"selected":"" }>微信</option>
+										<option value="1" ${userFrom==1?"selected":"" }>QQ</option>
+										<option value="2" ${userFrom==2?"selected":"" }>微博</option>
+										<option value="4" ${userFrom==4?"selected":"" }>理大师</option>
 										<option value="5" ${userFrom==5?"selected":"" }>医生邀请</option>
 										<option value="6" ${userFrom==6?"selected":"" }>自己注册</option>
 										<option value="7" ${userFrom==7?"selected":"" }>360市场</option>
 										<option value="8" ${userFrom==8?"selected":"" }>应用宝</option>
 										<option value="9" ${userFrom==9?"selected":"" }>安智</option>
+										<option value="10" ${userFrom==10?"selected":"" }>豌豆荚</option>
+										<option value="11" ${userFrom==11?"selected":"" }>木蚂蚁</option>
+										<option value="12" ${userFrom==12?"selected":"" }>华为</option>
+										<option value="13" ${userFrom==13?"selected":"" }>小米</option>
+										<option value="14" ${userFrom==14?"selected":"" }>百度</option>
 									</select>
 								</div>
 								<div class="box-footer clearfix" style="display: block;">

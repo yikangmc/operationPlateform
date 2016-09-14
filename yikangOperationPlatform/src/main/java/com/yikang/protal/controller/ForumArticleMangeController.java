@@ -39,16 +39,38 @@ public class ForumArticleMangeController {
 	 * @return
 	 */
 	@RequestMapping
-	public String getAllArticleList(ModelMap modelMap,FormPosts formPosts,PageParameter page,HttpServletRequest request){
-		String content=request.getParameter("content");
+	public String getAllArticleList(ModelMap modelMap,FormPosts formPosts,PageParameter page,HttpServletRequest request,String content,Integer isEssence){
 		modelMap.put("content", content);
 		modelMap.put("formPosts", formPosts);
 		modelMap.put("page", page);
+		modelMap.put("isEssence", isEssence);
+		System.out.println(isEssence);
 		List<FormPosts> articleList = manageService.getAllArticleListByPage(modelMap);
 		modelMap.put("articleList", articleList);
 		return "forumPost/articleList";
 	}
-	
+	/**
+	 * 更新该帖子为精华
+	 * @return
+	 */
+	@RequestMapping
+	@ResponseBody
+	public ResponseMessage<String> isEssenceForumArticle(HttpServletRequest hsr){
+		ResponseMessage<String> resData=new ResponseMessage<String>();
+		manageService.updateIssenceByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
+		return resData;
+	}
+	/**
+	 * 取消该精华帖子为普通
+	 * @return
+	 */
+	@RequestMapping
+	@ResponseBody
+	public ResponseMessage<String> cancelEssenceForumArticle(HttpServletRequest hsr){
+		ResponseMessage<String> resData=new ResponseMessage<String>();
+		manageService.cancelIssenceByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
+		return resData;
+	}
 	/**
 	 * 发布帖子
 	 * @param modelMap

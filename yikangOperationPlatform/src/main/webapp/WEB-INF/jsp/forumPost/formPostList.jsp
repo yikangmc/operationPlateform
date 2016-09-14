@@ -46,6 +46,19 @@
 											<input type="text" id="content" name="content" class="form-control"/>
 										</div>
 									</div>
+									<div for="operatorType" class="form-group">
+										<label class="col-sm-2 control-label">查询条件</label>
+											<form action="<%=basePath%>forumPosts/formPostList" method="post">
+												<div class="col-sm-2">
+									<!-- <input type="text" id="content" name="content" class="form-control"/> -->
+													<select class="form-control" name="isEssence">
+														<option value="" ${isEssence== null?"selected":"" }>全部</option>
+														<option value="0" ${isEssence==0?"selected":"" }>非精华</option>
+														<option value="1" ${isEssence==1?"selected":"" }>精华</option>
+													</select>
+												</div>
+										 	</form>
+									</div>
 								</div>
 							</div>
 							<div class="box-footer clearfix" style="display: block;">
@@ -133,6 +146,8 @@
 													<td>
 														<a href="<%=basePath%>forumPosts/updateForumPosts?forumPostsId=${formPosts.forumPostId}" class="btn btn-info ">修改</a>
 														<button class="btn btn-info " onclick="forumPost.del(${formPosts.forumPostId},'<%=basePath%>')">删除</button>
+														<button class="btn btn-info " onclick="forumPost.updateEssence(${formPosts.forumPostId},'<%=basePath%>')">精华</button>
+														<button class="btn btn-info " onclick="forumPost.cancelEssence(${formPosts.forumPostId},'<%=basePath%>')">取消</button>
 													</td>
 												</tr>
 											</c:forEach>

@@ -98,7 +98,19 @@ public interface FormPostsDao {
      * @desc 获取帖子列表（按照更新时间倒序）
      */
     public List<FormPosts> getAllArticleListByPage(Map<String,Object> paramMap);
-    
+	  /**
+	   * 更新帖子为精华
+	   * @param forumPostId
+	   * @return
+	   */
+    int updateIssenceByPrimaryKey(Long forumPostId);
+  
+    /**
+	   * 取消该精华文章为普通
+	   * @param forumPostId
+	   * @return
+	   */
+  int cancelIssenceByPrimaryKey(Long forumPostId);
     /**
      * 获取帖子回答数量
      * @param forumPostId

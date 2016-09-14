@@ -25,8 +25,18 @@ public interface QuestionAnswerDao {
      * @desc 添加问题支持
      * */
     int updateQuestionAnsweStartup(Long questionAnswerId);
-    
-    
+	  /**
+	   * 更新问题的回答为精华
+	   * @param forumPostId
+	   * @return
+	   */
+  int updateQuestionAnswerByPrimaryKey(Long questionAnswerId);
+  /**
+   * 取消该精彩回答为普通
+   * @param forumPostId
+   * @return
+   */
+int cancelQuestionAnswerByPrimaryKey(Long questionAnswerId);
     /**
      * @author liushuaic
      * @date 2016-05-10 15:47

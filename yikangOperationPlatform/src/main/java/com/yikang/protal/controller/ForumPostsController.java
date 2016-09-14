@@ -10,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yikang.common.utils.MatchHtmlElementAttrValue;
 import com.yikang.protal.base.BaseController;
 import com.yikang.protal.common.page.PageParameter;
+import com.yikang.protal.common.response.ResponseMessage;
 import com.yikang.protal.entity.FormPosts;
 import com.yikang.protal.entity.Taglib;
 import com.yikang.protal.entity.User;
@@ -42,12 +44,15 @@ public class ForumPostsController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping
-	public String formPostList(ModelMap modelMap,PageParameter page,HttpServletRequest req){
+	public String formPostList(Integer isEssence,ModelMap modelMap,PageParameter page,HttpServletRequest req){
 		modelMap.put("page", page);
 		String title=req.getParameter("title");
 		String content = req.getParameter("content");
+//		String isEssence=req.getParameter("isEssence");
 		modelMap.put("title", title);
 		modelMap.put("content", content);
+		modelMap.put("isEssence", isEssence);
+		System.out.println("恩恩"+isEssence);
 		List<FormPosts> allFormPosts = forumPostService.findAllFormPosts(modelMap);
 		modelMap.addAttribute("formPostsList", allFormPosts);
 		return "forumPost/formPostList";
@@ -144,6 +149,28 @@ public class ForumPostsController extends BaseController {
 		return "redirect:/forumPosts/formPostList";
 	}
 	
+	/**
+	 * 更新该文章为精华
+	 * @return
+	 */
+	@RequestMapping
+	@ResponseBody
+	public ResponseMessage<String> isEssenceForumPosts(HttpServletRequest hsr){
+		ResponseMessage<String> resData=new ResponseMessage<String>();
+		forumPostService.updateIssenceByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
+		return resData;
+	}
+	/**
+	 * 取消该精华文章
+	 * @return
+	 */
+	@RequestMapping
+	@ResponseBody
+	public ResponseMessage<String> cancelEssenceForumPosts(HttpServletRequest hsr){
+		ResponseMessage<String> resData=new ResponseMessage<String>();
+		forumPostService.cancelIssenceByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
+		return resData;
+	}
 	/**
 	 * 删除文章
 	 * @param hsr

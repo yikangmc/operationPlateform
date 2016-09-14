@@ -34,6 +34,7 @@ public class DayRegistrationNumberController extends BaseController{
 		modelMap.put("title", title);
 		modelMap.put("content", content);
 		modelMap.put("userFrom", userFrom);
+		System.out.println("日注册量"+userFrom);
 		List<Count> UserNumber = userService.getSevenDayUserCount(userFrom);
 		modelMap.put("UserNumber", UserNumber);
 		return "user/dayRegistrationNumber";

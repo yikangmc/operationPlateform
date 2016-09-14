@@ -41,8 +41,34 @@ ForumPost.prototype={
               }
           });
 			}
+		},
+		updateEssence:function(forumPostId,basePath){
+			if(confirm("确定要设为精华吗？")){
+				$.post(basePath+"/forumPosts/isEssenceForumPosts", { "forumPostsId": forumPostId}, function (data,status) {
+					if(null != data && data.status == "000000"){
+						alert(data.message);
+					}else{
+						alert(data.message)
+					}
+//					forumPost.relond();
+				});		        
+			}
+		},		
+		cancelEssence:function(forumPostId,basePath){
+			if(confirm("确定要取消精华吗？")){
+				$.post(basePath+"/forumPosts/cancelEssenceForumPosts", { "forumPostsId": forumPostId}, function (data,status) {
+					if(null != data && data.status == "000000"){
+						alert(data.message);
+					}else{
+						alert(data.message)
+					}
+//					forumPost.relond();
+				});		        
+			}
+		},
+		relond:function(){
+			window.location.href=basePath+"forumPost/formPostList";
 		}
 }
-
 var forumPost=new ForumPost();
 forumPost.init();

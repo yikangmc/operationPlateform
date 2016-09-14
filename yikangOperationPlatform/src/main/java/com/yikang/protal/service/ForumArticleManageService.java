@@ -45,7 +45,24 @@ public class ForumArticleManageService {
 		return formPostsDao.getAllArticleListByPage(paramMap);
 	}
 	
-	
+	/**
+	 * 	通过ID来更新帖子是否为精华
+	 * @param forumPostsId
+	 * @return
+	 */
+	public int updateIssenceByPrimaryKey(Long forumPostsId){
+		formPostsDao.updateIssenceByPrimaryKey(forumPostsId);
+		return 1;
+	}
+	/**
+	 * 	取消该精华帖子为普通
+	 * @param forumPostsId
+	 * @return
+	 */
+	public int cancelIssenceByPrimaryKey(Long forumPostsId){
+		formPostsDao.cancelIssenceByPrimaryKey(forumPostsId);
+		return 1;
+	}
 	/**
 	 * 删除帖子
 	 */

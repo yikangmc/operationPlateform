@@ -137,7 +137,7 @@ public class QuestionAnswerManager {
 	 * @date 2016-08-12 10:57s
 	 * @desc 获取回复列表
 	 * */
-	public List<QuestionAnswer> getQuestionAnswerListPage(String questionTitle,String questionAnswer,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page){
+	public List<QuestionAnswer> getQuestionAnswerListPage( Integer isRecommend,String questionTitle,String questionAnswer,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page){
 		
 		Map<String,Object> paramMap=new HashMap<String, Object>();
 		paramMap.put("questionTitle", questionTitle);
@@ -145,6 +145,7 @@ public class QuestionAnswerManager {
 		paramMap.put("answerStartDateTime", answerStartDateTime);
 		paramMap.put("answerEndTime", answerEndTime);
 		paramMap.put("page", page);
+		paramMap.put("isRecommend", isRecommend);
 		
 		return questionAnswerDao.getQuestionAnswerListPage(paramMap);
 	}

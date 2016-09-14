@@ -33,6 +33,18 @@
     delete from forum_posts
     where forum_post_id = #{forumPostId,jdbcType=BIGINT}
   </delete>
+  
+	<!--更新文章为精华 -->
+  <update id="updateIssenceByPrimaryKey" parameterType="java.lang.Long" >
+    update forum_posts set is_essence= 1
+	where forum_post_id=#{forumPostId,jdbcType=BIGINT}
+  </update>
+  
+  <!--取消该精华文章为普通 -->
+  <update id="cancelIssenceByPrimaryKey" parameterType="java.lang.Long" >
+    update forum_posts set is_essence= 0
+	where forum_post_id=#{forumPostId,jdbcType=BIGINT}
+  </update>
   <insert id="insert" parameterType="com.yikang.protal.entity.FormPosts" >
     <selectKey resultType="Long" keyProperty="forumPostId" order="AFTER">
 		SELECT LAST_INSERT_ID()
@@ -377,14 +389,17 @@
   <!-- 获取帖子列表 -->
   <select id="getAllArticleListByPage" resultMap="geForumPostsByCreateUserIdResultMap" parameterType="map">
    select  forum_posts.forum_post_id, title, content, report_complaints_status, is_essence, forum_posts.create_time, 
-    forum_posts.update_time, stars, share_num, create_user_id, share_url, recommend_pic_url, forum_post_group, 
+    forum_posts.update_time, stars, share_num, forum_posts.create_user_id, share_url, recommend_pic_url, forum_post_group, 
     forum_posts_uuid,
     a.user_name as userName,
     a.photo_url as photoUrl ,
-    detail.forum_post_detail_content as forumPostDetailContent
+    detail.forum_post_detail_content as forumPostDetailContent,
+    taglibs.tag_name as tagName
     FROM forum_posts 
     left join user_infos a on a.user_id = forum_posts.create_user_id
     left join forum_post_details detail on detail.forum_post_id=forum_posts.forum_post_id
+    left join forum_posts_taglibs_maps as fptm on forum_posts.forum_post_id=fptm.form_post_id
+    left join taglibs on fptm.tag_libs_id=taglibs.taglib_id
     where forum_posts.forum_post_group = 0
 <!--   	select <include refid="Base_Column_List"></include>, -->
 <!--   		 a.user_name as userName,a.photo_url as photoUrl from forum_posts  -->
@@ -393,9 +408,12 @@
   	<if test="null != content ">
 		and forum_posts.content like concat('%',#{content},'%') 
 	</if>
+	<if test="null!=isEssence">
+		and forum_posts.is_essence=#{isEssence}
+	</if>
   	 order by update_time desc
   </select>
-  
+    
   <!-- 获取文章列表 -->
   <select id="getAllProfessionListByPage" resultMap="geForumPostsByCreateUserIdResultMap" parameterType="map">
 	select fpd.forum_post_id, forum_posts.title, forum_posts.content,
@@ -414,6 +432,9 @@
 	</if>
 	<if test="null != content ">
 		and fpd.forum_post_detail_content like concat('%',#{content},'%') 
+	</if>
+	<if test="null!=isEssence">
+		and forum_posts.is_essence=#{isEssence}
 	</if>
 		 order by update_time desc
   </select>

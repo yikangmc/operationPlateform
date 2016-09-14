@@ -2,6 +2,7 @@ package com.yikang.protal.service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -70,6 +71,7 @@ public class ForumPostService {
 		formPosts.setUpdateTime(currentDate);
 		String uuid=UUID.randomUUID().toString();
 		String shareUrl=UrlGenerateUtil.generateShareForumPostUrl(uuid);
+		System.out.println("testf");
 		formPosts.setShareUrl(shareUrl);
 		formPosts.setForumPostsUuid(uuid);
 		formPosts.setShareNum(0);
@@ -144,7 +146,7 @@ public class ForumPostService {
 		return 1;
 	}
 	
-	public List<FormPosts> findAllFormPosts(Map<String,Object> paramMap){
+	public List<FormPosts> findAllFormPosts(Map<String,Object> paramMap){		
 		return formPostsDao.getAllProfessionListByPage(paramMap);
 	}
 	
@@ -168,6 +170,16 @@ public class ForumPostService {
 		//forumPostManager.deleteByPrimaryKey(forumPostsId);
 		List<FormPostsTaglibsMap> taglibsId = formPostsTaglibsMapDao.selectTagLibIdByFormPostId(forumPostsId);
 		//taglibDao.updateForumPostsNumberSubByTaglibId(taglibsId);
+		return 1;
+	}
+	//	通过ID来更新文章是否为精华
+	public int updateIssenceByPrimaryKey(Long forumPostsId){
+		formPostsDao.updateIssenceByPrimaryKey(forumPostsId);
+		return 1;
+	}
+//	通过ID来取消精华文章为普通
+	public int cancelIssenceByPrimaryKey(Long forumPostsId){
+		formPostsDao.cancelIssenceByPrimaryKey(forumPostsId);
 		return 1;
 	}
 	

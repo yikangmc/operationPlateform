@@ -152,6 +152,17 @@
   <update id="updateQuestionAnsweStartup" parameterType="long">
   	update question_answers set star_num=star_num+1 where question_answer_id=#{questionAnswerId}
   </update>
+  <!--更新该回答为精华 -->
+  <update id="updateQuestionAnswerByPrimaryKey" parameterType="java.lang.Long" >
+    update question_answers set is_recommend = 1
+	where question_answer_id = #{questionAnswerId,jdbcType=BIGINT}
+  </update>
+  
+  <!--取消该精彩回答为普通 -->
+  <update id="cancelQuestionAnswerByPrimaryKey" parameterType="java.lang.Long" >
+    update question_answers set is_recommend = 0
+	where question_answer_id = #{questionAnswerId,jdbcType=BIGINT}
+  </update>
   
   <!-- 取消问题支持 -->
   <update id="updateQuestionAnswerdown" parameterType="long">
@@ -313,6 +324,9 @@
 		</if>
 		<if test="null != answerEndTime">
 			and qa.create_time >= #{answerEndTime}
+		</if>
+		<if test="null!=isRecommend">
+		and qa.is_recommend = #{isRecommend}
 		</if>
 	</where>  
 	 order by qa.create_time desc

@@ -2,6 +2,9 @@ package com.yikang.protal.common.utils;
 
 import java.util.UUID;
 
+import com.yikang.common.utils.SystemProperties;
+
+
 public class UrlGenerateUtil {
 
 	
@@ -11,7 +14,8 @@ public class UrlGenerateUtil {
 	 * @desc 生成文章分享url
 	 * **/
 	public static String generateShareForumPostUrl(){
-		String shareUrl=System.getProperty("shareForumPostUrl");
+//		String shareUrl=System.getProperty("shareForumPostUrl");
+		String shareUrl=SystemProperties.getPropertieValue("shareForumPostUrl");
 		String uuid=UUID.randomUUID().toString().replaceAll("-", "");
 		return shareUrl+uuid;
 	}
@@ -23,7 +27,7 @@ public class UrlGenerateUtil {
 	 * @desc 生成文章分享url
 	 * **/
 	public static String generateShareForumPostUrl(String uuid){
-		String shareUrl=System.getProperty("shareForumPostUrl");
+		String shareUrl=SystemProperties.getPropertieValue("shareForumPostUrl");
 		uuid= uuid.replaceAll("-", "");
 		return shareUrl+uuid;
 	}

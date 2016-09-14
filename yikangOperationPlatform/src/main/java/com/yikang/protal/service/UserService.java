@@ -308,18 +308,11 @@ public class UserService {
 	 * @param userServiceInfoId
 	 * @return
 	 */
-<<<<<<< Updated upstream
-	public int updateUserPositionStatusCheckePass(Map<String, Object> paramData) {
-		userManager.updateUserPositionStatusCheckePass(paramData);
-		integralManager.insertIntegralAddScoreIsONCEJob("RZCG", Long.valueOf(paramData.get("userId").toString()));
-		return 1;
-=======
 	public int updateUserPositionStatusCheckePass(Map<String,Object> paramData){
 		if("2".equals(paramData.get("positionAuditStatus").toString())){
 			integralManager.insertIntegralAddScoreIsONCEJob("RZCG", Long.valueOf(paramData.get("userId").toString()));
 		}
 		return userManager.updateUserPositionStatusCheckePass(paramData);
->>>>>>> Stashed changes
 	}
 
 }
