@@ -48,7 +48,6 @@
 									</div>
 									<div for="operatorType" class="form-group">
 										<label class="col-sm-2 control-label">查询条件</label>
-											<form action="<%=basePath%>forumPosts/formPostList" method="post">
 												<div class="col-sm-2">
 									<!-- <input type="text" id="content" name="content" class="form-control"/> -->
 													<select class="form-control" name="isEssence">
@@ -57,12 +56,13 @@
 														<option value="1" ${isEssence==1?"selected":"" }>精华</option>
 													</select>
 												</div>
-										 	</form>
 									</div>
 								</div>
 							</div>
 							<div class="box-footer clearfix" style="display: block;">
-								<button type="submit" class="btn btn-sm btn-info btn-flat pull-right">查询</button>
+								<button type="submit" class="btn btn-sm btn-info btn-flat pull-right">查询
+									
+								</button>
 								<button type="reset"  class="btn btn-sm btn-default btn-flat pull-right">重置</button>
 							</div>
 						</div>
@@ -146,8 +146,12 @@
 													<td>
 														<a href="<%=basePath%>forumPosts/updateForumPosts?forumPostsId=${formPosts.forumPostId}" class="btn btn-info ">修改</a>
 														<button class="btn btn-info " onclick="forumPost.del(${formPosts.forumPostId},'<%=basePath%>')">删除</button>
-														<button class="btn btn-info " onclick="forumPost.updateEssence(${formPosts.forumPostId},'<%=basePath%>')">精华</button>
-														<button class="btn btn-info " onclick="forumPost.cancelEssence(${formPosts.forumPostId},'<%=basePath%>')">取消</button>
+														<c:if test="${formPosts.isEssence==0 }">
+														 	<button class="btn btn-info " onclick="forumPost.updateEssence(${formPosts.forumPostId},'<%=basePath%>')">设为精华</button>
+														</c:if>
+														<c:if test="${formPosts.isEssence==1 }">
+															<button class="btn batn-info " onclick="forumPost.cancelEssence(${formPosts.forumPostId},'<%=basePath%>')">取消精华</button>
+														</c:if>
 													</td>
 												</tr>
 											</c:forEach>
@@ -163,5 +167,9 @@
 					</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+		
+		
+		</script>
 </body>
 </html>

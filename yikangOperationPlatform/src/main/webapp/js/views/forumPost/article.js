@@ -1,5 +1,4 @@
-var Article = function() {
-}
+var Article = function() {}
 Article.prototype = {
 	init : function() {
 
@@ -33,9 +32,9 @@ Article.prototype = {
 				if(null != data && data.status == "000000"){
 					alert(data.message);
 				}else{
-					alert(data.message)
+					alert(data.message);
 				}
-//				article.relond();
+				article.relond();
 			});		        
 		}
 	},		
@@ -45,15 +44,15 @@ Article.prototype = {
 				if(null != data && data.status == "000000"){
 					alert(data.message);
 				}else{
-					alert(data.message)
+					alert(data.message);
 				}
-//				article.relond();
+				article.relond();
 			});		        
 		}
 	},
 	relond:function(){
-		window.location.href=basePath+"forumPost/articleList";
-	}
+		window.location.href=basePath+"forumArticleMange/getAllArticleList";
+	}	
 }
 
 var article = new Article();

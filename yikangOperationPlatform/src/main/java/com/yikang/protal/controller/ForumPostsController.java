@@ -48,7 +48,6 @@ public class ForumPostsController extends BaseController {
 		modelMap.put("page", page);
 		String title=req.getParameter("title");
 		String content = req.getParameter("content");
-//		String isEssence=req.getParameter("isEssence");
 		modelMap.put("title", title);
 		modelMap.put("content", content);
 		modelMap.put("isEssence", isEssence);

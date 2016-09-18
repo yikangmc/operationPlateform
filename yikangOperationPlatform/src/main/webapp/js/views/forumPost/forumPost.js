@@ -50,7 +50,7 @@ ForumPost.prototype={
 					}else{
 						alert(data.message)
 					}
-//					forumPost.relond();
+					forumPost.relond();
 				});		        
 			}
 		},		
@@ -60,14 +60,14 @@ ForumPost.prototype={
 					if(null != data && data.status == "000000"){
 						alert(data.message);
 					}else{
-						alert(data.message)
+						alert(data.message);
 					}
-//					forumPost.relond();
+					forumPost.relond();
 				});		        
 			}
 		},
 		relond:function(){
-			window.location.href=basePath+"forumPost/formPostList";
+			window.location.href=basePath+"forumPosts/formPostList";
 		}
 }
 var forumPost=new ForumPost();

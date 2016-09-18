@@ -46,16 +46,13 @@
 							</div>
 							<div for="operatorType" class="form-group">
 								<label class="col-sm-2 control-label">查询条件</label>
-								<form action="<%=basePath%>questionAnswer/questionAnswerList"
-									method="post">
-									<div class="col-sm-2">
-										<select class="form-control" name="isRecommend">
-											<option value="" ${isRecommend==null?"selected":"" }>全部</option>
-											<option value="0" ${isRecommend==0?"selected":"" }>非精华</option>
-											<option value="1" ${isRecommend==1?"selected":"" }>精华</option>
-										</select>
-									</div>
-								</form>
+								<div class="col-sm-2">
+									<select class="form-control" name="isRecommend">
+										<option value="" ${isRecommend==null?"selected":"" }>全部</option>
+										<option value="0" ${isRecommend==0?"selected":"" }>非精华</option>
+										<option value="1" ${isRecommend==1?"selected":"" }>精华</option>
+									</select>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -100,8 +97,8 @@
 													<td>${questionAnswer.question.userName }</td>
 													<td><c:if test="${questionAnswer.isRecommend==1 }">是</c:if>
 														<c:if test="${questionAnswer.isRecommend==0 }">否</c:if></td>
-													<td>
-														<fmt:formatDate value="${questionAnswer.createTime }" type="both"/></td>
+													<td><fmt:formatDate
+															value="${questionAnswer.createTime }" type="both" /></td>
 													<td>${questionAnswer.detailContent}</td>
 													<td>${questionAnswer.userName}</td>
 													<td>
@@ -109,10 +106,10 @@
 															onclick="questionAnswer.del(${questionAnswer.questionAnswerId},'<%=basePath%>')">删除</button>
 														<c:if test="${questionAnswer.isRecommend==0 }">
 															<button type="button" class="btn btn-info "
-																onclick="questionAnswer.updateEssencea(${questionAnswer.questionAnswerId},'<%=basePath%>')">精华</button>
+																onclick="questionAnswer.updateEssencea(${questionAnswer.questionAnswerId},'<%=basePath%>')">设为精华</button>
 														</c:if> <c:if test="${questionAnswer.isRecommend==1 }">
 															<button type="button" class="btn batn-info "
-																onclick="questionAnswer.cancelEssencea(${questionAnswer.questionAnswerId},'<%=basePath%>')">取消</button>
+																onclick="questionAnswer.cancelEssencea(${questionAnswer.questionAnswerId},'<%=basePath%>')">取消精华</button>
 														</c:if>
 													</td>
 												</tr>
