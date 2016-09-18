@@ -1,5 +1,6 @@
 package com.yikang.protal.service;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -308,18 +309,11 @@ public class UserService {
 	 * @param userServiceInfoId
 	 * @return
 	 */
-<<<<<<< Updated upstream
 	public int updateUserPositionStatusCheckePass(Map<String,Object> paramData){
 		if("2".equals(paramData.get("positionAuditStatus").toString())){
 			integralManager.insertIntegralAddScoreIsONCEJob("RZCG", Long.valueOf(paramData.get("userId").toString()));
 		}
 		return userManager.updateUserPositionStatusCheckePass(paramData);
-=======
-	public int updateUserPositionStatusCheckePass(Map<String, Object> paramData) {
-		userManager.updateUserPositionStatusCheckePass(paramData);
-		integralManager.insertIntegralAddScoreIsONCEJob("RZCG", Long.valueOf(paramData.get("userId").toString()));
-		return 1;
->>>>>>> Stashed changes
 	}
 
 }

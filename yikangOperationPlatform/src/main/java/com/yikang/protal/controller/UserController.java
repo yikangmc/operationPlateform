@@ -57,10 +57,13 @@ public class UserController {
 	
 	@RequestMapping
 	public String verificationList(ModelMap modelMap, UserServiceInfo userServiceInfo,PageParameter page ,HttpServletRequest req){
-		modelMap.put("page", page);
 		modelMap.put("userServiceInfo", userServiceInfo);
 		String operatorType = req.getParameter("operatorType");
+		if(null==operatorType||operatorType.equals("null")){
+			operatorType=null;
+		}
 		modelMap.put("positionAuditStatus", operatorType);
+		modelMap.put("page", page);
 		List<UserServiceInfo> userServiceInfoList=userService.listVerification(modelMap);
 		modelMap.put("userServiceInfoList", userServiceInfoList);
 		return "user/verification";

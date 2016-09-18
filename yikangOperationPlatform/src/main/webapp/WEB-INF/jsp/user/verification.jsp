@@ -34,7 +34,7 @@
 								<label for="operatorType" class="col-sm-2 control-label">审核状态</label>
 								<div class="col-sm-2">
 									<select class="form-control" name="operatorType">
-										<option value="3" selected="selected">全部</option>
+										<option value="null">全部</option>
 										<option value="1">审核中</option>
 										<option value="2">审核通过</option>
 										<option value="0">未审核</option>
