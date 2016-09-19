@@ -45,7 +45,7 @@ src->webapp->jsp->forumPost->articleList
 											<label class="col-sm-2 control-label">帖子内容</label>
 											<div class="col-sm-2">
 												<input type="text" id="content" name="content"
-													class="form-control" />
+													class="form-control" value="${content}"/>
 											</div>
 										</div>
 										<div for="operatorType" class="form-group">
@@ -83,13 +83,13 @@ src->webapp->jsp->forumPost->articleList
 													rowspan="1" colspan="1" aria-sort="ascending"
 													aria-label="Rendering engine: activate to sort column descending"
 													>标题</th> -->
-												<th class="sorting col-md-3" tabindex="0" aria-controls="example1"
+												<th class="sorting col-md-2" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending">内容</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending">分类</th>
-												<th class="sorting" tabindex="0" aria-controls="example1"
+												<th class="sorting col-md-1" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending">所属标签</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"

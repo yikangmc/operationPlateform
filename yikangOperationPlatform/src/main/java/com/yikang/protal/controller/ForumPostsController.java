@@ -51,7 +51,6 @@ public class ForumPostsController extends BaseController {
 		modelMap.put("title", title);
 		modelMap.put("content", content);
 		modelMap.put("isEssence", isEssence);
-		System.out.println("恩恩"+isEssence);
 		List<FormPosts> allFormPosts = forumPostService.findAllFormPosts(modelMap);
 		modelMap.addAttribute("formPostsList", allFormPosts);
 		return "forumPost/formPostList";

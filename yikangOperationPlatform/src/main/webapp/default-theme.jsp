@@ -295,7 +295,8 @@ request.getSession().setAttribute("reqUri", reqUri);
 							<li class="header">主导航栏</li>
 
 							<li class="treeview
-							${reqUri eq 'operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}							
+							${reqUri eq '/operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}
+							${reqUri eq '/operationPlatform/dayRegistrationNumber/dayCardNumber' ? 'active':''}
 							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
@@ -303,10 +304,14 @@ request.getSession().setAttribute("reqUri", reqUri);
 								</a>
 								<ul class="treeview-menu">
 									<li class=""><a href="#"><i class="fa fa-circle-o"></i>新用户状态查询</a></li>
-									<li class="${reqUri eq 'operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}">
-									<a href="/operationPlatform/dayRegistrationNumber/dayRegistrationNumber"><i class="fa fa-circle-o"></i>日用户数量查询</a></li>
-									<li class="${reqUri eq 'operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}">
-									<a href="/operationPlatform/dayRegistrationNumber/dayCardNumber"><i class="fa fa-circle-o"></i>当日标签下数量查询</a></li>						
+									<li class="${reqUri eq '/operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}">
+									<a href="/operationPlatform/dayRegistrationNumber/dayRegistrationNumber"><i class="fa fa-circle-o">
+									</i>日用户数量查询</a>
+									</li>
+									<li class="${reqUri eq '/operationPlatform/dayRegistrationNumber/dayCardNumber' ? 'active':''}">
+										<a href="/operationPlatform/dayRegistrationNumber/dayCardNumber"><i class="fa fa-circle-o">
+										</i>当日标签下数量查询</a>
+									</li>						
 <!-- 									<li class="menu-open active"><a href="#"><i class="fa fa-circle-o"></i>活动查询 -->
 <!-- 									<i class="fa fa-angle-left pull-right"></i> -->
 <!-- 									</a> -->
@@ -374,6 +379,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 							<li class="treeview
 								${reqUri eq '/operationPlatform/question/questionCreate' ? 'active':''}
 								${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}
+								${reqUri eq '/operationPlatform/questionAnswer/questionAnswerList' ? 'active':'' }
 							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
@@ -388,7 +394,9 @@ request.getSession().setAttribute("reqUri", reqUri);
 										<a href="/operationPlatform/question/questionList"><i class="fa fa-circle-o"></i>问题列表</a>
 									</li>
 								 
-									<li class="${reqUri eq '/operationPlatform/questionAnswer/questionAnswerList' ? 'active':''}"><a href="/operationPlatform/questionAnswer/questionAnswerList"><i class="fa fa-circle-o"></i>回答删除</a></li>
+									<li class="${reqUri eq '/operationPlatform/questionAnswer/questionAnswerList' ? 'active':''}">
+										<a href="/operationPlatform/questionAnswer/questionAnswerList"><i class="fa fa-circle-o"></i>回答管理</a>
+									</li>
 								</ul>
 							</li>
 							<li class="treeview ${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}">

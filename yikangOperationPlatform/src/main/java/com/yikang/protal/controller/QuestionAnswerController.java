@@ -30,11 +30,11 @@ public class QuestionAnswerController{
 	 * @desc 获取回复列表
 	 * */
 	@RequestMapping
-	public String questionAnswerList(ModelMap modelMap, String quetionTitle,String questionAnswerTitle,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page,HttpServletRequest hsr,Integer isRecommend){
-		List<QuestionAnswer> data=questionAnswerService.getQuestionAnswerListPage(isRecommend,quetionTitle, questionAnswerTitle, answerId, answerStartDateTime, answerEndTime,page);
+	public String questionAnswerList(ModelMap modelMap, String questionTitle,String questionAnswerTitle,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page,HttpServletRequest hsr,Integer isRecommend){
+		List<QuestionAnswer> data=questionAnswerService.getQuestionAnswerListPage(isRecommend,questionTitle, questionAnswerTitle, answerId, answerStartDateTime, answerEndTime,page);
 		modelMap.put("data", data);
 		modelMap.put("page", page);
-		modelMap.put("quetionTitle", quetionTitle);
+		modelMap.put("questionTitle", questionTitle);
 		modelMap.put("questionAnswerTitle", questionAnswerTitle);
 		modelMap.put("isRecommend", isRecommend);
 		return "questionAnswer/questionAnswerList";

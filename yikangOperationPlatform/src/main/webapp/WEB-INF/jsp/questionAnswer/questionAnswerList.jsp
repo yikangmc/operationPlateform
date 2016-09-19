@@ -34,7 +34,7 @@
 								<label for="questionTitle" class="col-sm-2 control-label">问题名称</label>
 								<div class="col-sm-2">
 									<input type="text" name="questionTitle" class="form-control"
-										value="${questionTitle}" />
+										 value="${questionTitle}" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -94,7 +94,7 @@
 												varStatus="varIndex">
 												<tr>
 													<td>${questionAnswer.question.title }</td>
-													<td>${questionAnswer.question.userName }</td>
+													<td>${questionAnswer.userName }</td>
 													<td><c:if test="${questionAnswer.isRecommend==1 }">是</c:if>
 														<c:if test="${questionAnswer.isRecommend==0 }">否</c:if></td>
 													<td><fmt:formatDate

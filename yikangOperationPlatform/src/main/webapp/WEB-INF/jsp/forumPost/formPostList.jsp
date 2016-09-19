@@ -37,13 +37,14 @@
 									<div class="form-group">
 										<label for="content" class="col-sm-2 control-label">文章标题</label>
 										<div class="col-sm-2">
-											<input type="text" id="title" name="title" class="form-control" />
+											<input type="text" id="title" name="title" class="form-control" value="${title}">
+											</input>
 										</div>
 									</div>
 									<div for="operatorType" class="form-group">
 										<label class="col-sm-2 control-label">文章内容</label>
 										<div class="col-sm-2">
-											<input type="text" id="content" name="content" class="form-control"/>
+											<input type="text" id="content" name="content" class="form-control" value="${content }"/>
 										</div>
 									</div>
 									<div for="operatorType" class="form-group">
@@ -61,7 +62,7 @@
 							</div>
 							<div class="box-footer clearfix" style="display: block;">
 								<button type="submit" class="btn btn-sm btn-info btn-flat pull-right">查询
-									
+								
 								</button>
 								<button type="reset"  class="btn btn-sm btn-default btn-flat pull-right">重置</button>
 							</div>
@@ -167,9 +168,5 @@
 					</div>
 			</div>
 		</div>
-		<script type="text/javascript">
-		
-		
-		</script>
 </body>
 </html>
