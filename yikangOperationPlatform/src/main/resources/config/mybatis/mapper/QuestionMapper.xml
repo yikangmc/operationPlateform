@@ -231,10 +231,17 @@
 	LEFT JOIN
 	question_answers qa on qtm.questions_id=qa.question_id
 	where 1=1 
+<<<<<<< Updated upstream
 	<if test="null!=title and title  != ''">
 		and que.title like concat('%',#{title},'%')
 	</if>
 	<if test="null!=content and content != ''">
+=======
+	<if test="title!=null">
+		and que.title like concat('%',#{title},'%')
+	</if>
+	<if test="content!=null">
+>>>>>>> Stashed changes
 		and qa.content like concat('%',#{content},'%')
 	</if>
 	group by que.question_id 

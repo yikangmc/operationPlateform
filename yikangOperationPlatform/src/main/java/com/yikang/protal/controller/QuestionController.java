@@ -54,6 +54,12 @@ public class QuestionController extends BaseController{
 		modelMap.put("page", page);
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		if(null==title || title.equals("")){
+			title=null;
+		}
+		if(null==content || content.equals("")){
+			content=null;
+		}
 		modelMap.put("title", title);
 		modelMap.put("content", content);
 		List<Question> allQuestions = systemService.queryAllQuestions(modelMap);
@@ -140,7 +146,7 @@ public class QuestionController extends BaseController{
 		}else{
 			modeMap.addAttribute("resultMessage", "此用户不存在，请再次确认！！！");
 		}
-		return questionList(modeMap, null, req);
+		return "redirect:/question/questionList";
 	}
 	
 	
