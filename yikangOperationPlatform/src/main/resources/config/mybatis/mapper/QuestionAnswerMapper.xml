@@ -307,9 +307,9 @@
 	ui.user_name,
 	ui.photo_url,
 	usi.user_position
-	from questions que 
+	page_from questions que 
     inner join question_answers qa on que.question_id=qa.question_id
-	left join question_answer_details qad on qa.question_answer_id=qad.question_answer_id
+	inner join question_answer_details qad on qa.question_answer_id=qad.question_answer_id
     left join user_infos ui on qa.create_user_id=ui.user_id
     left join user_service_infos usi on qa.create_user_id=usi.user_id
 	<where>
@@ -326,10 +326,10 @@
 			and qa.create_time >= #{answerEndTime}
 		</if>
 		<if test="null!=isRecommend">
-		and qa.is_recommend = #{isRecommend}
+			and qa.is_recommend = #{isRecommend}
 		</if>
 	</where>  
-	 order by qa.create_time desc
+	 page_order by qa.create_time desc
   </select>
   
   

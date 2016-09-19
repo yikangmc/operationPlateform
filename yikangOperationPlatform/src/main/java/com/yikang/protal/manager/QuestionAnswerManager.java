@@ -140,8 +140,12 @@ public class QuestionAnswerManager {
 	public List<QuestionAnswer> getQuestionAnswerListPage( Integer isRecommend,String questionTitle,String questionAnswer,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page){
 		
 		Map<String,Object> paramMap=new HashMap<String, Object>();
-		paramMap.put("questionTitle", questionTitle);
-		paramMap.put("questionAnswer", questionAnswer);
+		if(null != questionTitle && questionTitle != ""){
+			paramMap.put("questionTitle", questionTitle);
+		}
+		if(null != questionTitle && questionTitle != ""){
+			paramMap.put("questionAnswer", questionAnswer);
+		}
 		paramMap.put("answerStartDateTime", answerStartDateTime);
 		paramMap.put("answerEndTime", answerEndTime);
 		paramMap.put("page", page);
