@@ -39,13 +39,13 @@
 										<div class="form-group">
 											<label for="content" class="col-sm-2 control-label">问题标题</label>
 											<div class="col-sm-2">
-												<input type="text" id="title" name="title" />
+												<input type="text" id="title" name="title" value="${title }" />
 											</div>
 										</div>
 										<div for="operatorType" class="form-group">
 											<label for="content" class="col-sm-2 control-label">问题内容</label>
 											<div class="col-sm-2">
-												<input type="text" id="content" name="content" />
+												<input type="text" id="content" name="content" value="${content }"/>
 											</div>
 										</div>
 									</div>

@@ -231,11 +231,11 @@
 	LEFT JOIN
 	question_answers qa on qtm.questions_id=qa.question_id
 	where 1=1 
-	<if test="null!=title">
+	<if test="null!=title and title  != ''">
 		and que.title like concat('%',#{title},'%')
 	</if>
-	<if test="null!=content">
-		and qa.content like concat('%',#{content},'%')
+	<if test="null!=content and content != ''">
+		and que.title like concat('%',#{content},'%')
 	</if>
 	group by que.question_id 
 	order by answer_num asc,que.create_time DESC
