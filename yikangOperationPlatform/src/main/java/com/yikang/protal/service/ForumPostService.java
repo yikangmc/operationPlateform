@@ -69,9 +69,8 @@ public class ForumPostService {
 		formPosts.setAnswersNums(0);
 		formPosts.setCreateTime(currentDate);
 		formPosts.setUpdateTime(currentDate);
-		String uuid=UUID.randomUUID().toString();
+		String uuid=UUID.randomUUID().toString().replaceAll("-", "");
 		String shareUrl=UrlGenerateUtil.generateShareForumPostUrl(uuid);
-		System.out.println("testf");
 		formPosts.setShareUrl(shareUrl);
 		formPosts.setForumPostsUuid(uuid);
 		formPosts.setShareNum(0);

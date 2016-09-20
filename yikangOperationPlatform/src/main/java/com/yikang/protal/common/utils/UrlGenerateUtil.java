@@ -28,7 +28,7 @@ public class UrlGenerateUtil {
 	 * **/
 	public static String generateShareForumPostUrl(String uuid){
 		String shareUrl=SystemProperties.getPropertieValue("shareForumPostUrl");
-		uuid= uuid.replaceAll("-", "");
+		//uuid= uuid.replaceAll("-", "");
 		return shareUrl+uuid;
 	}
 	/**
