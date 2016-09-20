@@ -20,7 +20,8 @@ QuestionList.prototype={
 				}else{
 					alert(data.message)
 				}
-				questionList.relond();
+				//questionList.relond();
+				parent.location.reload();
 			});
 		},
 		relond:function(){
