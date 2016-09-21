@@ -3,9 +3,17 @@ package com.yikang.common.message.im;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.yikang.base.cache.UsersCache;
 import com.yikang.common.message.MessageUtils;
+import com.yikang.protal.entity.User;
+import com.yikang.protal.manager.MessageManager;
 
 import cn.jpush.api.push.model.PushPayload;
+import sun.util.logging.resources.logging;
 
 /**
  * @author liushuaic
@@ -14,7 +22,6 @@ import cn.jpush.api.push.model.PushPayload;
  * 
  * **/
 public class MessageSender implements Runnable {
-
 	@SuppressWarnings("rawtypes")
 	public void run() {
 		while (true){

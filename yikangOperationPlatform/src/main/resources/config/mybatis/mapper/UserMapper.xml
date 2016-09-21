@@ -164,7 +164,12 @@
   	</where>
   </select>
   
-  
+  	<!-- 获取所有用户表用户信息 -->
+  <select id="getAllUsers" resultMap="BaseResultMap">
+  	select 
+  		<include refid="Base_Column_List"></include> 
+  	from users
+  </select>
   
    <!--修改用户的邀请码  -->
   <update id="updateInvitationCodeByUserId" parameterType="map">

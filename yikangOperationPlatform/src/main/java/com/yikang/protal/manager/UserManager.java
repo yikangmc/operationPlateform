@@ -194,5 +194,14 @@ public class UserManager {
 	public List<Adetps>	getAdeptsListPage(Map<String,Object> paramData){
 		return userServiceInfoDao.getAdeptsListPage(paramData);
 	}
+	
+	/**
+	 * @author houyt
+	 * @date 2016-09-20 16:17
+	 * 获取所有用户表用户信息
+	 */
+	public List<User> getAllUsersData(){
+		return userDao.getAllUsers();
+	}
 
 }
