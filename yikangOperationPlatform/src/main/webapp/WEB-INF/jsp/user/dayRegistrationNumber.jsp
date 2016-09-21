@@ -63,7 +63,7 @@
 			<div class="col-md-6">
 				<div class="box">
 					<div class="box-header">
-						<h3 class="box-title">日用户数量柱状图</h3>
+						<h3 id="box-title"></h3>
 					</div>
 					<form id="paramForm"
 						action="<%=basePath%>forumArticleMange/dayRegistrationNumber"
@@ -73,8 +73,8 @@
 						<c:forEach items="${UserNumber}" var="userNumber"
 							varStatus="index">
 <%-- 						 ${userNumber.count}---${userNumber.checkDay } --%>
-						 <input class="Numbers" type="hidden" value="${userNumber.count}" />
-							<input class="Days" type="hidden" value="${userNumber.checkDay }">
+						 	<input class="Numbers" type="hidden" value="${userNumber.count}" />
+							<input class="Days" type="hidden" value="${userNumber.checkDay}:${userNumber.count}">
 						</c:forEach>
 					</form>
 				</div>
@@ -138,11 +138,14 @@
 			barChartData.labels = lablesArray;
 
 			var numbersArray = new Array();
+			var sum=0;
 			$('.Numbers').each(function() {
 				var nValue = $(this).val();
 				// barChartData.datasets[0].data += nValue;
+				sum=sum+parseInt(nValue);
 				numbersArray.push(nValue);
 			})
+			document.getElementById("box-title").innerHTML= "日用户数量柱状图 （总数:" + sum + ")";
 			barChartData.datasets[0].data = numbersArray;
 
 			barChartData.datasets[0].fillColor = "#00a65a";
