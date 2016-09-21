@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import com.yikang.common.message.im.MessageThreads;
+import com.yikang.protal.message.SystemOperation;
 
 
 /**
@@ -25,6 +26,17 @@ public class PorpertiesLonder implements ApplicationContextAware {
 		 * **/
 		MessageThreads messageThreads =new MessageThreads();
 		messageThreads.startSendMessage();
+		
+		
+		/**
+		 * @author houyt
+		 * @date  2016/09/21 11:12
+		 * @desc 系统消息推送
+		 * 
+		 */
+		SystemOperation systemOperation = (SystemOperation) applicationContext.getBean("systemOperation");
+		Thread systemOperationThread = new Thread(systemOperation);
+		systemOperationThread.start();
 		
 	}
 

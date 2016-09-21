@@ -15,6 +15,8 @@ import com.yikang.common.message.im.Message;
 import com.yikang.common.message.im.MessageQueue;
 import com.yikang.common.utils.MessageProperties;
 import com.yikang.protal.common.page.PageParameter;
+import com.yikang.protal.common.utils.operationmessage.OperationMessage;
+import com.yikang.protal.common.utils.operationmessage.OperationMessageQueue;
 import com.yikang.protal.entity.Adetps;
 import com.yikang.protal.entity.UserInfo;
 import com.yikang.protal.entity.UserServiceInfo;
@@ -90,13 +92,11 @@ public class UserController {
 					message+=reasons[i]+",";
 				}
 			}
-			String multiple1=MessageProperties.getPropertieValue("message_body_1");
-			String multipl2=MessageProperties.getPropertieValue("message_body_2");
-			String sendMessage = multiple1+message+otherReason+multipl2;
-			Message<String> msg=new Message<String>();
-			msg.setAlias(push_alias);
-			msg.setContent(sendMessage);
-			MessageQueue.put(msg);
+			OperationMessage operationMessage = new OperationMessage();
+			operationMessage.setContent(message);
+			operationMessage.setMessageGroup("2");
+			operationMessage.setPushAlias(push_alias);
+			OperationMessageQueue.putUsersQueue(operationMessage);
 		}
 		return "redirect:/user/verificationList";
 	}

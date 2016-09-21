@@ -1,5 +1,6 @@
 package com.yikang.protal.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.yikang.protal.entity.User;
@@ -26,4 +27,6 @@ public interface UserDao {
      * 添加用户邀请码
      * */
     int updateInvitationCodeByUserId(Map<String,Object> paramData);
+    
+    List<User> getAllUsers();
 }

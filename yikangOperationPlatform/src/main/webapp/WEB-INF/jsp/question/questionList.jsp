@@ -179,8 +179,6 @@
 			</div>
 		</div>
 	</div>
-
 	<%@ include file="/common/promptBox.jsp"%>
-
 </body>
 </html>
