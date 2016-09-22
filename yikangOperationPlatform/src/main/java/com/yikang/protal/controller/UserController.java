@@ -62,7 +62,7 @@ public class UserController {
 		modelMap.put("userServiceInfo", userServiceInfo);
 		String operatorType = req.getParameter("operatorType");
 		if(null==operatorType||operatorType.equals("null")){
-			operatorType=null;
+			operatorType="1";
 		}
 		modelMap.put("positionAuditStatus", operatorType);
 		modelMap.put("page", page);

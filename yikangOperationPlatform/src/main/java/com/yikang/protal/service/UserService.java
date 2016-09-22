@@ -16,6 +16,7 @@ import com.yikang.base.InvitationCodeGnerateUtil;
 import com.yikang.protal.entity.Adetps;
 import com.yikang.protal.entity.Count;
 import com.yikang.protal.entity.CountTaglib;
+import com.yikang.protal.entity.Integral;
 import com.yikang.protal.entity.Location;
 import com.yikang.protal.entity.User;
 import com.yikang.protal.entity.UserInfo;
@@ -311,7 +312,12 @@ public class UserService {
 	 */
 	public int updateUserPositionStatusCheckePass(Map<String,Object> paramData){
 		if("2".equals(paramData.get("positionAuditStatus").toString())){
-			integralManager.insertIntegralAddScoreIsONCEJob("RZCG", Long.valueOf(paramData.get("userId").toString()));
+			paramData.put("jobUniqueCode", "RZCG");
+			List<Integral> integrals = integralManager.getIntegralByJobUniqueCodeAndUserId(paramData);
+			for (Integral integral : integrals) {
+				Long integralId = integral.getIntegralId();
+				integralManager.udpateIntegralJobStateIsRecived(integralId);
+			}
 		}
 		return userManager.updateUserPositionStatusCheckePass(paramData);
 	}
