@@ -132,7 +132,7 @@ public class UserService {
 		List<Count> countList = new ArrayList<Count>();
 		List<String> startDateList = new ArrayList<String>();
 		List<String> endDateList = new ArrayList<String>();
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 31; i++) {
 			Calendar cal = Calendar.getInstance();
 			cal.add(Calendar.DAY_OF_MONTH, -i);
 			cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -145,7 +145,7 @@ public class UserService {
 					+ cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND));
 		}
 		System.out.println("零点:" + startDateList.toString());
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 31; i++) {
 			Calendar cal = Calendar.getInstance();
 			cal.add(Calendar.DAY_OF_MONTH, -i + 1);
 			cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -154,7 +154,7 @@ public class UserService {
 			cal.set(Calendar.MILLISECOND, -1);
 			endDateList.add(cal.getTimeInMillis() + "");
 		}
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 31; i++) {
 			int number = userManager.getUserDayNumber(Long.valueOf(startDateList.get(i)),
 					Long.valueOf(endDateList.get(i)), userFrom);
 			long time = Long.valueOf(startDateList.get(i));
