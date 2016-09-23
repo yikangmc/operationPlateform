@@ -1,6 +1,5 @@
 package com.yikang.protal.message;
 
-import org.bouncycastle.jcajce.provider.asymmetric.ec.SignatureSpi.ecCVCDSA;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,9 @@ public class SystemOperation implements Runnable{
 	
 	@Autowired
 	private MessageManager messageManager;
+
 	private Logger log = LoggerFactory.getLogger(SystemOperation.class);
+ 
 	public void run(){
 		while(true){
 			try{
@@ -43,12 +44,13 @@ public class SystemOperation implements Runnable{
 					messages.setContent(content);
 					messages.setMessageCategroy(0);
 					MessageQueue.put(messages);
-				}catch(Exception e){
-					log.info("身份认证推送异常     userId："+userId+",message:"+content);
+				}catch(Exception e){ 
+					log.error("身份认证推送异常     userId："+userId+",message:"+content);
 					e.printStackTrace();
 				}
 			}catch(Exception  e){
 				e.printStackTrace();
+				log.error(e.getMessage());
 			}
 		}
 	}
