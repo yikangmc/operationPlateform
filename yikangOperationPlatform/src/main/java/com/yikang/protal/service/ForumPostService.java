@@ -173,7 +173,7 @@ public class ForumPostService {
 	}
 	//	通过ID来更新文章是否为精华
 	public int updateIssenceByPrimaryKey(Long forumPostsId){
-		formPostsDao.updateIssenceByPrimaryKey(forumPostsId);
+		formPostsDao.updateTieziByPrimaryKey(forumPostsId);
 		return 1;
 	}
 //	通过ID来取消精华文章为普通

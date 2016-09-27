@@ -13,6 +13,7 @@ import com.yikang.protal.common.utils.UrlGenerateUtil;
 import com.yikang.protal.dao.FormPostsDao;
 import com.yikang.protal.dao.FormPostsTaglibsMapDao;
 import com.yikang.protal.dao.ForumPostsAnswerDao;
+import com.yikang.protal.dao.RecommendDataDao;
 import com.yikang.protal.dao.TaglibDao;
 import com.yikang.protal.entity.FormPosts;
 import com.yikang.protal.entity.FormPostsTaglibsMap;
@@ -33,59 +34,66 @@ public class ForumArticleManageService {
 	private ForumPostsImageManager forumPostsImageManager;
 	@Autowired
 	private ForumPostDetailManager forumPostDetailManager;
+
 	@Autowired
 	private TaglibDao taglibDao;
-	
+
 	/**
-     * @author zxh
-     *  @date 2016-07-06 14:06
-     * @desc 获取帖子列表（按照更新时间倒序）
-     */
-	public List<FormPosts> getAllArticleListByPage(Map<String,Object> paramMap){
+	 * @author zxh
+	 * @date 2016-07-06 14:06
+	 * @desc 获取帖子列表（按照更新时间倒序）
+	 */
+	public List<FormPosts> getAllArticleListByPage(Map<String, Object> paramMap) {
 		return formPostsDao.getAllArticleListByPage(paramMap);
 	}
-	
+
 	/**
-	 * 	通过ID来更新帖子是否为精华
+	 * 通过ID来更新帖子是否为精华
+	 * 
 	 * @param forumPostsId
 	 * @return
 	 */
-	public int updateIssenceByPrimaryKey(Long forumPostsId){
-		formPostsDao.updateIssenceByPrimaryKey(forumPostsId);
+	public int updateIssenceByPrimaryKey(Long forumPostsId) {
+		formPostsDao.updateTieziByPrimaryKey(forumPostsId);
 		return 1;
 	}
+
 	/**
-	 * 	取消该精华帖子为普通
+	 * 取消该精华帖子为普通
+	 * 
 	 * @param forumPostsId
 	 * @return
 	 */
-	public int cancelIssenceByPrimaryKey(Long forumPostsId){
+	public int cancelIssenceByPrimaryKey(Long forumPostsId) {
 		formPostsDao.cancelIssenceByPrimaryKey(forumPostsId);
 		return 1;
 	}
+
 	/**
 	 * 删除帖子
 	 */
-	public int deleteFormPostsById(Long formPostsId){
+	public int deleteFormPostsById(Long formPostsId) {
 		formPostsDao.deleteByPrimaryKey(formPostsId);
 		List<FormPostsTaglibsMap> taglibId = formPostsTaglibsMapDao.selectTagLibIdByFormPostId(formPostsId);
-		if(taglibId.size()>0){
+		if (taglibId.size() > 0) {
 			for (FormPostsTaglibsMap formPostsTaglibsMap : taglibId) {
 				taglibDao.updateForumPostsTZNumberSubByTaglibId(formPostsTaglibsMap.getTagLibsId());
 			}
 		}
 		return 1;
 	}
-	
-	public List<ForumPostsAnswer> getForumPostsAnswersByFormPostId(Long forumPostsId){
+
+	public List<ForumPostsAnswer> getForumPostsAnswersByFormPostId(Long forumPostsId) {
 		return forumPostsAnswerDao.getForumPostsAnswersByFormPostId(forumPostsId);
 	}
-	
+
 	/**
 	 * 保存帖子业务
+	 * 
 	 * @return
 	 */
-	public int insertSelective(String title, String content, String forumPostDetailContent, Long userId, String[] images, Long[] taglibIds) {
+	public int insertSelective(String title, String content, String forumPostDetailContent, Long userId,
+			String[] images, Long[] taglibIds) {
 
 		// UserServiceInfo
 		// userServiceInfo=userManager.getUserServiceInfoByUserId(userId);
@@ -98,9 +106,9 @@ public class ForumArticleManageService {
 		formPosts.setContent(content);
 		formPosts.setCreateUserId(userId);
 		formPosts.setIsEssence(Byte.valueOf("0"));
-		if(images == null ){
+		if (images == null) {
 			formPosts.setRecommendPicUrl("");
-		}else{
+		} else {
 			formPosts.setRecommendPicUrl(images[0]);
 		}
 		formPosts.setAnswersNums(0);
@@ -126,7 +134,7 @@ public class ForumArticleManageService {
 			formPostsTaglibsMapDao.insertSelective(fptm);
 		}
 		// 添加图片
-		if(images!=null){
+		if (images != null) {
 			for (int i = 0; i < images.length; i++) {
 				ForumPostsImage forumPostsImage = new ForumPostsImage();
 				forumPostsImage.setCreateTime(currentDate);

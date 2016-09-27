@@ -25,8 +25,10 @@
 			jdbcType="LONGVARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		forum_post_id, title, content, report_complaints_status, is_essence, create_time,
-		update_time, stars, share_num, create_user_id, share_url,
+		forum_post_id, title, content, report_complaints_status,
+		is_essence, create_time,
+		update_time, stars, share_num, create_user_id,
+		share_url,
 		recommend_pic_url, forum_post_group,
 		forum_posts_uuid
 	</sql>
@@ -38,20 +40,35 @@
 		where forum_post_id = #{forumPostId,jdbcType=BIGINT}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-		delete from forum_posts
+		delete from
+		forum_posts
 		where forum_post_id = #{forumPostId,jdbcType=BIGINT}
 	</delete>
 
 	<!--更新文章为精华 -->
 	<update id="updateIssenceByPrimaryKey" parameterType="java.lang.Long">
-		update forum_posts set is_essence= 1
-		where forum_post_id=#{forumPostId,jdbcType=BIGINT}
+		update
+		forum_posts set is_essence= 1
+		where
+		forum_post_id=#{forumPostId,jdbcType=BIGINT}
 	</update>
-
+	<!-- 更新帖子为精华 -->
+	<update id="updateTieziByPrimaryKey" parameterType="java.lang.Long">
+		update
+		forum_posts set is_essence= 1
+		where
+		forum_post_id=#{forumPostId,jdbcType=BIGINT}
+	</update>
+	<!-- 插入推荐 -->
+	<insert id="insertRecommendByPrimaryKey" parameterType="java.lang.Long">
+	
+	</insert>
 	<!--取消该精华文章为普通 -->
 	<update id="cancelIssenceByPrimaryKey" parameterType="java.lang.Long">
-		update forum_posts set is_essence= 0
-		where forum_post_id=#{forumPostId,jdbcType=BIGINT}
+		update
+		forum_posts set is_essence= 0
+		where
+		forum_post_id=#{forumPostId,jdbcType=BIGINT}
 	</update>
 	<insert id="insert" parameterType="com.yikang.protal.entity.FormPosts">
 		<selectKey resultType="Long" keyProperty="forumPostId"
@@ -60,16 +77,19 @@
 		</selectKey>
 		insert into forum_posts (forum_post_id, title, content,
 		report_complaints_status, is_essence, create_time,
-		update_time, stars, share_num,
+		update_time, stars,
+		share_num,
 		create_user_id, share_url, recommend_pic_url,
 		forum_post_group, forum_posts_uuid)
-		values (#{forumPostId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR},
+		values
+		(#{forumPostId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR},
 		#{content,jdbcType=VARCHAR},
 		#{reportComplaintsStatus,jdbcType=TINYINT},
 		#{isEssence,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP},
 		#{updateTime,jdbcType=TIMESTAMP}, #{stars,jdbcType=INTEGER},
 		#{shareNum,jdbcType=INTEGER},
-		#{createUserId,jdbcType=BIGINT}, #{shareUrl,jdbcType=VARCHAR}, #{recommendPicUrl,jdbcType=VARCHAR},
+		#{createUserId,jdbcType=BIGINT},
+		#{shareUrl,jdbcType=VARCHAR}, #{recommendPicUrl,jdbcType=VARCHAR},
 		#{forumPostGroup,jdbcType=TINYINT},
 		#{forumPostsUuid,jdbcType=VARCHAR})
 	</insert>
@@ -217,19 +237,30 @@
 	<update id="updateByPrimaryKey" parameterType="com.yikang.protal.entity.FormPosts">
 		update forum_posts
 		set title = #{title,jdbcType=VARCHAR},
-		content = #{content,jdbcType=VARCHAR},
-		report_complaints_status = #{reportComplaintsStatus,jdbcType=TINYINT},
-		is_essence = #{isEssence,jdbcType=TINYINT},
-		create_time = #{createTime,jdbcType=TIMESTAMP},
-		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		content =
+		#{content,jdbcType=VARCHAR},
+		report_complaints_status =
+		#{reportComplaintsStatus,jdbcType=TINYINT},
+		is_essence =
+		#{isEssence,jdbcType=TINYINT},
+		create_time =
+		#{createTime,jdbcType=TIMESTAMP},
+		update_time =
+		#{updateTime,jdbcType=TIMESTAMP},
 		stars = #{stars,jdbcType=INTEGER},
 		share_num = #{shareNum,jdbcType=INTEGER},
-		create_user_id = #{createUserId,jdbcType=BIGINT},
-		share_url = #{shareUrl,jdbcType=VARCHAR},
-		recommend_pic_url = #{recommendPicUrl,jdbcType=VARCHAR},
-		forum_post_group = #{forumPostGroup,jdbcType=TINYINT},
-		forum_posts_uuid = #{forumPostsUuid,jdbcType=VARCHAR}
-		where forum_post_id = #{forumPostId,jdbcType=BIGINT}
+		create_user_id =
+		#{createUserId,jdbcType=BIGINT},
+		share_url =
+		#{shareUrl,jdbcType=VARCHAR},
+		recommend_pic_url =
+		#{recommendPicUrl,jdbcType=VARCHAR},
+		forum_post_group =
+		#{forumPostGroup,jdbcType=TINYINT},
+		forum_posts_uuid =
+		#{forumPostsUuid,jdbcType=VARCHAR}
+		where forum_post_id =
+		#{forumPostId,jdbcType=BIGINT}
 	</update>
 
 
@@ -258,13 +289,16 @@
 			answersNums,
 			(select user_name from user_infos where
 			user_id=create_user_id) as user_name,
-			(select photo_url from user_infos where user_id=create_user_id) as photo_url
-			from forum_posts where is_essence=1
+			(select photo_url from
+			user_infos where user_id=create_user_id) as photo_url
+			from forum_posts
+			where is_essence=1
 		</if>
 		<if test="null != userId">
 			select
 			forum_posts.*,
-			(select count(1) from forum_posts_star_lists fpsl where
+			(select count(1) from
+			forum_posts_star_lists fpsl where
 			fpsl.create_user_id=forum_posts.forum_post_id) as stars,
 			(select
 			count(1) from forum_posts_answers fpa where
@@ -275,12 +309,16 @@
 			(select photo_url from user_infos where
 			user_id=forum_posts.create_user_id) as photo_url,
 			case
-			when fpsl.forum_posts_star_list_id>=0 then 1 else 0
+			when
+			fpsl.forum_posts_star_list_id>=0 then 1 else 0
 			end as 'isStar'
-			from forum_posts
-			left join (select forum_posts_star_list_id,forum_posts_id from
+			from
+			forum_posts
+			left join (select forum_posts_star_list_id,forum_posts_id
+			from
 			forum_posts_star_lists where create_user_id=#{userId}) fpsl
-			on forum_posts.forum_post_id=fpsl.forum_posts_id
+			on
+			forum_posts.forum_post_id=fpsl.forum_posts_id
 			where is_essence=1
 		</if>
 	</select>
@@ -319,24 +357,31 @@
 		select
 		fp.*,ui.user_name,ui.photo_url,
 		case
-		when fpsl.forum_posts_star_list_id is null then 0
+		when
+		fpsl.forum_posts_star_list_id is null then 0
 		when
 		fpsl.forum_posts_star_list_id >0 then 1
 		end as isStar,
 		if(ifnull(store_ups.store_ups_id,-1)>0,1,0) as isStore
-		from forum_posts fp left join user_infos ui on
+		from forum_posts
+		fp left join user_infos ui on
 		fp.create_user_id=ui.user_id
-		left join forum_posts_star_lists fpsl on
-		(fpsl.forum_posts_id=fp.forum_post_id and
+		left join
+		forum_posts_star_lists fpsl on
+		(fpsl.forum_posts_id=fp.forum_post_id
+		and
 		fpsl.create_user_id=#{userId})
-		left join store_ups on (store_ups.forum_post_id=fp.forum_post_id and
+		left join store_ups on
+		(store_ups.forum_post_id=fp.forum_post_id and
 		store_ups.create_user_id=#{userId})
-		where fp.forum_post_id=#{forumPostId}
+		where
+		fp.forum_post_id=#{forumPostId}
 	</select>
 
 	<!-- 支持+1 -->
 	<update id="formPostsStarsUpByForumPostId" parameterType="long">
-		UPDATE forum_posts set stars=stars+1 where forum_post_id=#{forumPostId}
+		UPDATE
+		forum_posts set stars=stars+1 where forum_post_id=#{forumPostId}
 	</update>
 
 	<!--支持-1 -->
@@ -393,7 +438,8 @@
 		select
 		fp.forum_post_id,
 		fp.title,
-		fp.content, fp.report_complaints_status,
+		fp.content,
+		fp.report_complaints_status,
 		fp.is_essence,
 		fp.create_time,
 		fp.update_time,
@@ -403,14 +449,18 @@
 		fp.share_url,
 		fp.recommend_pic_url,
 		ui.user_name,ui.photo_url,
-		(select count(1) from forum_posts_answers
-		fpa where fpa.form_post_id=fp.forum_post_id) as answersNums,
+		(select count(1) from
+		forum_posts_answers
+		fpa where fpa.form_post_id=fp.forum_post_id) as
+		answersNums,
 		if(ifnull(store_ups.store_ups_id,-1)>0,1,0) as isStore
 		from forum_posts fp
 		inner join forum_posts_taglibs_maps fptm on
 		fp.forum_post_id=fptm.form_post_id
-		left join user_infos ui on fp.create_user_id=ui.user_id
-		left join store_ups on (store_ups.forum_post_id=fp.forum_post_id and
+		left join user_infos ui on
+		fp.create_user_id=ui.user_id
+		left join store_ups on
+		(store_ups.forum_post_id=fp.forum_post_id and
 		store_ups.create_user_id=#{userId})
 		where fptm.tag_libs_id=#{taglibId}
 	</select>
@@ -462,14 +512,14 @@
 		a.user_name as userName,
 		a.photo_url as photoUrl ,
 		detail.forum_post_detail_content as forumPostDetailContent
-		FROM forum_posts
-		left join user_infos a on a.user_id = forum_posts.create_user_id
-		left join forum_post_details detail on detail.forum_post_id = forum_posts.forum_post_id
-		where forum_posts.forum_post_group = 0
-		<!-- select <include refid="Base_Column_List"></include>, -->
-		<!-- a.user_name as userName,a.photo_url as photoUrl from forum_posts -->
-		<!-- left join user_infos a on a.user_id = forum_posts.create_user_id -->
-		<!-- where forum_posts.forum_post_group = 0 -->
+		FROM
+		forum_posts
+		left join user_infos a on a.user_id =
+		forum_posts.create_user_id
+		left join forum_post_details detail on
+		detail.forum_post_id = forum_posts.forum_post_id
+		where
+		forum_posts.forum_post_group = 0
 		<if test="null != content ">
 			and forum_posts.content like concat('%',#{content},'%')
 		</if>
@@ -484,20 +534,27 @@
 		parameterType="map">
 		select fpd.forum_post_id, forum_posts.title, forum_posts.content,
 		forum_posts.report_complaints_status,
-		forum_posts.is_essence, forum_posts.create_time, forum_posts.update_time, forum_posts.stars,
+		forum_posts.is_essence,
+		forum_posts.create_time, forum_posts.update_time, forum_posts.stars,
 		forum_posts.share_num,
-		forum_posts.create_user_id, forum_posts.share_url, forum_posts.recommend_pic_url,
+		forum_posts.create_user_id,
+		forum_posts.share_url, forum_posts.recommend_pic_url,
 		forum_posts.forum_post_group,
-		forum_posts.forum_posts_uuid , a.user_name as userName,a.photo_url as photoUrl
-		from forum_posts inner join forum_post_details fpd on
+		forum_posts.forum_posts_uuid ,
+		a.user_name as userName,a.photo_url as photoUrl
+		from forum_posts inner
+		join forum_post_details fpd on
 		forum_posts.forum_post_id=fpd.forum_post_id
-		left join user_infos a on a.user_id = forum_posts.create_user_id
-		where forum_posts.forum_post_group = 1
+		left join user_infos a on
+		a.user_id = forum_posts.create_user_id
+		where
+		forum_posts.forum_post_group = 1
 		<if test="null != title">
 			and title like concat('%',#{title},'%')
 		</if>
 		<if test="null != content ">
-			and fpd.forum_post_detail_content like concat('%',#{content},'%')
+			and fpd.forum_post_detail_content like
+			concat('%',#{content},'%')
 		</if>
 		<if test="null!=isEssence">
 			and forum_posts.is_essence=#{isEssence}
@@ -506,37 +563,49 @@
 	</select>
 	<select id="queryFormPostsInfo" parameterType="long" resultMap="BaseResultMap">
 		select
-		a.forum_post_id, a.title, fp.forum_post_html_detail_content as content,
+		a.forum_post_id, a.title, fp.forum_post_html_detail_content as
+		content,
 		a.report_complaints_status, a.is_essence, a.create_time,
 		a.update_time, a.stars, a.share_num, a.create_user_id, a.share_url,
 		a.recommend_pic_url, a.forum_post_group,
 		a.forum_posts_uuid,u.login_name as userName
 		from forum_posts a
-		
-		left join users u on u.user_id = a.create_user_id
-		left join forum_post_details fp on fp.forum_post_id = a.forum_post_id
-		where a.forum_post_id = #{forumPostId}
+
+		left join
+		users u on u.user_id = a.create_user_id
+		left join
+		forum_post_details fp
+		on fp.forum_post_id = a.forum_post_id
+		where
+		a.forum_post_id =
+		#{forumPostId}
 	</select>
 
 	<select id="queryFormPostsTaglibsByFormPostsId" parameterType="long"
 		resultType="long">
 		select fpt.tag_libs_id from forum_posts_taglibs_maps fpt
 		left join taglibs t on t.taglib_id = fpt.tag_libs_id
-		where form_post_id = #{formPostId}
+		where form_post_id
+		= #{formPostId}
 	</select>
 
 	<delete id="deleteFormPostById" parameterType="long">
-		delete from forum_posts fp,forum_posts_answers fpa,forum_posts_images
+		delete from
+		forum_posts fp,forum_posts_answers fpa,forum_posts_images
 		fpi,forum_posts_star_lists fpsl,
-		forum_posts_taglibs_map fptm,forum_post_detail fpd
+		forum_posts_taglibs_map
+		fptm,forum_post_detail fpd
 	</delete>
 
 	<select id="selectFormPostAnswerList" parameterType="long"
 		resultType="long">
 		select count(1)
 		from forum_posts_answers
-		INNER JOIN forum_posts
-		on forum_posts_answers.form_post_id=forum_posts.forum_post_id
-		WHERE forum_posts_answers.form_post_id=#{formPostId}
+		INNER JOIN
+		forum_posts
+		on
+		forum_posts_answers.form_post_id=forum_posts.forum_post_id
+		WHERE
+		forum_posts_answers.form_post_id=#{formPostId}
 	</select>
 </mapper>

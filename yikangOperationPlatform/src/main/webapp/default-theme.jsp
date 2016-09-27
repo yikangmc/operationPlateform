@@ -399,14 +399,25 @@ request.getSession().setAttribute("reqUri", reqUri);
 									</li>
 								</ul>
 							</li>
-							<li class="treeview ${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}">
+							<li class="treeview 
+							${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}
+							${reqUri eq '/operationPlatform/reportInformation/reportList' ? 'active':''}
+							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>用户管理</span> <i class="fa fa-angle-left pull-right"></i>
 								</a>
 								<ul class="treeview-menu">
-									<li class="${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}">
-									<a href="/operationPlatform/user/verificationList"><i class="fa fa-circle-o"></i>身份认证</a></li>
+									<li
+										class="${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}">
+										<a href="/operationPlatform/user/verificationList"><i
+											class="fa fa-circle-o"></i>身份认证</a>
+									</li>
+									<li
+										class="${reqUri eq '/operationPlatform/reportInformation/reportList' ? 'active':''}">
+										<a href="/operationPlatform/reportInformation/reportList"><i
+											class="fa fa-circle-o"></i>举报管理</a>
+									</li>
 								</ul>
 							</li>
 							
