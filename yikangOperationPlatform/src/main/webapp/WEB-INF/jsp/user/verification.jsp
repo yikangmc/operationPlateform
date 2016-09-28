@@ -34,10 +34,12 @@
 								<label for="operatorType" class="col-sm-2 control-label">审核状态</label>
 								<div class="col-sm-2">
 									<select class="form-control" name="operatorType" >
+									
 										<option value="null">全部</option>
-										<option value="1">审核中</option>
-										<option value="2">审核通过</option>
-										<option value="0">未审核</option>
+										<option value="1" ${operatorType == 1 ?"selected":"" }>审核中</option>
+										<option value="2" ${operatorType == 2 ?"selected":"" }>审核通过</option>
+										<option value="0" ${operatorType == 0 ?"selected":"" }>未审核</option>
+										<option value="3" ${operatorType == 3 ?"selected":"" }>退回</option>
 									</select>
 								</div>
 							</div>

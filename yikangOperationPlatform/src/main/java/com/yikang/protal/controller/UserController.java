@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.yikang.common.message.im.Message;
 import com.yikang.common.message.im.MessageQueue;
 import com.yikang.common.utils.MessageProperties;
+import com.yikang.protal.base.BaseController;
 import com.yikang.protal.common.page.PageParameter;
 import com.yikang.protal.common.utils.operationmessage.OperationMessage;
 import com.yikang.protal.common.utils.operationmessage.OperationMessageQueue;
@@ -24,7 +25,7 @@ import com.yikang.protal.service.UserService;
 
 
 @Controller
-public class UserController {
+public class UserController  extends BaseController{
 	
 	@Autowired
 	private UserService userService;
@@ -58,15 +59,17 @@ public class UserController {
 	}
 	
 	@RequestMapping
-	public String verificationList(ModelMap modelMap, UserServiceInfo userServiceInfo,PageParameter page ,HttpServletRequest req){
+	public String verificationList(ModelMap modelMap, UserServiceInfo userServiceInfo,HttpServletRequest req){
 		modelMap.put("userServiceInfo", userServiceInfo);
+		PageParameter page=this.initPage(req);
+		modelMap.put("page", page);
 		String operatorType = req.getParameter("operatorType");
 		if(null==operatorType||operatorType.equals("null")){
 			operatorType="1";
 		}
 		modelMap.put("positionAuditStatus", operatorType);
-		modelMap.put("page", page);
-		List<UserServiceInfo> userServiceInfoList=userService.listVerification(modelMap);
+		modelMap.put("operatorType", operatorType);
+		List<UserServiceInfo> userServiceInfoList=userService.listVerificationPage(modelMap);
 		modelMap.put("userServiceInfoList", userServiceInfoList);
 		return "user/verification";
 	}

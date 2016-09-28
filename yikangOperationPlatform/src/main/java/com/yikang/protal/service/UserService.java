@@ -296,7 +296,7 @@ public class UserService {
 	 * @param paramMap
 	 * @return
 	 */
-	public List<UserServiceInfo> listVerification(Map<String, Object> paramMap) {
+	public List<UserServiceInfo> listVerificationPage(Map<String, Object> paramMap) {
 		return userManager.getUserServiceInfoListPage(paramMap);
 	}
 
