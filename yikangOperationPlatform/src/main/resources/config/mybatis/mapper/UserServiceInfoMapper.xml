@@ -623,7 +623,12 @@
 		update
 		user_service_infos
 		set
-		position_audit_status=#{positionAuditStatus},user_position=new_user_position
+		<if test="positionAuditStatus==3">
+			position_audit_status=#{positionAuditStatus},user_position=0  
+		</if>
+		<if test="positionAuditStatus==2">
+			position_audit_status=#{positionAuditStatus},user_position=new_user_position 
+		</if>
 		where user_id=#{userId}
 	</update>
 

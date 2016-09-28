@@ -60,23 +60,25 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-12">
 				<div class="box">
 					<div class="box-header">
 						<h3 id="box-title"></h3>
 					</div>
-					<form id="paramForm"
-						action="<%=basePath%>forumArticleMange/dayRegistrationNumber"
-						method="post" class="form-horizontal">
-						<!--用于显示Chart图表的容器 -->
-						<canvas id="areaChart" style="height:250px"></canvas>
-						<c:forEach items="${UserNumber}" var="userNumber"
-							varStatus="index">
-<%-- 						 ${userNumber.count}---${userNumber.checkDay } --%>
-						 	<input class="Numbers" type="hidden" value="${userNumber.count}" />
-							<input class="Days" type="hidden" value="${userNumber.checkDay}:${userNumber.count}">
-						</c:forEach>
-					</form>
+					<div class="box-body">
+						<form id="paramForm"
+							action="<%=basePath%>forumArticleMange/dayRegistrationNumber"
+							method="post" class="form-horizontal">
+							<!--用于显示Chart图表的容器 -->
+							<canvas id="areaChart" style="height:250px"></canvas>
+							<c:forEach items="${UserNumber}" var="userNumber"
+								varStatus="index">
+	<%-- 						 ${userNumber.count}---${userNumber.checkDay } --%>
+							 	<input class="Numbers" type="hidden" value="${userNumber.count}" />
+								<input class="Days" type="hidden" value="${userNumber.checkDay}:${userNumber.count}">
+							</c:forEach>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -161,5 +161,15 @@ public class IntegralManager {
     	return integralDao.insertSelective(integral);
     }
     
+    /**
+     * @author houyt
+     * @date 2016-09-22 18:43
+     * @desc 获取积分记录，根据任务唯一编号 与  用户id
+     * 
+     * */
+    public List<Integral> getIntegralByJobUniqueCodeAndUserId(Map<String,Object> paramMap){
+    	return integralDao.getIntegralByJobUniqueCodeAndUserId(paramMap);
+    }
+    
     
 }
