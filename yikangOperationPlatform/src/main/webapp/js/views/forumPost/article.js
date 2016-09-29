@@ -46,7 +46,7 @@ Article.prototype = {
 				} else {
 					alert(data.message);
 				}
-				article.relond();
+				window.location.reload();
 			});
 		}
 	},
@@ -60,7 +60,7 @@ Article.prototype = {
 				} else {
 					alert(data.message);
 				}
-				article.relond();
+				window.location.reload();
 			});
 		}
 	},

@@ -21,7 +21,7 @@ QuestionAnswer.prototype={
 					}else{
 						alert(data.message);
 					}
-					questionAnswer.relond();
+					window.location.reload();
 				});		        
 			}
 		},		
@@ -33,7 +33,7 @@ QuestionAnswer.prototype={
 					}else{
 						alert(data.message);
 					}
-					questionAnswer.relond();
+					window.location.reload();
 				});		        
 			}
 		},

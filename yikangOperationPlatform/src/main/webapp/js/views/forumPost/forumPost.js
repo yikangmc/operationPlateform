@@ -50,7 +50,7 @@ ForumPost.prototype={
 					}else{
 						alert(data.message)
 					}
-					forumPost.relond();
+					window.location.reload();
 				});		        
 			}
 		},		
@@ -62,7 +62,7 @@ ForumPost.prototype={
 					}else{
 						alert(data.message);
 					}
-					forumPost.relond();
+					window.location.reload();
 				});		        
 			}
 		},

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yikang.protal.dao.ReportInformationDao">
+	<resultMap id="BaseResultMap" type="com.yikang.protal.entity.ReportInformation">
+		<id column="report_id" jdbcType="BIGINT" property="reportId" />
+		<result column="report_time" jdbcType="TIMESTAMP" property="reportTime" />
+		<result column="report_time_millisecond" jdbcType="BIGINT"
+			property="reportTimeMillisecond" />
+		<result column="report_group" jdbcType="TINYINT" property="reportGroup" />
+		<result column="content_group" jdbcType="TINYINT" property="contentGroup" />
+		<result column="data_id" jdbcType="BIGINT" property="dataId" />
+		<result column="user_id" jdbcType="BIGINT" property="userId" />
+		<result column="report_user_id" jdbcType="BIGINT" property="reportUserId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		report_id, report_time, report_time_millisecond,
+		report_group, content_group,
+		data_id,
+		user_id, report_user_id
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from report_informations
+		where report_id = #{reportId,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from
+		report_informations
+		where report_id = #{reportId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.yikang.protal.entity.ReportInformation">
+		insert into
+		report_informations (report_id, report_time,
+		report_time_millisecond,
+		report_group, content_group, data_id,
+		user_id, report_user_id)
+		values
+		(#{reportId,jdbcType=BIGINT}, #{reportTime,jdbcType=TIMESTAMP},
+		#{reportTimeMillisecond,jdbcType=BIGINT},
+		#{reportGroup,jdbcType=TINYINT}, #{contentGroup,jdbcType=TINYINT},
+		#{dataId,jdbcType=BIGINT},
+		#{userId,jdbcType=BIGINT},
+		#{reportUserId,jdbcType=BIGINT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yikang.protal.entity.ReportInformation">
+		insert into report_informations
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="reportId != null">
+				report_id,
+			</if>
+			<if test="reportTime != null">
+				report_time,
+			</if>
+			<if test="reportTimeMillisecond != null">
+				report_time_millisecond,
+			</if>
+			<if test="reportGroup != null">
+				report_group,
+			</if>
+			<if test="contentGroup != null">
+				content_group,
+			</if>
+			<if test="dataId != null">
+				data_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="reportUserId != null">
+				report_user_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="reportId != null">
+				#{reportId,jdbcType=BIGINT},
+			</if>
+			<if test="reportTime != null">
+				#{reportTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reportTimeMillisecond != null">
+				#{reportTimeMillisecond,jdbcType=BIGINT},
+			</if>
+			<if test="reportGroup != null">
+				#{reportGroup,jdbcType=TINYINT},
+			</if>
+			<if test="contentGroup != null">
+				#{contentGroup,jdbcType=TINYINT},
+			</if>
+			<if test="dataId != null">
+				#{dataId,jdbcType=BIGINT},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=BIGINT},
+			</if>
+			<if test="reportUserId != null">
+				#{reportUserId,jdbcType=BIGINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yikang.protal.entity.ReportInformation">
+		update report_informations
+		<set>
+			<if test="reportTime != null">
+				report_time = #{reportTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reportTimeMillisecond != null">
+				report_time_millisecond =
+				#{reportTimeMillisecond,jdbcType=BIGINT},
+			</if>
+			<if test="reportGroup != null">
+				report_group = #{reportGroup,jdbcType=TINYINT},
+			</if>
+			<if test="contentGroup != null">
+				content_group = #{contentGroup,jdbcType=TINYINT},
+			</if>
+			<if test="dataId != null">
+				data_id = #{dataId,jdbcType=BIGINT},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=BIGINT},
+			</if>
+			<if test="reportUserId != null">
+				report_user_id = #{reportUserId,jdbcType=BIGINT},
+			</if>
+		</set>
+		where report_id = #{reportId,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yikang.protal.entity.ReportInformation">
+		update
+		report_informations
+		set report_time = #{reportTime,jdbcType=TIMESTAMP},
+		report_time_millisecond = #{reportTimeMillisecond,jdbcType=BIGINT},
+		report_group = #{reportGroup,jdbcType=TINYINT},
+		content_group =
+		#{contentGroup,jdbcType=TINYINT},
+		data_id = #{dataId,jdbcType=BIGINT},
+		user_id = #{userId,jdbcType=BIGINT},
+		report_user_id =
+		#{reportUserId,jdbcType=BIGINT}
+		where report_id =
+		#{reportId,jdbcType=BIGINT}
+	</update>
+	<!-- 获取举报详细信息 -->
+	<resultMap id="getReportsDetailResultMap" type="com.yikang.protal.entity.ReportInformation"
+		extends="BaseResultMap">
+		<result column="report_type" property="reportType" />
+		<result column="report_id" property="reportId" />
+		<result column="report_content" property="reportContent" />
+		<result column="report_taglib_name" property="reportTaglibName" />
+		<result column="report_create_time" property="reportCreateTime" />
+		<result column="report_report_name" property="reportReportName" />
+		<result column="report_number" property="reportNumber" />
+		<result column="report_user_name" property="reportUserName" />
+		<result column="report_valid_number" property="reportValidNumber" />
+		<result column="data_status" property="dataStatus" />
+	</resultMap>
+	<!-- 获取举报信息列表 -->
+	<select id="getAllReportsListByPage" resultMap="getReportsDetailResultMap"
+		parameterType="map">
+		select
+		(case when report_group='1' then '文章'
+		when
+		report_group='2' then
+		'帖子'
+		when report_group='3' then '问题'
+		end) as report_type,<!--类型 -->
+		data_id,<!-- 数据来源id -->
+		report_id,<!-- 举报信息主键id -->
+		data_status,<!--标记分类 -->
+		(case when report_group='1' then forum_posts.content
+		when
+		report_group='2' then forum_posts.content
+		when report_group='3' then
+		questions.content
+		end) as report_content,<!--内容详情 -->
+		(case when report_group='1' then
+		forum_posts.create_time
+		when
+		report_group='2' then
+		forum_posts.create_time
+		when report_group='3' then
+		questions.create_time
+		end) as report_create_time,<!--创建时间 -->
+		(case
+		when
+		report_group='1' then
+		(select tag.tag_name from taglibs tag
+		left join
+		forum_posts_taglibs_maps fptm
+		on
+		tag.taglib_id=fptm.tag_libs_id where
+		fptm.form_post_id=report_informations.data_id)
+		when report_group='2'
+		then
+		(select tag.tag_name from taglibs tag left join
+		forum_posts_taglibs_maps fptm
+		on tag.taglib_id=fptm.tag_libs_id where
+		fptm.form_post_id=report_informations.data_id)
+		when report_group='3'
+		then
+		(select tag.tag_name from taglibs tag left join
+		question_taglib_maps qtm on
+		tag.taglib_id=qtm.taglibs_id where
+		qtm.questions_id=report_informations.data_id)
+		end) as
+		report_taglib_name ,<!--所属标签 -->
+		report_group,report_informations.user_id,report_user_id,
+		toUser.user_name as report_user_name,<!--举报者 -->
+		reUser.user_name as report_report_name,<!--发布者 -->
+		(select count(1) from
+		report_informations ri where
+		ri.report_user_id=report_informations.report_user_id ) as
+		report_number,<!--发布者被举报次数 -->
+		ui.report_valid_number<!-- 发布者被举报有效次数 -->
+		from
+		report_informations
+		left join
+		forum_posts on
+		report_informations.data_id=forum_posts.forum_post_id
+		and
+		report_informations.report_group in (1,2)
+		left join questions on
+		report_informations.data_id=questions.question_id
+		and
+		report_informations.report_group='3'
+		left join users toUser on
+		report_informations.user_id=toUser.user_id
+		left join users reUser on
+		report_informations.report_user_id=reUser.user_id
+		left join user_infos
+		ui on report_informations.report_user_id=ui.user_id
+		<if test="dataStatus!=null">
+			where report_informations.data_status=#{dataStatus}
+		</if>
+		<if test="null != content and content !=''">
+			and (case when report_group='1' then forum_posts.content
+			when report_group='2' then forum_posts.content
+			when report_group='3'
+			then questions.content
+			end)
+			like concat('%',#{content},'%')
+		</if>
+	</select>
+
+	<!-- 忽略并修改标识分类为4举报无效 -->
+	<update id="ignoreUpdateStatus" parameterType="long">
+		update
+		report_informations set data_status=4 where report_id=#{reportId }
+	</update>
+
+	<!-- 举报记录警告用户一次 -->
+	<update id="addOneReportTimeByUserId" parameterType="long">
+		update
+		user_infos set
+		report_valid_number=report_valid_number+1
+		where
+		user_id=#{reportUserId}
+	</update>
+	<!-- 警告：举报信息标记分类修改为3举报有效记警告 -->
+	<update id="warnUpdateStatus" parameterType="long">
+		update
+		report_informations set data_status=3 where report_id=#{reportId }
+	</update>
+
+	<!-- 删除举报内容 -->
+	<!-- 删除问题 -->
+	<delete id="deleteReportInformationByQuestion" parameterType="long">
+		delete from questions where question_id =#{dataId}
+	</delete>
+
+	<!-- 删除文章和帖子 -->
+	<delete id="deleteReportInformationByForm" parameterType="long">
+		delete
+		from forum_posts where forum_post_id=#{dataId}
+	</delete>
+	<!-- 删除：举报信息标记分类修改为2举报有效删除 -->
+	<update id="deleteUpdateStatus" parameterType="long">
+		update
+		report_informations set data_status=2 where report_id=#{reportId }
+	</update>
+
+</mapper>

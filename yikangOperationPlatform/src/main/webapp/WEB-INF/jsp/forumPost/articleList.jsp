@@ -45,18 +45,18 @@ src->webapp->jsp->forumPost->articleList
 											<label class="col-sm-2 control-label">帖子内容</label>
 											<div class="col-sm-2">
 												<input type="text" id="content" name="content"
-													class="form-control" value="${content}"/>
+													class="form-control" value="${content}" />
 											</div>
 										</div>
 										<div for="operatorType" class="form-group">
 											<label class="col-sm-2 control-label">查询条件</label>
-												<div class="col-sm-2">
-													<select class="form-control" name="isEssence">
-														<option value="" ${isEssence==null?"selected":"" }>全部</option>
-														<option value="0" ${isEssence==0?"selected":"" }>非精华</option>
-														<option value="1" ${isEssence==1?"selected":"" }>精华</option>
-													</select>
-												</div>
+											<div class="col-sm-2">
+												<select class="form-control" name="isEssence">
+													<option value="" ${isEssence==null?"selected":"" }>全部</option>
+													<option value="0" ${isEssence==0?"selected":"" }>非精华</option>
+													<option value="1" ${isEssence==1?"selected":"" }>精华</option>
+												</select>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -83,14 +83,14 @@ src->webapp->jsp->forumPost->articleList
 													rowspan="1" colspan="1" aria-sort="ascending"
 													aria-label="Rendering engine: activate to sort column descending"
 													>标题</th> -->
-												<th class="sorting col-md-2" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
+												<th class="sorting col-md-2" tabindex="0"
+													aria-controls="example1" rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending">内容</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending">分类</th>
-												<th class="sorting col-md-1" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
+												<th class="sorting col-md-1" tabindex="0"
+													aria-controls="example1" rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending">所属标签</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
@@ -144,8 +144,8 @@ src->webapp->jsp->forumPost->articleList
 													<td><c:if test="${formPost.forumPostGroup==1 }">文章</c:if>
 														<c:if test="${formPost.forumPostGroup==0 }">帖子</c:if></td>
 
-													<td><c:forEach items="${formPost.taglibs}" var="taglib"
-															varStatus="varIndex">
+													<td><c:forEach items="${formPost.taglibs}"
+															var="taglib" varStatus="varIndex">
 														 ${taglib.tagName}</c:forEach></td>
 
 													<td><c:if test="${formPost.isEssence==1 }">是</c:if> <c:if
