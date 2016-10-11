@@ -5,6 +5,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * @author liushuaic
  * @date 2016-06-06 12:10
@@ -38,24 +39,21 @@ public class OperationMessageQueue {
 		return null;
 	}
 
-	
-
 	/**
 	 * @desc 添加身份认证推送队列
 	 **/
 	public static BlockingQueue<OperationMessage> usersQueue = new LinkedBlockingQueue<OperationMessage>();
 
 	public static void putUsersQueue(OperationMessage operationMessage) {
-		logger.info("OperationMessageQueue -->putUsersQueue-->info--> "
-				+ operationMessage.getContent());
+		logger.info("OperationMessageQueue -->putUsersQueue-->info--> " + operationMessage.getContent());
 		try {
 			usersQueue.put(operationMessage);
 		} catch (InterruptedException e) {
-			logger.info("OperationMessageQueue -->putUsersQueue-->info--> "
-					+ operationMessage.getContent());
+			logger.info("OperationMessageQueue -->putUsersQueue-->info--> " + operationMessage.getContent());
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * @author houyt
 	 * @date 2016/09/21 11:49
@@ -70,5 +68,33 @@ public class OperationMessageQueue {
 		}
 		return null;
 	}
-	
+
+	/**
+	 * @desc 添加举报删除定向推送队列
+	 **/
+	public static BlockingQueue<OperationMessage> reportQueue = new LinkedBlockingQueue<OperationMessage>();
+
+	public static void putReportQueue(OperationMessage operationMessage) {
+		logger.info("OperationMessageQueue -->putReportQueue-->info--> " + operationMessage.getContent());
+		try {
+			reportQueue.put(operationMessage);
+		} catch (InterruptedException e) {
+			logger.info("OperationMessageQueue -->putReportQueue-->info--> " + operationMessage.getContent());
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @desc 获取举报删除定向推送信息
+	 * @return
+	 */
+	public static OperationMessage takeReportMessage() {
+		try {
+			return reportQueue.take();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

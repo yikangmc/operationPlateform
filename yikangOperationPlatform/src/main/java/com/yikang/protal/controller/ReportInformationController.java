@@ -17,6 +17,8 @@ import com.yikang.common.error.ExceptionConstants;
 import com.yikang.protal.base.BaseController;
 import com.yikang.protal.common.page.PageParameter;
 import com.yikang.protal.common.response.ResponseMessage;
+import com.yikang.protal.common.utils.operationmessage.OperationMessage;
+import com.yikang.protal.common.utils.operationmessage.OperationMessageQueue;
 import com.yikang.protal.entity.ReportInformation;
 import com.yikang.protal.service.ReportInformationService;
 
@@ -101,6 +103,35 @@ public class ReportInformationController extends BaseController {
 			HttpServletRequest req) {
 		ResponseMessage<String> resData = new ResponseMessage<String>();
 		try {
+			// 系统消息（属于“佳佳官方通知”类）定向推送给用户其内容因<举报理由>被删除）
+			String reportUserId = req.getParameter("reportUserId");
+			String reportContent = req.getParameter("reportContent");
+			// 判断字节长度是否大于20个汉字，若多则截取
+			if (reportContent.length() > 20) {
+				reportContent = reportContent.trim().substring(0, 20);
+				reportContent = reportContent + "...";
+			}
+			String pushAlias = req.getParameter("pushAlias");
+			String reportType = req.getParameter("reportType");
+			String contentGroup = req.getParameter("contentGroup");
+			String reportReason = null;
+			if (contentGroup.equals("1")) {
+				reportReason = "广告等垃圾内容";
+			} else if (contentGroup.equals("2")) {
+				reportReason = "不友善内容";
+			} else if (contentGroup.equals("3")) {
+				reportReason = "违法违规行为";
+			} else if (contentGroup.equals("4")) {
+				reportReason = "恶意行为";
+			}
+			// 举报来源分类+举报理由+举报内容（20字）
+			String message = reportType + "%" + reportReason + "%" + reportContent;
+			OperationMessage operationMessage = new OperationMessage();
+			operationMessage.setContent(message);
+			operationMessage.setMessageGroup("2");
+			operationMessage.setPushAlias(pushAlias);
+			OperationMessageQueue.putReportQueue(operationMessage);
+
 			// 删除举报的内容
 			reportInformationService.deleteReportInformation(Byte.valueOf(req.getParameter("reportGroup")),
 					Long.valueOf(req.getParameter("dataId")));

@@ -277,7 +277,19 @@
 		inner join taglibs tag on
 		fptm.tag_libs_id=tag.taglib_id
 		where
-		fptm.form_post_id= #{formPostId}
+		fptm.form_post_id= #{forumPostId}
+	</select>
+	<!-- 问题所属标签 -->
+	<select id="getTaglibsByQuestionId" parameterType="long"
+		resultMap="taglibMap">
+		select
+		tag.tag_name,tag.taglib_id
+		from
+		question_taglib_maps qtm
+		inner join taglibs tag on
+		qtm.taglibs_id=tag.taglib_id
+		where
+		qtm.questions_id= #{questionId}
 	</select>
 
 

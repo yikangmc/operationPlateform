@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import com.yikang.common.message.im.MessageThreads;
+import com.yikang.protal.message.ReportOperation;
 import com.yikang.protal.message.SystemOperation;
 
 
@@ -37,7 +38,15 @@ public class PorpertiesLonder implements ApplicationContextAware {
 		SystemOperation systemOperation = (SystemOperation) applicationContext.getBean("systemOperation");
 		Thread systemOperationThread = new Thread(systemOperation);
 		systemOperationThread.start();
-		
+		/**
+		 * @author bry
+		 * @date  2016/10/09 11:42
+		 * @desc 举报消息推送
+		 * 
+		 */
+		ReportOperation reportOperation = (ReportOperation) applicationContext.getBean("reportOperation");
+		Thread reportOperationThread = new Thread(reportOperation);
+		reportOperationThread.start();
 	}
 
 }

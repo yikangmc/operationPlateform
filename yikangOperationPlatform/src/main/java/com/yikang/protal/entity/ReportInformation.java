@@ -1,6 +1,8 @@
 package com.yikang.protal.entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReportInformation {
 	// 主键
@@ -25,8 +27,10 @@ public class ReportInformation {
 	private String reportType;
 	// 内容详情
 	private String reportContent;
-	// 所属标签
-	private String reportTaglibName;
+	// 所属文章帖子标签列表
+	private List<Taglib> reportForumPostTaglibs = new ArrayList<Taglib>();
+	// 所属问题标签列表
+	private List<Taglib> reportQuestionTaglibs = new ArrayList<Taglib>();
 	// 创建时间
 	private String reportCreateTime;
 	// 发布者
@@ -37,6 +41,42 @@ public class ReportInformation {
 	private String reportValidNumber;
 	// 举报者
 	private String reportUserName;
+	// 被举报者的推送标识
+	private String pushAlias;
+
+	public String getPushAlias() {
+		return pushAlias;
+	}
+
+	
+
+	public List<Taglib> getReportForumPostTaglibs() {
+		return reportForumPostTaglibs;
+	}
+
+
+
+	public void setReportForumPostTaglibs(List<Taglib> reportForumPostTaglibs) {
+		this.reportForumPostTaglibs = reportForumPostTaglibs;
+	}
+
+
+
+	public List<Taglib> getReportQuestionTaglibs() {
+		return reportQuestionTaglibs;
+	}
+
+
+
+	public void setReportQuestionTaglibs(List<Taglib> reportQuestionTaglibs) {
+		this.reportQuestionTaglibs = reportQuestionTaglibs;
+	}
+
+
+
+	public void setPushAlias(String pushAlias) {
+		this.pushAlias = pushAlias;
+	}
 
 	public String getReportValidNumber() {
 		return reportValidNumber;
@@ -60,14 +100,6 @@ public class ReportInformation {
 
 	public void setReportContent(String reportContent) {
 		this.reportContent = reportContent;
-	}
-
-	public String getReportTaglibName() {
-		return reportTaglibName;
-	}
-
-	public void setReportTaglibName(String reportTaglibName) {
-		this.reportTaglibName = reportTaglibName;
 	}
 
 	public String getReportCreateTime() {

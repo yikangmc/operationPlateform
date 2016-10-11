@@ -90,7 +90,7 @@
 											<!-- <th class="sorting" tabindex="0" aria-controls="example1" -->
 											<!-- aria-label="Platform(s): activate to sort column ascending">发布者被举报次数</th> -->
 											<th class="sorting" tabindex="0" aria-controls="example1"
-												aria-label="Platform(s): activate to sort column ascending">发布者被举报有效次数</th>
+												aria-label="Platform(s): activate to sort column ascending">发布者被举报次数</th>
 											<th class="sorting" tabindex="0" aria-controls="example1"
 												aria-label="Platform(s): activate to sort column ascending">举报者</th>
 											<th class="col-sm-1 sorting" tabindex="0"
@@ -107,10 +107,17 @@
 												class="${ varIndex.index % 2 eq 0 ? 'odd':'even' }">
 												<td>${allReports.reportType }</td>
 												<td>${allReports.reportContent }</td>
-												<td>${allReports.reportTaglibName }</td>
+
+												<!-- 文章帖子问题所属标签 -->
+												<td><c:forEach
+														items="${allReports.reportForumPostTaglibs}"
+														var="taglibForumPost" varStatus="varIndex">
+														 ${taglibForumPost.tagName}</c:forEach> <c:forEach
+														items="${allReports.reportQuestionTaglibs}"
+														var="taglibQuestion" varStatus="varIndex">
+														 ${taglibQuestion.tagName}</c:forEach></td>
 												<td>${allReports.reportCreateTime }</td>
 												<td>${allReports.reportReportName}</td>
-												<%--<td>${allReports.reportNumber}</td> --%>
 												<td>${allReports.reportValidNumber}</td>
 												<td>${allReports.reportUserName }</td>
 												<td><c:if test="${allReports.dataStatus==1 }">未处理</c:if>
@@ -121,8 +128,11 @@
 												<td><c:if test="${allReports.dataStatus==1 }">
 														<button type="button" class="btn btn-info "
 															onclick="reportInformation.warn(${allReports.reportId },${allReports.reportUserId },'<%=basePath%>')">记警告一次</button>
+
 														<button type="button" class="btn btn-info "
-															onclick="reportInformation.del(${allReports.reportId },${allReports.reportGroup},${allReports.dataId},${allReports.reportUserId },'<%=basePath%>')">删除</button>
+															onclick="reportInformation.del(${allReports.reportId },${allReports.reportGroup},${allReports.dataId},${allReports.reportUserId },
+															'${allReports.reportContent}',
+															${allReports.contentGroup},'${allReports.pushAlias}','${allReports.reportType}','<%=basePath%>')">删除</button>
 														<button type="button" class="btn btn-info "
 															onclick="reportInformation.ignore(${allReports.reportId },'<%=basePath%>')">忽略</button>
 													</c:if> <c:if test="${allReports.dataStatus==2 }">

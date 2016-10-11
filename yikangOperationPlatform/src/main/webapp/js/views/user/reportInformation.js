@@ -4,7 +4,8 @@ ReportInformation.prototype = {
 	init : function() {
 
 	},
-	del : function(reportId, reportGroup, dataId, reportUserId, basePath) {
+	del : function(reportId, reportGroup, dataId, reportUserId, reportContent,
+			contentGroup, pushAlias,reportType, basePath) {
 		if (confirm("确定要删除吗？")) {
 			$.ajax({
 				type : "POST",
@@ -12,7 +13,11 @@ ReportInformation.prototype = {
 					'reportId' : reportId,
 					'reportGroup' : reportGroup,
 					'dataId' : dataId,
-					'reportUserId' : reportUserId
+					'reportUserId' : reportUserId,
+					'reportContent' : reportContent,
+					'contentGroup' : contentGroup,
+					'pushAlias' : pushAlias,
+					'reportType':reportType
 				},
 				url : basePath + "reportInformation/deleteReportInformation",
 				dataType : "json",

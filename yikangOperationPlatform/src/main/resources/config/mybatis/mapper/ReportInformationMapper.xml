@@ -148,13 +148,17 @@
 		<result column="report_type" property="reportType" />
 		<result column="report_id" property="reportId" />
 		<result column="report_content" property="reportContent" />
-		<result column="report_taglib_name" property="reportTaglibName" />
 		<result column="report_create_time" property="reportCreateTime" />
 		<result column="report_report_name" property="reportReportName" />
 		<result column="report_number" property="reportNumber" />
 		<result column="report_user_name" property="reportUserName" />
 		<result column="report_valid_number" property="reportValidNumber" />
 		<result column="data_status" property="dataStatus" />
+		<result column="push_alias" property="pushAlias" />
+		<collection property="reportForumPostTaglibs" column="forumPostId"
+			fetchType="eager" select="com.yikang.protal.dao.TaglibDao.getTaglibsByFormPostId"></collection>
+		<collection property="reportQuestionTaglibs" column="questionId"
+			fetchType="eager" select="com.yikang.protal.dao.TaglibDao.getTaglibsByQuestionId"></collection>
 	</resultMap>
 	<!-- 获取举报信息列表 -->
 	<select id="getAllReportsListByPage" resultMap="getReportsDetailResultMap"
@@ -166,14 +170,19 @@
 		'帖子'
 		when report_group='3' then '问题'
 		end) as report_type,<!--类型 -->
-		data_id,<!-- 数据来源id -->
+		(case 
+			when report_group='1' then data_id
+			when report_group='2' then data_id
+		 end) as forumPostId,
+		(case when report_group='3' then data_id end) as questionId,<!-- 数据来源id -->
+		data_id,
 		report_id,<!-- 举报信息主键id -->
 		data_status,<!--标记分类 -->
+		report_informations.content_group,<!-- 举报理由 -->
 		(case when report_group='1' then forum_posts.content
 		when
 		report_group='2' then forum_posts.content
-		when report_group='3' then
-		questions.content
+		when report_group='3' then questions.content
 		end) as report_content,<!--内容详情 -->
 		(case when report_group='1' then
 		forum_posts.create_time
@@ -183,32 +192,32 @@
 		when report_group='3' then
 		questions.create_time
 		end) as report_create_time,<!--创建时间 -->
-		(case
-		when
-		report_group='1' then
-		(select tag.tag_name from taglibs tag
-		left join
-		forum_posts_taglibs_maps fptm
-		on
-		tag.taglib_id=fptm.tag_libs_id where
-		fptm.form_post_id=report_informations.data_id)
-		when report_group='2'
-		then
-		(select tag.tag_name from taglibs tag left join
-		forum_posts_taglibs_maps fptm
-		on tag.taglib_id=fptm.tag_libs_id where
-		fptm.form_post_id=report_informations.data_id)
-		when report_group='3'
-		then
-		(select tag.tag_name from taglibs tag left join
-		question_taglib_maps qtm on
-		tag.taglib_id=qtm.taglibs_id where
-		qtm.questions_id=report_informations.data_id)
-		end) as
-		report_taglib_name ,<!--所属标签 -->
+		<!-- (case when -->
+		<!-- report_group='1' then -->
+		<!-- (select tag.tag_name from taglibs tag -->
+		<!-- left join -->
+		<!-- forum_posts_taglibs_maps fptm -->
+		<!-- on -->
+		<!-- tag.taglib_id=fptm.tag_libs_id where -->
+		<!-- fptm.form_post_id=report_informations.data_id) -->
+		<!-- when report_group='2' -->
+		<!-- then -->
+		<!-- (select tag.tag_name from taglibs tag left join -->
+		<!-- forum_posts_taglibs_maps fptm -->
+		<!-- on tag.taglib_id=fptm.tag_libs_id where -->
+		<!-- fptm.form_post_id=report_informations.data_id) -->
+		<!-- when report_group='3' -->
+		<!-- then -->
+		<!-- (select tag.tag_name from taglibs tag left join -->
+		<!-- question_taglib_maps qtm on -->
+		<!-- tag.taglib_id=qtm.taglibs_id where -->
+		<!-- qtm.questions_id=report_informations.data_id) -->
+		<!-- end) as -->
+		<!-- report_taglib_name ,所属标签 -->
 		report_group,report_informations.user_id,report_user_id,
 		toUser.user_name as report_user_name,<!--举报者 -->
 		reUser.user_name as report_report_name,<!--发布者 -->
+		reUser.push_alias as push_alias,<!-- 推送标识 -->
 		(select count(1) from
 		report_informations ri where
 		ri.report_user_id=report_informations.report_user_id ) as
@@ -237,8 +246,7 @@
 		<if test="null != content and content !=''">
 			and (case when report_group='1' then forum_posts.content
 			when report_group='2' then forum_posts.content
-			when report_group='3'
-			then questions.content
+			when report_group='3'  then questions.content
 			end)
 			like concat('%',#{content},'%')
 		</if>

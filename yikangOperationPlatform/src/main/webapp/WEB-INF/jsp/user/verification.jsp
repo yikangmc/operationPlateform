@@ -33,8 +33,8 @@
 							<div class="form-group">
 								<label for="operatorType" class="col-sm-2 control-label">审核状态</label>
 								<div class="col-sm-2">
-									<select class="form-control" name="operatorType" >
-									
+									<select class="form-control" name="operatorType">
+
 										<option value="null">全部</option>
 										<option value="1" ${operatorType == 1 ?"selected":"" }>审核中</option>
 										<option value="2" ${operatorType == 2 ?"selected":"" }>审核通过</option>
@@ -167,10 +167,10 @@
 							<tr>
 								<td>
 									<p>
-										<input type="hidden" name="no" value="3" /> 
-										<input type="hidden" name="push_alias" /> 
-										<input type="hidden" name="userId" />
-										<input type="checkbox" name="reason" value="资料不属实" />资料不属实
+										<input type="hidden" name="no" value="3" /> <input
+											type="hidden" name="push_alias" /> <input type="hidden"
+											name="userId" /> <input type="checkbox" name="reason"
+											value="资料不属实" />资料不属实
 									</p>
 									<p>
 										<input type="checkbox" name="reason" value="资历不足" />资历不足
