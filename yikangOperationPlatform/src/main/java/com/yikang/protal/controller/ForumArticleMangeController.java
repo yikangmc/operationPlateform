@@ -114,6 +114,9 @@ public class ForumArticleMangeController {
 		if (null != user && null != content && content.length() > 0 && null != taglibId && taglibId.length > 0) {
 			manageService.insertSelective(title, contentStr, forumPostDetailContent, user.getUserId(), recommendPicUrl,
 					taglibId);
+			for(Long id:taglibId){
+				taglibService.updateForumPostsTZNumberAddByTaglibId(id);
+			}
 		}
 		modelMap.put("userName", userName);
 		return "redirect:/forumArticleMange/getAllArticleList";
