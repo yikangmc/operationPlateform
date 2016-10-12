@@ -40,11 +40,6 @@ public class ReportOperation implements Runnable {
 				String multiple5 = MessageProperties.getPropertieValue("message_body_5");
 				String multiple6 = MessageProperties.getPropertieValue("message_body_6");
 				String multiple7 = MessageProperties.getPropertieValue("message_body_7");
-				// message_body_3--您好，您发布的
-				// message_body_4--“举报来源分类+举报理由+举报内容（20字）
-				// message_body_5--”
-				// message_body_6--被佳友举报为
-				// message_body_7--，由佳佳康复审核为有效举报。该内容违背了佳佳康复的社区规约，有可能影响广大用户的使用体验，现已删除该内容，知错能改还是好孩子哦~
 				message = multiple3 + info[0] + multiple4 + info[2] + multiple5 + multiple6 + info[1] + multiple7;
 				messageManager.insertSystemFollowMessage(userId, message, message, Byte.valueOf("10"));
 				try {

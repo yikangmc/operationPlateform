@@ -46,7 +46,6 @@
 											<label class="col-sm-2 control-label">查询条件</label>
 											<div class="col-sm-2">
 												<select class="form-control" name="dataStatus">
-													<!-- 													<option value="null">全部</option> -->
 													<option value="5" ${dataStatus== 5?"selected":"" }>全部</option>
 													<option value="1" ${dataStatus==1?"selected":"" }>未处理</option>
 													<option value="2" ${dataStatus==2?"selected":"" }>举报有效删除</option>
@@ -107,8 +106,6 @@
 												class="${ varIndex.index % 2 eq 0 ? 'odd':'even' }">
 												<td>${allReports.reportType }</td>
 												<td>${allReports.reportContent }</td>
-
-												<!-- 文章帖子问题所属标签 -->
 												<td><c:forEach
 														items="${allReports.reportForumPostTaglibs}"
 														var="taglibForumPost" varStatus="varIndex">
@@ -128,7 +125,6 @@
 												<td><c:if test="${allReports.dataStatus==1 }">
 														<button type="button" class="btn btn-info "
 															onclick="reportInformation.warn(${allReports.reportId },${allReports.reportUserId },'<%=basePath%>')">记警告一次</button>
-
 														<button type="button" class="btn btn-info "
 															onclick="reportInformation.del(${allReports.reportId },${allReports.reportGroup},${allReports.dataId},${allReports.reportUserId },
 															'${allReports.reportContent}',

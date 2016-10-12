@@ -35,7 +35,6 @@ ReportInformation.prototype = {
 			});
 		}
 	},
-
 	warn : function(reportId, reportUserId, basePath) {
 		if (confirm("确定要记警告一次吗？")) {
 			$.post(basePath + "/reportInformation/addOneReportTime", {

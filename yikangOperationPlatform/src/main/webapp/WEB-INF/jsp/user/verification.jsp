@@ -85,6 +85,7 @@
 												<th class="sorting">地址</th>
 												<th class="sorting">擅长方向</th>
 												<th class="sorting">执业证书</th>
+												<th class="sorting">职位认证手机号</th>
 												<th class="sorting">职位审核状态</th>
 												<th class="sorting">操作</th>
 											</tr>
@@ -118,6 +119,8 @@
 													<td>${userServiceInfo.addressDetail}</td>
 													<td>${userServiceInfo.adept}</td>
 													<td>${userServiceInfo.userCertificate}</td>
+												    <td>${userServiceInfo.authMobileNumber}</td>
+													
 													<td><c:if
 															test="${userServiceInfo.positionAuditStatus==0}">未审核</c:if>
 														<c:if test="${userServiceInfo.positionAuditStatus==1}">审核中</c:if>

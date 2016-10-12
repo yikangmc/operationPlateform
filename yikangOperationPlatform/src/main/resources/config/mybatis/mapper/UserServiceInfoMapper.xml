@@ -30,6 +30,7 @@
 		<result column="user_introduce" jdbcType="VARCHAR" property="userIntroduce" />
 		<result column="work_realm" jdbcType="TINYINT" property="workRealm" />
 		<result column="user_certificate" jdbcType="VARCHAR" property="userCertificate" />
+		<result column="auth_mobile_number" jdbcType="VARCHAR" property="authMobileNumber"/>
 	</resultMap>
 	<sql id="Base_Column_List">
 		user_service_info_id, user_id, job_category, user_position,
@@ -41,7 +42,7 @@
 		latitude, map_position_address, hospital, offices, adept,
 		position_audit_status,
 		new_user_position, oraganization_name,
-		user_introduce, work_realm, user_certificate
+		user_introduce, work_realm, user_certificate,auth_mobile_number
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
 		resultMap="BaseResultMap">
@@ -71,7 +72,7 @@
 		position_audit_status, new_user_position,
 		oraganization_name,
 		user_introduce, work_realm,
-		user_certificate)
+		user_certificate,auth_mobile_number)
 		values
 		(#{userServiceInfoId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
 		#{jobCategory,jdbcType=BIGINT},
@@ -89,7 +90,8 @@
 		#{newUserPosition,jdbcType=BIGINT},
 		#{oraganizationName,jdbcType=VARCHAR},
 		#{userIntroduce,jdbcType=VARCHAR}, #{workRealm,jdbcType=TINYINT},
-		#{userCertificate,jdbcType=VARCHAR})
+		#{userCertificate,jdbcType=VARCHAR},
+		#{authMobileNumber,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.yikang.protal.entity.UserServiceInfo">
 		insert into user_service_infos
@@ -169,6 +171,10 @@
 			<if test="userCertificate != null">
 				user_certificate,
 			</if>
+			<if test="authMobileNumber != null">
+				auth_mobile_number,
+			</if>
+			
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="userServiceInfoId != null">
@@ -245,6 +251,9 @@
 			</if>
 			<if test="userCertificate != null">
 				#{userCertificate,jdbcType=VARCHAR},
+			</if>
+			<if test="authMobileNumber != null">
+				#{authMobileNumber,jdbcType=VARCHAR},
 			</if>
 		</trim>
 	</insert>
@@ -326,6 +335,9 @@
 			<if test="userCertificate != null">
 				user_certificate = #{userCertificate,jdbcType=VARCHAR},
 			</if>
+			<if test="authMobileNumber != null">
+				auth_mobile_number= #{authMobileNumber,jdbcType=VARCHAR},
+			</if>
 		</set>
 		where user_service_info_id = #{userServiceInfoId,jdbcType=BIGINT}
 	</update>
@@ -369,7 +381,9 @@
 		work_realm =
 		#{workRealm,jdbcType=TINYINT},
 		user_certificate =
-		#{userCertificate,jdbcType=VARCHAR}
+		#{userCertificate,jdbcType=VARCHAR},
+		auth_mobile_number =
+		#{authMobileNumber,jdbcType=VARCHAR},
 		where user_service_info_id =
 		#{userServiceInfoId,jdbcType=BIGINT}
 	</update>
@@ -434,6 +448,7 @@
 		<result column="user_sex" property="userSex" />
 		<result column="user_introduce" property="userIntroduce" />
 		<result column="user_certificate" property="userCertificate" />
+		<result column="auth_mobile_number" property="authMobileNumber"/>
 
 		<!-- <association property="officeObj" column="offices" javaType="com.yikang.protal.entity.Office"> -->
 		<!-- <id column="office_id" property="officeId" /> -->
@@ -689,6 +704,7 @@
 		<result column="user_introduce" property="userIntroduce" />
 		<result column="work_realm" property="workRealm" />
 		<result column="user_certificate" property="userCertificate" />
+		<result column="auth_mobile_number" property="authMobileNumber"/>
 	</resultMap>
 	<!-- 所有专业用户 -->
 	<select id="getUserServiceInfoListPage" resultMap="getUserServiceInfoListPageMap"
@@ -721,6 +737,7 @@
 		usi.user_introduce,
 		usi.work_realm,
 		usi.user_certificate,
+		usi.auth_mobile_number,
 		GROUP_CONCAT(adepts.adept_name) as adept
 		from users us,
 		user_service_infos usi

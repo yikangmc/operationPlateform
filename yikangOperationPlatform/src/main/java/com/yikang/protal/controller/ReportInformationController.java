@@ -68,7 +68,6 @@ public class ReportInformationController extends BaseController {
 	public ResponseMessage<String> ignoreUpdateStatus(ModelMap modelMap, PageParameter page, HttpServletRequest req) {
 		ResponseMessage<String> resData = new ResponseMessage<String>();
 		reportInformationService.ignoreUpdateStatus(Long.valueOf(req.getParameter("reportId")));
-		System.out.println("主键" + req.getParameter("reportId"));
 		return resData;
 	}
 
@@ -90,7 +89,7 @@ public class ReportInformationController extends BaseController {
 	}
 
 	/**
-	 * 删除举报的内容，并且记录一次
+	 * 删除举报（①修改标记分类为2②删除举报信息③发送退信信息到用户 ）
 	 * 
 	 * @param modelMap
 	 * @param page
@@ -103,7 +102,6 @@ public class ReportInformationController extends BaseController {
 			HttpServletRequest req) {
 		ResponseMessage<String> resData = new ResponseMessage<String>();
 		try {
-			// 系统消息（属于“佳佳官方通知”类）定向推送给用户其内容因<举报理由>被删除）
 			String reportUserId = req.getParameter("reportUserId");
 			String reportContent = req.getParameter("reportContent");
 			// 判断字节长度是否大于20个汉字，若多则截取
@@ -131,11 +129,10 @@ public class ReportInformationController extends BaseController {
 			operationMessage.setMessageGroup("2");
 			operationMessage.setPushAlias(pushAlias);
 			OperationMessageQueue.putReportQueue(operationMessage);
-
 			// 删除举报的内容
 			reportInformationService.deleteReportInformation(Byte.valueOf(req.getParameter("reportGroup")),
 					Long.valueOf(req.getParameter("dataId")));
-			// 记录警告一次
+			// 记录警告一次并修改标记分类
 			reportInformationService.addOneReportTimeSetTwo(Long.valueOf(req.getParameter("reportUserId")),
 					Long.valueOf(req.getParameter("reportId")));
 

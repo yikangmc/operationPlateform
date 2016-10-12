@@ -97,9 +97,6 @@ public interface FormPostsDao {
 	 */
 	int updateTieziByPrimaryKey(Long forumPostId);
 
-	// 插入推荐
-	int insertRecommendByPrimaryKey(Long forumPostId);
-
 	/**
 	 * 取消该精华文章为普通
 	 * 

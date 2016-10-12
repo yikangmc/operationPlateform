@@ -180,17 +180,12 @@
 		data_status,<!--标记分类 -->
 		report_informations.content_group,<!-- 举报理由 -->
 		(case when report_group='1' then forum_posts.content
-		when
-		report_group='2' then forum_posts.content
-		when report_group='3' then questions.content
+			  when report_group='2' then forum_posts.content
+			  when report_group='3' then questions.content
 		end) as report_content,<!--内容详情 -->
-		(case when report_group='1' then
-		forum_posts.create_time
-		when
-		report_group='2' then
-		forum_posts.create_time
-		when report_group='3' then
-		questions.create_time
+		(case when report_group='1' then forum_posts.create_time
+		when report_group='2' then forum_posts.create_time
+		when report_group='3' then questions.create_time
 		end) as report_create_time,<!--创建时间 -->
 		<!-- (case when -->
 		<!-- report_group='1' then -->
@@ -223,30 +218,21 @@
 		ri.report_user_id=report_informations.report_user_id ) as
 		report_number,<!--发布者被举报次数 -->
 		ui.report_valid_number<!-- 发布者被举报有效次数 -->
-		from
-		report_informations
-		left join
-		forum_posts on
-		report_informations.data_id=forum_posts.forum_post_id
-		and
-		report_informations.report_group in (1,2)
-		left join questions on
-		report_informations.data_id=questions.question_id
-		and
-		report_informations.report_group='3'
-		left join users toUser on
-		report_informations.user_id=toUser.user_id
-		left join users reUser on
-		report_informations.report_user_id=reUser.user_id
-		left join user_infos
-		ui on report_informations.report_user_id=ui.user_id
+		from report_informations
+		left join forum_posts on report_informations.data_id=forum_posts.forum_post_id
+		and report_informations.report_group in (1,2)
+		left join questions on report_informations.data_id=questions.question_id
+		and report_informations.report_group='3'
+		left join users toUser on report_informations.user_id=toUser.user_id
+		left join users reUser on report_informations.report_user_id=reUser.user_id
+		left join user_infos ui on report_informations.report_user_id=ui.user_id
 		<if test="dataStatus!=null">
 			where report_informations.data_status=#{dataStatus}
 		</if>
 		<if test="null != content and content !=''">
 			and (case when report_group='1' then forum_posts.content
-			when report_group='2' then forum_posts.content
-			when report_group='3'  then questions.content
+					  when report_group='2' then forum_posts.content
+					  when report_group='3' then questions.content
 			end)
 			like concat('%',#{content},'%')
 		</if>

@@ -45,13 +45,6 @@
 		where forum_post_id = #{forumPostId,jdbcType=BIGINT}
 	</delete>
 
-	<!--更新文章为精华 -->
-	<update id="updateIssenceByPrimaryKey" parameterType="java.lang.Long">
-		update
-		forum_posts set is_essence= 1
-		where
-		forum_post_id=#{forumPostId,jdbcType=BIGINT}
-	</update>
 	<!-- 更新帖子为精华 -->
 	<update id="updateTieziByPrimaryKey" parameterType="java.lang.Long">
 		update
@@ -59,10 +52,7 @@
 		where
 		forum_post_id=#{forumPostId,jdbcType=BIGINT}
 	</update>
-	<!-- 插入推荐 -->
-	<insert id="insertRecommendByPrimaryKey" parameterType="java.lang.Long">
-	
-	</insert>
+
 	<!--取消该精华文章为普通 -->
 	<update id="cancelIssenceByPrimaryKey" parameterType="java.lang.Long">
 		update

@@ -5,231 +5,242 @@ import java.util.Date;
 import java.util.List;
 
 public class UserServiceInfo {
-    private Long userServiceInfoId;
+	private Long userServiceInfoId;
 
-    private Long userId;
+	private Long userId;
 
-    private Long jobCategory;
+	private Long jobCategory;
 
-    private Byte userPosition;
+	private Byte userPosition;
 
-    private Long provenceCode;
+	private Long provenceCode;
 
-    private Long cityCode;
+	private Long cityCode;
 
-    private Long districtCode;
+	private Long districtCode;
 
-    private String addressDetail;
+	private String addressDetail;
 
-    private String photoUrl;
+	private String photoUrl;
 
-    private Long createTime;
+	private Long createTime;
 
-    private Long updateTime;
+	private Long updateTime;
 
-    private Byte isDelete;
+	private Byte isDelete;
 
-    private String userServiceName;
-    
-    private String userName;
+	private String userServiceName;
 
-    private String userSex;
-    
-    private String pushAlias;
-    
-    private Date birthday;
-    
-    private Double longitude;
+	private String userName;
 
-    private Double latitude;
+	private String userSex;
 
-    private String mapPositionAddress;
+	private String pushAlias;
 
-    private String hospital;
+	private Date birthday;
 
-    private String offices;
-    
+	private Double longitude;
 
-    private String adept;
-    
-    // 职位审核状态
-    private Byte positionAuditStatus;
-    
-    //邀请路径
-    private String invitationUrl;
-    
-    //患者数量
-    private Integer  nums;
-    
-    //用户信息填写状态
-    private Integer infoWrite;
-    
-    //邀请码
-    private String invitationCode;
-    
-    //新修改的职位
-    private Integer newUserPosition;
-    
-    //组织机构名称
-    private String oraganizationName;
+	private Double latitude;
 
-    //用户介绍
-    private String userIntroduce;
+	private String mapPositionAddress;
 
-    //工作领域
-    private Byte workRealm;
+	private String hospital;
 
-    //用户证书
-    private String userCertificate;
+	private String offices;
 
-//    用户文章列表
-    private List<FormPosts> formPosts;
-    
-    private String userAdeptId;
-    
-    public Long getUserServiceInfoId() {
-        return userServiceInfoId;
-    }
+	private String adept;
 
-    public void setUserServiceInfoId(Long userServiceInfoId) {
-        this.userServiceInfoId = userServiceInfoId;
-    }
+	// 职位审核状态
+	private Byte positionAuditStatus;
 
-    public Long getUserId() {
-        return userId;
-    }
+	// 邀请路径
+	private String invitationUrl;
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	// 患者数量
+	private Integer nums;
 
-    public Long getJobCategory() {
-        return jobCategory;
-    }
+	// 用户信息填写状态
+	private Integer infoWrite;
 
-    public void setJobCategory(Long jobCategory) {
-        this.jobCategory = jobCategory;
-    }
+	// 邀请码
+	private String invitationCode;
 
-    public Long getProvenceCode() {
-        return provenceCode;
-    }
+	// 新修改的职位
+	private Integer newUserPosition;
 
-    public void setProvenceCode(Long provenceCode) {
-        this.provenceCode = provenceCode;
-    }
+	// 组织机构名称
+	private String oraganizationName;
 
-    public Long getCityCode() {
-        return cityCode;
-    }
+	// 用户介绍
+	private String userIntroduce;
 
-    public void setCityCode(Long cityCode) {
-        this.cityCode = cityCode;
-    }
+	// 工作领域
+	private Byte workRealm;
 
-    public Long getDistrictCode() {
-        return districtCode;
-    }
+	// 用户证书
+	private String userCertificate;
 
-    public void setDistrictCode(Long districtCode) {
-        this.districtCode = districtCode;
-    }
+	// 用户文章列表
+	private List<FormPosts> formPosts;
 
-    public String getAddressDetail() {
-        return addressDetail;
-    }
+	private String userAdeptId;
+	// 职位认证手机号
+	private String authMobileNumber;
 
-    public void setAddressDetail(String addressDetail) {
-        this.addressDetail = addressDetail == null ? null : addressDetail.trim();
-    }
+	
 
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
+	public String getAuthMobileNumber() {
+		return authMobileNumber;
+	}
 
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl == null ? null : photoUrl.trim();
-    }
+	public void setAuthMobileNumber(String authMobileNumber) {
+		this.authMobileNumber = authMobileNumber;
+	}
 
-    public Long getCreateTime() {
-        return createTime;
-    }
+	public Long getUserServiceInfoId() {
+		return userServiceInfoId;
+	}
 
-    public void setCreateTime(Long createTime) {
-        this.createTime = createTime;
-    }
+	public void setUserServiceInfoId(Long userServiceInfoId) {
+		this.userServiceInfoId = userServiceInfoId;
+	}
 
-    public Long getUpdateTime() {
-        return updateTime;
-    }
+	public Long getUserId() {
+		return userId;
+	}
 
-    public void setUpdateTime(Long updateTime) {
-        this.updateTime = updateTime;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public Byte getIsDelete() {
-        return isDelete;
-    }
+	public Long getJobCategory() {
+		return jobCategory;
+	}
 
-    public void setIsDelete(Byte isDelete) {
-        this.isDelete = isDelete;
-    }
+	public void setJobCategory(Long jobCategory) {
+		this.jobCategory = jobCategory;
+	}
 
-    public String getUserServiceName() {
-        return userServiceName;
-    }
+	public Long getProvenceCode() {
+		return provenceCode;
+	}
 
-    public void setUserServiceName(String userServiceName) {
-        this.userServiceName = userServiceName == null ? null : userServiceName.trim();
-    }
+	public void setProvenceCode(Long provenceCode) {
+		this.provenceCode = provenceCode;
+	}
 
-    public Double getLongitude() {
-        return longitude;
-    }
+	public Long getCityCode() {
+		return cityCode;
+	}
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
+	public void setCityCode(Long cityCode) {
+		this.cityCode = cityCode;
+	}
 
-    public Double getLatitude() {
-        return latitude;
-    }
+	public Long getDistrictCode() {
+		return districtCode;
+	}
 
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
+	public void setDistrictCode(Long districtCode) {
+		this.districtCode = districtCode;
+	}
 
-    public String getMapPositionAddress() {
-        return mapPositionAddress;
-    }
+	public String getAddressDetail() {
+		return addressDetail;
+	}
 
-    public void setMapPositionAddress(String mapPositionAddress) {
-        this.mapPositionAddress = mapPositionAddress == null ? null : mapPositionAddress.trim();
-    }
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail == null ? null : addressDetail.trim();
+	}
 
-    public String getHospital() {
-        return hospital;
-    }
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
 
-    public void setHospital(String hospital) {
-        this.hospital = hospital == null ? null : hospital.trim();
-    }
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl == null ? null : photoUrl.trim();
+	}
 
-    public String getOffices() {
-        return offices;
-    }
+	public Long getCreateTime() {
+		return createTime;
+	}
 
-    public void setOffices(String offices) {
-        this.offices = offices == null ? null : offices.trim();
-    }
+	public void setCreateTime(Long createTime) {
+		this.createTime = createTime;
+	}
 
-    public String getAdept() {
-        return adept;
-    }
+	public Long getUpdateTime() {
+		return updateTime;
+	}
 
-    public void setAdept(String adept) {
-        this.adept = adept == null ? null : adept.trim();
-    }
+	public void setUpdateTime(Long updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public Byte getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Byte isDelete) {
+		this.isDelete = isDelete;
+	}
+
+	public String getUserServiceName() {
+		return userServiceName;
+	}
+
+	public void setUserServiceName(String userServiceName) {
+		this.userServiceName = userServiceName == null ? null : userServiceName.trim();
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getMapPositionAddress() {
+		return mapPositionAddress;
+	}
+
+	public void setMapPositionAddress(String mapPositionAddress) {
+		this.mapPositionAddress = mapPositionAddress == null ? null : mapPositionAddress.trim();
+	}
+
+	public String getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(String hospital) {
+		this.hospital = hospital == null ? null : hospital.trim();
+	}
+
+	public String getOffices() {
+		return offices;
+	}
+
+	public void setOffices(String offices) {
+		this.offices = offices == null ? null : offices.trim();
+	}
+
+	public String getAdept() {
+		return adept;
+	}
+
+	public void setAdept(String adept) {
+		this.adept = adept == null ? null : adept.trim();
+	}
 
 	public Byte getPositionAuditStatus() {
 		return positionAuditStatus;
@@ -271,9 +282,6 @@ public class UserServiceInfo {
 		this.invitationCode = invitationCode;
 	}
 
-
-
-
 	public String getUserName() {
 		return userName;
 	}
@@ -289,7 +297,6 @@ public class UserServiceInfo {
 	public void setNewUserPosition(Integer newUserPosition) {
 		this.newUserPosition = newUserPosition;
 	}
-
 
 	public String getOraganizationName() {
 		return oraganizationName;
@@ -370,7 +377,5 @@ public class UserServiceInfo {
 	public void setUserAdeptId(String userAdeptId) {
 		this.userAdeptId = userAdeptId;
 	}
-
-	
 
 }

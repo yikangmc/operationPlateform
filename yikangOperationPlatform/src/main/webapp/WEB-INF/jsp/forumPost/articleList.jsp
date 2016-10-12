@@ -182,9 +182,7 @@ src->webapp->jsp->forumPost->articleList
 									</table>
 								</div>
 							</div>
-
 							<%@ include file="/common/page.jsp"%>
-
 						</div>
 					</div>
 					<!-- /.box-body -->
@@ -192,8 +190,6 @@ src->webapp->jsp->forumPost->articleList
 			</div>
 		</div>
 	</div>
-
-
 	<script type="text/javascript">
       var num;
       var cont = $('.model-Content');
@@ -210,8 +206,6 @@ src->webapp->jsp->forumPost->articleList
         $('.model-Content').html($(this).find('#H_Content').val()); 
      
       })        
-
   </script>
-
 </body>
 </html>
