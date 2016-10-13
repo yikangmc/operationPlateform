@@ -109,7 +109,8 @@
 														<c:if test="${userServiceInfo.newUserPosition==2}">中医师</c:if>
 														<c:if test="${userServiceInfo.newUserPosition==3}">护理人员</c:if>
 														<c:if test="${userServiceInfo.newUserPosition==4}">企业主体</c:if>
-														<c:if test="${userServiceInfo.newUserPosition==5}">医院/科室主体</c:if></td>
+														<c:if test="${userServiceInfo.newUserPosition==5}">医院/科室主体</c:if>
+														<c:if test="${userServiceInfo.newUserPosition==6}">学生</c:if></td>
 													<td>${userServiceInfo.userIntroduce}</td>
 													<td>${userServiceInfo.hospital}</td>
 													<td><c:if test="${userServiceInfo.offices==-2}">无</c:if>
