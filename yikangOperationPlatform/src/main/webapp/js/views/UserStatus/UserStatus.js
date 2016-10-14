@@ -24,6 +24,10 @@ UserStatus.prototype={
 			$("input[name='push_alias']").val(pushAlias);
 			$("input[name='userId']").val(userId);
 			$("#statusForm").submit();
+		},
+		imgWindow:function(imgSrc){
+			$("#imgWindow").modal("show");
+			$("#imageId").attr("src",imgSrc);
 		}
 }
 

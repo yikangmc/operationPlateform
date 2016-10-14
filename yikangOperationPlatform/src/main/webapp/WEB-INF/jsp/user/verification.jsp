@@ -118,7 +118,9 @@
 													<td>${userServiceInfo.addressDetail}</td>
 													<td>${userServiceInfo.adept}</td>
 													<td><c:if test="${userServiceInfo.userCertificate==''}">无执业证书</c:if>
-													<c:if test="${userServiceInfo.userCertificate!=''}"><a href="${userServiceInfo.userCertificate}" target=_blank>查看职业证书</a></c:if>
+													<c:if test="${userServiceInfo.userCertificate!=''}"><%-- <a href="${userServiceInfo.userCertificate}" target=_blank>查看职业证书</a> --%>
+													<button class="btn btn-sm btn-info" type="button" onclick="userStatus.imgWindow('${userServiceInfo.userCertificate}')">查看职业证书</button>
+													</c:if>
 													</td>
 													<td><c:if
 															test="${userServiceInfo.positionAuditStatus==0}">未审核</c:if>
@@ -198,6 +200,15 @@
 			<!-- /.modal-content -->
 		</div>
 		<!-- /.modal-dialog -->
+	</div>
+	<!-- 图片窗口 -->
+	<div class="modal fade" id="imgWindow" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				    <img id="imageId" src="" alt="" />
+			</div>
+		</div>
 	</div>
 	<!-- /.modal -->
 	<script type="text/javascript"
