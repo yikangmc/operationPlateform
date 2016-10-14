@@ -121,7 +121,7 @@
 													<td>${userServiceInfo.adept}</td>
 													<td>${userServiceInfo.userCertificate}</td>
 												    <td>${userServiceInfo.authMobileNumber}</td>
-													
+													<td><a href="${userServiceInfo.userCertificate}" target=_blank>${userServiceInfo.userCertificate}</a></td>
 													<td><c:if
 															test="${userServiceInfo.positionAuditStatus==0}">未审核</c:if>
 														<c:if test="${userServiceInfo.positionAuditStatus==1}">审核中</c:if>
