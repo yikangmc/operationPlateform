@@ -56,6 +56,12 @@
 														<option value="0" ${isEssence==0?"selected":"" }>非精华</option>
 														<option value="1" ${isEssence==1?"selected":"" }>精华</option>
 													</select>
+													<select class="form-control" name="dataStatus">
+														<option value="4" ${dataStatus== 4?"selected":"" }>全部</option>
+														<option value="1" ${dataStatus==1?"selected":"" }>通过</option>
+														<option value="2" ${dataStatus==2?"selected":"" }>不通过</option>
+														<option value="3" ${dataStatus==3?"selected":"" }>未处理</option>
+													</select>
 												</div>
 									</div>
 								</div>
@@ -110,6 +116,9 @@
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													aria-label="Engine version: activate to sort column ascending"
 													>用户信息</th>
+													<th class="sorting_asc col-sm-1" tabindex="0" aria-controls="example1"
+													aria-label="Engine version: activate to sort column ascending"
+													>审核状态</th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													aria-label="Engine version: activate to sort column ascending"
 													>操作</th>
@@ -145,14 +154,23 @@
 															${formPosts.userName }
 													</td>
 													<td>
+													
+													<c:if test="${formPosts.dataStatus==1 }">通过</c:if>
+													<c:if test="${formPosts.dataStatus==2 }">不通过</c:if>
+													<c:if test="${formPosts.dataStatus==3 }">未处理</c:if>
+													</td>
+													<td>
 														<a href="<%=basePath%>forumPosts/updateForumPosts?forumPostsId=${formPosts.forumPostId}" class="btn btn-info ">修改</a>
 														<button class="btn btn-info " onclick="forumPost.del(${formPosts.forumPostId},'<%=basePath%>')">删除</button>
+														<button class="btn btn-info " onclick="forumPost.okStatus(${formPosts.forumPostId},'<%=basePath%>')">通过</button>
+														<button class="btn btn-info " onclick="forumPost.noStatus(${formPosts.forumPostId},'<%=basePath%>')">不通过</button>
 														<c:if test="${formPosts.isEssence==0 }">
 														 	<button class="btn btn-info " onclick="forumPost.updateEssence(${formPosts.forumPostId},'<%=basePath%>')">设为精华</button>
 														</c:if>
 														<c:if test="${formPosts.isEssence==1 }">
 															<button class="btn batn-info " onclick="forumPost.cancelEssence(${formPosts.forumPostId},'<%=basePath%>')">取消精华</button>
 														</c:if>
+														
 													</td>
 												</tr>
 											</c:forEach>

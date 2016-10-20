@@ -44,13 +44,20 @@ public class ForumPostsController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping
-	public String formPostList(Integer isEssence,ModelMap modelMap,PageParameter page,HttpServletRequest req){
+	public String formPostList(Integer isEssence,Integer dataStatus,ModelMap modelMap,PageParameter page,HttpServletRequest req){
 		modelMap.put("page", page);
 		String title=req.getParameter("title");
 		String content = req.getParameter("content");
 		modelMap.put("title", title);
 		modelMap.put("content", content);
 		modelMap.put("isEssence", isEssence);
+		if (null == dataStatus || dataStatus.equals("null")) {
+			dataStatus = 3;
+		}
+		if (dataStatus == 4) {
+			dataStatus = null;
+		}
+		modelMap.put("dataStatus", dataStatus);
 		List<FormPosts> allFormPosts = forumPostService.findAllFormPosts(modelMap);
 		modelMap.addAttribute("formPostsList", allFormPosts);
 		return "forumPost/formPostList";
@@ -68,7 +75,18 @@ public class ForumPostsController extends BaseController {
 		return "forumPost/forumPost";
 	}
 	
-	
+	/**
+	 * 发布文章
+	 * @param modelMap
+	 * @param userName
+	 * @param title
+	 * @param content
+	 * @param recommendPicUrl
+	 * @param images
+	 * @param taglibId
+	 * @param hsr
+	 * @return
+	 */
 	@RequestMapping
 	public String addForumPost(ModelMap modelMap,String userName,String title,String content,String recommendPicUrl,String[] images,Long[] taglibId,HttpServletRequest hsr){
 		String contents=hsr.getParameter("content");
@@ -89,15 +107,36 @@ public class ForumPostsController extends BaseController {
 
 		String subContent=forumPostDetailContent.replaceAll("\n","").replaceAll(" ","").replace("\r","");
 		//String contentStr=subContent.length()>100?subContent.substring(0,100):subContent;
-
+		long  forumPostId = 0;
 		if(null != user && null != content && null != recommendPicUrl  && content.length()>0 && null != images && images.length>0 && null != taglibId && taglibId.length>0){
-			forumPostService.insertSelective(title,subContent,forumPostDetailContent,forumPostHtmlDetailContent,recommendPicUrl,user.getUserId(),images,taglibId);
+			 forumPostId = forumPostService.insertSelective(title,subContent,forumPostDetailContent,forumPostHtmlDetailContent,recommendPicUrl,user.getUserId(),images,taglibId);
 			for(Long id:taglibId){
 				taglibService.updateForumPostsTZNumberAddByTaglibId(id);
 			}
 		}
 		modelMap.put("userName", userName);
-		return "redirect:/forumPosts/forumPost";
+		//==============================================================================
+		modelMap.put("title", title);
+		modelMap.put("content", content);
+		modelMap.put("recommendPicUrl", recommendPicUrl);
+		modelMap.put("taglibId", taglibId);
+		modelMap.put("images", images);
+		modelMap.put("forumPostId", forumPostId+"");
+		modelMap.put("test", "test");
+//		return "redirect:/forumPosts/forumPost";
+		List<Taglib> data=taglibService.getSecondAllTaglib();
+		List<Taglib> data2=taglibService.getAllTag(null);
+		modelMap.put("taglibs", data);
+		modelMap.put("taglibs2", data2);
+		String forumPostsId ;
+		forumPostsId =  (String) modelMap.get("forumPostId");		
+		FormPosts formPosts = forumPostService.findForumPostsInfo(Long.valueOf(forumPostsId));
+		List<Long> taglibList = forumPostService.queryFormPostsTaglibsByFormPostsId(Long.valueOf(forumPostsId));
+		modelMap.addAttribute("taglibList", taglibList);
+		modelMap.addAttribute("forumPosts", formPosts);
+		return "forumPost/updateForumPostsStudent";
+		//==============================================================================
+		
 	}
 	
 	@RequestMapping
@@ -106,7 +145,12 @@ public class ForumPostsController extends BaseController {
 		List<Taglib> data2=taglibService.getAllTag(null);
 		modelMap.put("taglibs", data);
 		modelMap.put("taglibs2", data2);
-		String forumPostsId = req.getParameter("forumPostsId");
+		String forumPostsId ;
+		if (modelMap.get("test") != null) {
+			forumPostsId = (String) modelMap.get("forumPostId");
+		} else {
+			forumPostsId = req.getParameter("forumPostsId");
+		}
 		FormPosts formPosts = forumPostService.findForumPostsInfo(Long.valueOf(forumPostsId));
 		List<Long> taglibList = forumPostService.queryFormPostsTaglibsByFormPostsId(Long.valueOf(forumPostsId));
 		modelMap.addAttribute("taglibList", taglibList);
@@ -119,7 +163,9 @@ public class ForumPostsController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping
-	public String updateForumPostsData(ModelMap modelMap,String forumPostId,String userName,String title,String content,String recommendPicUrl,String[] images,Long[] taglibId,HttpServletRequest hsr){
+	@ResponseBody
+	public ResponseMessage<String> updateForumPostsData(ModelMap modelMap,String forumPostId,String userName,String title,String content,String recommendPicUrl,String[] images,Long[] taglibId,HttpServletRequest hsr){
+		ResponseMessage<String> resData=new ResponseMessage<String>();
 		String contents=hsr.getParameter("content");
 		recommendPicUrl = recommendPicUrl.replace(",", "");
 		User user=userManager.getUserByLoginName(userName);
@@ -139,12 +185,13 @@ public class ForumPostsController extends BaseController {
 
 		String subContent=forumPostDetailContent.replaceAll("\n","").replaceAll(" ","").replace("\r","");
 		String contentStr=subContent.length()>100?subContent.substring(0,100):subContent;
-
 		if(null != user && null != content && content.length()>0 && null != taglibId && taglibId.length>0){
 			forumPostService.updateSelective(title,forumPostId,contentStr,forumPostDetailContent,forumPostHtmlDetailContent,recommendPicUrl,user.getUserId(),images,taglibId);
 		}
 		modelMap.put("userName", userName);
-		return "redirect:/forumPosts/formPostList";
+//		return "redirect:/forumPosts/formPostList";
+//		resData.setData(shareUrl);
+		return resData;
 	}
 	
 	/**
@@ -179,5 +226,27 @@ public class ForumPostsController extends BaseController {
 		forumPostService.deleteByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
 		return "redirect:/forumPosts/formPostList";
 	}
-
+	
+	/**
+	 * 审核通过该文章
+	 * @return
+	 */
+	@RequestMapping
+	@ResponseBody
+	public ResponseMessage<String> okStatusFormPost(HttpServletRequest hsr){
+		ResponseMessage<String> resData=new ResponseMessage<String>();
+		forumPostService.okStatusByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
+		return resData;
+	}
+	/**
+	 * 审核不通过该文章
+	 * @return
+	 */
+	@RequestMapping
+	@ResponseBody
+	public ResponseMessage<String> noStatusFormPost(HttpServletRequest hsr){
+		ResponseMessage<String> resData=new ResponseMessage<String>();
+		forumPostService.noStatusByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
+		return resData;
+	}
 }

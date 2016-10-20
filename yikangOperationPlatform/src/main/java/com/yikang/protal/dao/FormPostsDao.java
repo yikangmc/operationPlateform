@@ -106,6 +106,22 @@ public interface FormPostsDao {
 	int cancelIssenceByPrimaryKey(Long forumPostId);
 
 	/**
+	 * 通过ID来修改文章审核状态：通过
+	 * 
+	 * @param forumPostId
+	 * @return
+	 */
+	int okStatusByPrimaryKey(Long forumPostId);
+
+	/**
+	 * 通过ID来修改文章审核状态：不通过
+	 * 
+	 * @param forumPostId
+	 * @return
+	 */
+	int noStatusByPrimaryKey(Long forumPostId);
+
+	/**
 	 * 获取帖子回答数量
 	 * 
 	 * @param forumPostId

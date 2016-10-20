@@ -5,7 +5,17 @@ import java.util.Date;
 import java.util.List;
 
 public class FormPosts {
+	//标记分类（1.通过 2.不通过 3.未处理）
+	private Byte dataStatus;
 	
+	public Byte getDataStatus() {
+		return dataStatus;
+	}
+
+	public void setDataStatus(Byte dataStatus) {
+		this.dataStatus = dataStatus;
+	}
+
 	private String userName;
 	
 	private String photoUrl;

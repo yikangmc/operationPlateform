@@ -29,56 +29,59 @@ import com.yikang.protal.manager.UserManager;
 @Component
 public class ForumPostService {
 
-	
 	@Autowired
 	private ForumPostManager forumPostManager;
-	
+
 	@Autowired
 	private FormPostsDao formPostsDao;
-	
+
 	@Autowired
 	private UserManager userManager;
-	
+
 	@Autowired
 	private FormPostsTaglibsMapDao formPostsTaglibsMapDao;
-	
+
 	@Autowired
 	private ForumPostsImageManager forumPostsImageManager;
-	
+
 	@Autowired
 	private ForumPostDetailManager forumPostDetailManager;
-	
+
 	@Autowired
 	private TaglibDao taglibDao;
-	
-	
-	public int insertSelective(String title,String content,String forumPostDetailContent,String forumPostHtmlDetailContent,String recommendPicUrl,Long userId,String[] images,Long[] taglibIds){
-		
-		
-		
-		//UserServiceInfo userServiceInfo=userManager.getUserServiceInfoByUserId(userId);
-		
+
+	public long insertSelective(String title, String content, String forumPostDetailContent,
+			String forumPostHtmlDetailContent, String recommendPicUrl, Long userId, String[] images, Long[] taglibIds) {
+
+		// UserServiceInfo
+		// userServiceInfo=userManager.getUserServiceInfoByUserId(userId);
+
 		Date currentDate = Calendar.getInstance().getTime();
 
 		FormPosts formPosts = new FormPosts();
 		formPosts.setTitle(title);
-		formPosts.setContent(content.length()>100?content.substring(0,100):content);
+		formPosts.setContent(content.length() > 100 ? content.substring(0, 100) : content);
 		formPosts.setCreateUserId(userId);
 		formPosts.setIsEssence(Byte.valueOf("0"));
 		formPosts.setRecommendPicUrl(recommendPicUrl);
 		formPosts.setAnswersNums(0);
 		formPosts.setCreateTime(currentDate);
 		formPosts.setUpdateTime(currentDate);
-		String uuid=UUID.randomUUID().toString().replaceAll("-", "");
-		String shareUrl=UrlGenerateUtil.generateShareForumPostUrl(uuid);
+		String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+		String shareUrl = UrlGenerateUtil.generateShareForumPostUrl(uuid);
 		formPosts.setShareUrl(shareUrl);
 		formPosts.setForumPostsUuid(uuid);
 		formPosts.setShareNum(0);
 		formPosts.setStars(0);
+		formPosts.setDataStatus((byte) 3);
 		formPosts.setReportComplaintsStatus(Byte.valueOf("0"));
 		formPosts.setForumPostGroup(Byte.valueOf("1"));
 		formPostsDao.insertSelective(formPosts);
-		forumPostDetailManager.insertSelective(forumPostDetailContent,forumPostHtmlDetailContent,formPosts.getForumPostId(),currentDate);
+		// =================================================================================================
+		Long formPostId = formPosts.getForumPostId();
+		// =================================================================================================
+		forumPostDetailManager.insertSelective(forumPostDetailContent, forumPostHtmlDetailContent,
+				formPosts.getForumPostId(), currentDate);
 
 		// 添加标签
 		for (Long tagLibId : taglibIds) {
@@ -91,18 +94,20 @@ public class ForumPostService {
 			formPostsTaglibsMapDao.insertSelective(fptm);
 		}
 		// 添加图片
-		for (int i=0;i< images.length;i++) {
+		for (int i = 0; i < images.length; i++) {
 			ForumPostsImage forumPostsImage = new ForumPostsImage();
 			forumPostsImage.setCreateTime(currentDate);
 			forumPostsImage.setForumPostsId(formPosts.getForumPostId());
 			forumPostsImage.setImageUrl(images[i]);
 			forumPostsImageManager.insertSelective(forumPostsImage);
 		}
-		
-		return  1;
+
+		// return 1;
+		return formPostId;
 	}
-	
-	public int updateSelective(String title,String forumPostId,String content,String forumPostDetailContent,String forumPostHtmlDetailContent,String recommendPicUrl,Long userId,String[] images,Long[] taglibIds){
+
+	public int updateSelective(String title, String forumPostId, String content, String forumPostDetailContent,
+			String forumPostHtmlDetailContent, String recommendPicUrl, Long userId, String[] images, Long[] taglibIds) {
 		Date currentDate = Calendar.getInstance().getTime();
 
 		FormPosts formPosts = new FormPosts();
@@ -115,15 +120,18 @@ public class ForumPostService {
 		formPosts.setAnswersNums(0);
 		formPosts.setCreateTime(currentDate);
 		formPosts.setUpdateTime(currentDate);
-		formPosts.setShareUrl(UrlGenerateUtil.generateShareForumPostUrl());
+		// String shareUrl=UrlGenerateUtil.generateShareForumPostUrl();
+		// formPosts.setShareUrl(shareUrl);
 		formPosts.setShareNum(0);
 		formPosts.setStars(0);
+		formPosts.setDataStatus((byte) 3);
 		formPosts.setReportComplaintsStatus(Byte.valueOf("0"));
 		formPosts.setForumPostGroup(Byte.valueOf("1"));
-		
+
 		formPostsDao.updateByPrimaryKeySelective(formPosts);
-		forumPostDetailManager.updateByPrimaryKeySelective(forumPostDetailContent,forumPostHtmlDetailContent,Long.valueOf(forumPostId),currentDate);
-		//先删除原来的
+		forumPostDetailManager.updateByPrimaryKeySelective(forumPostDetailContent, forumPostHtmlDetailContent,
+				Long.valueOf(forumPostId), currentDate);
+		// 先删除原来的
 		formPostsTaglibsMapDao.deleteByFormPostId(Long.valueOf(forumPostId));
 		// 更新标签
 		for (Long tagLibId : taglibIds) {
@@ -144,42 +152,55 @@ public class ForumPostService {
 		}
 		return 1;
 	}
-	
-	public List<FormPosts> findAllFormPosts(Map<String,Object> paramMap){		
+
+	public List<FormPosts> findAllFormPosts(Map<String, Object> paramMap) {
 		return formPostsDao.getAllProfessionListByPage(paramMap);
 	}
-	
-	public List<FormPosts> findAllFormPostsByTitle(Map<String,Object> paramMap){
+
+	public List<FormPosts> findAllFormPostsByTitle(Map<String, Object> paramMap) {
 		return formPostsDao.getAllFormPostsByTitle(paramMap);
 	}
-	
-	public List<FormPosts> findAllFormPostsByContent(Map<String,Object> paramMap){
+
+	public List<FormPosts> findAllFormPostsByContent(Map<String, Object> paramMap) {
 		return formPostsDao.getAllFormPostsByContent(paramMap);
 	}
-	
-	public FormPosts findForumPostsInfo(Long forumPostsId){
+
+	public FormPosts findForumPostsInfo(Long forumPostsId) {
 		return formPostsDao.queryFormPostsInfo(forumPostsId);
 	}
-	
-	public List<Long> queryFormPostsTaglibsByFormPostsId(Long forumPostsId){
+
+	public List<Long> queryFormPostsTaglibsByFormPostsId(Long forumPostsId) {
 		return formPostsDao.queryFormPostsTaglibsByFormPostsId(forumPostsId);
 	}
-	
-	public int deleteByPrimaryKey(Long forumPostsId){
-//		forumPostManager.deleteByPrimaryKey(forumPostsId);
+
+	public int deleteByPrimaryKey(Long forumPostsId) {
+		// forumPostManager.deleteByPrimaryKey(forumPostsId);
 		List<FormPostsTaglibsMap> taglibsId = formPostsTaglibsMapDao.selectTagLibIdByFormPostId(forumPostsId);
-		//taglibDao.updateForumPostsNumberSubByTaglibId(taglibsId);
+		// taglibDao.updateForumPostsNumberSubByTaglibId(taglibsId);
 		return 1;
 	}
-	//	通过ID来更新文章是否为精华
-	public int updateIssenceByPrimaryKey(Long forumPostsId){
+
+	// 通过ID来更新文章是否为精华
+	public int updateIssenceByPrimaryKey(Long forumPostsId) {
 		formPostsDao.updateTieziByPrimaryKey(forumPostsId);
 		return 1;
 	}
-//	通过ID来取消精华文章为普通
-	public int cancelIssenceByPrimaryKey(Long forumPostsId){
+
+	// 通过ID来取消精华文章为普通
+	public int cancelIssenceByPrimaryKey(Long forumPostsId) {
 		formPostsDao.cancelIssenceByPrimaryKey(forumPostsId);
 		return 1;
 	}
-	
+
+	// 通过ID来修改文章审核状态：通过
+	public int okStatusByPrimaryKey(Long forumPostsId) {
+		formPostsDao.okStatusByPrimaryKey(forumPostsId);
+		return 1;
+	}
+
+	// 通过ID来修改文章审核状态：不通过
+	public int noStatusByPrimaryKey(Long forumPostsId) {
+		formPostsDao.noStatusByPrimaryKey(forumPostsId);
+		return 1;
+	}
 }

@@ -32,7 +32,7 @@
 				<div class="box-header">
 					<h3 class="box-title">更新文章</h3>
 				</div>
-				<input type="text" id="hiddenID" value="${taglibList}"/>
+				<input type="text" id="hiddenID" style="display:none" value="${taglibList}"/>
 				<form id="paramForm" action="<%=basePath%>forumPosts/updateForumPostsData"
 					method="post">
 					<!-- /.box-header -->

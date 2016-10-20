@@ -23,6 +23,8 @@
 			jdbcType="VARCHAR" />
 		<result column="forum_post_detail_content" property="forumPostDetailContent"
 			jdbcType="LONGVARCHAR" />
+		<result column="data_status"  property="dataStatus"
+			jdbcType="TINYINT" />
 	</resultMap>
 	<sql id="Base_Column_List">
 		forum_post_id, title, content, report_complaints_status,
@@ -30,7 +32,7 @@
 		update_time, stars, share_num, create_user_id,
 		share_url,
 		recommend_pic_url, forum_post_group,
-		forum_posts_uuid
+		forum_posts_uuid,data_status
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Long">
@@ -60,6 +62,21 @@
 		where
 		forum_post_id=#{forumPostId,jdbcType=BIGINT}
 	</update>
+	
+	<!--通过ID来修改文章审核状态：通过-->
+	<update id="okStatusByPrimaryKey" parameterType="java.lang.Long">
+		update
+		forum_posts set data_status= 1
+		where
+		forum_post_id=#{forumPostId,jdbcType=BIGINT}
+	</update>
+	<!--通过ID来修改文章审核状态：不通过 -->
+	<update id="noStatusByPrimaryKey" parameterType="java.lang.Long">
+		update
+		forum_posts set data_status= 2
+		where
+		forum_post_id=#{forumPostId,jdbcType=BIGINT}
+	</update>
 	<insert id="insert" parameterType="com.yikang.protal.entity.FormPosts">
 		<selectKey resultType="Long" keyProperty="forumPostId"
 			order="AFTER">
@@ -70,7 +87,7 @@
 		update_time, stars,
 		share_num,
 		create_user_id, share_url, recommend_pic_url,
-		forum_post_group, forum_posts_uuid)
+		forum_post_group, forum_posts_uuid,data_status)
 		values
 		(#{forumPostId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR},
 		#{content,jdbcType=VARCHAR},
@@ -81,7 +98,8 @@
 		#{createUserId,jdbcType=BIGINT},
 		#{shareUrl,jdbcType=VARCHAR}, #{recommendPicUrl,jdbcType=VARCHAR},
 		#{forumPostGroup,jdbcType=TINYINT},
-		#{forumPostsUuid,jdbcType=VARCHAR})
+		#{forumPostsUuid,jdbcType=VARCHAR}),
+		#{dataStatus,jdbcType=TINYINT}
 	</insert>
 	<insert id="insertSelective" parameterType="com.yikang.protal.entity.FormPosts">
 		<selectKey resultType="Long" keyProperty="forumPostId"
@@ -132,6 +150,9 @@
 			<if test="forumPostsUuid != null">
 				forum_posts_uuid,
 			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="forumPostId != null">
@@ -175,6 +196,9 @@
 			</if>
 			<if test="forumPostsUuid != null">
 				#{forumPostsUuid,jdbcType=VARCHAR},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=TINYINT},
 			</if>
 		</trim>
 	</insert>
@@ -221,6 +245,10 @@
 			<if test="forumPostsUuid != null">
 				forum_posts_uuid = #{forumPostsUuid,jdbcType=VARCHAR},
 			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=TINYINT},
+			</if>
+			
 		</set>
 		where forum_post_id = #{forumPostId,jdbcType=BIGINT}
 	</update>
@@ -248,11 +276,12 @@
 		forum_post_group =
 		#{forumPostGroup,jdbcType=TINYINT},
 		forum_posts_uuid =
-		#{forumPostsUuid,jdbcType=VARCHAR}
+		#{forumPostsUuid,jdbcType=VARCHAR},
+		data_status =
+		#{dataStatus,jdbcType=VARCHAR}
 		where forum_post_id =
 		#{forumPostId,jdbcType=BIGINT}
 	</update>
-
 
 	<!-- 获取推荐的文章 -->
 	<resultMap type="com.yikang.protal.entity.FormPosts" id="formPostsResultMap"
@@ -264,7 +293,6 @@
 		<!-- <collection property="taglibs" fetchType="eager" column="forum_post_id" 
 			select="com.yikang.protal.dao.TaglibDao.getTaglibsByFormPostId"></collection> -->
 	</resultMap>
-
 
 	<select id="getIsEssence" resultMap="formPostsResultMap"
 		parameterType="map">
@@ -312,8 +340,6 @@
 			where is_essence=1
 		</if>
 	</select>
-
-
 
 	<resultMap id="getFormPoustsDetailByForumPostIdResultMap"
 		type="com.yikang.protal.entity.FormPosts" extends="BaseResultMap">
@@ -531,6 +557,7 @@
 		forum_posts.share_url, forum_posts.recommend_pic_url,
 		forum_posts.forum_post_group,
 		forum_posts.forum_posts_uuid ,
+		forum_posts.data_status ,
 		a.user_name as userName,a.photo_url as photoUrl
 		from forum_posts inner
 		join forum_post_details fpd on
@@ -548,6 +575,9 @@
 		</if>
 		<if test="null!=isEssence">
 			and forum_posts.is_essence=#{isEssence}
+		</if>
+		<if test="null!=dataStatus">
+			and forum_posts.data_status=#{dataStatus}
 		</if>
 		order by update_time desc
 	</select>
