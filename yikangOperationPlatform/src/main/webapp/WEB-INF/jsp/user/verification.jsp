@@ -34,8 +34,6 @@
 								<label for="operatorType" class="col-sm-2 control-label">审核状态</label>
 								<div class="col-sm-2">
 									<select class="form-control" name="operatorType">
-
-										<option value="null">全部</option>
 										<option value="1" ${operatorType == 1 ?"selected":"" }>审核中</option>
 										<option value="2" ${operatorType == 2 ?"selected":"" }>审核通过</option>
 										<option value="0" ${operatorType == 0 ?"selected":"" }>未审核</option>
@@ -75,6 +73,7 @@
 										<thead>
 											<tr role="row">
 												<th class="sorting">用户名</th>
+												<th class="sorting">认证手机号</th>
 												<th class="sorting">性别</th>
 												<th class="sorting">当前职位</th>
 												<th class="sorting">新职位</th>
@@ -94,7 +93,8 @@
 											<c:forEach items="${userServiceInfoList }"
 												var="userServiceInfo" varStatus="varIndex">
 												<tr>
-													<td class="sorting_1">${userServiceInfo.userName }</td>
+													<td>${userServiceInfo.userName }</td>
+													<td>${userServiceInfo.authMobileNumber}</td>
 													<td><c:if test="${userServiceInfo.userSex==0 }">未知</c:if>
 														<c:if test="${userServiceInfo.userSex==1 }">男</c:if> <c:if
 															test="${userServiceInfo.userSex==2 }">女</c:if></td>
