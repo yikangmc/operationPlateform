@@ -52,7 +52,7 @@ public class ForumPostsController extends BaseController {
 		modelMap.put("content", content);
 		modelMap.put("isEssence", isEssence);
 		if (null == dataStatus || dataStatus.equals("null")) {
-			dataStatus = 3;
+			dataStatus = 1;
 		}
 		if (dataStatus == 4) {
 			dataStatus = null;
@@ -108,7 +108,8 @@ public class ForumPostsController extends BaseController {
 		String subContent=forumPostDetailContent.replaceAll("\n","").replaceAll(" ","").replace("\r","");
 		//String contentStr=subContent.length()>100?subContent.substring(0,100):subContent;
 		long  forumPostId = 0;
-		if(null != user && null != content && null != recommendPicUrl  && content.length()>0 && null != images && images.length>0 && null != taglibId && taglibId.length>0){
+		//if(null != user && null != content && null != recommendPicUrl  && content.length()>0 && null != images && images.length>0 && null != taglibId && taglibId.length>0){
+		if(null != user && null != content && null != recommendPicUrl  && content.length()>0  && null != taglibId && taglibId.length>0){
 			 forumPostId = forumPostService.insertSelective(title,subContent,forumPostDetailContent,forumPostHtmlDetailContent,recommendPicUrl,user.getUserId(),images,taglibId);
 			for(Long id:taglibId){
 				taglibService.updateForumPostsTZNumberAddByTaglibId(id);

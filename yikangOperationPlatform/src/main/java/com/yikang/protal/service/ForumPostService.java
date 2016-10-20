@@ -73,7 +73,6 @@ public class ForumPostService {
 		formPosts.setForumPostsUuid(uuid);
 		formPosts.setShareNum(0);
 		formPosts.setStars(0);
-		formPosts.setDataStatus((byte) 3);
 		formPosts.setReportComplaintsStatus(Byte.valueOf("0"));
 		formPosts.setForumPostGroup(Byte.valueOf("1"));
 		formPostsDao.insertSelective(formPosts);
@@ -124,7 +123,6 @@ public class ForumPostService {
 		// formPosts.setShareUrl(shareUrl);
 		formPosts.setShareNum(0);
 		formPosts.setStars(0);
-		formPosts.setDataStatus((byte) 3);
 		formPosts.setReportComplaintsStatus(Byte.valueOf("0"));
 		formPosts.setForumPostGroup(Byte.valueOf("1"));
 

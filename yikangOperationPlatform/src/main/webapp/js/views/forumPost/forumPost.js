@@ -4,6 +4,7 @@ ForumPost.prototype = {
 	init : function() {
 
 	},
+	// 保存
 	checkParam : function() {
 		var userName = $("input[name='userName']").val();
 		var title = $("input[name='title']").val();
@@ -32,20 +33,8 @@ ForumPost.prototype = {
 		}
 
 		$("#paramForm").submit();
-		// ==============================================================================
-		// for (instance in CKEDITOR.instances)
-		// {
-		// CKEDITOR.instances[instance].updateElement();
-		// }
-		// $.post(basePath+"/forumPosts/addForumPost",$("#paramForm").serialize(),function(data,status){
-		// if(status=="success"){
-		// alert("保存成功");
-		// }else{
-		// alert("保存失败");
-		// }
-		// });
-		// ==============================================================================
 	},
+	// 更新并预览
 	previewAndUpdate : function() {
 		var userName = $("input[name='userName']").val();
 		var title = $("input[name='title']").val();
@@ -72,7 +61,6 @@ ForumPost.prototype = {
 			alert('请填写内容！');
 			return false;
 		}
-		// =============================================================================
 		for (instance in CKEDITOR.instances) {
 			CKEDITOR.instances[instance].updateElement();
 		}
@@ -86,7 +74,46 @@ ForumPost.prototype = {
 				alert(data.message);
 			}
 		});
-		// ==============================================================================
+	},
+	// 发布
+	publish : function() {
+		var userName = $("input[name='userName']").val();
+		var title = $("input[name='title']").val();
+		var recommendPicUrlImage = $("#recommendPicUrlImage").attr("src");
+		var content = $("input[name='content']").val();
+		var taglibId = $("input[name='taglibId']:checked").val();
+		if (userName == '') {
+			alert('用户名不能为空！');
+			return false;
+		}
+		if (title == '') {
+			alert('标题为空！');
+			return false;
+		}
+		if (typeof (taglibId) == "undefined" || taglibId == '') {
+			alert('请选择标签！');
+			return false;
+		}
+		if (recommendPicUrlImage == '') {
+			alert('请添加推荐图片！');
+			return false;
+		}
+		if (content == '') {
+			alert('请填写内容！');
+			return false;
+		}
+		for (instance in CKEDITOR.instances) {
+			CKEDITOR.instances[instance].updateElement();
+		}
+		$.post(basePath + "/forumPosts/updateForumPostsData", $("#paramForm")
+				.serialize(), function(data) {
+			if (data.status == "000000") {
+				alert("发布成功！");
+				document.getElementById("links").click();
+			} else {
+				alert(data.message);
+			}
+		});
 	},
 	del : function(forumPostId, basePath) {
 		if (confirm("确定要删除吗？")) {

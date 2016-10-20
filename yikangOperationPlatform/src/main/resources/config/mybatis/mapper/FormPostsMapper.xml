@@ -66,7 +66,7 @@
 	<!--通过ID来修改文章审核状态：通过-->
 	<update id="okStatusByPrimaryKey" parameterType="java.lang.Long">
 		update
-		forum_posts set data_status= 1
+		forum_posts set data_status= 3
 		where
 		forum_post_id=#{forumPostId,jdbcType=BIGINT}
 	</update>
