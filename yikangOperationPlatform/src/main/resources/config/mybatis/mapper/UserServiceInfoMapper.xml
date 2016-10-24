@@ -750,7 +750,7 @@
 			and position_audit_status =
 				#{positionAuditStatus,jdbcType=TINYINT} 
 		</if>
-		GROUP BY uam.user_id
+		GROUP BY us.user_id
 		order by usi.user_service_info_id desc
 	</select>
 </mapper>
