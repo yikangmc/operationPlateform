@@ -46,9 +46,9 @@ public class ForumPostsController extends BaseController {
 		String content = req.getParameter("content");
 		String reservation=req.getParameter("reservation");
 		String userName=req.getParameter("userName");
-		if(userName.equals("")){
-			userName=null;
-		}
+//		if(userName.equals("")){
+//			userName=null;
+//		}
 		modelMap.put("title", title);
 		modelMap.put("content", content);
 		modelMap.put("isEssence", isEssence);

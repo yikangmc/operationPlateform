@@ -64,6 +64,7 @@ request.setAttribute("basePath",basePath);
 	<script src="<%=basePath%>js/plugins/ckeditor/plugins/image/dialogs/image.js"></script>
     <!-- Bootstrap WYSIHTML5 -->
     <script src="<%=basePath%>js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/plugins/daterangepicker/daterangepicker.js"></script>
 	<script>
 	      $(function () {
 	        // Replace the <textarea id="editor1"> with a CKEditor
