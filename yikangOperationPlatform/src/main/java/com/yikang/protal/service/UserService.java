@@ -1,6 +1,5 @@
 package com.yikang.protal.service;
 
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -150,6 +149,7 @@ public class UserService {
 					+ cal.get(Calendar.DAY_OF_MONTH) + "日" + cal.get(Calendar.HOUR_OF_DAY) + ":"
 					+ cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND));
 		}
+		
 		System.out.println("零点:" + startDateList.toString());
 		for (int i = 0; i < dayNum; i++) {
 			Calendar cal = Calendar.getInstance();
