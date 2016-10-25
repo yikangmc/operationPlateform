@@ -669,9 +669,9 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<!-- jQuery Knob Chart -->
 	<script src="<%=basePath%>js/plugins/knob/jquery.knob.js"></script>
 	<!-- daterangepicker -->
-	<!-- <script
-		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script> -->
-		<script type="text/javascript" src="http://apps.bdimg.com/libs/moment/2.8.3/moment.js"></script>
+	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script> 
+<!-- 		<script type="text/javascript" src="http://apps.bdimg.com/libs/moment/2.8.3/moment.js"></script> -->
 	<script
 		src="<%=basePath%>js/plugins/daterangepicker/daterangepicker.js"></script>
 	<!-- datepicker -->
@@ -680,6 +680,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<!-- Bootstrap WYSIHTML5 -->
 	<script
 		src="<%=basePath%>js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+		
 	<!-- Slimscroll -->
 	<script
 		src="<%=basePath%>js/plugins/slimScroll/jquery.slimscroll.min.js"></script>

@@ -1,9 +1,19 @@
 var ForumPost = function() {
+
 }
 ForumPost.prototype = {
 	init : function() {
 
 	},
+	date:function(){
+		 //Date range picker
+//		alert("测试");
+       $('#reservation').daterangepicker();
+//		alert("测试2");
+
+		
+	},
+	
 	// 保存
 	checkParam : function() {
 		var userName = $("input[name='userName']").val();
@@ -189,6 +199,8 @@ ForumPost.prototype = {
 	relond : function() {
 		window.location.href = basePath + "forumPosts/formPostList";
 	}
+	
+	
 }
 var forumPost = new ForumPost();
 forumPost.init();

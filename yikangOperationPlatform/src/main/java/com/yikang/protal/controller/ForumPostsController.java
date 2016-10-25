@@ -1,8 +1,6 @@
 package com.yikang.protal.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,8 +20,6 @@ import com.yikang.protal.entity.User;
 import com.yikang.protal.manager.UserManager;
 import com.yikang.protal.service.ForumPostService;
 import com.yikang.protal.service.TaglibService;
-
-import sun.java2d.pipe.RenderQueue;
 
 @Controller
 public class ForumPostsController extends BaseController {
@@ -48,9 +44,34 @@ public class ForumPostsController extends BaseController {
 		modelMap.put("page", page);
 		String title=req.getParameter("title");
 		String content = req.getParameter("content");
+		String reservation=req.getParameter("reservation");
+		String userName=req.getParameter("userName");
+		if(userName.equals("")){
+			userName=null;
+		}
 		modelMap.put("title", title);
 		modelMap.put("content", content);
 		modelMap.put("isEssence", isEssence);
+		modelMap.put("userName", userName);
+		// 10/24/2016 - 10/24/2016
+		if (null != reservation) {
+			if (!(reservation.equals(""))) {
+
+				String[] time = reservation.split("-");
+				String[] first = time[0].split("/");
+				String[] last = time[time.length - 1].split("/");
+
+				String firstTime = first[first.length - 1].trim() + "-" + first[0].trim() + "-"
+						+ first[first.length - 2].trim() + " 00:00:00";
+				String lastTime = last[last.length - 1].trim() + "-" + last[0].trim() + "-"
+						+ last[last.length - 2].trim() + " 23:59:59";
+				modelMap.put("firstTime", firstTime);
+				modelMap.put("lastTime", lastTime);
+				System.out.println(firstTime);
+				System.out.println(lastTime);
+			}
+		}
+		
 		if (null == dataStatus || dataStatus.equals("null")) {
 			dataStatus = 1;
 		}
