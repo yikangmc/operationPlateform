@@ -40,22 +40,13 @@ public class ForumPostsController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping
-	public String formPostList(Integer isEssence,Integer dataStatus,ModelMap modelMap,PageParameter page,HttpServletRequest req){
+	public String formPostList(Integer isEssence,Integer dataStatus,ModelMap modelMap,
+			PageParameter page,HttpServletRequest req,
+			String content,String title,String reservation,String userName){
 		modelMap.put("page", page);
-		String title=req.getParameter("title");
-		String content = req.getParameter("content");
-		String reservation=req.getParameter("reservation");
-		String userName=req.getParameter("userName");
-//		if(userName.equals("")){
-//			userName=null;
-//		}
-		modelMap.put("title", title);
-		modelMap.put("content", content);
-		modelMap.put("isEssence", isEssence);
-		modelMap.put("userName", userName);
+		
 		// 10/24/2016 - 10/24/2016
-		if (null != reservation) {
-			if (!(reservation.equals(""))) {
+		if (null != reservation && (!(reservation.equals("")))) {
 
 				String[] time = reservation.split("-");
 				String[] first = time[0].split("/");
@@ -67,18 +58,21 @@ public class ForumPostsController extends BaseController {
 						+ last[last.length - 2].trim() + " 23:59:59";
 				modelMap.put("firstTime", firstTime);
 				modelMap.put("lastTime", lastTime);
-				System.out.println(firstTime);
-				System.out.println(lastTime);
-			}
 		}
 		
-		if (null == dataStatus || dataStatus.equals("null")) {
+		if (null == dataStatus || dataStatus.equals("")) {
 			dataStatus = 1;
-		}
-		if (dataStatus == 4) {
+		}else if (null !=  dataStatus && dataStatus == 4) {
 			dataStatus = null;
 		}
+		
+		
+		modelMap.put("title", title);
+		modelMap.put("content", content);
+		modelMap.put("isEssence", isEssence);
+		modelMap.put("userName", userName);
 		modelMap.put("dataStatus", dataStatus);
+		modelMap.put("reservation", reservation);
 		List<FormPosts> allFormPosts = forumPostService.findAllFormPosts(modelMap);
 		modelMap.addAttribute("formPostsList", allFormPosts);
 		return "forumPost/formPostList";

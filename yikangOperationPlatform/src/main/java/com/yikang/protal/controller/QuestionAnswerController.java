@@ -30,8 +30,23 @@ public class QuestionAnswerController{
 	 * @desc 获取回复列表
 	 * */
 	@RequestMapping
-	public String questionAnswerList(ModelMap modelMap, String questionTitle,String questionAnswerTitle,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page,HttpServletRequest hsr,Integer isRecommend){
-		List<QuestionAnswer> data=questionAnswerService.getQuestionAnswerListPage(isRecommend,questionTitle, questionAnswerTitle, answerId, answerStartDateTime, answerEndTime,page);
+	public String questionAnswerList(ModelMap modelMap, String questionTitle,String questionAnswerTitle,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page,HttpServletRequest hsr,Integer isRecommend,String userName,String reservation){
+		String firstTime = null;
+		String lastTime = null;
+		if (null != reservation && (!(reservation.equals("")))) {
+			String[] time = reservation.split("-");
+			String[] first = time[0].split("/");
+			String[] last = time[time.length - 1].split("/");
+
+			 firstTime = first[first.length - 1].trim() + "-" + first[0].trim() + "-"
+					+ first[first.length - 2].trim() + " 00:00:00";
+			 lastTime = last[last.length - 1].trim() + "-" + last[0].trim() + "-"
+					+ last[last.length - 2].trim() + " 23:59:59";
+	}
+		List<QuestionAnswer> data=questionAnswerService.getQuestionAnswerListPage(isRecommend,questionTitle, questionAnswerTitle, answerId, answerStartDateTime, answerEndTime,page,userName,firstTime,lastTime);
+		
+		modelMap.put("userName", userName);
+		modelMap.put("reservation", reservation);
 		modelMap.put("data", data);
 		modelMap.put("page", page);
 		modelMap.put("questionTitle", questionTitle);

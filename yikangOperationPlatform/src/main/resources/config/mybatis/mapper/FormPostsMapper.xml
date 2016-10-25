@@ -542,6 +542,13 @@
 		<if test="null!=isEssence">
 			and forum_posts.is_essence=#{isEssence}
 		</if>
+		<if test="null != userName and userName !=''">
+			and a.user_name=#{userName}
+		</if>
+		<if test="null != firstTime and firstTime !='' and null != lastTime and lastTime !=''">
+		and (forum_posts.create_time between
+		#{firstTime} and #{lastTime})
+		</if>
 		order by update_time desc
 	</select>
 
@@ -566,22 +573,27 @@
 		a.user_id = forum_posts.create_user_id
 		where
 		forum_posts.forum_post_group = 1
-		<if test="null != title">
+		<if test="null != title and title !=''">
 			and title like concat('%',#{title},'%')
 		</if>
-		<if test="null != content ">
+		<if test="null != content and content !=''">
 			and fpd.forum_post_detail_content like
 			concat('%',#{content},'%')
 		</if>
-		<if test="null!=isEssence">
+		<if test="null!=isEssence ">
 			and forum_posts.is_essence=#{isEssence}
 		</if>
-		<if test="null!=dataStatus">
+		<if test="null != dataStatus ">
 			and forum_posts.data_status=#{dataStatus}
 		</if>
-		<if test="null != userName">
+		<if test="null != userName and userName !=''">
 			and a.user_name=#{userName}
 		</if>
+		<if test="null != firstTime and firstTime !='' and null != lastTime and lastTime !=''">
+		and (forum_posts.create_time between
+		#{firstTime} and #{lastTime})
+		</if>
+		
 		order by update_time desc
 	</select>
 	<select id="queryFormPostsInfo" parameterType="long" resultMap="BaseResultMap">

@@ -32,26 +32,39 @@
 						<div class="box-body">
 							<div class="form-group">
 								<label for="questionTitle" class="col-sm-2 control-label">问题名称</label>
-								<div class="col-sm-2">
+								<div class="col-sm-3">
 									<input type="text" name="questionTitle" class="form-control"
-										 value="${questionTitle}" />
+										value="${questionTitle}" />
 								</div>
-							</div>
-							<div class="form-group">
 								<label for="questionTitle" class="col-sm-2 control-label">回答内容</label>
-								<div class="col-sm-2">
+								<div class="col-sm-3">
 									<input type="text" name="questionAnswerTitle"
 										class="form-control" value="${questionAnswerTitle}" />
 								</div>
 							</div>
 							<div for="operatorType" class="form-group">
 								<label class="col-sm-2 control-label">查询条件</label>
-								<div class="col-sm-2">
+								<div class="col-sm-3">
 									<select class="form-control" name="isRecommend">
 										<option value="" ${isRecommend==null?"selected":"" }>全部</option>
 										<option value="0" ${isRecommend==0?"selected":"" }>非精华</option>
 										<option value="1" ${isRecommend==1?"selected":"" }>精华</option>
 									</select>
+								</div>
+								<label class="col-sm-2 control-label">回复人名</label>
+								<div class="col-sm-3">
+									<input type="text" id="userName" name="userName"
+										class="form-control" value="${userName}"> </input>
+								</div>
+							</div>
+							<div class="form-group">								
+								<label class="col-sm-2 control-label">日期选择</label>
+								<div class="input-group col-sm-3">
+									<div class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+									</div>
+									<input type="text" class="form-control pull-right "
+										id="reservation" name="reservation" value="${reservation }">
 								</div>
 							</div>
 						</div>
@@ -94,7 +107,7 @@
 												varStatus="varIndex">
 												<tr>
 													<td>${questionAnswer.question.title }</td>
-													<td>${questionAnswer.userName }</td>
+													<td>${questionAnswer.establishName }</td>
 													<td><c:if test="${questionAnswer.isRecommend==1 }">是</c:if>
 														<c:if test="${questionAnswer.isRecommend==0 }">否</c:if></td>
 													<td><fmt:formatDate
@@ -131,5 +144,11 @@
 		src="<%=path%>/js/views/UserStatus/UserStatus.js"></script>
 	<script type="text/javascript"
 		src="<%=path%>/js/views/question/questionAnswer.js"></script>
+		<script>
+		$(document).ready(function() {
+		       $('#reservation').daterangepicker();
+
+		});
+	</script>
 </body>
 </html>

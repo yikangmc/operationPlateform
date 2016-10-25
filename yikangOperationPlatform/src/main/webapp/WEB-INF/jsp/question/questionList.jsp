@@ -39,15 +39,28 @@
 									<div class="box-body">
 										<div class="form-group">
 											<label for="content" class="col-sm-2 control-label">问题标题</label>
-											<div class="col-sm-2">
-												<input type="text" id="title" name="title" value="${title }" />
+											<div class="col-sm-3">
+												<input type="text" id="title" name="title" class="form-control" value="${title }" />
+											</div>
+											<label for="content" class="col-sm-2 control-label">问题内容</label>
+											<div class="col-sm-3">
+												<input type="text" id="content" name="content"
+													value="${content }" class="form-control" />
 											</div>
 										</div>
 										<div class="form-group">
-											<label for="content" class="col-sm-2 control-label">问题内容</label>
-											<div class="col-sm-2">
-												<input type="text" id="content" name="content"
-													value="${content }" />
+											<label class="col-sm-2 control-label">用户名字</label>
+											<div class="col-sm-3">
+												<input type="text" id="userName" name="userName"
+													class="form-control" value="${userName}"> </input>
+											</div>
+											<label class="col-sm-2 control-label">日期选择</label>
+											<div class="input-group col-sm-3">
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div>
+												<input type="text" class="form-control pull-right "
+													id="reservation" name="reservation" value="${reservation }">
 											</div>
 										</div>
 									</div>
@@ -192,5 +205,11 @@
 		</div>
 	</div>
 	<%@ include file="/common/promptBox.jsp"%>
+	<script>
+		$(document).ready(function() {
+		       $('#reservation').daterangepicker();
+
+		});
+	</script>
 </body>
 </html>

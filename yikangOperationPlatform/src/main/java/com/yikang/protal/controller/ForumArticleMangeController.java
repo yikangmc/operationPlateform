@@ -44,11 +44,28 @@ public class ForumArticleMangeController {
 	 */
 	@RequestMapping
 	public String getAllArticleList(ModelMap modelMap, FormPosts formPosts, PageParameter page,
-			HttpServletRequest request, String content, Integer isEssence) {
+			HttpServletRequest request, String content, Integer isEssence,String userName,String reservation) {
+		
+		if (null != reservation && (!(reservation.equals("")))) {
+
+			String[] time = reservation.split("-");
+			String[] first = time[0].split("/");
+			String[] last = time[time.length - 1].split("/");
+
+			String firstTime = first[first.length - 1].trim() + "-" + first[0].trim() + "-"
+					+ first[first.length - 2].trim() + " 00:00:00";
+			String lastTime = last[last.length - 1].trim() + "-" + last[0].trim() + "-"
+					+ last[last.length - 2].trim() + " 23:59:59";
+			modelMap.put("firstTime", firstTime);
+			modelMap.put("lastTime", lastTime);
+	}
+			
 		modelMap.put("content", content);
 		modelMap.put("formPosts", formPosts);
 		modelMap.put("page", page);
 		modelMap.put("isEssence", isEssence);
+		modelMap.put("userName", userName);
+		modelMap.put("reservation", reservation);
 		List<FormPosts> articleList = manageService.getAllArticleListByPage(modelMap);
 		modelMap.put("articleList", articleList);
 		return "forumPost/articleList";

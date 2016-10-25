@@ -48,7 +48,7 @@ public class QuestionController extends BaseController{
 	private UserManager userManager;
 	
 	@RequestMapping
-	public String questionList(ModelMap modelMap,Question question,HttpServletRequest request){
+	public String questionList(ModelMap modelMap,Question question,HttpServletRequest request,String userName,String reservation){
 		modelMap.put("question", question);
 		PageParameter page=this.initPage(request);
 		modelMap.put("page", page);
@@ -60,8 +60,23 @@ public class QuestionController extends BaseController{
 		if(null==content || content.equals("")){
 			content=null;
 		}
+		if (null != reservation && (!(reservation.equals("")))) {
+
+			String[] time = reservation.split("-");
+			String[] first = time[0].split("/");
+			String[] last = time[time.length - 1].split("/");
+
+			String firstTime = first[first.length - 1].trim() + "-" + first[0].trim() + "-"
+					+ first[first.length - 2].trim() + " 00:00:00";
+			String lastTime = last[last.length - 1].trim() + "-" + last[0].trim() + "-"
+					+ last[last.length - 2].trim() + " 23:59:59";
+			modelMap.put("firstTime", firstTime);
+			modelMap.put("lastTime", lastTime);
+	}
 		modelMap.put("title", title);
 		modelMap.put("content", content);
+		modelMap.put("userName", userName);
+		modelMap.put("reservation", reservation);
 		List<Question> allQuestions = systemService.queryAllQuestions(modelMap);
 		modelMap.put("allQuestions", allQuestions);
 		return "question/questionList";

@@ -82,7 +82,7 @@
 													<i class="fa fa-calendar"></i>
 												</div>
 												<input type="text" class="form-control pull-right "
-													id="reservation" name="reservation"> 
+													id="reservation" name="reservation" value="${reservation }">
 											</div>
 										</div>
 									</div>
@@ -202,13 +202,11 @@
 			</div>
 		</div>
 	</div>
-
-
 	<script>
 		$(document).ready(function() {
 		       $('#reservation').daterangepicker();
 
 		});
-		</script>
+	</script>
 </body>
 </html>

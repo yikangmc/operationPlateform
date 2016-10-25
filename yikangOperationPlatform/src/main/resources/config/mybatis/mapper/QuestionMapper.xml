@@ -237,6 +237,13 @@
 	<if test="null!=content and content != ''">
 		and que.title like concat('%',#{content},'%')
 	</if>
+	<if test="null != userName and userName !=''">
+			and ui.user_name=#{userName}
+		</if>
+		<if test="null != firstTime and firstTime !='' and null != lastTime and lastTime !=''">
+		and (que.create_time between
+		#{firstTime} and #{lastTime})
+		</if>
 	group by que.question_id 
 	order by answer_num asc,que.create_time DESC
   </select>

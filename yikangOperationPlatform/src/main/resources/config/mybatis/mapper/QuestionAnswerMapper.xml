@@ -176,6 +176,7 @@
   	<result column="photo_url" property="photoUrl"/>
   	<result column="user_position" property="userPosition"/>
   	<result column="question_answer_detail_content" property="detailContent"/>
+  	<result column="establishName" property="establishName"/>
   	<association property="question" javaType="com.yikang.protal.entity.Question">
   		<result column="title" property="title"/>
   	</association>
@@ -300,17 +301,19 @@
   <!-- 查询问题回复列表 -->
   <select id="getQuestionAnswerListPage" parameterType="map" resultMap="selectQuestionAnswerResultMap">
   	select 
-	que.title,
+	que.title,que.create_user_id,
 	qa.*,
 	qad.question_answer_detail_content,
 	qad.question_answer_html_content,
-	ui.user_name,
+	ui.user_name ,<!-- 回复人 -->
+	uis.user_name as establishName,<!-- 创建人 -->
 	ui.photo_url,
 	usi.user_position
 	page_from questions que 
     inner join question_answers qa on que.question_id=qa.question_id
 	inner join question_answer_details qad on qa.question_answer_id=qad.question_answer_id
     left join user_infos ui on qa.create_user_id=ui.user_id
+    left join user_infos uis on que.create_user_id=uis.user_id
     left join user_service_infos usi on qa.create_user_id=usi.user_id
 	<where>
 		<if test="null != questionTitle">
@@ -327,6 +330,13 @@
 		</if>
 		<if test="null!=isRecommend">
 			and qa.is_recommend = #{isRecommend}
+		</if>
+		<if test="null != userName and userName !=''">
+			and ui.user_name=#{userName}
+		</if>
+		<if test="null != firstTime and firstTime !='' and null != lastTime and lastTime !=''">
+		and (qa.create_time between
+		#{firstTime} and #{lastTime})
 		</if>
 	</where>  
 	 page_order by qa.create_time desc

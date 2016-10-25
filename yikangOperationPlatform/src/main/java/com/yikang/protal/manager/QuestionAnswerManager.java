@@ -137,7 +137,7 @@ public class QuestionAnswerManager {
 	 * @date 2016-08-12 10:57s
 	 * @desc 获取回复列表
 	 * */
-	public List<QuestionAnswer> getQuestionAnswerListPage( Integer isRecommend,String questionTitle,String questionAnswer,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page){
+	public List<QuestionAnswer> getQuestionAnswerListPage( Integer isRecommend,String questionTitle,String questionAnswer,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page,String userName,String firstTime,String lastTime){
 		
 		Map<String,Object> paramMap=new HashMap<String, Object>();
 		if(null != questionTitle && questionTitle != ""){
@@ -150,6 +150,10 @@ public class QuestionAnswerManager {
 		paramMap.put("answerEndTime", answerEndTime);
 		paramMap.put("page", page);
 		paramMap.put("isRecommend", isRecommend);
+//		,userName,firstTime,lastTime
+		paramMap.put("userName", userName);
+		paramMap.put("firstTime", firstTime);
+		paramMap.put("lastTime", lastTime);
 		
 		return questionAnswerDao.getQuestionAnswerListPage(paramMap);
 	}

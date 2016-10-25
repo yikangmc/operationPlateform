@@ -27,8 +27,8 @@ public class QuestionAnswerService {
 	 * @date 2016-08-12 10:46
 	 * @desc 获取答案列表
 	 * ***/
-	public List<QuestionAnswer> getQuestionAnswerListPage(Integer isRecommend,String questionTitle,String questionAnswer,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page){
-		return questionAnswerManager.getQuestionAnswerListPage(isRecommend,questionTitle, questionAnswer, answerId, answerStartDateTime, answerEndTime,page);
+	public List<QuestionAnswer> getQuestionAnswerListPage(Integer isRecommend,String questionTitle,String questionAnswer,Long answerId,Date answerStartDateTime,Date answerEndTime,PageParameter page,String userName,String firstTime,String lastTime){
+		return questionAnswerManager.getQuestionAnswerListPage(isRecommend,questionTitle, questionAnswer, answerId, answerStartDateTime, answerEndTime,page,userName,firstTime,lastTime);
 	}
 	
 	public int deleteQuestionAnswer(Long questionAnswerId){

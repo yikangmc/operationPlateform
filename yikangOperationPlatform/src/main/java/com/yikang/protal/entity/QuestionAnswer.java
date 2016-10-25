@@ -24,10 +24,22 @@ public class QuestionAnswer {
     // under 是展示用
     
     private Integer isStar=0;
-
+    
+    //回复人
     private String userName;
     
-    private String photoUrl;
+    //创建人
+    private String establishName;
+    
+    public String getEstablishName() {
+		return establishName;
+	}
+
+	public void setEstablishName(String establishName) {
+		this.establishName = establishName;
+	}
+
+	private String photoUrl;
     
     private int userPosition;
     

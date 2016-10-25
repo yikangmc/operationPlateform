@@ -43,19 +43,32 @@ src->webapp->jsp->forumPost->articleList
 									<div class="box-body">
 										<div for="operatorType" class="form-group">
 											<label class="col-sm-2 control-label">帖子内容</label>
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 												<input type="text" id="content" name="content"
 													class="form-control" value="${content}" />
 											</div>
-										</div>
-										<div for="operatorType" class="form-group">
-											<label class="col-sm-2 control-label">查询条件</label>
-											<div class="col-sm-2">
+											<label class="col-sm-2 control-label">是否精华</label>
+											<div class="col-sm-3">
 												<select class="form-control" name="isEssence">
 													<option value="" ${isEssence==null?"selected":"" }>全部</option>
 													<option value="0" ${isEssence==0?"selected":"" }>非精华</option>
 													<option value="1" ${isEssence==1?"selected":"" }>精华</option>
 												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label">用户名字</label>
+											<div class="col-sm-3">
+												<input type="text" id="userName" name="userName"
+													class="form-control" value="${userName}"> </input>
+											</div>
+											<label class="col-sm-2 control-label">日期选择</label>
+											<div class="input-group col-sm-3">
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div>
+												<input type="text" class="form-control pull-right "
+													id="reservation" name="reservation" value="${reservation }"> 
 											</div>
 										</div>
 									</div>
@@ -206,6 +219,12 @@ src->webapp->jsp->forumPost->articleList
         $('.model-Content').html($(this).find('#H_Content').val()); 
      
       })        
+		$(document).ready(function() {
+		       $('#reservation').daterangepicker();
+
+		});
   </script>
+ 
+		
 </body>
 </html>
