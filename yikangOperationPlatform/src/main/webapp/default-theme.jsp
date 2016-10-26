@@ -331,12 +331,14 @@ request.getSession().setAttribute("reqUri", reqUri);
 								</ul>
 							</li>
 							<li class="treeview
+								${reqUri eq '/operationPlatform/userRecordNumber/userRecordNumber' ? 'active':''}							
 							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>基础数据管理</span> <i class="fa fa-angle-left pull-right"></i>
 								</a>
 								<ul class="treeview-menu">
+									<li class="${reqUri eq '/operationPlatform/userRecordNumber/userRecordNumber' ? 'active':''}"><a href="/operationPlatform/userRecordNumber/userRecordNumber"><i class="fa fa-circle-o"></i>账号查询个人记录条数</a></li>								
 								</ul>
 							</li>
 							<li class="treeview

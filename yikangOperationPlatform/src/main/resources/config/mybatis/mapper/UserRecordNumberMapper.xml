@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yikang.protal.dao.UserRecordNumberDao">
+
+	<!-- 按账号查询任意日期区间个人的记录条数：文章 -->
+	<select id="userRecordNumberForumPost" resultType="long">
+		select count(forum_posts.forum_post_id) as forumPostNumber from
+		forum_posts
+		left join
+		users on forum_posts.create_user_id=users.user_id
+		where
+		forum_posts.forum_post_group='1'
+		<if test="null != userName and userName !=''">
+			and users.login_name=#{userName}
+		</if>
+		<if
+			test="null != firstTime and firstTime !='' and null != lastTime and lastTime !=''">
+			and (forum_posts.create_time between
+			#{firstTime} and
+			#{lastTime})
+		</if>
+	</select>
+
+	<!-- 按账号查询任意日期区间个人的记录条数：帖子 -->
+	<select id="userRecordNumberArticle" resultType="long">
+		select count(forum_posts.forum_post_id) as articleNumber from
+		forum_posts
+		left join
+		users on forum_posts.create_user_id=users.user_id
+		where
+		forum_posts.forum_post_group='0'
+		<if test="null != userName and userName !=''">
+			and users.login_name=#{userName}
+		</if>
+		<if
+			test="null != firstTime and firstTime !='' and null != lastTime and lastTime !=''">
+			and (forum_posts.create_time between
+			#{firstTime} and
+			#{lastTime})
+		</if>
+	</select>
+
+	<!-- 按账号查询任意日期区间个人的记录条数：问题 -->
+	<select id="userRecordNumberQuestion" resultType="long">
+		select count(questions.question_id) as questionNumber from questions
+		left join
+		users on questions.create_user_id=users.user_id
+		where 1=1
+		<if test="null != userName and userName !=''">
+			and users.login_name=#{userName}
+		</if>
+		<if
+			test="null != firstTime and firstTime !='' and null != lastTime and lastTime !=''">
+			and (questions.create_time between
+			#{firstTime} and
+			#{lastTime})
+		</if>
+	</select>
+
+	<!-- 按账号查询任意日期区间个人的记录条数：问题的回答 -->
+	<select id="userRecordNumberQuestionAnswer" resultType="long">
+		select count(question_answers.question_answer_id) as
+		questionAnswerNumber from question_answers
+		left join
+		users on
+		question_answers.create_user_id=users.user_id
+		where 1=1
+		<if test="null != userName and userName !=''">
+			and users.login_name=#{userName}
+		</if>
+		<if
+			test="null != firstTime and firstTime !='' and null != lastTime and lastTime !=''">
+			and (question_answers.create_time between
+			#{firstTime} and
+			#{lastTime})
+		</if>
+	</select>
+
+</mapper>

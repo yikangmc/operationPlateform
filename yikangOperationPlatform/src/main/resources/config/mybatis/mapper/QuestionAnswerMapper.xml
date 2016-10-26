@@ -313,6 +313,7 @@
     inner join question_answers qa on que.question_id=qa.question_id
 	inner join question_answer_details qad on qa.question_answer_id=qad.question_answer_id
     left join user_infos ui on qa.create_user_id=ui.user_id
+    left join users on users.user_id=qa.create_user_id
     left join user_infos uis on que.create_user_id=uis.user_id
     left join user_service_infos usi on qa.create_user_id=usi.user_id
 	<where>
@@ -332,7 +333,7 @@
 			and qa.is_recommend = #{isRecommend}
 		</if>
 		<if test="null != userName and userName !=''">
-			and ui.user_name=#{userName}
+			and users.login_name=#{userName}
 		</if>
 		<if test="null != firstTime and firstTime !='' and null != lastTime and lastTime !=''">
 		and (qa.create_time between

@@ -44,8 +44,8 @@ public class ForumArticleMangeController {
 	 */
 	@RequestMapping
 	public String getAllArticleList(ModelMap modelMap, FormPosts formPosts, PageParameter page,
-			HttpServletRequest request, String content, Integer isEssence,String userName,String reservation) {
-		
+			HttpServletRequest request, String content, Integer isEssence, String userName, String reservation) {
+
 		if (null != reservation && (!(reservation.equals("")))) {
 
 			String[] time = reservation.split("-");
@@ -54,12 +54,12 @@ public class ForumArticleMangeController {
 
 			String firstTime = first[first.length - 1].trim() + "-" + first[0].trim() + "-"
 					+ first[first.length - 2].trim() + " 00:00:00";
-			String lastTime = last[last.length - 1].trim() + "-" + last[0].trim() + "-"
-					+ last[last.length - 2].trim() + " 23:59:59";
+			String lastTime = last[last.length - 1].trim() + "-" + last[0].trim() + "-" + last[last.length - 2].trim()
+					+ " 23:59:59";
 			modelMap.put("firstTime", firstTime);
 			modelMap.put("lastTime", lastTime);
-	}
-			
+		}
+
 		modelMap.put("content", content);
 		modelMap.put("formPosts", formPosts);
 		modelMap.put("page", page);
@@ -131,7 +131,7 @@ public class ForumArticleMangeController {
 		if (null != user && null != content && content.length() > 0 && null != taglibId && taglibId.length > 0) {
 			manageService.insertSelective(title, contentStr, forumPostDetailContent, user.getUserId(), recommendPicUrl,
 					taglibId);
-			for(Long id:taglibId){
+			for (Long id : taglibId) {
 				taglibService.updateForumPostsTZNumberAddByTaglibId(id);
 			}
 		}
