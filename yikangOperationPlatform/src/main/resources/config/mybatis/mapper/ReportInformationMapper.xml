@@ -177,7 +177,7 @@
 		(case when report_group='3' then data_id end) as questionId,<!-- 数据来源id -->
 		data_id,
 		report_id,<!-- 举报信息主键id -->
-		data_status,<!--标记分类 -->
+		forum_posts.data_status,<!--标记分类 -->
 		report_informations.content_group,<!-- 举报理由 -->
 		(case when report_group='1' then forum_posts.content
 			  when report_group='2' then forum_posts.content

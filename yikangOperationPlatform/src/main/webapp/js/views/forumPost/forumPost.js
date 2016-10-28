@@ -19,7 +19,9 @@ ForumPost.prototype = {
 		var userName = $("input[name='userName']").val();
 		var title = $("input[name='title']").val();
 		var recommendPicUrlImage = $("#recommendPicUrlImage").attr("src");
-		var content = $("input[name='content']").val();
+//		var content = $("input[name='content']").val();
+		var content = CKEDITOR.instances['editor1'].getData();
+		
 		var taglibId = $("input[name='taglibId']:checked").val();
 		if (userName == '') {
 			alert('用户名不能为空！');
@@ -33,15 +35,14 @@ ForumPost.prototype = {
 			alert('请选择标签！');
 			return false;
 		}
-		if (recommendPicUrlImage == '') {
+		if (recommendPicUrlImage == '' || typeof (recommendPicUrlImage) == "undefined") {
 			alert('请添加推荐图片！');
 			return false;
 		}
-		if (content == '') {
+		if (content == ''|| typeof (content) == "undefined" ) {
 			alert('请填写内容！');
 			return false;
 		}
-
 		$("#paramForm").submit();
 	},
 	// 更新并预览
@@ -49,7 +50,9 @@ ForumPost.prototype = {
 		var userName = $("input[name='userName']").val();
 		var title = $("input[name='title']").val();
 		var recommendPicUrlImage = $("#recommendPicUrlImage").attr("src");
-		var content = $("input[name='content']").val();
+//		var content = $("input[name='content']").val();
+		var content = CKEDITOR.instances['editor1'].getData();
+
 		var taglibId = $("input[name='taglibId']:checked").val();
 		if (userName == '') {
 			alert('用户名不能为空！');
@@ -63,11 +66,11 @@ ForumPost.prototype = {
 			alert('请选择标签！');
 			return false;
 		}
-		if (recommendPicUrlImage == '') {
+		if (recommendPicUrlImage == ''|| typeof (recommendPicUrlImage) == "undefined") {
 			alert('请添加推荐图片！');
 			return false;
 		}
-		if (content == '') {
+		if (content == ''|| typeof (content) == "undefined") {
 			alert('请填写内容！');
 			return false;
 		}
@@ -90,7 +93,9 @@ ForumPost.prototype = {
 		var userName = $("input[name='userName']").val();
 		var title = $("input[name='title']").val();
 		var recommendPicUrlImage = $("#recommendPicUrlImage").attr("src");
-		var content = $("input[name='content']").val();
+//		var content = $("input[name='content']").val();
+		var content = CKEDITOR.instances['editor1'].getData();
+
 		var taglibId = $("input[name='taglibId']:checked").val();
 		if (userName == '') {
 			alert('用户名不能为空！');
@@ -104,11 +109,11 @@ ForumPost.prototype = {
 			alert('请选择标签！');
 			return false;
 		}
-		if (recommendPicUrlImage == '') {
+		if (recommendPicUrlImage == '' || typeof (recommendPicUrlImage) == "undefined") {
 			alert('请添加推荐图片！');
 			return false;
 		}
-		if (content == '') {
+		if (content == '' || typeof (content) == "undefined") {
 			alert('请填写内容！');
 			return false;
 		}

@@ -95,6 +95,7 @@
 								</div>
 							</div>
 						</div>
+						</div>
 						<div id="example1_wrapper"
 							class="dataTables_wrapper form-inline dt-bootstrap">
 							<div class="row">

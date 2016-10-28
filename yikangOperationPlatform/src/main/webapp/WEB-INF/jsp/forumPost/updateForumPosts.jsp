@@ -69,7 +69,10 @@
 								</div>
 								<div class="col-sm-3">
 									<button class="btn btn-info " type="button"
-										onclick="forumPost.checkParam()">提交</button>
+										onclick="forumPost.publish()">提交</button>
+										<a id="links"
+											href='<%=basePath%>forumPosts/formPostList'
+											style="display: none">预览2</a>
 								</div>
 							</div>
 							<div class="row">
