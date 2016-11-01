@@ -143,11 +143,12 @@ ForumPost.prototype = {
 			});
 		}
 	},
-	okStatus : function(forumPostId, basePath) {
+	okStatus : function(forumPostId,createUserId, basePath) {
 		if (confirm("确定要通过吗？")) {
 
 			$.post(basePath + "/forumPosts/okStatusFormPost", {
-				"forumPostsId" : forumPostId
+				"forumPostsId" : forumPostId,
+				"createUserId":createUserId
 			}, function(data) {
 				if (data.status == "000000") {
 					alert("审核通过成功！");

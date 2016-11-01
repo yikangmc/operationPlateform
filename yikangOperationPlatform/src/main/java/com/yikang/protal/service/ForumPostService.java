@@ -170,11 +170,15 @@ public class ForumPostService {
 	public List<Long> queryFormPostsTaglibsByFormPostsId(Long forumPostsId) {
 		return formPostsDao.queryFormPostsTaglibsByFormPostsId(forumPostsId);
 	}
-
+	//删除文章
 	public int deleteByPrimaryKey(Long forumPostsId) {
-		// forumPostManager.deleteByPrimaryKey(forumPostsId);
 		List<FormPostsTaglibsMap> taglibsId = formPostsTaglibsMapDao.selectTagLibIdByFormPostId(forumPostsId);
-		// taglibDao.updateForumPostsNumberSubByTaglibId(taglibsId);
+		if (taglibsId != null) {
+			for (int i = 0; i < taglibsId.size(); i++) {
+				taglibDao.updateForumPostsNumberSubByTaglibId(Long.valueOf(taglibsId.get(i).getTagLibsId()));
+			}
+		}
+		forumPostManager.deleteByPrimaryKey(forumPostsId);
 		return 1;
 	}
 

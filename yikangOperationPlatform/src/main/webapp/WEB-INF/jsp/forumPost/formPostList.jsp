@@ -180,12 +180,12 @@
 															<button class="btn btn-info "
 																onclick="forumPost.del(${formPosts.forumPostId},'<%=basePath%>')">删除</button>
 															<button class="btn btn-info "
-																onclick="forumPost.okStatus(${formPosts.forumPostId},'<%=basePath%>')">通过</button>
+																onclick="forumPost.okStatus(${formPosts.forumPostId},${formPosts.createUserId},'<%=basePath%>')">通过</button>
 														</c:if> <c:if test="${formPosts.dataStatus==1 }">
 															<button class="btn btn-info "
 																onclick="forumPost.del(${formPosts.forumPostId},'<%=basePath%>')">删除</button>
 															<button class="btn btn-info "
-																onclick="forumPost.okStatus(${formPosts.forumPostId},'<%=basePath%>')">通过</button>
+																onclick="forumPost.okStatus(${formPosts.forumPostId},${formPosts.createUserId},'<%=basePath%>')">通过</button>
 															<button class="btn btn-info "
 																onclick="forumPost.noStatus(${formPosts.forumPostId},'<%=basePath%>')">不通过</button>
 														</c:if></td>

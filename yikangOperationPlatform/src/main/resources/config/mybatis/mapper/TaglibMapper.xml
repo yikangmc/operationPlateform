@@ -457,13 +457,13 @@
 		taglib_id=#{taglibId}
 	</update>
 
-	<!-- 修改标签帖子关注数量 +1 -->
+	<!-- 修改标签文章关注数量 -1 -->
 	<update id="updateForumPostsNumberSubByTaglibId" parameterType="long">
 		update taglibs set fornum_posts_number=fornum_posts_number-1 where
 		taglib_id=#{taglibId}
 	</update>
 
-	<!-- 修改标签帖子关注数量 -1 -->
+	<!-- 修改标签文章关注数量 -1 -->
 	<update id="updateForumPostsTZNumberAddByTaglibId"
 		parameterType="long">
 		update taglibs set

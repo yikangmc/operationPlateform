@@ -187,6 +187,10 @@
   	where job_type=0
   </select>
   
-  
+  <select id="selectJobByJobUniqueCode" parameterType="string" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List" />
+  	from jobs where job_unique_code = #{jobUniqueCode,jdbcType=VARCHAR}
+  </select>
   
 </mapper>
