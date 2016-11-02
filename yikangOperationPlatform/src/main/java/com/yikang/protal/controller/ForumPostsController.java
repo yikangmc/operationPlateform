@@ -189,20 +189,6 @@ public class ForumPostsController extends BaseController {
 	public ResponseMessage<String> updateForumPostsData(ModelMap modelMap,String forumPostId,String userName,String title,String content,String recommendPicUrl,String[] images,Long[] taglibId,HttpServletRequest hsr){
 		ResponseMessage<String> resData=new ResponseMessage<String>();
 		String contents=hsr.getParameter("content");
-		
-		String aa = null;
-		String[] a=recommendPicUrl.split(",", 2);
-		for(int i=0;i<a.length;i++){
-			 aa=a[i];
-			 aa=a[0];
-		}
-	
-		String bb=aa;
-		String cc=a[a.length-2];
-		System.out.println(cc);
-		System.out.println(bb);
-		recommendPicUrl=bb;
-//		recommendPicUrl = recommendPicUrl.replace(",", "");
 		User user=userManager.getUserByLoginName(userName);
 		if(null != contents && contents.length()>0){
 			List<String> imageArray=MatchHtmlElementAttrValue.getImgSrc(contents);
