@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yikang.common.error.ExceptionConstants;
 import com.yikang.common.utils.MatchHtmlElementAttrValue;
 import com.yikang.protal.base.BaseController;
 import com.yikang.protal.common.page.PageParameter;
@@ -243,9 +244,16 @@ public class ForumPostsController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping
-	public String deleteFormPost(HttpServletRequest hsr){
-		forumPostService.deleteByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
-		return "redirect:/forumPosts/formPostList";
+	@ResponseBody
+	public ResponseMessage<String> deleteFormPost(HttpServletRequest hsr){
+		ResponseMessage<String> resData=new ResponseMessage<String>();
+		try{
+			forumPostService.deleteByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
+		}catch(Exception e){e.printStackTrace();
+		   resData.setStatus(ExceptionConstants.systemException.systemException.errorCode);
+		   resData.setMessage(ExceptionConstants.systemException.systemException.errorMessage);
+		}
+		return resData;
 	}
 	
 	/**
