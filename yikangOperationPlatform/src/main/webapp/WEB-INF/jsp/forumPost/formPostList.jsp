@@ -172,31 +172,33 @@
 													<td><c:if test="${formPosts.dataStatus==1 }">未处理</c:if>
 														<c:if test="${formPosts.dataStatus==2 }">不通过</c:if> <c:if
 															test="${formPosts.dataStatus==3 }">通过 </c:if></td>
-													<td><c:if test="${formPosts.isEssence==0 }">
-															<button class="btn btn-info "
+													<td>
+													<c:if test="${formPosts.isEssence==0 }">
+															<button class="btn btn-info " type="button"
 																onclick="forumPost.updateEssence(${formPosts.forumPostId},'<%=basePath%>')">设为精华</button>
-														</c:if> <c:if test="${formPosts.isEssence==1 }">
-															<button class="btn batn-info "
-																onclick="forumPost.cancelEssence(${formPosts.forumPostId},'<%=basePath%>')">取消精华</button>
-														</c:if> <a
-														href="<%=basePath%>forumPosts/updateForumPosts?forumPostsId=${formPosts.forumPostId}"
-														class="btn btn-info ">修改</a> <c:if
-															test="${formPosts.dataStatus==3 }">
-															<button class="btn btn-info "
+													</c:if> 
+													<c:if test="${formPosts.isEssence==1 }">
+															<button class="btn batn-info " type="button" onclick="forumPost.cancelEssence(${formPosts.forumPostId},'<%=basePath%>')">取消精华</button>
+													</c:if> 
+														 <a href="<%=basePath%>forumPosts/updateForumPosts?forumPostsId=${formPosts.forumPostId}"
+															class="btn btn-info ">修改</a> 
+													<c:if test="${formPosts.dataStatus==3 }">
+															<button class="btn btn-info"  type="button"
 																onclick="forumPost.noStatus(${formPosts.forumPostId},'<%=basePath%>')">不通过</button>
-														</c:if> <c:if test="${formPosts.dataStatus==2 }">
-															<button class="btn btn-info "
+													</c:if> 
+														<c:if test="${formPosts.dataStatus==2 }">
+															<button class="btn btn-info" type="button" onclick="forumPost.del(${formPosts.forumPostId},'<%=basePath%>')">删除</button>
+															<button class="btn btn-info" type="button" onclick="forumPost.okStatus(${formPosts.forumPostId},${formPosts.createUserId},'<%=basePath%>')">通过</button>
+														</c:if> 
+														<c:if test="${formPosts.dataStatus==1 }">
+															<button class="btn btn-info" type="button"
 																onclick="forumPost.del(${formPosts.forumPostId},'<%=basePath%>')">删除</button>
-															<button class="btn btn-info "
-																onclick="forumPost.okStatus(${formPosts.forumPostId},'<%=basePath%>')">通过</button>
-														</c:if> <c:if test="${formPosts.dataStatus==1 }">
-															<button class="btn btn-info "
-																onclick="forumPost.del(${formPosts.forumPostId},'<%=basePath%>')">删除</button>
-															<button class="btn btn-info "
-																onclick="forumPost.okStatus(${formPosts.forumPostId},'<%=basePath%>')">通过</button>
-															<button class="btn btn-info "
+															<button class="btn btn-info" type="button"
+																onclick="forumPost.okStatus(${formPosts.forumPostId},${formPosts.createUserId},'<%=basePath%>')">通过</button>
+															<button class="btn btn-info" type="button"
 																onclick="forumPost.noStatus(${formPosts.forumPostId},'<%=basePath%>')">不通过</button>
-														</c:if></td>
+														</c:if>
+													 </td>
 												</tr>
 											</c:forEach>
 										</tbody>

@@ -6,12 +6,7 @@ ForumPost.prototype = {
 
 	},
 	date:function(){
-		 //Date range picker
-//		alert("测试");
        $('#reservation').daterangepicker();
-//		alert("测试2");
-
-		
 	},
 	
 	// 保存
@@ -132,22 +127,22 @@ ForumPost.prototype = {
 	},
 	del : function(forumPostId, basePath) {
 		if (confirm("确定要删除吗？")) {
-
 			$.post(basePath + "/forumPosts/deleteFormPost", {
 				"forumPostsId" : forumPostId
 			}, function(data, status) {
 				if (data.status == "000000") {
 					alert("删除成功！");
-					window.location.reload();
 				}
+				$("#paramForm").submit();
 			});
 		}
 	},
-	okStatus : function(forumPostId, basePath) {
+	okStatus : function(forumPostId,createUserId, basePath) {
 		if (confirm("确定要通过吗？")) {
 
 			$.post(basePath + "/forumPosts/okStatusFormPost", {
-				"forumPostsId" : forumPostId
+				"forumPostsId" : forumPostId,
+				"createUserId":createUserId
 			}, function(data) {
 				if (data.status == "000000") {
 					alert("审核通过成功！");

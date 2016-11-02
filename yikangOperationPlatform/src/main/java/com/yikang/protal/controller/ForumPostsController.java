@@ -10,13 +10,17 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yikang.common.error.ExceptionConstants;
 import com.yikang.common.utils.MatchHtmlElementAttrValue;
 import com.yikang.protal.base.BaseController;
 import com.yikang.protal.common.page.PageParameter;
 import com.yikang.protal.common.response.ResponseMessage;
+import com.yikang.protal.common.utils.operationmessage.OperationMessage;
+import com.yikang.protal.common.utils.operationmessage.OperationMessageQueue;
 import com.yikang.protal.entity.FormPosts;
 import com.yikang.protal.entity.Taglib;
 import com.yikang.protal.entity.User;
+import com.yikang.protal.manager.IntegralManager;
 import com.yikang.protal.manager.UserManager;
 import com.yikang.protal.service.ForumPostService;
 import com.yikang.protal.service.TaglibService;
@@ -33,6 +37,9 @@ public class ForumPostsController extends BaseController {
 	
 	@Autowired
 	private UserManager userManager;
+	
+	@Autowired
+	private IntegralManager integralManager;
 	
 	/**
 	 * 文章列表
@@ -184,7 +191,6 @@ public class ForumPostsController extends BaseController {
 	public ResponseMessage<String> updateForumPostsData(ModelMap modelMap,String forumPostId,String userName,String title,String content,String recommendPicUrl,String[] images,Long[] taglibId,HttpServletRequest hsr){
 		ResponseMessage<String> resData=new ResponseMessage<String>();
 		String contents=hsr.getParameter("content");
-		recommendPicUrl = recommendPicUrl.replace(",", "");
 		User user=userManager.getUserByLoginName(userName);
 		if(null != contents && contents.length()>0){
 			List<String> imageArray=MatchHtmlElementAttrValue.getImgSrc(contents);
@@ -239,9 +245,16 @@ public class ForumPostsController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping
-	public String deleteFormPost(HttpServletRequest hsr){
-		forumPostService.deleteByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
-		return "redirect:/forumPosts/formPostList";
+	@ResponseBody
+	public ResponseMessage<String> deleteFormPost(HttpServletRequest hsr){
+		ResponseMessage<String> resData=new ResponseMessage<String>();
+		try{
+			forumPostService.deleteByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
+		}catch(Exception e){e.printStackTrace();
+		   resData.setStatus(ExceptionConstants.systemException.systemException.errorCode);
+		   resData.setMessage(ExceptionConstants.systemException.systemException.errorMessage);
+		}
+		return resData;
 	}
 	
 	/**
@@ -253,6 +266,21 @@ public class ForumPostsController extends BaseController {
 	public ResponseMessage<String> okStatusFormPost(HttpServletRequest hsr){
 		ResponseMessage<String> resData=new ResponseMessage<String>();
 		forumPostService.okStatusByPrimaryKey(Long.valueOf(hsr.getParameter("forumPostsId")));
+		//***********************************************************
+//		try{
+//			OperationMessage operationMessage=new OperationMessage();
+//			operationMessage.setContent(String.valueOf(hsr.getParameter("forumPostsId")));
+////			operationMessage.setContentType("1"+"");
+//			OperationMessageQueue.putMessage(operationMessage);
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
+
+		integralManager.insertIntegralAddScoreIsUsualJob("FBZJS", Byte.valueOf("2"), Long.valueOf(hsr.getParameter("createUserId")));
+		
+
+		//***********************************************************
+
 		return resData;
 	}
 	/**
