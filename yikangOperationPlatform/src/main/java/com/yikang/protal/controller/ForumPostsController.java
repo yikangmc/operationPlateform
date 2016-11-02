@@ -42,7 +42,7 @@ public class ForumPostsController extends BaseController {
 	@RequestMapping
 	public String formPostList(Integer isEssence,Integer dataStatus,ModelMap modelMap,
 			PageParameter page,HttpServletRequest req,
-			String content,String title,String reservation,String userName){
+			String content,String title,String reservation,String userName,String userNameOther){
 		modelMap.put("page", page);
 		
 		// 10/24/2016 - 10/24/2016
@@ -73,6 +73,7 @@ public class ForumPostsController extends BaseController {
 		modelMap.put("userName", userName);
 		modelMap.put("dataStatus", dataStatus);
 		modelMap.put("reservation", reservation);
+		modelMap.put("userNameOther", userNameOther);
 		List<FormPosts> allFormPosts = forumPostService.findAllFormPosts(modelMap);
 		modelMap.addAttribute("formPostsList", allFormPosts);
 		return "forumPost/formPostList";

@@ -85,6 +85,14 @@
 													id="reservation" name="reservation" value="${reservation }">
 											</div>
 										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label">用户名字</label>
+											<div class="col-sm-3">
+												<input type="text" id="userNameOther" name="userNameOther"
+													class="form-control" value="${userNameOther}"> </input>
+											</div>
+										</div>
+										
 									</div>
 									<div class="box-footer clearfix" style="display: block;">
 										<button type="submit"

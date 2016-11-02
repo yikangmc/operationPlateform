@@ -591,6 +591,9 @@
 		<if test="null != userName and userName !=''">
 			and users.login_name=#{userName}
 		</if>
+		<if test="null != userNameOther and userNameOther !=''">
+			and a.user_name like concat('%',#{userNameOther},'%')
+		</if>
 		<if test="null != firstTime and firstTime !='' and null != lastTime and lastTime !=''">
 		and (forum_posts.create_time between
 		#{firstTime} and #{lastTime})
