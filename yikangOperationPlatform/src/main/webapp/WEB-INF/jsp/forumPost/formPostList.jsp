@@ -71,7 +71,7 @@
 
 										</div>
 										<div class="form-group">
-											<label class="col-sm-2 control-label">用户名字</label>
+											<label class="col-sm-2 control-label">帐号</label>
 											<div class="col-sm-3">
 												<input type="text" id="userName" name="userName"
 													class="form-control" value="${userName}"> </input>
@@ -82,7 +82,7 @@
 													<i class="fa fa-calendar"></i>
 												</div>
 												<input type="text" class="form-control pull-right "
-													id="reservation" name="reservation" value="${reservation }">
+													id="reservation" name="reservation" value="${reservation}"/>
 											</div>
 										</div>
 										<div class="form-group">

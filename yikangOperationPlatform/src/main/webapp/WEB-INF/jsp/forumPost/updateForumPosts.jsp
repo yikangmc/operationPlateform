@@ -16,10 +16,8 @@
 </script>
 </head>
 <body>
-	<script type="text/javascript"
-		src="<%=path%>/js/views/forumPost/forumPost-upload.js"></script>
-	<script type="text/javascript"
-		src="<%=path%>/js/views/forumPost/forumPost.js"></script>
+	<script type="text/javascript" src="<%=path%>/js/views/forumPost/forumPost-upload.js"></script>
+	<script type="text/javascript" src="<%=path%>/js/views/forumPost/forumPost.js"></script>
 
 	<div class="row">
 		<div class="col-sm-12">
@@ -38,16 +36,16 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<div id="example1_filter" class="dataTables_filter">
-										<label>用户名: <input type="input" name="userName"
-											class="form-control input-sm" placeholder="用户名"
+										<label>帐号: 
+										<input type="input" name="userName" class="form-control input-sm" placeholder="用户名"
 											value="${forumPosts.userName }" aria-controls="example1"/></label>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div id="example1_filter" class="dataTables_filter">
-										<label>标题: <input type="input" name="title"
-											class="form-control input-sm" placeholder="标题" value="${forumPosts.title}"
-											aria-controls="example1"/></label>
+										<label>标题: 
+										<input type="input" name="title" class="form-control input-sm" placeholder="标题"
+										 value="${forumPosts.title}" aria-controls="example1"/></label>
 									</div>
 								</div>
 							</div>
@@ -66,9 +64,7 @@
 								<div class="col-sm-3">
 									<button class="btn btn-info " type="button"
 										onclick="forumPost.publish()">提交</button>
-										<a id="links"
-											href='<%=basePath%>forumPosts/formPostList'
-											style="display: none">预览2</a>
+										<a id="links" href='<%=basePath%>forumPosts/formPostList' style="display: none">预览2</a>
 								</div>
 							</div>
 							<div class="row">

@@ -33,16 +33,16 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<div id="example1_filter" class="dataTables_filter">
-										<label>用户名: <input type="input" name="userName"
+										<label>帐号: <input type="input" name="userName"
 											class="form-control input-sm" placeholder="用户名"
-											value="${userName }" aria-controls="example1"></label>
+											value="${userName }" aria-controls="example1"/></label>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div id="example1_filter" class="dataTables_filter">
 										<label>标题: <input type="input" name="title"
 											class="form-control input-sm" placeholder="标题"
-											aria-controls="example1"></label>
+											aria-controls="example1"/></label>
 									</div>
 								</div>
 							</div>
@@ -64,13 +64,12 @@
 							</div>
 							<div class="row">
 								<div class="col-sm-6">
-									<input type="button" class="fileInput" name="recommendPicUrl"
-										value="上传标题图片" draggable="true" capture="camera"
-										onclick="$.upload()"> <input type="hidden"
-										name="recommendPicUrl" id="recommendPicUrlHidden">
+									<input type="button" class="fileInput" name="recommendPicUrl" value="上传标题图片" 
+										draggable="true" capture="camera" onclick="$.upload()"/> 
+									<input type="hidden" name="recommendPicUrl" id="recommendPicUrlHidden"/>
 								</div>
 								<div class="col-sm-6">
-									<img id="recommendPicUrlImage" style="height: 120px">
+									<img id="recommendPicUrlImage" style="height: 120px"/>
 								</div>
 							</div>
 							<div class="row">

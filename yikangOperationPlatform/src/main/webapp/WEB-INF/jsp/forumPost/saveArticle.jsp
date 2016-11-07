@@ -29,9 +29,9 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<div id="example1_filter" class="dataTables_filter">
-										<label>用户名: <input type="input" name="userName"
-											class="form-control input-sm" placeholder="用户名" value="${userName }"
-											aria-controls="example1"></label>
+										<label>帐号: 
+										<input type="input" name="userName" class="form-control input-sm" placeholder="帐号" 
+										value="${userName }" aria-controls="example1"/></label>
 									</div>
 								</div>
 							</div>
@@ -52,8 +52,8 @@
 							</div>
 							<div class="row">
                                 <div class="col-sm-6">
-                                    <input type="button" class="fileInput" name="recommendPicUrl" value="上传标题图片"
-                                    					draggable="true" capture="camera" onclick="$.upload()">
+                                    <input type="button" class="fileInput" name="recommendPicUrl" 
+                                    value="上传标题图片" draggable="true" capture="camera" onclick="$.upload()"/>
                                     					
                                 </div>
                                 <div class="col-sm-6" id = "imgId1">
