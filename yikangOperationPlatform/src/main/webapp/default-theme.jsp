@@ -671,8 +671,9 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<!-- jQuery Knob Chart -->
 	<script src="<%=basePath%>js/plugins/knob/jquery.knob.js"></script>
 	<!-- daterangepicker -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script> 
+<!-- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>  -->
 <!-- 		<script type="text/javascript" src="http://apps.bdimg.com/libs/moment/2.8.3/moment.js"></script> -->
+		<script type="text/javascript" src="<%=basePath%>js/plugins/daterangepicker/moment.min.js"></script>
 	<script
 		src="<%=basePath%>js/plugins/daterangepicker/daterangepicker.js"></script>
 	<!-- datepicker -->

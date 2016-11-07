@@ -132,6 +132,8 @@ ForumPost.prototype = {
 			}, function(data, status) {
 				if (data.status == "000000") {
 					alert("删除成功！");
+				}else{
+					alert(data.messages);
 				}
 				$("#paramForm").submit();
 			});
