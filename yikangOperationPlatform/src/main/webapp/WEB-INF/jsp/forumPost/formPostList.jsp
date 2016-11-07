@@ -162,7 +162,7 @@
 													<td><a target="_blank" href="${formPosts.shareUrl}">连接</a></td>
 													<td>${formPosts.recommendPicUrl}<%-- <c:if test="${formPosts.recommendPicUrl!=null && formPosts.recommendPicUrl !=''}">
 															<img src="${formPosts.recommendPicUrl}" height="80" width="160"/>
-														</c:if> --%>
+														</c:if> --%>  
 													</td>
 													<td>
 														<%-- <c:if test="${formPosts.photoUrl!=null && formPosts.photoUrl!=''}">
