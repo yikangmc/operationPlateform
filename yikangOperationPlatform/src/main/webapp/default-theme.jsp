@@ -350,7 +350,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 									<span>文章管理</span> <i class="fa fa-angle-left pull-right"></i>
 								</a>
 								<ul class="treeview-menu">
-									<li class="${reqUri eq '/opStu/forumPosts/forumPost' ? 'active':''}"><a href="/operationPlatform/forumPosts/forumPost"><i class="fa fa-circle-o"></i>文章发布</a></li>
+									<li class="${reqUri eq '/opStu/forumPosts/forumPost' ? 'active':''}"><a href="/opStu/forumPosts/forumPost"><i class="fa fa-circle-o"></i>文章发布</a></li>
 							 
 								</ul>
 							</li>

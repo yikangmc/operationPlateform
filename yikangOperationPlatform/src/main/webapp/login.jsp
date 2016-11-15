@@ -10,7 +10,7 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a href="../../index2.html"><b>易康</b>运营系统</a>
+			<a href="/"><b>易康</b>运营系统</a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">

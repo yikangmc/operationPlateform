@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.yikangyiliao</groupId>
-	<artifactId>yikangOperationPlateform</artifactId>
+	<artifactId>opStu</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>yikangOperationPlatform</name>
@@ -299,7 +299,7 @@
 
 
 	<build>
-		<finalName>operationPlatform</finalName>
+		<finalName>opStu</finalName>
 
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
@@ -333,7 +333,7 @@
 					<username>tomcat</username>
 					<password>tomcat</password>
 					<update>true</update>
-					<path>/operationPlatform</path>
+					<path>/opStu</path>
 					<port>8092</port>
 				</configuration>
 			</plugin>
