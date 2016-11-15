@@ -299,12 +299,26 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-files-o"></i>
-                <span>Layout Options</span>
+                <span>
+<!--                 	Layout Options -->
+						样式选项
+                </span>
                 <span class="label label-primary pull-right">4</span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<%=basePath%>pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                <li><a href="<%=basePath%>pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+                <li>
+                	<a href="<%=basePath%>pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> 
+<!--                 		Top Navigation -->
+                		头部导航条
+                	</a>
+                </li>
+                <li>
+                	<a href="<%=basePath%>pages/layout/boxed.html">
+                		<i class="fa fa-circle-o"></i> 
+<!--                 		Boxed -->
+							盒子
+                	</a>
+                </li>
                 <li><a href="<%=basePath%>pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
                 <li><a href="<%=basePath%>pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
               </ul>

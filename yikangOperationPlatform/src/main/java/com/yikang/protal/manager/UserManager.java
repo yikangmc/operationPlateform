@@ -203,5 +203,14 @@ public class UserManager {
 	public List<User> getAllUsersData(){
 		return userDao.getAllUsers();
 	}
+	
+	/**
+	 * @author liushuaic
+	 * @date 2016/11/11 16:42
+	 * @desc 获取用户信息根据登陆名称
+	 **/
+	public UserInfo getUserInfoByLoginName(String loginName) {
+		return userInfoDao.getUserInfoByLoginName(loginName);
+	}
 
 }

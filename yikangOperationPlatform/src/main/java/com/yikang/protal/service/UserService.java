@@ -327,5 +327,14 @@ public class UserService {
 		}
 		return userManager.updateUserPositionStatusCheckePass(paramData);
 	}
+	
+	/**
+     * @author liushuaic
+     * @date 2016-11-11 16:38
+     * @desc 获取用户信息根据用户名
+     * */
+    public UserInfo getUserInfoByLoginName(String loginName){
+    	return userManager.getUserInfoByLoginName(loginName);
+    }
 
 }

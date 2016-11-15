@@ -1,5 +1,7 @@
 package com.yikang.protal.entity;
 
+import java.util.Date;
+
 public class UserInfo extends User{
     private Long userInfoId;
 
@@ -23,7 +25,21 @@ public class UserInfo extends User{
 
     private Long isDelete;
 
-    private String userInfosCol;
+    private String photoUrl;
+
+    private String userIntroduce;
+
+    private Date birthday;
+    
+    private String pushAlias;
+    
+    private Long designationId;
+    
+    private Long reportValidNumber;
+    
+    private String designationName;
+    
+    private String bindMobileNumber;
 
     public Long getUserInfoId() {
         return userInfoId;
@@ -113,11 +129,68 @@ public class UserInfo extends User{
         this.isDelete = isDelete;
     }
 
-    public String getUserInfosCol() {
-        return userInfosCol;
-    }
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
 
-    public void setUserInfosCol(String userInfosCol) {
-        this.userInfosCol = userInfosCol == null ? null : userInfosCol.trim();
-    }
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
+	public String getUserIntroduce() {
+		return userIntroduce;
+	}
+
+	public void setUserIntroduce(String userIntroduce) {
+		this.userIntroduce = userIntroduce;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getPushAlias() {
+		return pushAlias;
+	}
+
+	public void setPushAlias(String pushAlias) {
+		this.pushAlias = pushAlias;
+	}
+
+	public Long getDesignationId() {
+		return designationId;
+	}
+
+	public void setDesignationId(Long designationId) {
+		this.designationId = designationId;
+	}
+
+	public Long getReportValidNumber() {
+		return reportValidNumber;
+	}
+
+	public void setReportValidNumber(Long reportValidNumber) {
+		this.reportValidNumber = reportValidNumber;
+	}
+
+	public String getDesignationName() {
+		return designationName;
+	}
+
+	public void setDesignationName(String designationName) {
+		this.designationName = designationName;
+	}
+
+	public String getBindMobileNumber() {
+		return bindMobileNumber;
+	}
+
+	public void setBindMobileNumber(String bindMobileNumber) {
+		this.bindMobileNumber = bindMobileNumber;
+	}
+
 }

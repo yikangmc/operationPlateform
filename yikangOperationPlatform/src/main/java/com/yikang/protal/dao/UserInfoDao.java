@@ -46,5 +46,15 @@ public interface UserInfoDao {
     * @desc  当天每个标签下的问题量
     * **/
    List<CountTaglib> getQuestionCountByDate(Map<String,Object> paramData);
+   
+   
+   /**
+    * 
+    * @author liushuaic
+    * @date 2016/11/11 17:52
+    * @desc 获取用户信息根据用户名称
+    * 
+    * */
+   UserInfo getUserInfoByLoginName(String userName);
     
 }

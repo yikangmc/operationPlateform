@@ -23,7 +23,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 			<section>
 				<header class="main-header">
 					<!-- Logo -->
-					<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+					<a href="${basePath }" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
 						<span class="logo-mini"><b>Y</b>OP</span> <!-- logo for regular state and mobile devices -->
 						<span class="logo-lg"><b>YK</b>OperationPlatform</span>
 					</a>
@@ -42,7 +42,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 										class="label label-success">4</span>
 								</a>
 									<ul class="dropdown-menu">
-										<li class="header">你有4条信息</li>
+										<li class="header">你有0条信息</li>
 										<li>
 											<!-- inner menu: contains the actual data -->
 											<ul class="menu">
@@ -114,12 +114,16 @@ request.getSession().setAttribute("reqUri", reqUri);
 										class="fa fa-bell-o"></i> <span class="label label-warning">10</span>
 								</a>
 									<ul class="dropdown-menu">
-										<li class="header">You have 10 notifications</li>
+										<li class="header">
+<!-- 											You have 10 notifications -->
+											你有10条信息
+										</li>
 										<li>
 											<!-- inner menu: contains the actual data -->
 											<ul class="menu">
 												<li><a href="#"> <i class="fa fa-users text-aqua"></i>
-														5 new members joined today
+<!-- 														5 new members joined today -->
+													今天有5个成员加入
 												</a></li>
 												<li><a href="#"> <i
 														class="fa fa-warning text-yellow"></i> Very long
@@ -127,17 +131,24 @@ request.getSession().setAttribute("reqUri", reqUri);
 														cause design problems
 												</a></li>
 												<li><a href="#"> <i class="fa fa-users text-red"></i>
-														5 new members joined
+<!-- 														5 new members joined -->
+														5个成员加入
 												</a></li>
 												<li><a href="#"> <i
-														class="fa fa-shopping-cart text-green"></i> 25 sales made
+														class="fa fa-shopping-cart text-green"></i> 
+<!-- 															25 sales made -->
+															25条销售信息
 												</a></li>
 												<li><a href="#"> <i class="fa fa-user text-red"></i>
-														You changed your username
+<!-- 														You changed your username -->
+															你修改了你的名称
 												</a></li>
 											</ul>
 										</li>
-										<li class="footer"><a href="#">View all</a></li>
+										<li class="footer"><a href="#">
+<!-- 											View all -->
+											查看所有
+										</a></li>
 									</ul></li>
 								<!-- Tasks: style can be found in dropdown.less -->
 								<li class="dropdown tasks-menu"><a href="#"
@@ -145,20 +156,28 @@ request.getSession().setAttribute("reqUri", reqUri);
 										class="fa fa-flag-o"></i> <span class="label label-danger">9</span>
 								</a>
 									<ul class="dropdown-menu">
-										<li class="header">You have 9 tasks</li>
+										<li class="header">
+<!-- 											You have 9 tasks -->
+												你有9条任务
+										</li>
 										<li>
 											<!-- inner menu: contains the actual data -->
 											<ul class="menu">
 												<li>
 													<!-- Task item --> <a href="#">
 														<h3>
-															Design some buttons <small class="pull-right">20%</small>
+<!-- 															Design some buttons  -->
+																设计按钮
+															<small class="pull-right">20%</small>
 														</h3>
 														<div class="progress xs">
 															<div class="progress-bar progress-bar-aqua"
 																style="width: 20%" role="progressbar" aria-valuenow="20"
 																aria-valuemin="0" aria-valuemax="100">
-																<span class="sr-only">20% Complete</span>
+																<span class="sr-only">
+<!-- 																	20% Complete -->
+																	20% 完成
+																</span>
 															</div>
 														</div>
 												</a>
@@ -167,13 +186,18 @@ request.getSession().setAttribute("reqUri", reqUri);
 												<li>
 													<!-- Task item --> <a href="#">
 														<h3>
-															Create a nice theme <small class="pull-right">40%</small>
+<!-- 															Create a nice theme  -->
+																创建完美的主题
+															<small class="pull-right">40%</small>
 														</h3>
 														<div class="progress xs">
 															<div class="progress-bar progress-bar-green"
 																style="width: 40%" role="progressbar" aria-valuenow="20"
 																aria-valuemin="0" aria-valuemax="100">
-																<span class="sr-only">40% Complete</span>
+																<span class="sr-only">
+<!-- 																	40% Complete -->
+																	40% 完成
+																</span>
 															</div>
 														</div>
 												</a>
@@ -182,13 +206,18 @@ request.getSession().setAttribute("reqUri", reqUri);
 												<li>
 													<!-- Task item --> <a href="#">
 														<h3>
-															Some task I need to do <small class="pull-right">60%</small>
+<!-- 															Some task I need to do  -->
+															还有一些任务 需要你做
+															<small class="pull-right">60%</small>
 														</h3>
 														<div class="progress xs">
 															<div class="progress-bar progress-bar-red"
 																style="width: 60%" role="progressbar" aria-valuenow="20"
 																aria-valuemin="0" aria-valuemax="100">
-																<span class="sr-only">60% Complete</span>
+																<span class="sr-only">
+<!-- 																	60% Complete -->
+																	60% 完成
+																</span>
 															</div>
 														</div>
 												</a>
@@ -211,43 +240,61 @@ request.getSession().setAttribute("reqUri", reqUri);
 												<!-- end task item -->
 											</ul>
 										</li>
-										<li class="footer"><a href="#">View all tasks</a></li>
+										<li class="footer">
+<!-- 											<a href="#">View all tasks</a> -->
+											<a href="#">查看所有任务</a>
+										</li>
 									</ul></li>
 								<!-- User Account: style can be found in dropdown.less -->
 								<li class="dropdown user user-menu"><a href="#"
-									class="dropdown-toggle" data-toggle="dropdown"> <img
-										src="<%=basePath%>js/dist/img/user2-160x160.jpg"
-										class="user-image" alt="User Image"> <span
-										class="hidden-xs">Alexander Pierce</span>
+									class="dropdown-toggle" data-toggle="dropdown"> 
+									<img src="${user.photoUrl }"
+										class="user-image" alt="User Image"> 
+									<span class="hidden-xs">${user.userName }</span>
 								</a>
 									<ul class="dropdown-menu">
 										<!-- User image -->
 										<li class="user-header"><img
-											src="<%=basePath%>js/dist/img/user2-160x160.jpg"
+											src="${user.photoUrl }"
 											class="img-circle" alt="User Image">
 											<p>
-												Alexander Pierce - Web Developer <small>Member since
+												${user.userName } - Web Developer <small>Member since
 													Nov. 2012</small>
 											</p></li>
 										<!-- Menu Body -->
 										<li class="user-body">
 											<div class="col-xs-4 text-center">
-												<a href="#">Followers</a>
+												<a href="#">
+<!-- 													Followers -->
+													关注量
+												</a>
 											</div>
 											<div class="col-xs-4 text-center">
-												<a href="#">Sales</a>
+												<a href="#">
+<!-- 													Sales -->
+													销售量
+												</a>
 											</div>
 											<div class="col-xs-4 text-center">
-												<a href="#">Friends</a>
+												<a href="#">
+<!-- 													Friends -->
+													好友
+												</a>
 											</div>
 										</li>
 										<!-- Menu Footer-->
 										<li class="user-footer">
 											<div class="pull-left">
-												<a href="#" class="btn btn-default btn-flat">Profile</a>
+												<a href="#" class="btn btn-default btn-flat">
+<!-- 												Profile -->
+													个人信息
+												</a>
 											</div>
 											<div class="pull-right">
-												<a href="#" class="btn btn-default btn-flat">Sign out</a>
+												<a href="#" class="btn btn-default btn-flat">
+<!-- 												Sign out -->
+													退出
+												</a>
 											</div>
 										</li>
 									</ul></li>
@@ -267,11 +314,11 @@ request.getSession().setAttribute("reqUri", reqUri);
 						<!-- Sidebar user panel -->
 						<div class="user-panel">
 							<div class="pull-left image">
-								<img src="<%=basePath%>js/dist/img/user2-160x160.jpg"
+								<img src="${user.photoUrl}"
 									class="img-circle" alt="User Image">
 							</div>
 							<div class="pull-left info">
-								<p>Alexander Pierce</p>
+								<p>${user.userName}</p>
 								<a href="#"><i class="fa fa-circle text-success"></i>online</a>
 							</div>
 						</div>
@@ -444,11 +491,20 @@ request.getSession().setAttribute("reqUri", reqUri);
 					<!-- Content Header (Page header) -->
 					<section class="content-header">
 						<h1>
-							面板 <small>Control panel</small>
+							面板 
+							<small>
+<!-- 								Control panel -->
+								控制面板
+							</small>
 						</h1>
 						<ol class="breadcrumb">
-							<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-							<li class="active">Dashboard</li>
+							<li><a href="${basePath}"><i class="fa fa-dashboard"></i> 
+<!-- 								Home -->
+								主页
+							</a></li>
+							<li class="active">
+								Dashboard
+							</li>
 						</ol>
 					</section>
 
@@ -479,7 +535,9 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<!-- /.content-wrapper -->
 	<footer class="main-footer">
 		<div class="pull-right hidden-xs">
-			<b>Version</b> 0.0.3
+			<b>Version</b> 
+<!-- 			0.0.3 -->
+				0.1.0  <!-- 添加登陆功能，修改样式 -->
 		</div>
 		<strong>Copyright &copy; 2015-2016 <a
 			href="http://jjkangfu.com">易康美辰</a>.
@@ -499,29 +557,45 @@ request.getSession().setAttribute("reqUri", reqUri);
 		<div class="tab-content">
 			<!-- Home tab content -->
 			<div class="tab-pane" id="control-sidebar-home-tab">
-				<h3 class="control-sidebar-heading">Recent Activity</h3>
+				<h3 class="control-sidebar-heading">
+<!-- 					Recent Activity -->
+						最近活动
+				</h3>
 				<ul class="control-sidebar-menu">
 					<li><a href="javascript::;"> <i
 							class="menu-icon fa fa-birthday-cake bg-red"></i>
 							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-								<p>Will be 23 on April 24th</p>
+								<h4 class="control-sidebar-subheading">
+<!-- 									Langdon's Birthday -->
+										Langdon's 生成
+								</h4>
+								<p>
+<!-- 									Will be 23 on April 24th -->
+									在 23 on April 24th
+								</p>
 							</div>
 					</a></li>
 					<li><a href="javascript::;"> <i
 							class="menu-icon fa fa-user bg-yellow"></i>
 							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Frodo Updated His
-									Profile</h4>
-								<p>New phone +1(800)555-1234</p>
+								<h4 class="control-sidebar-subheading">
+<!-- 									Frodo Updated His Profile -->
+										Frodo  更新了个人信息
+								</h4>
+								<p>
+<!-- 									New phone +1(800)555-1234 -->
+									新号码  +1(800)555-1234
+								</p>
 							</div>
 					</a></li>
 					<li><a href="javascript::;"> <i
 							class="menu-icon fa fa-envelope-o bg-light-blue"></i>
 							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Nora Joined Mailing
-									List</h4>
-								<p>nora@example.com</p>
+								<h4 class="control-sidebar-subheading">
+<!-- 									Nora Joined Mailing List -->
+									联系邮箱
+								</h4>
+								<p>hr@jjkangfu.com</p>
 							</div>
 					</a></li>
 					<li><a href="javascript::;"> <i
@@ -535,12 +609,16 @@ request.getSession().setAttribute("reqUri", reqUri);
 				</ul>
 				<!-- /.control-sidebar-menu -->
 
-				<h3 class="control-sidebar-heading">Tasks Progress</h3>
+				<h3 class="control-sidebar-heading">
+<!-- 					Tasks Progress -->
+					任务进展
+				</h3>
 				<ul class="control-sidebar-menu">
 					<li><a href="javascript::;">
 							<h4 class="control-sidebar-subheading">
-								Custom Template Design <span
-									class="label label-danger pull-right">70%</span>
+<!-- 								Custom Template Design  -->
+								客户模板设计
+								<span class="label label-danger pull-right">70%</span>
 							</h4>
 							<div class="progress progress-xxs">
 								<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
@@ -548,7 +626,9 @@ request.getSession().setAttribute("reqUri", reqUri);
 					</a></li>
 					<li><a href="javascript::;">
 							<h4 class="control-sidebar-subheading">
-								Update Resume <span class="label label-success pull-right">95%</span>
+<!-- 								Update Resume  -->
+								修改摘要
+								<span class="label label-success pull-right">95%</span>
 							</h4>
 							<div class="progress progress-xxs">
 								<div class="progress-bar progress-bar-success"
@@ -566,7 +646,9 @@ request.getSession().setAttribute("reqUri", reqUri);
 					</a></li>
 					<li><a href="javascript::;">
 							<h4 class="control-sidebar-subheading">
-								Back End Framework <span class="label label-primary pull-right">68%</span>
+<!-- 								Back End Framework  -->
+									后台框架
+								<span class="label label-primary pull-right">68%</span>
 							</h4>
 							<div class="progress progress-xxs">
 								<div class="progress-bar progress-bar-primary"
@@ -579,24 +661,33 @@ request.getSession().setAttribute("reqUri", reqUri);
 			</div>
 			<!-- /.tab-pane -->
 			<!-- Stats tab content -->
-			<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab
-				Content</div>
+			<div class="tab-pane" id="control-sidebar-stats-tab">
+<!-- 				Stats Tab Content -->
+					统计 选项卡 内容
+			</div>
 			<!-- /.tab-pane -->
 			<!-- Settings tab content -->
 			<div class="tab-pane" id="control-sidebar-settings-tab">
 				<form method="post">
 					<h3 class="control-sidebar-heading">基本设置布局选项</h3>
 					<div class="form-group">
-						<label class="control-sidebar-subheading"> Report panel
-							usage <input type="checkbox" class="pull-right" checked>
+						<label class="control-sidebar-subheading"> 
+<!-- 							Report panel usage  -->
+								报告面板样式
+							<input type="checkbox" class="pull-right" checked>
 						</label>
-						<p>Some information about this general settings option</p>
+						<p>
+<!-- 							Some information about this general settings option -->
+								基本信息的选项卡
+						</p>
 					</div>
 					<!-- /.form-group -->
 
 					<div class="form-group">
-						<label class="control-sidebar-subheading"> Allow mail
-							redirect <input type="checkbox" class="pull-right" checked>
+						<label class="control-sidebar-subheading"> 
+<!-- 							Allow mail redirect  -->
+								允许邮件重定
+							<input type="checkbox" class="pull-right" checked>
 						</label>
 						<p>Other sets of options are available</p>
 					</div>
@@ -610,25 +701,34 @@ request.getSession().setAttribute("reqUri", reqUri);
 					</div>
 					<!-- /.form-group -->
 
-					<h3 class="control-sidebar-heading">Chat Settings</h3>
+					<h3 class="control-sidebar-heading">
+<!-- 						Chat Settings -->
+						Chat 设置
+					</h3>
 
 					<div class="form-group">
-						<label class="control-sidebar-subheading"> Show me as
-							online <input type="checkbox" class="pull-right" checked>
+						<label class="control-sidebar-subheading"> 
+<!-- 							Show me as online  -->
+							显示我在线
+							<input type="checkbox" class="pull-right" checked>
 						</label>
 					</div>
 					<!-- /.form-group -->
 
 					<div class="form-group">
-						<label class="control-sidebar-subheading"> Turn off
-							notifications <input type="checkbox" class="pull-right">
+						<label class="control-sidebar-subheading"> 
+<!-- 							Turn off notifications  -->
+								关闭通知
+							<input type="checkbox" class="pull-right">
 						</label>
 					</div>
 					<!-- /.form-group -->
 
 					<div class="form-group">
-						<label class="control-sidebar-subheading"> Delete chat
-							history <a href="javascript::;" class="text-red pull-right"><i
+						<label class="control-sidebar-subheading"> 
+<!-- 							Delete chat history  -->
+							删除聊天记录
+							<a href="javascript::;" class="text-red pull-right"><i
 								class="fa fa-trash-o"></i></a>
 						</label>
 					</div>

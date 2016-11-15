@@ -27,11 +27,7 @@
 		<property name="password" value="yikangtest"></property>
 		
 	<!-- 测试数据库 -->
-<<<<<<< HEAD
-<!-- 	     <property name="url" value="jdbc:mysql://yikangstaging.cdry2qjq29ol.rds.cn-north-1.amazonaws.com.cn:3306/yikangNew?useUnicode=yes&amp;characterEncoding=UTF8"></property> -->
-=======
 <!-- 	    <property name="url" value="jdbc:mysql://yikangstaging.cdry2qjq29ol.rds.cn-north-1.amazonaws.com.cn:3306/yikangNew?useUnicode=yes&amp;characterEncoding=UTF8"></property> -->
->>>>>>> 9ae922a5bddf9803a20f3814d2d5d587e5417576
 <!-- 		<property name="username" value="yikangstaging"></property> -->
 <!-- 		<property name="password" value="yikangstaging"></property>  -->
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>

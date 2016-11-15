@@ -5,27 +5,27 @@
 		<id column="user_info_id" property="userInfoId" jdbcType="BIGINT" />
 		<result column="user_name" property="userName" jdbcType="VARCHAR" />
 		<result column="user_sex" property="userSex" jdbcType="TINYINT" />
-		<result column="provence_code" property="provenceCode"
-			jdbcType="VARCHAR" />
+		<result column="provence_code" property="provenceCode" jdbcType="VARCHAR" />
 		<result column="city_code" property="cityCode" jdbcType="VARCHAR" />
-		<result column="district_code" property="districtCode"
-			jdbcType="VARCHAR" />
+		<result column="district_code" property="districtCode" jdbcType="VARCHAR" />
 		<result column="address" property="address" jdbcType="VARCHAR" />
 		<result column="create_at" property="createAt" jdbcType="BIGINT" />
 		<result column="update_at" property="updateAt" jdbcType="BIGINT" />
 		<result column="user_id" property="userId" jdbcType="BIGINT" />
 		<result column="is_delete" property="isDelete" jdbcType="BIGINT" />
-		<result column="user_infos_col" property="userInfosCol"
-			jdbcType="VARCHAR" />
-		<result column="create_time" property="createTime" jdbcType="BIGINT" />
-
+		<result column="photo_url" property="photoUrl" jdbcType="VARCHAR" />
+		<result column="user_introduce" property="userIntroduce" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+		<result column="designation_id" property="designationId" jdbcType="BIGINT" />
+		<result column="report_valid_number" property="reportValidNumber" jdbcType="BIGINT" />
+		<result column="bind_mobile_number" property="bindMobileNumber" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		user_info_id, user_name, user_sex, provence_code,
-		city_code, district_code,
+		user_info_id, user_name, user_sex, provence_code, city_code, district_code,
 		address,
-		create_at, update_at, user_id,
-		is_delete, user_infos_col
+		create_at, update_at, user_id, is_delete, photo_url, user_introduce, birthday,
+		designation_id,
+		report_valid_number, bind_mobile_number
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Long">
@@ -35,30 +35,26 @@
 		where user_info_id = #{userInfoId,jdbcType=BIGINT}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-		delete from
-		user_infos
+		delete from user_infos
 		where user_info_id = #{userInfoId,jdbcType=BIGINT}
 	</delete>
 	<insert id="insert" parameterType="com.yikang.protal.entity.UserInfo">
-		insert into user_infos
-		(user_info_id, user_name, user_sex,
-		provence_code, city_code,
-		district_code,
+		insert into user_infos (user_info_id, user_name, user_sex,
+		provence_code, city_code, district_code,
 		address, create_at, update_at,
-		user_id, is_delete,
-		user_infos_col
-		)
-		values (#{userInfoId,jdbcType=BIGINT},
-		#{userName,jdbcType=VARCHAR},
+		user_id, is_delete, photo_url,
+		user_introduce, birthday, designation_id,
+		report_valid_number, bind_mobile_number)
+		values (#{userInfoId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR},
 		#{userSex,jdbcType=TINYINT},
-		#{provenceCode,jdbcType=VARCHAR}, #{cityCode,jdbcType=VARCHAR},
-		#{districtCode,jdbcType=VARCHAR},
-		#{address,jdbcType=VARCHAR},
-		#{createAt,jdbcType=BIGINT},
+		#{provenceCode,jdbcType=VARCHAR}, #{cityCode,jdbcType=VARCHAR}, #{districtCode,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR}, #{createAt,jdbcType=BIGINT},
 		#{updateAt,jdbcType=BIGINT},
-		#{userId,jdbcType=BIGINT}, #{isDelete,jdbcType=BIGINT},
-		#{userInfosCol,jdbcType=VARCHAR}
-		)
+		#{userId,jdbcType=BIGINT}, #{isDelete,jdbcType=BIGINT}, #{photoUrl,jdbcType=VARCHAR},
+		#{userIntroduce,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP},
+		#{designationId,jdbcType=BIGINT},
+		#{reportValidNumber,jdbcType=BIGINT},
+		#{bindMobileNumber,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.yikang.protal.entity.UserInfo">
 		insert into user_infos
@@ -96,8 +92,23 @@
 			<if test="isDelete != null">
 				is_delete,
 			</if>
-			<if test="userInfosCol != null">
-				user_infos_col,
+			<if test="photoUrl != null">
+				photo_url,
+			</if>
+			<if test="userIntroduce != null">
+				user_introduce,
+			</if>
+			<if test="birthday != null">
+				birthday,
+			</if>
+			<if test="designationId != null">
+				designation_id,
+			</if>
+			<if test="reportValidNumber != null">
+				report_valid_number,
+			</if>
+			<if test="bindMobileNumber != null">
+				bind_mobile_number,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -134,8 +145,23 @@
 			<if test="isDelete != null">
 				#{isDelete,jdbcType=BIGINT},
 			</if>
-			<if test="userInfosCol != null">
-				#{userInfosCol,jdbcType=VARCHAR},
+			<if test="photoUrl != null">
+				#{photoUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="userIntroduce != null">
+				#{userIntroduce,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				#{birthday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="designationId != null">
+				#{designationId,jdbcType=BIGINT},
+			</if>
+			<if test="reportValidNumber != null">
+				#{reportValidNumber,jdbcType=BIGINT},
+			</if>
+			<if test="bindMobileNumber != null">
+				#{bindMobileNumber,jdbcType=VARCHAR},
 			</if>
 		</trim>
 	</insert>
@@ -172,8 +198,23 @@
 			<if test="isDelete != null">
 				is_delete = #{isDelete,jdbcType=BIGINT},
 			</if>
-			<if test="userInfosCol != null">
-				user_infos_col = #{userInfosCol,jdbcType=VARCHAR},
+			<if test="photoUrl != null">
+				photo_url = #{photoUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="userIntroduce != null">
+				user_introduce = #{userIntroduce,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="designationId != null">
+				designation_id = #{designationId,jdbcType=BIGINT},
+			</if>
+			<if test="reportValidNumber != null">
+				report_valid_number = #{reportValidNumber,jdbcType=BIGINT},
+			</if>
+			<if test="bindMobileNumber != null">
+				bind_mobile_number = #{bindMobileNumber,jdbcType=VARCHAR},
 			</if>
 		</set>
 		where user_info_id = #{userInfoId,jdbcType=BIGINT}
@@ -181,24 +222,22 @@
 	<update id="updateByPrimaryKey" parameterType="com.yikang.protal.entity.UserInfo">
 		update user_infos
 		set user_name = #{userName,jdbcType=VARCHAR},
-		user_sex =
-		#{userSex,jdbcType=TINYINT},
-		provence_code =
-		#{provenceCode,jdbcType=VARCHAR},
-		city_code =
-		#{cityCode,jdbcType=VARCHAR},
-		district_code =
-		#{districtCode,jdbcType=VARCHAR},
-		address =
-		#{address,jdbcType=VARCHAR},
+		user_sex = #{userSex,jdbcType=TINYINT},
+		provence_code = #{provenceCode,jdbcType=VARCHAR},
+		city_code = #{cityCode,jdbcType=VARCHAR},
+		district_code = #{districtCode,jdbcType=VARCHAR},
+		address = #{address,jdbcType=VARCHAR},
 		create_at = #{createAt,jdbcType=BIGINT},
 		update_at = #{updateAt,jdbcType=BIGINT},
-		user_id =
-		#{userId,jdbcType=BIGINT},
+		user_id = #{userId,jdbcType=BIGINT},
 		is_delete = #{isDelete,jdbcType=BIGINT},
-		user_infos_col = #{userInfosCol,jdbcType=VARCHAR}
-		where user_info_id =
-		#{userInfoId,jdbcType=BIGINT}
+		photo_url = #{photoUrl,jdbcType=VARCHAR},
+		user_introduce = #{userIntroduce,jdbcType=VARCHAR},
+		birthday = #{birthday,jdbcType=TIMESTAMP},
+		designation_id = #{designationId,jdbcType=BIGINT},
+		report_valid_number = #{reportValidNumber,jdbcType=BIGINT},
+		bind_mobile_number = #{bindMobileNumber,jdbcType=VARCHAR}
+		where user_info_id = #{userInfoId,jdbcType=BIGINT}
 	</update>
 
 	<resultMap type="com.yikang.protal.entity.UserInfo" id="getUserInfoListResultMap"
@@ -300,5 +339,11 @@
 		where t.parent_id != 0
 		group by
 		t.taglib_id
+	</select>
+	
+	 <!-- 根据用户的名称获取用户信息 -->
+	<select id="getUserInfoByLoginName" parameterType="String" resultMap="BaseResultMap">
+		select ui.* from user_infos ui inner join users on ui.user_id = users.user_id 
+		WHERE users.login_name =#{loginName}
 	</select>
 </mapper>
