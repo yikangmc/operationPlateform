@@ -341,132 +341,17 @@ request.getSession().setAttribute("reqUri", reqUri);
 						<ul class="sidebar-menu menu-open">
 							<li class="header">主导航栏</li>
 
+							
 							<li class="treeview
-							${reqUri eq '/operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}
-							${reqUri eq '/operationPlatform/dayRegistrationNumber/dayCardNumber' ? 'active':''}
-							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>数据查询</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li class=""><a href="#"><i class="fa fa-circle-o"></i>新用户状态查询</a></li>
-									<li class="${reqUri eq '/operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}">
-									<a href="/operationPlatform/dayRegistrationNumber/dayRegistrationNumber"><i class="fa fa-circle-o">
-									</i>日用户数量查询</a>
-									</li>
-									<li class="${reqUri eq '/operationPlatform/dayRegistrationNumber/dayCardNumber' ? 'active':''}">
-										<a href="/operationPlatform/dayRegistrationNumber/dayCardNumber"><i class="fa fa-circle-o">
-										</i>当日标签下数量查询</a>
-									</li>						
-<!-- 									<li class="menu-open active"><a href="#"><i class="fa fa-circle-o"></i>活动查询 -->
-<!-- 									<i class="fa fa-angle-left pull-right"></i> -->
-<!-- 									</a> -->
-<!-- 										<ul class="treeview-menu"> -->
-<!-- 											<li class="active"> -->
-<!-- 												<a href="/operationPlatform/appointmentUser/getAppointmentList"><i class="fa fa-circle-o"></i>预约用户查询</a></li> -->
-<!-- 											<li> -->
-<!-- 												<a href="#"> -->
-<!-- 													<i class="fa fa-circle-o"></i>三方用户注入度查询<i class="fa fa-angle-left pull-right"></i> -->
-<!-- 												</a> -->
-<!-- 												<ul class="treeview-menu"> -->
-<!-- 													<li><a href="#"><i class="fa fa-circle-o"></i> 功夫熊用户注入度查询</a></li> -->
-<!-- 												</ul> -->
-<!-- 											</li> -->
-<!-- 										</ul> -->
-<!-- 									</li> -->
-								</ul>
-							</li>
-							<li class="treeview
-								${reqUri eq '/operationPlatform/userRecordNumber/userRecordNumber' ? 'active':''}							
-							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>基础数据管理</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li class="${reqUri eq '/operationPlatform/userRecordNumber/userRecordNumber' ? 'active':''}"><a href="/operationPlatform/userRecordNumber/userRecordNumber"><i class="fa fa-circle-o"></i>账号查询个人记录条数</a></li>								
-								</ul>
-							</li>
-							<li class="treeview
-								${reqUri eq '/operationPlatform/forumPosts/forumPost' ? 'active':''}
-								${reqUri eq '/operationPlatform/forumPosts/formPostList' ? 'active':''}
+								${reqUri eq '/opStu/forumPosts/forumPost' ? 'active':''}
 							">
 								<a href="#"> 
 									<i class="fa fa-share"></i>
 									<span>文章管理</span> <i class="fa fa-angle-left pull-right"></i>
 								</a>
 								<ul class="treeview-menu">
-									<li class="${reqUri eq '/operationPlatform/forumPosts/forumPost' ? 'active':''}"><a href="/operationPlatform/forumPosts/forumPost"><i class="fa fa-circle-o"></i>文章发布</a></li>
-								 
-									<li class="${reqUri eq '/operationPlatform/forumPosts/formPostList' ? 'active':''}"><a href="/operationPlatform/forumPosts/formPostList"><i class="fa fa-circle-o"></i>文章浏览</a></li>
+									<li class="${reqUri eq '/opStu/forumPosts/forumPost' ? 'active':''}"><a href="/operationPlatform/forumPosts/forumPost"><i class="fa fa-circle-o"></i>文章发布</a></li>
 							 
-									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章审核</a></li>
-							 
-								</ul>
-							</li>
-							
-							<li class="treeview
-								${reqUri eq '/operationPlatform/forumArticleMange/forumPost' ? 'active':''}
-								${reqUri eq '/operationPlatform/forumArticleMange/getAllArticleList' ? 'active':''}
-							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>帖子管理</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li class="${reqUri eq '/operationPlatform/forumArticleMange/forumPost' ? 'active':''}"><a href="/operationPlatform/forumArticleMange/forumPost"><i class="fa fa-circle-o"></i>帖子发布</a></li>
-								 
-									<li class="${reqUri eq '/operationPlatform/forumArticleMange/getAllArticleList' ? 'active':''}"><a href="/operationPlatform/forumArticleMange/getAllArticleList"><i class="fa fa-circle-o"></i>帖子浏览</a></li>
-								 
-									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子审核</a></li>
-								 
-									<%-- <li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子删除</a></li>
-								 --%></ul>
-							</li>
-							
-							<li class="treeview
-								${reqUri eq '/operationPlatform/question/questionCreate' ? 'active':''}
-								${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}
-								${reqUri eq '/operationPlatform/questionAnswer/questionAnswerList' ? 'active':'' }
-							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>问题管理</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li class="${reqUri eq '/operationPlatform/question/questionCreate' ? 'active':''}">
-									<a href="/operationPlatform/question/questionCreate"><i class="fa fa-circle-o"></i>添加问题</a></li>
-								 
-								 
-									<li class="${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}">
-										<a href="/operationPlatform/question/questionList"><i class="fa fa-circle-o"></i>问题列表</a>
-									</li>
-								 
-									<li class="${reqUri eq '/operationPlatform/questionAnswer/questionAnswerList' ? 'active':''}">
-										<a href="/operationPlatform/questionAnswer/questionAnswerList"><i class="fa fa-circle-o"></i>回答管理</a>
-									</li>
-								</ul>
-							</li>
-							<li class="treeview 
-							${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}
-							${reqUri eq '/operationPlatform/reportInformation/reportList' ? 'active':''}
-							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>用户管理</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li
-										class="${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}">
-										<a href="/operationPlatform/user/verificationList"><i
-											class="fa fa-circle-o"></i>身份认证</a>
-									</li>
-									<li
-										class="${reqUri eq '/operationPlatform/reportInformation/reportList' ? 'active':''}">
-										<a href="/operationPlatform/reportInformation/reportList"><i
-											class="fa fa-circle-o"></i>举报管理</a>
-									</li>
 								</ul>
 							</li>
 							
