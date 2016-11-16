@@ -79,14 +79,11 @@
 								<div class="col-sm-6">
 									<input type="button" class="fileInput" name="recommendPicUrl" value="上传标题图片" 
 									 draggable="true" capture="camera" onclick="$.upload()"/> 
-									<input type="hidden" name="recommendPicUrl" id="recommendPicUrlHidden"/>
 								</div>
 								<div class="col-sm-6">
 									<c:if test="${forumPosts.recommendPicUrl != null }">
-										<input name="recommendPicUrl" type="hidden"
-											value="${forumPosts.recommendPicUrl }" />
-										<img id="recommendPicUrlImage" style="height: 120px"
-											src="${forumPosts.recommendPicUrl }"/>
+										<input name="recommendPicUrl" id="recommendPicUrlHidden" type="hidden" value="${forumPosts.recommendPicUrl }" />
+										<img id="recommendPicUrlImage" style="height: 120px" src="${forumPosts.recommendPicUrl }"/>
 									</c:if>
 									<c:if test="${forumPosts.recommendPicUrl == null }">
 										<img id="recommendPicUrlImage" style="height: 120px"/>
