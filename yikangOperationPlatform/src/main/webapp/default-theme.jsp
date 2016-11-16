@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" 		prefix="page"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
 <!DOCTYPE html>
 <html>
 
@@ -8,747 +8,718 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title><decorator:title default="易康美辰"/></title>
+<title><decorator:title default="易康美辰" /></title>
 
 <%@ include file="/common/head.jsp"%>
-<% String reqUri=request.getRequestURI(); 
-request.getSession().setAttribute("reqUri", reqUri);
+<%
+	String reqUri = request.getRequestURI();
+	request.getSession().setAttribute("reqUri", reqUri);
 %>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
 	<div id="annual"></div>
-	<div>
-		<div>
-			<section>
-				<header class="main-header">
-					<!-- Logo -->
-					<a href="${basePath }" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-						<span class="logo-mini"><b>Y</b>OP</span> <!-- logo for regular state and mobile devices -->
-						<span class="logo-lg"><b>YK</b>OperationPlatform</span>
+	<div class="wrapper">
+		<section>
+			<header class="main-header">
+				<!-- Logo -->
+				<a href="${basePath }" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+					<span class="logo-mini"><b>Y</b>OP</span> <!-- logo for regular state and mobile devices -->
+					<span class="logo-lg"><b>YK</b>OperationPlatform</span>
+				</a>
+				<!-- Header Navbar: style can be found in header.less -->
+				<nav class="navbar navbar-static-top" role="navigation">
+					<!-- Sidebar toggle button-->
+					<a href="#" class="sidebar-toggle" data-toggle="offcanvas"
+						role="button"> <span class="sr-only">切换导航</span>
 					</a>
-					<!-- Header Navbar: style can be found in header.less -->
-					<nav class="navbar navbar-static-top" role="navigation">
-						<!-- Sidebar toggle button-->
-						<a href="#" class="sidebar-toggle" data-toggle="offcanvas"
-							role="button"> <span class="sr-only">切换导航</span>
-						</a>
-						<div class="navbar-custom-menu">
-							<ul class="nav navbar-nav">
-								<!-- Messages: style can be found in dropdown.less-->
-								<li class="dropdown messages-menu"><a href="#"
-									class="dropdown-toggle" data-toggle="dropdown"> <i
-										class="fa fa-envelope-o"></i> <span
-										class="label label-success">4</span>
-								</a>
-									<ul class="dropdown-menu">
-										<li class="header">你有0条信息</li>
-										<li>
-											<!-- inner menu: contains the actual data -->
-											<ul class="menu">
-												<li>
-													<!-- start message --> <a href="#">
-														<div class="pull-left">
-															<img src="<%=basePath%>js/dist/img/user2-160x160.jpg"
-																class="img-circle" alt="User Image">
-														</div>
-														<h4>
-															Support Team <small><i class="fa fa-clock-o"></i>
-																5 mins</small>
-														</h4>
-														<p>Why not buy a new awesome theme?</p>
-												</a>
-												</li>
-												<!-- end message -->
-												<li><a href="#">
-														<div class="pull-left">
-															<img src="<%=basePath%>js/dist/img/user3-128x128.jpg"
-																class="img-circle" alt="User Image">
-														</div>
-														<h4>
-															AdminLTE Design Team <small><i
-																class="fa fa-clock-o"></i> 2 hours</small>
-														</h4>
-														<p>Why not buy a new awesome theme?</p>
-												</a></li>
-												<li><a href="#">
-														<div class="pull-left">
-															<img src="<%=basePath%>js/dist/img/user4-128x128.jpg"
-																class="img-circle" alt="User Image">
-														</div>
-														<h4>
-															Developers <small><i class="fa fa-clock-o"></i>
-																Today</small>
-														</h4>
-														<p>Why not buy a new awesome theme?</p>
-												</a></li>
-												<li><a href="#">
-														<div class="pull-left">
-															<img src="<%=basePath%>js/dist/img/user3-128x128.jpg"
-																class="img-circle" alt="User Image">
-														</div>
-														<h4>
-															Sales Department <small><i class="fa fa-clock-o"></i>
-																Yesterday</small>
-														</h4>
-														<p>Why not buy a new awesome theme?</p>
-												</a></li>
-												<li><a href="#">
-														<div class="pull-left">
-															<img src="<%=basePath%>js/dist/img/user4-128x128.jpg"
-																class="img-circle" alt="User Image">
-														</div>
-														<h4>
-															Reviewers <small><i class="fa fa-clock-o"></i> 2
-																days</small>
-														</h4>
-														<p>Why not buy a new awesome theme?</p>
-												</a></li>
-											</ul>
-										</li>
-										<li class="footer"><a href="#">See All Messages</a></li>
-									</ul></li>
-								<!-- Notifications: style can be found in dropdown.less -->
-								<li class="dropdown notifications-menu"><a href="#"
-									class="dropdown-toggle" data-toggle="dropdown"> <i
-										class="fa fa-bell-o"></i> <span class="label label-warning">10</span>
-								</a>
-									<ul class="dropdown-menu">
-										<li class="header">
-<!-- 											You have 10 notifications -->
-											你有10条信息
-										</li>
-										<li>
-											<!-- inner menu: contains the actual data -->
-											<ul class="menu">
-												<li><a href="#"> <i class="fa fa-users text-aqua"></i>
-<!-- 														5 new members joined today -->
-													今天有5个成员加入
-												</a></li>
-												<li><a href="#"> <i
-														class="fa fa-warning text-yellow"></i> Very long
-														description here that may not fit into the page and may
-														cause design problems
-												</a></li>
-												<li><a href="#"> <i class="fa fa-users text-red"></i>
-<!-- 														5 new members joined -->
-														5个成员加入
-												</a></li>
-												<li><a href="#"> <i
-														class="fa fa-shopping-cart text-green"></i> 
-<!-- 															25 sales made -->
-															25条销售信息
-												</a></li>
-												<li><a href="#"> <i class="fa fa-user text-red"></i>
-<!-- 														You changed your username -->
-															你修改了你的名称
-												</a></li>
-											</ul>
-										</li>
-										<li class="footer"><a href="#">
-<!-- 											View all -->
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<!-- Messages: style can be found in dropdown.less-->
+							<li class="dropdown messages-menu"><a href="#"
+								class="dropdown-toggle" data-toggle="dropdown"> <i
+									class="fa fa-envelope-o"></i> <span class="label label-success">4</span>
+							</a>
+								<ul class="dropdown-menu">
+									<li class="header">你有0条信息</li>
+									<li>
+										<!-- inner menu: contains the actual data -->
+										<ul class="menu">
+											<li>
+												<!-- start message --> <a href="#">
+													<div class="pull-left">
+														<img src="<%=basePath%>js/dist/img/user2-160x160.jpg"
+															class="img-circle" alt="User Image">
+													</div>
+													<h4>
+														Support Team <small><i class="fa fa-clock-o"></i>
+															5 mins</small>
+													</h4>
+													<p>Why not buy a new awesome theme?</p>
+											</a>
+											</li>
+											<!-- end message -->
+											<li><a href="#">
+													<div class="pull-left">
+														<img src="<%=basePath%>js/dist/img/user3-128x128.jpg"
+															class="img-circle" alt="User Image">
+													</div>
+													<h4>
+														AdminLTE Design Team <small><i
+															class="fa fa-clock-o"></i> 2 hours</small>
+													</h4>
+													<p>Why not buy a new awesome theme?</p>
+											</a></li>
+											<li><a href="#">
+													<div class="pull-left">
+														<img src="<%=basePath%>js/dist/img/user4-128x128.jpg"
+															class="img-circle" alt="User Image">
+													</div>
+													<h4>
+														Developers <small><i class="fa fa-clock-o"></i>
+															Today</small>
+													</h4>
+													<p>Why not buy a new awesome theme?</p>
+											</a></li>
+											<li><a href="#">
+													<div class="pull-left">
+														<img src="<%=basePath%>js/dist/img/user3-128x128.jpg"
+															class="img-circle" alt="User Image">
+													</div>
+													<h4>
+														Sales Department <small><i class="fa fa-clock-o"></i>
+															Yesterday</small>
+													</h4>
+													<p>Why not buy a new awesome theme?</p>
+											</a></li>
+											<li><a href="#">
+													<div class="pull-left">
+														<img src="<%=basePath%>js/dist/img/user4-128x128.jpg"
+															class="img-circle" alt="User Image">
+													</div>
+													<h4>
+														Reviewers <small><i class="fa fa-clock-o"></i> 2
+															days</small>
+													</h4>
+													<p>Why not buy a new awesome theme?</p>
+											</a></li>
+										</ul>
+									</li>
+									<li class="footer"><a href="#">See All Messages</a></li>
+								</ul></li>
+							<!-- Notifications: style can be found in dropdown.less -->
+							<li class="dropdown notifications-menu"><a href="#"
+								class="dropdown-toggle" data-toggle="dropdown"> <i
+									class="fa fa-bell-o"></i> <span class="label label-warning">10</span>
+							</a>
+								<ul class="dropdown-menu">
+									<li class="header">
+										<!--You have 10 notifications --> 你有10条信息
+									</li>
+									<li>
+										<!-- inner menu: contains the actual data -->
+										<ul class="menu">
+											<li><a href="#"> <i class="fa fa-users text-aqua"></i>
+													<!-- 	5 new members joined today --> 今天有5个成员加入
+											</a></li>
+											<li><a href="#"> <i
+													class="fa fa-warning text-yellow"></i> Very long
+													description here that may not fit into the page and may
+													cause design problems
+											</a></li>
+											<li><a href="#"> <i class="fa fa-users text-red"></i>
+													<!-- 5 new members joined --> 5个成员加入
+											</a></li>
+											<li><a href="#"> <i
+													class="fa fa-shopping-cart text-green"></i> <!-- 															25 sales made -->
+													25条销售信息
+											</a></li>
+											<li><a href="#"> <i class="fa fa-user text-red"></i>
+													<!-- You changed your username --> 你修改了你的名称
+											</a></li>
+										</ul>
+									</li>
+									<li class="footer"><a href="#"> <!-- 		View all -->
 											查看所有
-										</a></li>
-									</ul></li>
-								<!-- Tasks: style can be found in dropdown.less -->
-								<li class="dropdown tasks-menu"><a href="#"
-									class="dropdown-toggle" data-toggle="dropdown"> <i
-										class="fa fa-flag-o"></i> <span class="label label-danger">9</span>
-								</a>
-									<ul class="dropdown-menu">
-										<li class="header">
-<!-- 											You have 9 tasks -->
-												你有9条任务
-										</li>
-										<li>
-											<!-- inner menu: contains the actual data -->
-											<ul class="menu">
-												<li>
-													<!-- Task item --> <a href="#">
-														<h3>
-<!-- 															Design some buttons  -->
-																设计按钮
-															<small class="pull-right">20%</small>
-														</h3>
-														<div class="progress xs">
-															<div class="progress-bar progress-bar-aqua"
-																style="width: 20%" role="progressbar" aria-valuenow="20"
-																aria-valuemin="0" aria-valuemax="100">
-																<span class="sr-only">
-<!-- 																	20% Complete -->
-																	20% 完成
-																</span>
-															</div>
+									</a></li>
+								</ul></li>
+							<!-- Tasks: style can be found in dropdown.less -->
+							<li class="dropdown tasks-menu"><a href="#"
+								class="dropdown-toggle" data-toggle="dropdown"> <i
+									class="fa fa-flag-o"></i> <span class="label label-danger">9</span>
+							</a>
+								<ul class="dropdown-menu">
+									<li class="header">
+										<!-- 											You have 9 tasks --> 你有9条任务
+									</li>
+									<li>
+										<!-- inner menu: contains the actual data -->
+										<ul class="menu">
+											<li>
+												<!-- Task item --> <a href="#">
+													<h3>
+														<!-- 															Design some buttons  -->
+														设计按钮 <small class="pull-right">20%</small>
+													</h3>
+													<div class="progress xs">
+														<div class="progress-bar progress-bar-aqua"
+															style="width: 20%" role="progressbar" aria-valuenow="20"
+															aria-valuemin="0" aria-valuemax="100">
+															<span class="sr-only"> <!-- 																	20% Complete -->
+																20% 完成
+															</span>
 														</div>
-												</a>
-												</li>
-												<!-- end task item -->
-												<li>
-													<!-- Task item --> <a href="#">
-														<h3>
-<!-- 															Create a nice theme  -->
-																创建完美的主题
-															<small class="pull-right">40%</small>
-														</h3>
-														<div class="progress xs">
-															<div class="progress-bar progress-bar-green"
-																style="width: 40%" role="progressbar" aria-valuenow="20"
-																aria-valuemin="0" aria-valuemax="100">
-																<span class="sr-only">
-<!-- 																	40% Complete -->
-																	40% 完成
-																</span>
-															</div>
+													</div>
+											</a>
+											</li>
+											<!-- end task item -->
+											<li>
+												<!-- Task item --> <a href="#">
+													<h3>
+														<!-- 															Create a nice theme  -->
+														创建完美的主题 <small class="pull-right">40%</small>
+													</h3>
+													<div class="progress xs">
+														<div class="progress-bar progress-bar-green"
+															style="width: 40%" role="progressbar" aria-valuenow="20"
+															aria-valuemin="0" aria-valuemax="100">
+															<span class="sr-only"> <!-- 																	40% Complete -->
+																40% 完成
+															</span>
 														</div>
-												</a>
-												</li>
-												<!-- end task item -->
-												<li>
-													<!-- Task item --> <a href="#">
-														<h3>
-<!-- 															Some task I need to do  -->
-															还有一些任务 需要你做
-															<small class="pull-right">60%</small>
-														</h3>
-														<div class="progress xs">
-															<div class="progress-bar progress-bar-red"
-																style="width: 60%" role="progressbar" aria-valuenow="20"
-																aria-valuemin="0" aria-valuemax="100">
-																<span class="sr-only">
-<!-- 																	60% Complete -->
-																	60% 完成
-																</span>
-															</div>
+													</div>
+											</a>
+											</li>
+											<!-- end task item -->
+											<li>
+												<!-- Task item --> <a href="#">
+													<h3>
+														<!-- 															Some task I need to do  -->
+														还有一些任务 需要你做 <small class="pull-right">60%</small>
+													</h3>
+													<div class="progress xs">
+														<div class="progress-bar progress-bar-red"
+															style="width: 60%" role="progressbar" aria-valuenow="20"
+															aria-valuemin="0" aria-valuemax="100">
+															<span class="sr-only"> <!-- 																	60% Complete -->
+																60% 完成
+															</span>
 														</div>
-												</a>
-												</li>
-												<!-- end task item -->
-												<li>
-													<!-- Task item --> <a href="#">
-														<h3>
-															Make beautiful transitions <small class="pull-right">80%</small>
-														</h3>
-														<div class="progress xs">
-															<div class="progress-bar progress-bar-yellow"
-																style="width: 80%" role="progressbar" aria-valuenow="20"
-																aria-valuemin="0" aria-valuemax="100">
-																<span class="sr-only">80% Complete</span>
-															</div>
+													</div>
+											</a>
+											</li>
+											<!-- end task item -->
+											<li>
+												<!-- Task item --> <a href="#">
+													<h3>
+														Make beautiful transitions <small class="pull-right">80%</small>
+													</h3>
+													<div class="progress xs">
+														<div class="progress-bar progress-bar-yellow"
+															style="width: 80%" role="progressbar" aria-valuenow="20"
+															aria-valuemin="0" aria-valuemax="100">
+															<span class="sr-only">80% Complete</span>
 														</div>
-												</a>
-												</li>
-												<!-- end task item -->
-											</ul>
-										</li>
-										<li class="footer">
-<!-- 											<a href="#">View all tasks</a> -->
-											<a href="#">查看所有任务</a>
-										</li>
-									</ul></li>
-								<!-- User Account: style can be found in dropdown.less -->
-								<li class="dropdown user user-menu"><a href="#"
-									class="dropdown-toggle" data-toggle="dropdown"> 
-									<img src="${user.photoUrl }"
-										class="user-image" alt="User Image"> 
+													</div>
+											</a>
+											</li>
+											<!-- end task item -->
+										</ul>
+									</li>
+									<li class="footer">
+										<!-- 											<a href="#">View all tasks</a> --> <a href="#">查看所有任务</a>
+									</li>
+								</ul></li>
+							<!-- User Account: style can be found in dropdown.less -->
+							<li class="dropdown user user-menu"><a href="#"
+								class="dropdown-toggle" data-toggle="dropdown"> <img
+									src="${user.photoUrl }" class="user-image" alt="User Image">
 									<span class="hidden-xs">${user.userName }</span>
-								</a>
-									<ul class="dropdown-menu">
-										<!-- User image -->
-										<li class="user-header"><img
-											src="${user.photoUrl }"
-											class="img-circle" alt="User Image">
-											<p>
-												${user.userName } - Web Developer <small>Member since
-													Nov. 2012</small>
-											</p></li>
-										<!-- Menu Body -->
-										<li class="user-body">
-											<div class="col-xs-4 text-center">
-												<a href="#">
-<!-- 													Followers -->
-													关注量
-												</a>
-											</div>
-											<div class="col-xs-4 text-center">
-												<a href="#">
-<!-- 													Sales -->
-													销售量
-												</a>
-											</div>
-											<div class="col-xs-4 text-center">
-												<a href="#">
-<!-- 													Friends -->
-													好友
-												</a>
-											</div>
-										</li>
-										<!-- Menu Footer-->
-										<li class="user-footer">
-											<div class="pull-left">
-												<a href="#" class="btn btn-default btn-flat">
-<!-- 												Profile -->
-													个人信息
-												</a>
-											</div>
-											<div class="pull-right">
-												<a href="#" class="btn btn-default btn-flat">
-<!-- 												Sign out -->
-													退出
-												</a>
-											</div>
-										</li>
-									</ul></li>
-								<!-- Control Sidebar Toggle Button -->
-								<li><a href="#" data-toggle="control-sidebar"><i
-										class="fa fa-gears"></i></a></li>
-							</ul>
+							</a>
+								<ul class="dropdown-menu">
+									<!-- User image -->
+									<li class="user-header"><img src="${user.photoUrl }"
+										class="img-circle" alt="User Image">
+										<p>
+											${user.userName } - Web Developer <small>Member since
+												Nov. 2012</small>
+										</p></li>
+									<!-- Menu Body -->
+									<li class="user-body">
+										<div class="col-xs-4 text-center">
+											<a href="#"> <!-- Followers --> 关注量
+											</a>
+										</div>
+										<div class="col-xs-4 text-center">
+											<a href="#"> <!-- Sales --> 销售量
+											</a>
+										</div>
+										<div class="col-xs-4 text-center">
+											<a href="#"> <!-- Friends --> 好友
+											</a>
+										</div>
+									</li>
+									<!-- Menu Footer-->
+									<li class="user-footer">
+										<div class="pull-left">
+											<a href="#" class="btn btn-default btn-flat"> <!-- 	Profile -->
+												个人信息
+											</a>
+										</div>
+										<div class="pull-right">
+											<a href="#" class="btn btn-default btn-flat"> <!-- 	Sign out -->
+												退出
+											</a>
+										</div>
+									</li>
+								</ul></li>
+							<!-- Control Sidebar Toggle Button -->
+							<li><a href="#" data-toggle="control-sidebar"><i
+									class="fa fa-gears"></i></a></li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+
+
+			<!-- Left side column. contains the logo and sidebar -->
+			<aside class="main-sidebar">
+				<!-- sidebar: style can be found in sidebar.less -->
+				<section class="sidebar">
+					<!-- Sidebar user panel -->
+					<div class="user-panel">
+						<div class="pull-left image">
+							<img src="${user.photoUrl}" class="img-circle" alt="User Image">
 						</div>
-					</nav>
-				</header>
-
-
-				<!-- Left side column. contains the logo and sidebar -->
-				<aside class="main-sidebar">
-					<!-- sidebar: style can be found in sidebar.less -->
-					<section class="sidebar">
-						<!-- Sidebar user panel -->
-						<div class="user-panel">
-							<div class="pull-left image">
-								<img src="${user.photoUrl}"
-									class="img-circle" alt="User Image">
-							</div>
-							<div class="pull-left info">
-								<p>${user.userName}</p>
-								<a href="#"><i class="fa fa-circle text-success"></i>online</a>
-							</div>
+						<div class="pull-left info">
+							<p>${user.userName}</p>
+							<a href="#"><i class="fa fa-circle text-success"></i>online</a>
 						</div>
-						<!-- search form -->
-						<form action="#" method="get" class="sidebar-form">
-							<div class="input-group">
-								<input type="text" name="q" class="form-control"
-									placeholder="Search..."> <span class="input-group-btn">
-									<button type="submit" name="search" id="search-btn"
-										class="btn btn-flat">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div>
-						</form>
-						<!-- /.search form -->
+					</div>
+					<!-- search form -->
+					<form action="#" method="get" class="sidebar-form">
+						<div class="input-group">
+							<input type="text" name="q" class="form-control"
+								placeholder="Search..."> <span class="input-group-btn">
+								<button type="submit" name="search" id="search-btn"
+									class="btn btn-flat">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div>
+					</form>
+					<!-- /.search form -->
 
 
-						<!-- sidebar menu: : style can be found in sidebar.less -->
-						<ul class="sidebar-menu menu-open">
-							<li class="header">主导航栏</li>
+					<!-- sidebar menu: : style can be found in sidebar.less -->
+					<ul class="sidebar-menu menu-open">
+						<li class="header">主导航栏</li>
 
-							<li class="treeview
+						<li
+							class="treeview
 							${reqUri eq '/operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}
 							${reqUri eq '/operationPlatform/dayRegistrationNumber/dayCardNumber' ? 'active':''}
 							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>数据查询</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li class=""><a href="#"><i class="fa fa-circle-o"></i>新用户状态查询</a></li>
-									<li class="${reqUri eq '/operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}">
-									<a href="/operationPlatform/dayRegistrationNumber/dayRegistrationNumber"><i class="fa fa-circle-o">
-									</i>日用户数量查询</a>
-									</li>
-									<li class="${reqUri eq '/operationPlatform/dayRegistrationNumber/dayCardNumber' ? 'active':''}">
-										<a href="/operationPlatform/dayRegistrationNumber/dayCardNumber"><i class="fa fa-circle-o">
-										</i>当日标签下数量查询</a>
-									</li>						
-<!-- 									<li class="menu-open active"><a href="#"><i class="fa fa-circle-o"></i>活动查询 -->
-<!-- 									<i class="fa fa-angle-left pull-right"></i> -->
-<!-- 									</a> -->
-<!-- 										<ul class="treeview-menu"> -->
-<!-- 											<li class="active"> -->
-<!-- 												<a href="/operationPlatform/appointmentUser/getAppointmentList"><i class="fa fa-circle-o"></i>预约用户查询</a></li> -->
-<!-- 											<li> -->
-<!-- 												<a href="#"> -->
-<!-- 													<i class="fa fa-circle-o"></i>三方用户注入度查询<i class="fa fa-angle-left pull-right"></i> -->
-<!-- 												</a> -->
-<!-- 												<ul class="treeview-menu"> -->
-<!-- 													<li><a href="#"><i class="fa fa-circle-o"></i> 功夫熊用户注入度查询</a></li> -->
-<!-- 												</ul> -->
-<!-- 											</li> -->
-<!-- 										</ul> -->
-<!-- 									</li> -->
-								</ul>
-							</li>
-							<li class="treeview
+							<a href="#"> <i class="fa fa-share"></i> <span>数据查询</span> <i
+								class="fa fa-angle-left pull-right"></i>
+						</a>
+							<ul class="treeview-menu">
+								<li class=""><a href="#"><i class="fa fa-circle-o"></i>新用户状态查询</a></li>
+								<li
+									class="${reqUri eq '/operationPlatform/dayRegistrationNumber/dayRegistrationNumber' ? 'active':''}">
+									<a
+									href="/operationPlatform/dayRegistrationNumber/dayRegistrationNumber"><i
+										class="fa fa-circle-o"> </i>日用户数量查询</a>
+								</li>
+								<li
+									class="${reqUri eq '/operationPlatform/dayRegistrationNumber/dayCardNumber' ? 'active':''}">
+									<a
+									href="/operationPlatform/dayRegistrationNumber/dayCardNumber"><i
+										class="fa fa-circle-o"> </i>当日标签下数量查询</a>
+								</li>
+							</ul>
+						</li>
+						<li
+							class="treeview
 								${reqUri eq '/operationPlatform/userRecordNumber/userRecordNumber' ? 'active':''}							
 							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>基础数据管理</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li class="${reqUri eq '/operationPlatform/userRecordNumber/userRecordNumber' ? 'active':''}"><a href="/operationPlatform/userRecordNumber/userRecordNumber"><i class="fa fa-circle-o"></i>账号查询个人记录条数</a></li>								
-								</ul>
-							</li>
-							<li class="treeview
+							<a href="#"> <i class="fa fa-share"></i> <span>基础数据管理</span>
+								<i class="fa fa-angle-left pull-right"></i>
+						</a>
+							<ul class="treeview-menu">
+								<li
+									class="${reqUri eq '/operationPlatform/userRecordNumber/userRecordNumber' ? 'active':''}"><a
+									href="/operationPlatform/userRecordNumber/userRecordNumber"><i
+										class="fa fa-circle-o"></i>账号查询个人记录条数</a></li>
+							</ul>
+						</li>
+						<li
+							class="treeview
 								${reqUri eq '/operationPlatform/forumPosts/forumPost' ? 'active':''}
 								${reqUri eq '/operationPlatform/forumPosts/formPostList' ? 'active':''}
 							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>文章管理</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li class="${reqUri eq '/operationPlatform/forumPosts/forumPost' ? 'active':''}"><a href="/operationPlatform/forumPosts/forumPost"><i class="fa fa-circle-o"></i>文章发布</a></li>
-								 
-									<li class="${reqUri eq '/operationPlatform/forumPosts/formPostList' ? 'active':''}"><a href="/operationPlatform/forumPosts/formPostList"><i class="fa fa-circle-o"></i>文章浏览</a></li>
-							 
-									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>文章审核</a></li>
-							 
-								</ul>
-							</li>
-							
-							<li class="treeview
+							<a href="#"> <i class="fa fa-share"></i> <span>文章管理</span> <i
+								class="fa fa-angle-left pull-right"></i>
+						</a>
+							<ul class="treeview-menu">
+								<li
+									class="${reqUri eq '/operationPlatform/forumPosts/forumPost' ? 'active':''}"><a
+									href="/operationPlatform/forumPosts/forumPost"><i
+										class="fa fa-circle-o"></i>文章发布</a></li>
+
+								<li
+									class="${reqUri eq '/operationPlatform/forumPosts/formPostList' ? 'active':''}"><a
+									href="/operationPlatform/forumPosts/formPostList"><i
+										class="fa fa-circle-o"></i>文章浏览</a></li>
+
+								<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i
+										class="fa fa-circle-o"></i>文章审核</a></li>
+
+							</ul>
+						</li>
+
+						<li
+							class="treeview
 								${reqUri eq '/operationPlatform/forumArticleMange/forumPost' ? 'active':''}
 								${reqUri eq '/operationPlatform/forumArticleMange/getAllArticleList' ? 'active':''}
 							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>帖子管理</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li class="${reqUri eq '/operationPlatform/forumArticleMange/forumPost' ? 'active':''}"><a href="/operationPlatform/forumArticleMange/forumPost"><i class="fa fa-circle-o"></i>帖子发布</a></li>
-								 
-									<li class="${reqUri eq '/operationPlatform/forumArticleMange/getAllArticleList' ? 'active':''}"><a href="/operationPlatform/forumArticleMange/getAllArticleList"><i class="fa fa-circle-o"></i>帖子浏览</a></li>
-								 
-									<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子审核</a></li>
-								 
-									<%-- <li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子删除</a></li>
-								 --%></ul>
-							</li>
-							
-							<li class="treeview
+							<a href="#"> <i class="fa fa-share"></i> <span>帖子管理</span> <i
+								class="fa fa-angle-left pull-right"></i>
+						</a>
+							<ul class="treeview-menu">
+								<li
+									class="${reqUri eq '/operationPlatform/forumArticleMange/forumPost' ? 'active':''}"><a
+									href="/operationPlatform/forumArticleMange/forumPost"><i
+										class="fa fa-circle-o"></i>帖子发布</a></li>
+
+								<li
+									class="${reqUri eq '/operationPlatform/forumArticleMange/getAllArticleList' ? 'active':''}"><a
+									href="/operationPlatform/forumArticleMange/getAllArticleList"><i
+										class="fa fa-circle-o"></i>帖子浏览</a></li>
+
+								<li class="${reqUri eq '#' ? 'active':''}"><a href="#"><i
+										class="fa fa-circle-o"></i>帖子审核</a></li>
+
+								<%-- <li class="${reqUri eq '/#' ? 'active':''}"><a href="#"><i class="fa fa-circle-o"></i>帖子删除</a></li>
+								 --%>
+							</ul>
+						</li>
+
+						<li
+							class="treeview
 								${reqUri eq '/operationPlatform/question/questionCreate' ? 'active':''}
 								${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}
 								${reqUri eq '/operationPlatform/questionAnswer/questionAnswerList' ? 'active':'' }
 							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>问题管理</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li class="${reqUri eq '/operationPlatform/question/questionCreate' ? 'active':''}">
-									<a href="/operationPlatform/question/questionCreate"><i class="fa fa-circle-o"></i>添加问题</a></li>
-								 
-								 
-									<li class="${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}">
-										<a href="/operationPlatform/question/questionList"><i class="fa fa-circle-o"></i>问题列表</a>
-									</li>
-								 
-									<li class="${reqUri eq '/operationPlatform/questionAnswer/questionAnswerList' ? 'active':''}">
-										<a href="/operationPlatform/questionAnswer/questionAnswerList"><i class="fa fa-circle-o"></i>回答管理</a>
-									</li>
-								</ul>
-							</li>
-							<li class="treeview 
+							<a href="#"> <i class="fa fa-share"></i> <span>问题管理</span> <i
+								class="fa fa-angle-left pull-right"></i>
+						</a>
+							<ul class="treeview-menu">
+								<li
+									class="${reqUri eq '/operationPlatform/question/questionCreate' ? 'active':''}">
+									<a href="/operationPlatform/question/questionCreate"><i
+										class="fa fa-circle-o"></i>添加问题</a>
+								</li>
+
+
+								<li
+									class="${reqUri eq '/operationPlatform/question/questionList' ? 'active':''}">
+									<a href="/operationPlatform/question/questionList"><i
+										class="fa fa-circle-o"></i>问题列表</a>
+								</li>
+
+								<li
+									class="${reqUri eq '/operationPlatform/questionAnswer/questionAnswerList' ? 'active':''}">
+									<a href="/operationPlatform/questionAnswer/questionAnswerList"><i
+										class="fa fa-circle-o"></i>回答管理</a>
+								</li>
+							</ul>
+						</li>
+						<li
+							class="treeview 
 							${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}
 							${reqUri eq '/operationPlatform/reportInformation/reportList' ? 'active':''}
 							">
-								<a href="#"> 
-									<i class="fa fa-share"></i>
-									<span>用户管理</span> <i class="fa fa-angle-left pull-right"></i>
-								</a>
-								<ul class="treeview-menu">
-									<li
-										class="${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}">
-										<a href="/operationPlatform/user/verificationList"><i
-											class="fa fa-circle-o"></i>身份认证</a>
-									</li>
-									<li
-										class="${reqUri eq '/operationPlatform/reportInformation/reportList' ? 'active':''}">
-										<a href="/operationPlatform/reportInformation/reportList"><i
-											class="fa fa-circle-o"></i>举报管理</a>
-									</li>
-								</ul>
-							</li>
-							
-							<li><a href="#"><i
-									class="fa fa-book"></i> <span>文档</span></a></li>
-							<li class="header">文档</li>
-							<li><a href="#"><i class="fa fa-circle-o text-red"></i>
-									<span>重要</span></a></li>
-							<li><a href="#"><i class="fa fa-circle-o text-yellow"></i>
-									<span>警告</span></a></li>
-							<li><a href="#"><i class="fa fa-circle-o text-aqua"></i>
-									<span>说明</span></a></li>
-						</ul>
-					</section>
-					<!-- /.sidebar -->
-				</aside>
+							<a href="#"> <i class="fa fa-share"></i> <span>用户管理</span> <i
+								class="fa fa-angle-left pull-right"></i>
+						</a>
+							<ul class="treeview-menu">
+								<li
+									class="${reqUri eq '/operationPlatform/user/questionCreate' ? 'active':''}">
+									<a href="/operationPlatform/user/verificationList"><i
+										class="fa fa-circle-o"></i>身份认证</a>
+								</li>
+								<li
+									class="${reqUri eq '/operationPlatform/reportInformation/reportList' ? 'active':''}">
+									<a href="/operationPlatform/reportInformation/reportList"><i
+										class="fa fa-circle-o"></i>举报管理</a>
+								</li>
+							</ul>
+						</li>
+
+						<li><a href="${basePath}updateLog.jsp"><i class="fa fa-book"></i> <span>更新日志</span></a></li>
+						<li><a href="#"><i class="fa fa-book"></i> <span>文档</span></a></li>
+						<li class="header">文档</li>
+						<li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>重要</span></a></li>
+						<li><a href="#"><i class="fa fa-circle-o text-yellow"></i>
+								<span>警告</span></a></li>
+						<li><a href="#"><i class="fa fa-circle-o text-aqua"></i>
+								<span>说明</span></a></li>
+					</ul>
+				</section>
+				<!-- /.sidebar -->
+			</aside>
 
 
 
-				<!-- Content Wrapper. Contains page content -->
-				<div class="content-wrapper">
-					<!-- Content Header (Page header) -->
-					<section class="content-header">
-						<h1>
-							面板 
-							<small>
-<!-- 								Control panel -->
-								控制面板
-							</small>
-						</h1>
-						<ol class="breadcrumb">
-							<li><a href="${basePath}"><i class="fa fa-dashboard"></i> 
-<!-- 								Home -->
-								主页
-							</a></li>
-							<li class="active">
-								Dashboard
-							</li>
-						</ol>
-					</section>
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>
+						面板 <small> <!-- Control panel --> 控制面板
+						</small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="${basePath}"><i class="fa fa-dashboard"></i>
+								<!-- Home --> 主页 </a></li>
+						<li class="active">Dashboard</li>
+					</ol>
+				</section>
 
 
-					<!-- Main content -->
-					<section class="content">
-						<decorator:body></decorator:body>
-					</section>
-					<!-- /.Left col -->
-					
+				<!-- Main content -->
+				<section class="content">
+					<decorator:body></decorator:body>
+				</section>
+				<!-- /.Left col -->
 
 
 
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
-					<section class="col-lg-5 connectedSortable"></section>
-					
-					
-				</div>
-				
-				<!-- /.box -->
 
-			</section>
-			<!-- right col -->
-		</div>
+				<!-- right col (We are only adding the ID to make the widgets sortable)-->
+				<section class="col-lg-5 connectedSortable"></section>
+
+
+			</div>
+
+			<!-- /.box -->
+
+		</section>
+		<!-- right col -->
+
 		<!-- /.row (main row) -->
 		<!-- /.content -->
-	</div>
-	<!-- /.content-wrapper -->
-	<footer class="main-footer">
-		<div class="pull-right hidden-xs">
-			<b>Version</b> 
-<!-- 			0.0.3 -->
-				0.1.0  <!-- 添加登陆功能，修改样式 -->
-		</div>
-		<strong>Copyright &copy; 2015-2016 <a
-			href="http://jjkangfu.com">易康美辰</a>.
-		</strong> All rights reserved.
-	</footer>
 
-	<!-- Control Sidebar -->
-	<aside class="control-sidebar control-sidebar-dark">
-		<!-- Create the tabs -->
-		<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-			<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i
-					class="fa fa-home"></i></a></li>
-			<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i
-					class="fa fa-gears"></i></a></li>
-		</ul>
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<!-- Home tab content -->
-			<div class="tab-pane" id="control-sidebar-home-tab">
-				<h3 class="control-sidebar-heading">
-<!-- 					Recent Activity -->
+		<!-- /.content-wrapper -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<b>Version</b>
+				<!-- 0.0.3 -->
+				0.1.0
+				<!-- 添加登陆功能，修改样式 -->
+			</div>
+			<strong>Copyright &copy; 2015-2016 <a
+				href="http://jjkangfu.com">易康美辰</a>.
+			</strong> All rights reserved.
+		</footer>
+
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Create the tabs -->
+			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+				<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i
+						class="fa fa-home"></i></a></li>
+				<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i
+						class="fa fa-gears"></i></a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<!-- Home tab content -->
+				<div class="tab-pane" id="control-sidebar-home-tab">
+					<h3 class="control-sidebar-heading">
+						<!-- 					Recent Activity -->
 						最近活动
-				</h3>
-				<ul class="control-sidebar-menu">
-					<li><a href="javascript::;"> <i
-							class="menu-icon fa fa-birthday-cake bg-red"></i>
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">
-<!-- 									Langdon's Birthday -->
+					</h3>
+					<ul class="control-sidebar-menu">
+						<li><a href="javascript::;"> <i
+								class="menu-icon fa fa-birthday-cake bg-red"></i>
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">
+										<!-- 									Langdon's Birthday -->
 										Langdon's 生成
-								</h4>
-								<p>
-<!-- 									Will be 23 on April 24th -->
-									在 23 on April 24th
-								</p>
-							</div>
-					</a></li>
-					<li><a href="javascript::;"> <i
-							class="menu-icon fa fa-user bg-yellow"></i>
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">
-<!-- 									Frodo Updated His Profile -->
-										Frodo  更新了个人信息
-								</h4>
-								<p>
-<!-- 									New phone +1(800)555-1234 -->
-									新号码  +1(800)555-1234
-								</p>
-							</div>
-					</a></li>
-					<li><a href="javascript::;"> <i
-							class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">
-<!-- 									Nora Joined Mailing List -->
-									联系邮箱
-								</h4>
-								<p>hr@jjkangfu.com</p>
-							</div>
-					</a></li>
-					<li><a href="javascript::;"> <i
-							class="menu-icon fa fa-file-code-o bg-green"></i>
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Cron Job 254
-									Executed</h4>
-								<p>Execution time 5 seconds</p>
-							</div>
-					</a></li>
-				</ul>
-				<!-- /.control-sidebar-menu -->
-
-				<h3 class="control-sidebar-heading">
-<!-- 					Tasks Progress -->
-					任务进展
-				</h3>
-				<ul class="control-sidebar-menu">
-					<li><a href="javascript::;">
-							<h4 class="control-sidebar-subheading">
-<!-- 								Custom Template Design  -->
-								客户模板设计
-								<span class="label label-danger pull-right">70%</span>
-							</h4>
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-							</div>
-					</a></li>
-					<li><a href="javascript::;">
-							<h4 class="control-sidebar-subheading">
-<!-- 								Update Resume  -->
-								修改摘要
-								<span class="label label-success pull-right">95%</span>
-							</h4>
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-success"
-									style="width: 95%"></div>
-							</div>
-					</a></li>
-					<li><a href="javascript::;">
-							<h4 class="control-sidebar-subheading">
-								Laravel Integration <span class="label label-warning pull-right">50%</span>
-							</h4>
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-warning"
-									style="width: 50%"></div>
-							</div>
-					</a></li>
-					<li><a href="javascript::;">
-							<h4 class="control-sidebar-subheading">
-<!-- 								Back End Framework  -->
-									后台框架
-								<span class="label label-primary pull-right">68%</span>
-							</h4>
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-primary"
-									style="width: 68%"></div>
-							</div>
-					</a></li>
-				</ul>
-				<!-- /.control-sidebar-menu -->
-
-			</div>
-			<!-- /.tab-pane -->
-			<!-- Stats tab content -->
-			<div class="tab-pane" id="control-sidebar-stats-tab">
-<!-- 				Stats Tab Content -->
-					统计 选项卡 内容
-			</div>
-			<!-- /.tab-pane -->
-			<!-- Settings tab content -->
-			<div class="tab-pane" id="control-sidebar-settings-tab">
-				<form method="post">
-					<h3 class="control-sidebar-heading">基本设置布局选项</h3>
-					<div class="form-group">
-						<label class="control-sidebar-subheading"> 
-<!-- 							Report panel usage  -->
-								报告面板样式
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-						<p>
-<!-- 							Some information about this general settings option -->
-								基本信息的选项卡
-						</p>
-					</div>
-					<!-- /.form-group -->
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading"> 
-<!-- 							Allow mail redirect  -->
-								允许邮件重定
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-						<p>Other sets of options are available</p>
-					</div>
-					<!-- /.form-group -->
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading"> Expose author
-							name in posts <input type="checkbox" class="pull-right" checked>
-						</label>
-						<p>Allow the user to show his name in blog posts</p>
-					</div>
-					<!-- /.form-group -->
+									</h4>
+									<p>
+										<!-- 									Will be 23 on April 24th -->
+										在 23 on April 24th
+									</p>
+								</div>
+						</a></li>
+						<li><a href="javascript::;"> <i
+								class="menu-icon fa fa-user bg-yellow"></i>
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">
+										<!-- Frodo Updated His Profile -->
+										Frodo 更新了个人信息
+									</h4>
+									<p>
+										<!-- New phone +1(800)555-1234 -->
+										新号码 +1(800)555-1234
+									</p>
+								</div>
+						</a></li>
+						<li><a href="javascript::;"> <i
+								class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">
+										<!-- Nora Joined Mailing List -->
+										联系邮箱
+									</h4>
+									<p>hr@jjkangfu.com</p>
+								</div>
+						</a></li>
+						<li><a href="javascript::;"> <i
+								class="menu-icon fa fa-file-code-o bg-green"></i>
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">Cron Job 254
+										Executed</h4>
+									<p>Execution time 5 seconds</p>
+								</div>
+						</a></li>
+					</ul>
+					<!-- /.control-sidebar-menu -->
 
 					<h3 class="control-sidebar-heading">
-<!-- 						Chat Settings -->
-						Chat 设置
+						<!-- Tasks Progress -->
+						任务进展
 					</h3>
+					<ul class="control-sidebar-menu">
+						<li><a href="javascript::;">
+								<h4 class="control-sidebar-subheading">
+									<!-- 								Custom Template Design  -->
+									客户模板设计 <span class="label label-danger pull-right">70%</span>
+								</h4>
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-danger"
+										style="width: 70%"></div>
+								</div>
+						</a></li>
+						<li><a href="javascript::;">
+								<h4 class="control-sidebar-subheading">
+									<!-- Update Resume  -->
+									修改摘要 <span class="label label-success pull-right">95%</span>
+								</h4>
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-success"
+										style="width: 95%"></div>
+								</div>
+						</a></li>
+						<li><a href="javascript::;">
+								<h4 class="control-sidebar-subheading">
+									Laravel Integration <span
+										class="label label-warning pull-right">50%</span>
+								</h4>
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-warning"
+										style="width: 50%"></div>
+								</div>
+						</a></li>
+						<li><a href="javascript::;">
+								<h4 class="control-sidebar-subheading">
+									<!-- 								Back End Framework  -->
+									后台框架 <span class="label label-primary pull-right">68%</span>
+								</h4>
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-primary"
+										style="width: 68%"></div>
+								</div>
+						</a></li>
+					</ul>
+					<!-- /.control-sidebar-menu -->
 
-					<div class="form-group">
-						<label class="control-sidebar-subheading"> 
-<!-- 							Show me as online  -->
-							显示我在线
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-					</div>
-					<!-- /.form-group -->
+				</div>
+				<!-- /.tab-pane -->
+				<!-- Stats tab content -->
+				<div class="tab-pane" id="control-sidebar-stats-tab">
+					<!-- 				Stats Tab Content -->
+					统计 选项卡 内容
+				</div>
+				<!-- /.tab-pane -->
+				<!-- Settings tab content -->
+				<div class="tab-pane" id="control-sidebar-settings-tab">
+					<form method="post">
+						<h3 class="control-sidebar-heading">基本设置布局选项</h3>
+						<div class="form-group">
+							<label class="control-sidebar-subheading"> <!-- 							Report panel usage  -->
+								报告面板样式 <input type="checkbox" class="pull-right" checked>
+							</label>
+							<p>
+								<!-- 							Some information about this general settings option -->
+								基本信息的选项卡
+							</p>
+						</div>
+						<!-- /.form-group -->
 
-					<div class="form-group">
-						<label class="control-sidebar-subheading"> 
-<!-- 							Turn off notifications  -->
-								关闭通知
-							<input type="checkbox" class="pull-right">
-						</label>
-					</div>
-					<!-- /.form-group -->
+						<div class="form-group">
+							<label class="control-sidebar-subheading"> <!-- 							Allow mail redirect  -->
+								允许邮件重定 <input type="checkbox" class="pull-right" checked>
+							</label>
+							<p>Other sets of options are available</p>
+						</div>
+						<!-- /.form-group -->
 
-					<div class="form-group">
-						<label class="control-sidebar-subheading"> 
-<!-- 							Delete chat history  -->
-							删除聊天记录
-							<a href="javascript::;" class="text-red pull-right"><i
-								class="fa fa-trash-o"></i></a>
-						</label>
-					</div>
-					<!-- /.form-group -->
-				</form>
+						<div class="form-group">
+							<label class="control-sidebar-subheading"> Expose author
+								name in posts <input type="checkbox" class="pull-right" checked>
+							</label>
+							<p>Allow the user to show his name in blog posts</p>
+						</div>
+						<!-- /.form-group -->
+
+						<h3 class="control-sidebar-heading">
+							<!-- 						Chat Settings -->
+							Chat 设置
+						</h3>
+
+						<div class="form-group">
+							<label class="control-sidebar-subheading"> <!-- 							Show me as online  -->
+								显示我在线 <input type="checkbox" class="pull-right" checked>
+							</label>
+						</div>
+						<!-- /.form-group -->
+
+						<div class="form-group">
+							<label class="control-sidebar-subheading"> <!-- 							Turn off notifications  -->
+								关闭通知 <input type="checkbox" class="pull-right">
+							</label>
+						</div>
+						<!-- /.form-group -->
+
+						<div class="form-group">
+							<label class="control-sidebar-subheading"> <!-- 							Delete chat history  -->
+								删除聊天记录 <a href="javascript::;" class="text-red pull-right"><i
+									class="fa fa-trash-o"></i></a>
+							</label>
+						</div>
+						<!-- /.form-group -->
+					</form>
+				</div>
+				<!-- /.tab-pane -->
 			</div>
-			<!-- /.tab-pane -->
-		</div>
-	</aside>
-	<!-- /.control-sidebar -->
-	<!-- Add the sidebar's background. This div must be placed
+		</aside>
+		<!-- /.control-sidebar -->
+		<!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
-	<div class="control-sidebar-bg"></div>
-	<!-- ./wrapper -->
-
+		<div class="control-sidebar-bg"></div>
+		<!-- ./wrapper -->
+	</div>
 	<!-- jQuery 2.1.4 -->
 	<!-- <script src="<%=basePath%>js/plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
 	<!-- jQuery UI 1.11.4 -->
 	<!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
-	<script type="text/javascript" src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<script type="text/javascript"
+		src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
 		//       $.widget.bridge('uibutton', $.ui.button);
@@ -758,7 +729,8 @@ request.getSession().setAttribute("reqUri", reqUri);
 
 	<!-- Morris.js charts -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script> -->
-	<script type="text/javascript" src="http://apps.bdimg.com/libs/raphael/2.1.2/raphael-min.js"></script>
+	<script type="text/javascript"
+		src="http://apps.bdimg.com/libs/raphael/2.1.2/raphael-min.js"></script>
 	<script src="<%=basePath%>js/plugins/morris/morris.min.js"></script>
 
 	<!-- Sparkline -->
@@ -771,9 +743,10 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<!-- jQuery Knob Chart -->
 	<script src="<%=basePath%>js/plugins/knob/jquery.knob.js"></script>
 	<!-- daterangepicker -->
-<!-- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>  -->
-<!-- 		<script type="text/javascript" src="http://apps.bdimg.com/libs/moment/2.8.3/moment.js"></script> -->
-		<script type="text/javascript" src="<%=basePath%>js/plugins/daterangepicker/moment.min.js"></script>
+	<!-- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>  -->
+	<!-- 		<script type="text/javascript" src="http://apps.bdimg.com/libs/moment/2.8.3/moment.js"></script> -->
+	<script type="text/javascript"
+		src="<%=basePath%>js/plugins/daterangepicker/moment.min.js"></script>
 	<script
 		src="<%=basePath%>js/plugins/daterangepicker/daterangepicker.js"></script>
 	<!-- datepicker -->
@@ -782,7 +755,7 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<!-- Bootstrap WYSIHTML5 -->
 	<script
 		src="<%=basePath%>js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-		
+
 	<!-- Slimscroll -->
 	<script
 		src="<%=basePath%>js/plugins/slimScroll/jquery.slimscroll.min.js"></script>
@@ -791,12 +764,12 @@ request.getSession().setAttribute("reqUri", reqUri);
 	<!-- AdminLTE App -->
 	<script src="<%=basePath%>js/dist/js/app.min.js"></script>
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<%-- 	<script src="<%=basePath%>js/dist/js/pages/dashboard.js"></script> --%>
+	<%-- 	<script src="<%=basePath%>js/dist/js/pages/dashboard.js"></script> --%>
 	<!-- AdminLTE for demo purposes -->
 	<script src="<%=basePath%>js/dist/js/demo.js"></script>
-	
-<!-- Chart JS -->
+
+	<!-- Chart JS -->
 	<script src="<%=basePath%>js/plugins/chartjs/Chart.min.js"></script>
-	
+
 </body>
 </html>
