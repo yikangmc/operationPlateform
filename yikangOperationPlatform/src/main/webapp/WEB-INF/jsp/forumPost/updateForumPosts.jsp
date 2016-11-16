@@ -69,7 +69,7 @@
 							</div>
 							<div class="row">
 								<div class="col-sm-6">
-									<input type="button" class="fileInput" name="recommendPicUrl" value="上传标题图片" draggable="true" capture="camera"
+									<input type="button" class="fileInput" value="上传标题图片" draggable="true" capture="camera"
 										onclick="$.upload()"/>
 								</div>
 								<div class="col-sm-6">
