@@ -76,9 +76,7 @@ public class UserRealm  extends AuthorizingRealm{
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
 		
 		String loginName=((UsernamePasswordToken)arg0).getUsername();
-		loginName="13716907523";
 		User user=userManager.getUserByLoginName(loginName);
-		// password=new String((char[])arg0.getCredentials());
 		if(null == user){
 			throw new UnknownAccountException("未知用户");
 		}
